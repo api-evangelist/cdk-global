@@ -1,0 +1,61 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Fortellis Event Relay Webhook
+  description: >-
+    Fortellis Event Relay Webhook capability. Contract implemented by event-sink applications to
+    receive asynchronous events from Fortellis Event Relay. Defines the canonical envelope
+    (Fortellis-Event-Id, X-Request-Id, Data-Owner-Id headers) and retry semantics.
+  tags:
+    - Fortellis
+    - CDK Global
+    - Events
+    - Webhooks
+    - Event Relay
+    - Asynchronous
+  created: '2026-05-23'
+  modified: '2026-05-23'
+binds:
+  - namespace: env
+    keys:
+      WEBHOOK_AUTH_TOKEN: WEBHOOK_AUTH_TOKEN
+capability:
+  consumes:
+    - type: http
+      namespace: fortellis-event-relay-webhook
+      baseUri: https://your-app.example.com/v1/webhook
+      description: >-
+        The webhook contract implemented on the sink side. Fortellis POSTs to /event/{channel}
+        with the event payload defined by the corresponding AsyncAPI. The sink must respond 202
+        on success; 4xx/5xx responses halt the partition and trigger retransmission.
+      resources:
+        - name: event-channel
+          path: /event/{channel}
+          operations:
+            - name: postEvent
+              method: POST
+              description: Receive an event delivered by Fortellis Event Relay for a channel
+              inputParameters:
+                - name: channel
+                  in: path
+                  type: integer
+                  required: true
+                - name: X-Request-Id
+                  in: header
+                  type: string
+                  required: false
+                - name: Fortellis-Event-Id
+                  in: header
+                  type: string
+                  required: true
+                - name: Authorization
+                  in: header
+                  type: string
+                  required: true
+                - name: Data-Owner-Id
+                  in: header
+                  type: string
+                  required: false
+                - name: body
+                  in: body
+                  type: object
+                  required: true

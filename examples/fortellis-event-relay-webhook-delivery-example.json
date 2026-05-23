@@ -1,0 +1,37 @@
+{
+  "request": {
+    "method": "POST",
+    "url": "https://your-app.example.com/v1/webhook/event/42",
+    "headers": {
+      "Authorization": "Bearer sink-shared-secret-or-jwt",
+      "Fortellis-Event-Id": "1c4f1b6e-9b22-4a18-9c0c-7e1c2b3d4f55",
+      "X-Request-Id":      "5f6a2d10-7e8c-4d4f-9018-3b1c2e7d4a89",
+      "Data-Owner-Id":     "ddc0c4ad-1c8e-43f0-bcd2-9b3e1f4a5d22",
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "eventType": "service.appointment.created",
+      "occurredAt": "2026-06-03T14:25:11Z",
+      "appointment": {
+        "appointmentId": "appt-2026-06-04-0930-7c91",
+        "status": "scheduled",
+        "vehicle": { "vin": "1HGCM82633A004352" },
+        "scheduledStart": "2026-06-04T09:30:00-05:00"
+      }
+    }
+  },
+  "response": {
+    "status": 202,
+    "headers": {
+      "X-Request-Id": "5f6a2d10-7e8c-4d4f-9018-3b1c2e7d4a89"
+    },
+    "body": {
+      "accepted": true
+    }
+  },
+  "notes": [
+    "The sink MUST return 2xx within timeout to acknowledge.",
+    "4xx/5xx responses halt the partition and trigger retransmission until success.",
+    "Sinks must be idempotent on Fortellis-Event-Id to absorb retries."
+  ]
+}

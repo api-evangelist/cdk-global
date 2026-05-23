@@ -1,0 +1,61 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Fortellis Pet Adoption (Reference)
+  description: >-
+    Fortellis Pet Adoption capability. Reference / tutorial API distributed by Fortellis for
+    developers learning the platform's OpenAPI conventions. Self-contained Naftiko capability.
+  tags:
+    - Fortellis
+    - CDK Global
+    - Reference
+    - Tutorial
+  created: '2026-05-23'
+  modified: '2026-05-23'
+binds:
+  - namespace: env
+    keys:
+      FORTELLIS_ACCESS_TOKEN: FORTELLIS_ACCESS_TOKEN
+      FORTELLIS_SUBSCRIPTION_ID: FORTELLIS_SUBSCRIPTION_ID
+capability:
+  consumes:
+    - type: http
+      namespace: fortellis-pet-adoption
+      baseUri: https://api.fortellis.io/data/v1/example/pet-adoption
+      description: Reference Pet Adoption API used in Fortellis developer education materials.
+      resources:
+        - name: pets
+          path: /pets
+          operations:
+            - name: listPets
+              method: GET
+              description: List adoptable pets
+            - name: createPet
+              method: POST
+              description: Create a new adoptable pet record
+        - name: pet-by-id
+          path: /pets/{petId}
+          operations:
+            - name: getPet
+              method: GET
+              description: Retrieve a single pet record by id
+              inputParameters:
+                - name: petId
+                  in: path
+                  type: string
+                  required: true
+            - name: updatePet
+              method: PUT
+              description: Update a pet record
+              inputParameters:
+                - name: petId
+                  in: path
+                  type: string
+                  required: true
+            - name: deletePet
+              method: DELETE
+              description: Delete a pet record
+              inputParameters:
+                - name: petId
+                  in: path
+                  type: string
+                  required: true

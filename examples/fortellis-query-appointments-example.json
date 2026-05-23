@@ -1,0 +1,35 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "https://api.fortellis.io/sales/notification/v3/?from=2026-06-04&to=2026-06-05",
+    "headers": {
+      "Authorization": "Bearer eyJhbGciOiJSUzI1NiIs...",
+      "Subscription-Id": "8a7d0e4b-3d2f-4c61-9aef-1a2b3c4d5e6f",
+      "Data-Owner-Id": "ddc0c4ad-1c8e-43f0-bcd2-9b3e1f4a5d22",
+      "Accept": "application/json"
+    }
+  },
+  "response": {
+    "status": 200,
+    "headers": { "Content-Type": "application/json" },
+    "body": {
+      "items": [
+        {
+          "appointmentId": "appt-2026-06-04-0930-7c91",
+          "status": "scheduled",
+          "vehicle": { "vin": "1HGCM82633A004352", "make": "Honda", "model": "Accord", "modelYear": 2019 },
+          "customer": { "customerId": "cust-7c91", "name": "Sam Rivera" },
+          "scheduledStart": "2026-06-04T09:30:00-05:00"
+        },
+        {
+          "appointmentId": "appt-2026-06-04-1100-94b1",
+          "status": "checked-in",
+          "vehicle": { "vin": "5YJSA1E26HF000337", "make": "Tesla", "model": "Model S", "modelYear": 2017 },
+          "customer": { "customerId": "cust-94b1", "name": "Erin Cho" },
+          "scheduledStart": "2026-06-04T11:00:00-05:00"
+        }
+      ],
+      "totalCount": 2
+    }
+  }
+}

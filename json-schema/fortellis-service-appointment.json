@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/cdk-global/main/json-schema/fortellis-service-appointment.json",
+  "title": "Fortellis Service Appointment",
+  "description": "A dealership service appointment as represented on the Fortellis platform.",
+  "type": "object",
+  "required": ["appointmentId", "vehicle", "customer", "scheduledStart", "status"],
+  "properties": {
+    "appointmentId": {
+      "type": "string",
+      "description": "Fortellis-assigned identifier for the appointment."
+    },
+    "dataOwnerId": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Dealer organization UUID (Fortellis Data-Owner-Id)."
+    },
+    "vehicle": {
+      "type": "object",
+      "required": ["vin"],
+      "properties": {
+        "vin": { "type": "string", "minLength": 17, "maxLength": 17 },
+        "make": { "type": "string" },
+        "model": { "type": "string" },
+        "modelYear": { "type": "integer", "minimum": 1900 },
+        "mileage": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "customer": {
+      "type": "object",
+      "properties": {
+        "customerId": { "type": "string" },
+        "name": { "type": "string" },
+        "email": { "type": "string", "format": "email" },
+        "phone": { "type": "string" }
+      }
+    },
+    "scheduledStart": { "type": "string", "format": "date-time" },
+    "scheduledEnd": { "type": "string", "format": "date-time" },
+    "status": {
+      "type": "string",
+      "enum": ["scheduled", "checked-in", "in-progress", "completed", "cancelled", "no-show"]
+    },
+    "serviceType": { "type": "string" },
+    "advisor": {
+      "type": "object",
+      "properties": {
+        "advisorId": { "type": "string" },
+        "name": { "type": "string" }
+      }
+    },
+    "notes": { "type": "string" }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "request": {
+    "method": "POST",
+    "url": "https://api.fortellis.io/service/sessions/v4/booking-sessions",
+    "headers": {
+      "Authorization": "Bearer eyJhbGciOiJSUzI1NiIs...",
+      "Subscription-Id": "8a7d0e4b-3d2f-4c61-9aef-1a2b3c4d5e6f",
+      "Data-Owner-Id": "ddc0c4ad-1c8e-43f0-bcd2-9b3e1f4a5d22",
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "customer": { "customerId": "cust-7c91" },
+      "vehicle":  { "vin": "1HGCM82633A004352" }
+    }
+  },
+  "response": {
+    "status": 201,
+    "headers": { "Content-Type": "application/json" },
+    "body": {
+      "bookingSessionId": "bks-9f81e2",
+      "dataOwnerId": "ddc0c4ad-1c8e-43f0-bcd2-9b3e1f4a5d22",
+      "createdAt": "2026-06-03T14:22:17Z",
+      "items": [],
+      "status": "draft"
+    }
+  }
+}

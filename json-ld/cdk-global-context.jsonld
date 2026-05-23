@@ -1,0 +1,108 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "fortellis": "https://fortellis.io/schemas/",
+    "cdk": "https://www.cdkglobal.com/schemas/",
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+
+    "Dealer": {
+      "@id": "cdk:Dealer",
+      "@context": {
+        "id": { "@id": "fortellis:dataOwnerId", "@type": "xsd:string" },
+        "name": { "@id": "schema:name", "@type": "xsd:string" },
+        "address": { "@id": "schema:address", "@type": "schema:PostalAddress" },
+        "brand": { "@id": "schema:brand", "@type": "xsd:string" }
+      }
+    },
+
+    "Vehicle": {
+      "@id": "schema:Vehicle",
+      "@context": {
+        "vin": { "@id": "schema:vehicleIdentificationNumber", "@type": "xsd:string" },
+        "make": { "@id": "schema:manufacturer", "@type": "xsd:string" },
+        "model": { "@id": "schema:model", "@type": "xsd:string" },
+        "modelYear": { "@id": "schema:vehicleModelDate", "@type": "xsd:gYear" },
+        "mileage": { "@id": "schema:mileageFromOdometer", "@type": "xsd:integer" }
+      }
+    },
+
+    "ServiceAppointment": {
+      "@id": "fortellis:ServiceAppointment",
+      "@context": {
+        "id": { "@id": "fortellis:appointmentId", "@type": "xsd:string" },
+        "vehicle": { "@id": "schema:vehicle", "@type": "schema:Vehicle" },
+        "customer": { "@id": "schema:customer", "@type": "schema:Person" },
+        "scheduledStart": { "@id": "schema:startDate", "@type": "xsd:dateTime" },
+        "scheduledEnd": { "@id": "schema:endDate", "@type": "xsd:dateTime" },
+        "status": { "@id": "schema:reservationStatus", "@type": "xsd:string" },
+        "serviceType": { "@id": "schema:additionalType", "@type": "xsd:string" },
+        "advisor": { "@id": "schema:employee", "@type": "schema:Person" }
+      }
+    },
+
+    "BookingSession": {
+      "@id": "fortellis:BookingSession",
+      "@context": {
+        "id": { "@id": "fortellis:bookingSessionId", "@type": "xsd:string" },
+        "items": { "@id": "schema:itemListElement", "@type": "schema:ItemList" },
+        "store": { "@id": "schema:location", "@type": "schema:Place" },
+        "slot": { "@id": "schema:eventSchedule", "@type": "schema:Schedule" },
+        "createdAt": { "@id": "schema:dateCreated", "@type": "xsd:dateTime" }
+      }
+    },
+
+    "Part": {
+      "@id": "fortellis:Part",
+      "@context": {
+        "productNumber": { "@id": "schema:productID", "@type": "xsd:string" },
+        "description": { "@id": "schema:description", "@type": "xsd:string" },
+        "price": { "@id": "schema:price", "@type": "xsd:decimal" },
+        "currency": { "@id": "schema:priceCurrency", "@type": "xsd:string" },
+        "available": { "@id": "schema:availability", "@type": "xsd:string" }
+      }
+    },
+
+    "MarketplaceApp": {
+      "@id": "fortellis:MarketplaceApp",
+      "@context": {
+        "id": { "@id": "fortellis:appId", "@type": "xsd:string" },
+        "name": { "@id": "schema:name", "@type": "xsd:string" },
+        "publisher": { "@id": "schema:publisher", "@type": "schema:Organization" },
+        "category": { "@id": "schema:category", "@type": "xsd:string" }
+      }
+    },
+
+    "APISubscription": {
+      "@id": "fortellis:APISubscription",
+      "@context": {
+        "id": { "@id": "fortellis:subscriptionId", "@type": "xsd:string" },
+        "dealer": { "@id": "fortellis:dataOwner", "@type": "cdk:Dealer" },
+        "app": { "@id": "schema:subjectOf", "@type": "fortellis:MarketplaceApp" },
+        "scopes": { "@id": "schema:permissions", "@type": "xsd:string", "@container": "@set" },
+        "startDate": { "@id": "schema:startDate", "@type": "xsd:dateTime" }
+      }
+    },
+
+    "Event": {
+      "@id": "fortellis:Event",
+      "@context": {
+        "id": { "@id": "fortellis:eventId", "@type": "xsd:string" },
+        "channel": { "@id": "schema:identifier", "@type": "xsd:string" },
+        "dataOwnerId": { "@id": "fortellis:dataOwnerId", "@type": "xsd:string" },
+        "requestId": { "@id": "fortellis:requestId", "@type": "xsd:string" },
+        "payload": { "@id": "schema:object", "@type": "@json" },
+        "occurredAt": { "@id": "schema:dateCreated", "@type": "xsd:dateTime" }
+      }
+    },
+
+    "Webhook": {
+      "@id": "fortellis:Webhook",
+      "@context": {
+        "url": { "@id": "schema:url", "@type": "xsd:anyURI" },
+        "channel": { "@id": "schema:identifier", "@type": "xsd:string" },
+        "authorization": { "@id": "schema:accessCode", "@type": "xsd:string" }
+      }
+    }
+  }
+}

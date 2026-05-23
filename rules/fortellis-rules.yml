@@ -1,0 +1,99 @@
+extends: spectral:oas
+rules:
+
+  fortellis-host-required:
+    description: Fortellis APIs declare api.fortellis.io as host (or fortellis.io for legacy specs).
+    message: "host '{{value}}' should be api.fortellis.io"
+    given: "$.host"
+    severity: warn
+    then:
+      function: pattern
+      functionOptions:
+        match: "^(api\\.)?fortellis\\.io$"
+
+  fortellis-basepath-versioned:
+    description: Fortellis basePath must include a /v{N} version segment (e.g., /service/sessions/v4/).
+    message: "basePath '{{value}}' must include a /v{N} segment"
+    given: "$.basePath"
+    severity: error
+    then:
+      function: pattern
+      functionOptions:
+        match: "/v[0-9]+"
+
+  fortellis-operation-id-camel-case:
+    description: Fortellis operationIds use camelCase (e.g., queryAppointments, getProductInfo).
+    message: "operationId '{{value}}' should use camelCase"
+    given: "$.paths[*][get,post,put,patch,delete].operationId"
+    severity: warn
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[a-z][a-zA-Z0-9]+$"
+
+  fortellis-operation-id-required:
+    description: All Fortellis operations must declare an operationId.
+    message: "Operation at {{path}} is missing operationId"
+    given: "$.paths[*][get,post,put,patch,delete]"
+    severity: error
+    then:
+      field: operationId
+      function: truthy
+
+  fortellis-oauth-required:
+    description: Fortellis APIs must define an OAuth2 securityDefinition pointing at identity.fortellis.io.
+    message: "securityDefinition missing or not pointing at identity.fortellis.io"
+    given: "$.securityDefinitions[?(@.type=='oauth2')].authorizationUrl"
+    severity: warn
+    then:
+      function: pattern
+      functionOptions:
+        match: "identity\\.fortellis\\.io"
+
+  fortellis-event-channel-path:
+    description: Event Relay webhook endpoints must follow /event/{channel} path pattern.
+    message: "Webhook path '{{property}}' should be /event/{channel}"
+    given: "$.paths[?(@property.startsWith('/event'))]~"
+    severity: hint
+    then:
+      function: pattern
+      functionOptions:
+        match: "^/event/\\{channel\\}$"
+
+  fortellis-required-event-headers:
+    description: Event-receiving operations must accept Fortellis-Event-Id, X-Request-Id, Data-Owner-Id headers.
+    message: "Event endpoint at {{path}} is missing one of the standard Fortellis event headers"
+    given: "$.paths[?(@property.startsWith('/event'))][post]"
+    severity: warn
+    then:
+      field: parameters
+      function: truthy
+
+  fortellis-tags-titlecase:
+    description: Tags should use Title Case for marketplace and docs consistency.
+    message: "tag '{{value}}' should be Title Case"
+    given: "$.tags[*].name"
+    severity: hint
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[A-Z][A-Za-z0-9 ]+$"
+
+  fortellis-contact-fortellis-email:
+    description: Specifications should list a Fortellis-domain support contact email.
+    message: "contact.email '{{value}}' should be a fortellis.io address"
+    given: "$.info.contact.email"
+    severity: hint
+    then:
+      function: pattern
+      functionOptions:
+        match: "@fortellis\\.io$"
+
+  fortellis-description-required:
+    description: Every operation must have a description (for marketplace listings + AI consumption).
+    message: "Operation at {{path}} is missing a description"
+    given: "$.paths[*][get,post,put,patch,delete]"
+    severity: warn
+    then:
+      field: description
+      function: truthy

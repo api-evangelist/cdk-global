@@ -1,0 +1,84 @@
+asyncapi: 2.0.0
+id: https://helloWorldExample.com
+info: 
+  title: Hello World
+  version: '1.0.0'
+  description: This is the example hellos world asynchronous API.
+  contact:
+    name: Fortellis Support
+    url: https://fortellis.io/contact-us
+    email: support@fortellis.io
+servers: 
+  prod-http:
+    url: https://event-relay.fortellis.io/v2/events/new-home-prod
+    protocol: http
+    security:
+    - fortellisOAuth2: []
+channels:
+  hello/world: 
+    subscribe: 
+      summary: This is the hello world Async API spec.
+      bindings: 
+        http:
+          type: request
+          method: POST
+      message: 
+        $ref: "#/components/messages/HelloWorld"
+components:
+  messages:
+    HelloWorld: 
+      payload:
+        type: object
+        properties:
+          id: 
+            type: string
+            description: This is the id of your hello world.
+          number: 
+            description: The number of times you've said hello.
+            type: integer
+            minimum: 0
+            maximum: 20
+          haveYouSaidHello:
+            type: boolean
+            description: This record whether you have said hello world.
+          waysToSayHello:
+            type: array
+            items:
+              type: string 
+          helloID:
+            type: object
+            properties:
+              language:
+                type: string
+                description: You said hello in this language.
+              id: 
+                type: string
+                description: You said hello in a language with this id.
+        contentType: application/json
+        example:
+          id: 6620800b-7029-4a7a-8e80-cdd852fc01c8
+          number: 16
+          haveYouSaidHello: true
+          waysToSayHello: 
+          - Hello
+          - Hola
+          - Hallo
+          - Bonjour
+          - Ola 
+          helloID:
+            language: English
+            id: b2f7494a-5dcf-448c-9585-5301fc0dd231
+  securitySchemes:
+    fortellisOAuth2:
+      type: oauth2
+      description: OAuth2 authorization and authentication using Fortrellis.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://identity.fortellis.io/oauth2/aus1p1ixy7YL8cMq02p7/v1/authorize
+          tokenUrl: https://identity.fortellis.io/oauth2/aus1p1ixy7YL8cMq02p7/v1/token
+          scopes: {}
+
+
+
+
+

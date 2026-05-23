@@ -1,0 +1,68 @@
+{
+  "name": "Fortellis Service Appointment",
+  "description": "Documented structure of the Fortellis Service Appointment object as exposed via the Service Appointments API and Event Relay payloads.",
+  "version": "1.0",
+  "created": "2026-05-23",
+  "fields": [
+    {
+      "name": "appointmentId",
+      "type": "string",
+      "required": true,
+      "description": "Unique Fortellis identifier for the appointment record."
+    },
+    {
+      "name": "dataOwnerId",
+      "type": "string (uuid)",
+      "required": true,
+      "description": "Dealer organization UUID."
+    },
+    {
+      "name": "vehicle",
+      "type": "object",
+      "required": true,
+      "description": "Vehicle being serviced (VIN-keyed)."
+    },
+    {
+      "name": "customer",
+      "type": "object",
+      "required": true,
+      "description": "Customer / vehicle owner record."
+    },
+    {
+      "name": "scheduledStart",
+      "type": "string (date-time)",
+      "required": true,
+      "description": "Appointment start time in dealership local time."
+    },
+    {
+      "name": "scheduledEnd",
+      "type": "string (date-time)",
+      "required": false,
+      "description": "Estimated appointment end time."
+    },
+    {
+      "name": "status",
+      "type": "string (enum)",
+      "required": true,
+      "description": "Lifecycle status: scheduled, checked-in, in-progress, completed, cancelled, no-show."
+    },
+    {
+      "name": "serviceType",
+      "type": "string",
+      "required": false,
+      "description": "Categorical service type (oil change, recall, repair, body, government test, etc.)."
+    },
+    {
+      "name": "advisor",
+      "type": "object",
+      "required": false,
+      "description": "Service advisor assigned to the appointment."
+    },
+    {
+      "name": "notes",
+      "type": "string",
+      "required": false,
+      "description": "Free-text notes captured at booking."
+    }
+  ]
+}

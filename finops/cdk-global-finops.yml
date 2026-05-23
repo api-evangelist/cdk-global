@@ -1,0 +1,92 @@
+specification: FinOps Framework
+specificationVersion: '1.0'
+schema: https://www.finops.org/framework/
+provider: CDK Global
+providerId: cdk-global
+created: '2026-05-23'
+modified: '2026-05-23'
+reconciled: false
+tags:
+  - FinOps
+  - Cost Management
+  - FOCUS
+  - Automotive
+  - DMS
+description: >-
+  FinOps view of CDK Global is dominated by long-term DMS contracts (per-rooftop subscription with
+  per-module add-ons) plus, on the Fortellis side, an ISV/marketplace pricing surface (platform
+  subscription + per-transaction API fees). CDK does not publish a public rate card for either
+  surface; cost-engineering teams must request a custom-quote and reconcile invoices against
+  per-rooftop and per-API-transaction line items. The June 2024 ransomware outage exposed a
+  material business-continuity / FinOps risk — ~$605M in dealer losses across roughly two weeks
+  of degraded availability.
+sources:
+  - https://www.cdkglobal.com
+  - https://fortellis.io
+publisherName: CDK Global, LLC (a Brookfield Business Partners portfolio company)
+serviceCategory: Dealer Management Software / Automotive API Platform
+billingModel:
+  pricingCategory: Contract Subscription + Marketplace Take Rate + API Usage
+  billingFrequency: Monthly (DMS) / Continuous Settlement (Fortellis)
+  billingCurrency: USD
+  chargeCategories:
+    - Subscription
+    - Usage
+    - Implementation
+    - Professional Services
+    - Pass-Through (third-party ISV apps)
+costAttribution:
+  primaryDimensions:
+    - dealership_rooftop_id
+    - dms_module
+    - fortellis_subscription_id
+    - fortellis_api_name
+    - data_owner_id
+  secondaryDimensions:
+    - oem_program
+    - isv_app
+    - heavy_truck_or_powersports_channel
+optimizationLevers:
+  - lever: Module rationalization
+    description: Drop unused DMS modules at contract renewal — major savings vector since CDK contracts are multi-year.
+  - lever: Rooftop consolidation
+    description: Consolidating dealership groups onto fewer rooftops can reduce per-rooftop subscription totals.
+  - lever: Fortellis API consolidation
+    description: Reduce duplicate ISV apps that consume overlapping Fortellis APIs to shrink per-transaction spend.
+  - lever: Event Relay idempotency
+    description: Robust sink idempotency limits billable retries on transient sink failures.
+  - lever: Business-continuity insurance
+    description: Post-2024 ransomware, dealers should price cyber-insurance and BC reserves against CDK outage risk.
+risks:
+  - risk: Vendor lock-in
+    impact: high
+    description: >-
+      CDK is the system-of-record for ~15K U.S. dealerships; switching to Reynolds, Tekion, or
+      Dealertrack is a multi-year program.
+  - risk: Ransomware / business continuity
+    impact: high
+    description: >-
+      The June 19 — July 4, 2024 BlackSuit ransomware outage caused an estimated $605M in dealer
+      losses and a $25M ransom payment. Recurring exposure of comparable scale must be
+      provisioned for in cost-of-availability planning.
+  - risk: Opaque Fortellis pricing
+    impact: medium
+    description: >-
+      Public rate cards do not exist; per-call fees must be reconciled invoice-by-invoice with
+      Fortellis account management.
+governance:
+  contractCadence: Multi-year DMS contracts; annual Fortellis platform agreements
+  reconciliationCadence: Monthly invoice review
+  recommendedTooling:
+    - Internal FinOps dashboard tagging spend by rooftop + module
+    - ISV-app inventory keyed to Fortellis subscriptions
+focusAlignment:
+  framework: FinOps Foundation Framework
+  frameworkUrl: https://www.finops.org/framework/
+  dataSpec: FOCUS
+  dataSpecVersion: '1.3'
+  dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
+  notes: >-
+    CDK does not publish FOCUS-conformant billing exports; invoices must be normalized into
+    FOCUS columns (BilledCost, EffectiveCost, ChargeCategory, ServiceName, ResourceId) by the
+    consumer's FinOps team.

@@ -1,0 +1,61 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Fortellis Parts Store
+  description: >-
+    Fortellis Parts Store capability. Look up dealership parts inventory by product number,
+    retrieve product sizing, and ping for health. Self-contained Naftiko capability covering one
+    Fortellis business surface.
+  tags:
+    - Fortellis
+    - CDK Global
+    - Parts
+    - Inventory
+    - Fixed Operations
+  created: '2026-05-23'
+  modified: '2026-05-23'
+binds:
+  - namespace: env
+    keys:
+      FORTELLIS_ACCESS_TOKEN: FORTELLIS_ACCESS_TOKEN
+      FORTELLIS_SUBSCRIPTION_ID: FORTELLIS_SUBSCRIPTION_ID
+capability:
+  consumes:
+    - type: http
+      namespace: fortellis-parts-store
+      baseUri: https://api.fortellis.io/sales/parts-store/v47
+      description: Fortellis dealership parts-store reference API.
+      resources:
+        - name: product-info
+          path: /all-product-info
+          operations:
+            - name: listAllProductInfo
+              method: GET
+              description: List parts and product information
+        - name: product-info-by-number
+          path: /all-product-info/{productNumber}
+          operations:
+            - name: getProductInfo
+              method: GET
+              description: Get product info for a specific part number
+              inputParameters:
+                - name: productNumber
+                  in: path
+                  type: string
+                  required: true
+        - name: product-size
+          path: /all-product-info/{productNumber}/product-size
+          operations:
+            - name: getProductSize
+              method: GET
+              description: Get product sizing for a specific part number
+              inputParameters:
+                - name: productNumber
+                  in: path
+                  type: string
+                  required: true
+        - name: ping
+          path: /ping
+          operations:
+            - name: ping
+              method: GET
+              description: Health probe for the parts-store API

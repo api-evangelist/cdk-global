@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/cdk-global/main/json-schema/fortellis-marketplace-app.json",
+  "title": "Fortellis Marketplace App",
+  "description": "An application listed in the Fortellis Marketplace for dealers to install.",
+  "type": "object",
+  "required": ["appId", "name", "publisher"],
+  "properties": {
+    "appId": { "type": "string" },
+    "name": { "type": "string" },
+    "publisher": {
+      "type": "object",
+      "required": ["name"],
+      "properties": {
+        "name": { "type": "string" },
+        "publisherId": { "type": "string" },
+        "supportEmail": { "type": "string", "format": "email" }
+      }
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "Sales",
+        "F&I",
+        "Service",
+        "Parts",
+        "CRM",
+        "Marketing",
+        "Digital Retail",
+        "Accounting",
+        "Analytics",
+        "Fixed Operations",
+        "Other"
+      ]
+    },
+    "subscribedApis": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "shortDescription": { "type": "string", "maxLength": 280 },
+    "longDescription": { "type": "string" },
+    "pricingModel": {
+      "type": "string",
+      "enum": ["free", "subscription", "usage", "tiered", "custom"]
+    }
+  }
+}

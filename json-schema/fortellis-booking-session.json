@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/cdk-global/main/json-schema/fortellis-booking-session.json",
+  "title": "Fortellis Booking Session",
+  "description": "A multi-step service-booking workflow object on the Fortellis platform.",
+  "type": "object",
+  "required": ["bookingSessionId"],
+  "properties": {
+    "bookingSessionId": { "type": "string" },
+    "dataOwnerId": { "type": "string", "format": "uuid" },
+    "createdAt": { "type": "string", "format": "date-time" },
+    "items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["itemId", "name"],
+        "properties": {
+          "itemId": { "type": "string" },
+          "name": { "type": "string" },
+          "estimatedDurationMinutes": { "type": "integer" }
+        }
+      }
+    },
+    "store": {
+      "type": "object",
+      "properties": {
+        "storeId": { "type": "string" },
+        "name": { "type": "string" },
+        "address": { "type": "string" }
+      }
+    },
+    "slot": {
+      "type": "object",
+      "properties": {
+        "slotId": { "type": "string" },
+        "start": { "type": "string", "format": "date-time" },
+        "end": { "type": "string", "format": "date-time" }
+      }
+    },
+    "status": {
+      "type": "string",
+      "enum": ["draft", "reserved", "converted-to-appointment", "abandoned"]
+    }
+  }
+}

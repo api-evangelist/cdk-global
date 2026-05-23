@@ -1,0 +1,200 @@
+name: CDK Global / Fortellis
+description: >-
+  Vocabulary of key terms, concepts, objects, and operations used across CDK Global's dealer
+  management system (DMS) suite and the Fortellis automotive commerce platform. Covers dealer
+  operations (sales, F&I, fixed operations, parts), integration patterns (synchronous APIs,
+  asynchronous AsyncAPI, Event Relay webhooks), and the Fortellis marketplace economy of dealers,
+  ISVs, OEMs, and OEM-specialty channels (heavy truck, powersports).
+version: '1.0'
+created: '2026-05-23'
+modified: '2026-05-23'
+tags:
+  - Automotive
+  - Dealer Management
+  - DMS
+  - F&I
+  - Fixed Operations
+  - Parts
+  - Service
+  - Sales
+  - Marketplace
+  - Developer Platform
+  - Event-Driven
+  - Webhooks
+
+terms:
+  - term: Dealer Management System (DMS)
+    definition: >-
+      The core software-of-record that runs an automotive dealership — sales deals, accounting,
+      service, parts, payroll, customer data. CDK's DMS is the legacy system Fortellis exposes
+      via APIs.
+    category: Core Concept
+    tags: [DMS, Core]
+
+  - term: Fortellis
+    definition: >-
+      CDK Global's open automotive commerce platform. An API gateway, app marketplace, and developer
+      community that brokers data flow between DMS, dealer applications, ISVs, OEMs, and end users.
+    category: Platform
+    tags: [Fortellis, Platform]
+
+  - term: ISV (Independent Software Vendor)
+    definition: >-
+      A third-party application provider that builds against Fortellis APIs and lists apps in the
+      Fortellis Marketplace for dealers to install.
+    category: Actor
+    tags: [Fortellis, Marketplace]
+
+  - term: OEM (Original Equipment Manufacturer)
+    definition: >-
+      The vehicle manufacturer (e.g., Ford, GM, Toyota). OEMs use Fortellis to push programs to
+      franchise dealers and to consume dealer telemetry back from the field.
+    category: Actor
+    tags: [Automotive, OEM]
+
+  - term: Marketplace App
+    definition: >-
+      A packaged application published by an ISV in the Fortellis Marketplace. A dealer subscribes
+      to a marketplace app to grant it scoped access to their DMS data via Fortellis APIs.
+    category: Core Object
+    tags: [Marketplace, Apps]
+
+  - term: API Subscription
+    definition: >-
+      The grant of access from a dealer (or organization) to a specific Fortellis API for a
+      particular app. Subscriptions carry scopes, billing context, and Data-Owner-Id headers.
+    category: Core Object
+    tags: [API, Subscriptions]
+
+  - term: Service Appointment
+    definition: >-
+      A booking of a vehicle into the dealership service department for work — service, repair,
+      body work, or government test. The unit of work for the Fortellis Service Appointments API.
+    category: Core Object
+    tags: [Service, Fixed Operations]
+
+  - term: Booking Session
+    definition: >-
+      A short-lived workflow object used by the Fortellis service-scheduling APIs to manage
+      multi-step booking flows (select items, check store availability, hold a slot).
+    category: Core Object
+    tags: [Service, Booking]
+
+  - term: F&I (Finance & Insurance)
+    definition: >-
+      The dealership office that arranges vehicle financing, leases, and add-on insurance/warranty
+      products. A major CDK product line and integration surface.
+    category: Domain
+    tags: [F&I, Finance]
+
+  - term: Fixed Operations
+    definition: >-
+      Dealership service and parts departments — the "fixed" (vs. variable, sales) side of the
+      business. A major Fortellis API category.
+    category: Domain
+    tags: [Service, Parts, Fixed Operations]
+
+  - term: Digital Retail
+    definition: >-
+      Online car-buying experiences (configure, credit-pre-qual, deal structure) integrated to the
+      DMS so a deal started online lands in the showroom workflow.
+    category: Domain
+    tags: [Sales, Digital]
+
+  - term: Event Relay
+    definition: >-
+      Fortellis's event-streaming infrastructure. Sources publish events via the data-plane proxy
+      (AsyncAPI); sinks receive them via webhook (OpenAPI) with guaranteed-delivery retry semantics.
+    category: Platform
+    tags: [Events, AsyncAPI, Webhooks]
+
+  - term: Event Sink
+    definition: >-
+      A consumer application that receives events from Fortellis Event Relay by implementing the
+      Fortellis-Event-Relay-Webhook contract (POST /event/{channel}).
+    category: Actor
+    tags: [Events, Webhooks]
+
+  - term: Event Source
+    definition: >-
+      A producer application that publishes events into Fortellis Event Relay using the data-plane
+      proxy AsyncAPI specification.
+    category: Actor
+    tags: [Events, AsyncAPI]
+
+  - term: Data-Owner-Id
+    definition: >-
+      Fortellis header (UUID) that identifies the dealer organization whose data the event or API
+      call concerns. Critical for multi-tenant data routing and audit.
+    category: Convention
+    tags: [Headers, Multi-tenant]
+
+  - term: Fortellis-Event-Id
+    definition: >-
+      Unique UUID assigned by Fortellis at receipt of an event, propagated to the sink. Used for
+      idempotency and replay reasoning across the event pipeline.
+    category: Convention
+    tags: [Headers, Events]
+
+  - term: X-Request-Id
+    definition: >-
+      Correlation UUID echoed in responses and headers across the Fortellis API and Event Relay
+      surfaces for trace stitching.
+    category: Convention
+    tags: [Headers, Observability]
+
+  - term: Subscription-Id
+    definition: >-
+      Header identifying the API subscription under which a call is made; ties usage back to a
+      specific dealer-app billing relationship.
+    category: Convention
+    tags: [Headers, Billing]
+
+  - term: OAuth 2.0 Authorization Code Flow
+    definition: >-
+      The recommended Fortellis flow for user-authorized server-side apps. Reference
+      implementations exist in JavaScript, Python, Java, and .NET on the Fortellis GitHub org.
+    category: Authentication
+    tags: [Auth, OAuth]
+
+  - term: OAuth 2.0 Client Credentials Flow
+    definition: >-
+      The recommended Fortellis flow for service-to-service apps with no user context. Reference
+      implementations in JS, Python, Java, .NET.
+    category: Authentication
+    tags: [Auth, OAuth]
+
+  - term: OAuth 2.0 Implicit Flow
+    definition: >-
+      Legacy single-page-app flow supported by Fortellis (Fortellis publishes reference SPAs);
+      generally superseded by Authorization Code + PKCE.
+    category: Authentication
+    tags: [Auth, OAuth]
+
+  - term: Admin API
+    definition: >-
+      The administrative API surface a Fortellis ISV implements to receive provisioning and
+      lifecycle events from Fortellis when a dealer subscribes/unsubscribes from the ISV's app.
+    category: Integration Pattern
+    tags: [Admin, ISV]
+
+  - term: BlackSuit
+    definition: >-
+      The Eastern-European-and-Russian ransomware operator that breached CDK Global on June 19,
+      2024, taking dealerships offline for roughly two weeks and forcing a ~$25M ransom payment.
+    category: Security Incident
+    tags: [Security, Ransomware]
+
+  - term: Dealership Xperience Platform
+    definition: >-
+      CDK's umbrella branding for its DMS plus modular suites (Foundations, Fundamentals, Modern
+      Retail, Fixed Operations, Vehicle Inventory, Intelligence).
+    category: Product
+    tags: [Product, DMS]
+
+  - term: CVR
+    definition: >-
+      Computerized Vehicle Registration — CDK subsidiary that handles electronic vehicle
+      registration / titling at participating state DMVs.
+    category: Product
+    tags: [Compliance, Registration]

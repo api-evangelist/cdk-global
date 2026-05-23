@@ -1,0 +1,50 @@
+{
+  "name": "Fortellis Event",
+  "description": "Structure of an event delivered by Fortellis Event Relay to a sink webhook (POST /event/{channel}).",
+  "version": "1.0",
+  "created": "2026-05-23",
+  "fields": [
+    {
+      "name": "fortellisEventId",
+      "type": "string (uuid)",
+      "required": true,
+      "transport": "header (Fortellis-Event-Id)",
+      "description": "Unique event id assigned by Fortellis; idempotency key for the sink."
+    },
+    {
+      "name": "xRequestId",
+      "type": "string (uuid)",
+      "required": false,
+      "transport": "header (X-Request-Id)",
+      "description": "Correlation id propagated from the event source's request."
+    },
+    {
+      "name": "authorization",
+      "type": "string",
+      "required": true,
+      "transport": "header (Authorization)",
+      "description": "Credentials proving caller identity to the sink, per RFC 7235 / 7617."
+    },
+    {
+      "name": "dataOwnerId",
+      "type": "string (uuid)",
+      "required": false,
+      "transport": "header (Data-Owner-Id)",
+      "description": "Fortellis organization id identifying the dealer the event concerns."
+    },
+    {
+      "name": "channel",
+      "type": "integer",
+      "required": true,
+      "transport": "path",
+      "description": "Channel/path used when the event was published by the source."
+    },
+    {
+      "name": "payload",
+      "type": "object",
+      "required": true,
+      "transport": "body (application/json)",
+      "description": "Event payload conforming to the corresponding AsyncAPI specification."
+    }
+  ]
+}

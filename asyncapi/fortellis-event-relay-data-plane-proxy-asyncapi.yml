@@ -1,0 +1,211 @@
+swagger: '2.0'
+
+info:
+  version: '1.0.0'
+  title: Fortellis Event Relay Data API
+  description: Provides an Event Source (Publisher) the ability to post event through Fortellis Event Relay.
+  contact:
+    name: Fortellis Team
+    url: https://fortellis.io
+    email: support@fortellis.io
+
+host: event-relay.fortellis.io
+basePath: /
+schemes:
+  - https
+
+securityDefinitions:
+  permission-model:
+    type: oauth2
+    flow: implicit
+    authorizationUrl: https://identity.fortellis.io/oauth2/
+    scopes:
+      read-write: Read and write access to the Fortellis-Event-Relay Data API
+
+paths:
+  /v2/events:
+    post:
+      summary: Post an event.
+      description: |
+        Publishes an event record.
+        Authentication information provides a Source context that defines the event type schema and version used to validate the message body.  Consult the Control Plane Api specification for details.
+      operationId: postEvent
+      tags:
+        - events
+      parameters:
+        - $ref: '#/parameters/header.X-Request-Id'
+        - $ref: '#/parameters/header.Authorization'
+        - $ref: '#/parameters/header.Subscription-Id'
+        - $ref: '#/parameters/header.Data-Owner-Id'
+        - $ref: '#/parameters/header.partitionKey'
+        - $ref: '#/parameters/body.Event'
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      responses:
+        200:
+          $ref: '#/responses/EventCreated'
+        400:
+          $ref: '#/responses/BadRequest'
+        401:
+          $ref: '#/responses/Unauthorized'
+        403:
+          $ref: '#/responses/Forbidden'
+        500:
+          $ref: '#/responses/InternalServerError'
+        503:
+          $ref: '#/responses/ServiceUnavailable'
+
+parameters:
+  header.Authorization:
+    name: Authorization
+    in: header
+    type: string
+    required: true
+    description: |
+      Contains credentials that allows the caller to authenticate itself with the
+      API. See RFC 7235 and RFC 7617 for more details.
+
+  header.X-Request-Id:
+    name: X-Request-Id
+    in: header
+    type: string
+    format: uuid
+    description: |
+      A correlation ID that should mirror the value of the X-Request-Id request
+      header provided by the client.
+
+  header.Subscription-Id:
+    name: Subscription-Id
+    in: header
+    type: string
+    format: uuid
+    required: true
+    description: |
+      A Fortellis Subscription-Id.
+
+  header.Data-Owner-Id:
+    name: Data-Owner-Id
+    in: header
+    type: string
+    format: uuid
+    required: false
+    description: |
+      A Fortellis Organization Id that identifies the organization represented by the event.
+
+  header.partitionKey:
+    name: partitionKey
+    in: header
+    type: string
+    required: false
+    description: |
+      A value used to partition the records to achieve parallelism and ordering.
+      Records with the same partitionKey are guaranteed to be published to consumers in published order.
+
+  body.Event:
+    name: CreateEvent
+    in: body
+    required: true
+    schema:
+      $ref: '#/definitions/Event'
+    description: The JSON request body to create an event.  Serialization is controlled by the corresponding source's schema and version.
+
+responses:
+  EventCreated:
+    description: OK
+    headers:
+      X-Request-Id:
+        type: string
+        #description: The matching correlation identifier to the request by the client.
+    schema:
+      $ref: '#/definitions/EventCreated'
+
+
+  BadRequest:
+    description: 400 - Bad Request
+    headers:
+      X-Request-Id:
+        type: string
+        description: The matching correlation identifier to the request by the client.
+    schema:
+      $ref: '#/definitions/ErrorResponse'
+
+  Unauthorized:
+    description: 401 - Unauthorized
+    headers:
+      X-Request-Id:
+        type: string
+        description: The matching correlation identifier to the request by the client.
+    schema:
+      $ref: '#/definitions/ErrorResponse'
+
+  Forbidden:
+    description: 403 - Forbidden
+    headers:
+      X-Request-Id:
+        type: string
+        description: The matching correlation identifier to the request by the client.
+    schema:
+      $ref: '#/definitions/ErrorResponse'
+
+  InternalServerError:
+    description: 500 - Internal Server Error
+    headers:
+      X-Request-Id:
+        type: string
+        description: The matching correlation identifier to the request by the client.
+    schema:
+      $ref: '#/definitions/ErrorResponse'
+  ServiceUnavailable:
+    description: 503 - Service Unavailable
+    headers:
+      X-Request-Id:
+        type: string
+        description: The matching correlation identifier to the request by the client.
+    schema:
+      $ref: '#/definitions/ErrorResponse'
+
+definitions:
+
+  Event:
+    description: A single event record matching the defined event type schema.
+    type: object
+    example:
+      key1: value1
+      key2: value2
+      key3:
+        - arr-value1
+        - arr-value2
+        - arr-value3
+      key4:
+        sub-key1: sub-value1
+        sub-key2: sub-value2
+
+  EventCreated:
+    description: Event Created Response.
+    properties:
+      eventId:
+        type: string
+        format: uuid
+        description: Unique trail id that will be assigned to record by system.
+    required:
+      - eventId
+    example:
+      eventId: 848f1d80-c5e2-11ea-87d0-0242ac130003
+
+  # This is a standard error object for 4XX and 5XX responses.
+  ErrorResponse:
+    description: Common error response object.
+    properties:
+      code:
+        type: integer
+        format: int32
+      message:
+        type: string
+    required:
+      - code
+      - message
+    example:
+      code: 400
+      message: Bad Request

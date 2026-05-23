@@ -1,0 +1,116 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: CDK Global
+providerId: cdk-global
+created: '2026-05-23'
+modified: '2026-05-23'
+reconciled: false
+tags:
+  - Automotive
+  - DMS
+  - Fortellis
+  - Marketplace
+  - Developer Platform
+description: >-
+  CDK Global does not publish standard SaaS-style price cards for either its DMS or the Fortellis
+  platform. DMS pricing is per-dealer, per-rooftop, custom-quoted with multi-year contracts and
+  per-module add-ons. Fortellis pricing is two-sided: ISVs pay subscription + per-transaction
+  fees to publish in the marketplace and consume APIs; dealers pay subscription fees through their
+  DMS contract or directly to ISVs for marketplace apps. The plans listed below are categorical
+  rather than rate-card precise — public sources do not enumerate per-call rates.
+sources:
+  - https://www.cdkglobal.com
+  - https://fortellis.io
+  - https://fortellis.io/marketplace
+plans:
+  - id: cdk-dms-foundations
+    name: DMS Foundations Suite
+    type: contracted
+    description: >-
+      Entry CDK DMS package — accounting, F&I, parts, service core modules. Custom-quoted per
+      dealership and per rooftop; typically multi-year agreements.
+    entries:
+      - label: Monthly DMS subscription per rooftop
+        name: dms_rooftop_subscription
+        type: subscription
+        metric: dealership-month
+        limit: -1
+        timeFrame: month
+
+  - id: cdk-dms-modern-retail
+    name: DMS Modern Retail Suite
+    type: contracted
+    description: >-
+      Digital retail, online-buying, and modern showroom-workflow add-ons layered onto the base
+      DMS contract.
+    entries:
+      - label: Modern Retail module add-on
+        name: modern_retail_addon
+        type: subscription
+        metric: dealership-month
+        limit: -1
+        timeFrame: month
+
+  - id: cdk-dms-intelligence
+    name: DMS Intelligence Suite
+    type: contracted
+    description: >-
+      AI / analytics suite — adds dashboards, recommendations, and ML-powered insights over the
+      DMS data set.
+    entries:
+      - label: Intelligence module subscription
+        name: intelligence_addon
+        type: subscription
+        metric: dealership-month
+        limit: -1
+        timeFrame: month
+
+  - id: fortellis-isv
+    name: Fortellis ISV (Developer / App Publisher)
+    type: subscription-plus-usage
+    description: >-
+      Independent Software Vendors pay an annual platform fee plus per-API-transaction usage fees
+      to publish apps in the Fortellis Marketplace and consume Fortellis APIs. Public rate card
+      is not disclosed; pricing is negotiated.
+    entries:
+      - label: ISV platform subscription
+        name: isv_platform_subscription
+        type: subscription
+        metric: organization-year
+        limit: -1
+        timeFrame: year
+      - label: API transaction fees
+        name: api_transactions
+        type: metered
+        metric: api_call
+        limit: -1
+        timeFrame: usage
+
+  - id: fortellis-dealer
+    name: Fortellis Dealer (App Consumer)
+    type: contracted
+    description: >-
+      Dealers subscribe to marketplace apps individually; pricing varies by ISV. Fortellis itself
+      may charge integration / certification fees passed through to the dealer's CDK contract.
+    entries:
+      - label: Marketplace app subscriptions
+        name: marketplace_app
+        type: subscription
+        metric: app-dealer-month
+        limit: -1
+        timeFrame: month
+
+  - id: fortellis-oem
+    name: Fortellis OEM Program
+    type: enterprise
+    description: >-
+      Vehicle manufacturers (OEMs) use Fortellis to push programs into franchised dealer networks
+      and consume telemetry; commercial terms are individually negotiated.
+    entries:
+      - label: OEM platform agreement
+        name: oem_agreement
+        type: enterprise
+        metric: agreement
+        limit: -1
+        timeFrame: year

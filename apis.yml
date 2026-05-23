@@ -1,0 +1,283 @@
+aid: cdk-global
+url: https://raw.githubusercontent.com/api-evangelist/cdk-global/main/apis.yml
+name: CDK Global
+description: >-
+  CDK Global is the dominant U.S. dealer management system (DMS) provider, serving roughly 15,000
+  automotive dealerships with software covering sales, F&I, fixed operations, parts, CRM, and
+  digital retail. CDK was spun out of ADP in 2014 and acquired by Brookfield Business Partners in
+  July 2022 for $8.3B (taken private). The company operates the Fortellis platform — a developer
+  marketplace and integration hub with 135+ published APIs, 425+ marketplace apps, 82,000+ dealer
+  integrations, and 6.7B+ API transactions per year — exposing CDK DMS data to ISVs, OEMs, and
+  third-party automotive systems. CDK suffered a major BlackSuit ransomware attack on June 19, 2024,
+  paying ~$25M in bitcoin to restore service over roughly two weeks; the outage caused an estimated
+  $605M in dealer losses and triggered numerous lawsuits.
+image: https://avatars.githubusercontent.com/u/46600511
+tags:
+  - Automotive
+  - Dealer Management
+  - DMS
+  - Auto Retail
+  - F&I
+  - Fixed Operations
+  - Parts
+  - CRM
+  - Digital Retail
+  - Marketplace
+  - Developer Platform
+  - Events
+  - Webhooks
+  - AsyncAPI
+created: '2026-05-22'
+modified: '2026-05-23'
+apis:
+  - aid: cdk-global:fortellis-platform
+    name: Fortellis Platform
+    description: >-
+      Fortellis is CDK Global's open automotive commerce platform — an API gateway, app marketplace,
+      and developer community that brokers data flow between dealerships, ISVs, OEMs, heavy-truck,
+      and powersports systems. Fortellis publishes 135+ APIs, lists 425+ marketplace apps, and
+      processes 6.7B+ API transactions per year across 82K+ dealer integrations.
+    humanURL: https://fortellis.io
+    baseURL: https://api.fortellis.io
+    image: https://avatars.githubusercontent.com/u/46600511
+    tags:
+      - Fortellis
+      - Marketplace
+      - Developer Platform
+      - APIs
+      - Automotive
+    properties:
+      - type: Documentation
+        url: https://docs.fortellis.io
+      - type: APIReference
+        url: https://apidocs.fortellis.io
+      - type: SignUp
+        url: https://sso.fortellis.io
+      - type: Portal
+        url: https://fortellis.io
+      - type: Community
+        url: https://fortellis.io/community
+      - type: Marketplace
+        url: https://fortellis.io/marketplace
+      - type: GitHubOrganization
+        url: https://github.com/Fortellis
+  - aid: cdk-global:fortellis-appointments-api
+    name: Fortellis Service Appointments API
+    description: >-
+      Service-appointments API for booking, querying, updating, and cancelling vehicle service
+      appointments at a dealership service department. Used by scheduling systems integrating with
+      CDK and other DMS providers via Fortellis.
+    humanURL: https://apidocs.fortellis.io
+    baseURL: https://api.fortellis.io/sales/notification/v3
+    tags:
+      - Appointments
+      - Service
+      - Fixed Operations
+      - Scheduling
+    properties:
+      - type: OpenAPI
+        url: openapi/fortellis-appointments-openapi.yml
+      - type: APIReference
+        url: https://apidocs.fortellis.io
+      - type: SourceRepo
+        url: https://github.com/Fortellis/example-spec
+      - type: NaftikoCapability
+        url: capabilities/fortellis-appointments.yaml
+  - aid: cdk-global:fortellis-user-service-api
+    name: Fortellis User / Booking Sessions API
+    description: >-
+      Booking-sessions API illustrating Fortellis's REST conventions: session creation, item
+      management, store availability, and slot reservation for service scheduling workflows.
+    humanURL: https://apidocs.fortellis.io
+    baseURL: https://api.fortellis.io/service/sessions/v4
+    tags:
+      - Booking Sessions
+      - Service
+      - Scheduling
+    properties:
+      - type: OpenAPI
+        url: openapi/fortellis-user-service-openapi.yml
+      - type: APIReference
+        url: https://apidocs.fortellis.io
+      - type: SourceRepo
+        url: https://github.com/Fortellis/example-spec
+      - type: NaftikoCapability
+        url: capabilities/fortellis-user-service.yaml
+  - aid: cdk-global:fortellis-parts-store-api
+    name: Fortellis Parts Store API
+    description: >-
+      Parts-store reference API exposing product info, sizing, and ping/health for dealership parts
+      inventory and procurement integrations.
+    humanURL: https://apidocs.fortellis.io
+    baseURL: https://api.fortellis.io/sales/parts-store/v47
+    tags:
+      - Parts
+      - Inventory
+      - Fixed Operations
+    properties:
+      - type: OpenAPI
+        url: openapi/fortellis-parts-store-openapi.yml
+      - type: APIReference
+        url: https://apidocs.fortellis.io
+      - type: SourceRepo
+        url: https://github.com/Fortellis/example-spec
+      - type: NaftikoCapability
+        url: capabilities/fortellis-parts-store.yaml
+  - aid: cdk-global:fortellis-pet-adoption-api
+    name: Fortellis Reference Pet Adoption API
+    description: >-
+      Reference / tutorial API distributed by Fortellis for developers learning the platform's
+      OpenAPI conventions, OAuth flows, and admin-API patterns.
+    humanURL: https://apidocs.fortellis.io
+    baseURL: https://api.fortellis.io/data/v1/example/pet-adoption
+    tags:
+      - Reference
+      - Tutorial
+      - Developer Education
+    properties:
+      - type: OpenAPI
+        url: openapi/fortellis-pet-adoption-openapi.yml
+      - type: SourceRepo
+        url: https://github.com/Fortellis/example-spec
+      - type: NaftikoCapability
+        url: capabilities/fortellis-pet-adoption.yaml
+  - aid: cdk-global:fortellis-event-relay-webhook
+    name: Fortellis Event Relay Webhook
+    description: >-
+      Webhook contract that event-sink applications implement to receive asynchronous events from
+      Fortellis Event Relay. Defines payload envelope, required headers (X-Request-Id,
+      Fortellis-Event-Id, Authorization, Data-Owner-Id), and retry semantics for guaranteed
+      delivery.
+    humanURL: https://github.com/Fortellis/Fortellis-Event-Relay-Webhook
+    baseURL: https://api.fortellis.io/v1/webhook
+    tags:
+      - Events
+      - Webhooks
+      - Event Relay
+      - Asynchronous
+    properties:
+      - type: OpenAPI
+        url: openapi/fortellis-event-relay-webhook-openapi.yml
+      - type: SourceRepo
+        url: https://github.com/Fortellis/Fortellis-Event-Relay-Webhook
+      - type: NaftikoCapability
+        url: capabilities/fortellis-event-relay-webhook.yaml
+  - aid: cdk-global:fortellis-event-relay-data-plane
+    name: Fortellis Event Relay Data Plane Proxy (AsyncAPI)
+    description: >-
+      AsyncAPI specification for the Fortellis Event Relay data-plane proxy used by event sources
+      to publish events into Fortellis for fan-out to subscribers.
+    humanURL: https://github.com/Fortellis/Event-Relay-Specs
+    tags:
+      - Events
+      - AsyncAPI
+      - Event Relay
+      - Publish-Subscribe
+    properties:
+      - type: AsyncAPI
+        url: asyncapi/fortellis-event-relay-data-plane-proxy-asyncapi.yml
+      - type: SourceRepo
+        url: https://github.com/Fortellis/Event-Relay-Specs
+  - aid: cdk-global:fortellis-async-hello-world
+    name: Fortellis AsyncAPI Hello World Reference
+    description: >-
+      Hello World AsyncAPI reference distributed by Fortellis to teach the asynchronous API
+      pattern, channel topology, and message envelope conventions used across Fortellis event APIs.
+    humanURL: https://github.com/Fortellis/AsyncAPIHelloWorld
+    tags:
+      - AsyncAPI
+      - Reference
+      - Events
+      - Developer Education
+    properties:
+      - type: AsyncAPI
+        url: asyncapi/fortellis-hello-world-asyncapi.yml
+      - type: SourceRepo
+        url: https://github.com/Fortellis/AsyncAPIHelloWorld
+common:
+  - type: Website
+    url: https://www.cdkglobal.com
+  - type: Portal
+    url: https://fortellis.io
+  - type: Documentation
+    url: https://docs.fortellis.io
+  - type: APIReference
+    url: https://apidocs.fortellis.io
+  - type: SignUp
+    url: https://sso.fortellis.io
+  - type: Marketplace
+    url: https://fortellis.io/marketplace
+  - type: Community
+    url: https://fortellis.io/community
+  - type: Authentication
+    url: https://identity.fortellis.io/oauth2/
+  - type: GitHubOrganization
+    url: https://github.com/Fortellis
+  - type: SDK
+    url: https://github.com/Fortellis/fortellis-cli
+  - type: CLI
+    url: https://www.npmjs.com/package/@fortellis/fortellis-cli
+  - type: VSCodeExtension
+    url: https://github.com/Fortellis/vscode-fortellis-spec-tools
+  - type: GitHubAction
+    url: https://github.com/Fortellis/api-spec-lint-action
+  - type: GitHubAction
+    url: https://github.com/Fortellis/api-spec-push-action
+  - type: SpecLinter
+    url: https://github.com/Fortellis/fortellis-spec-linter
+  - type: SDK
+    url: https://github.com/Fortellis/python-admin-api
+  - type: SDK
+    url: https://github.com/Fortellis/Admin-API-Implementation-Java
+  - type: SDK
+    url: https://github.com/Fortellis/admin-api-implementation
+  - type: Sample
+    url: https://github.com/Fortellis/Java-Public-Webhook-Example
+  - type: Sample
+    url: https://github.com/Fortellis/AuthorizationCodeFlowInDotNet
+  - type: Sample
+    url: https://github.com/Fortellis/ImplicitFlowInDotNet
+  - type: Sample
+    url: https://github.com/Fortellis/ClientCredentialsFlowIn.Net
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/cdk-global
+  - type: Twitter
+    url: https://twitter.com/cdkglobal
+  - type: Plans
+    url: plans/cdk-global-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/cdk-global-rate-limits.yml
+  - type: FinOps
+    url: finops/cdk-global-finops.yml
+  - type: Vocabulary
+    url: vocabulary/cdk-global-vocabulary.yml
+  - type: JSONLDContext
+    url: json-ld/cdk-global-context.jsonld
+  - type: SpectralRules
+    url: rules/fortellis-rules.yml
+x-profiled: '2026-05-23'
+x-type: company
+x-fortune:
+  - Fortune 1000
+x-ownership:
+  parent: Brookfield Business Partners
+  acquiredDate: '2022-07'
+  acquisitionValueUSD: 8300000000
+  publicStatus: private
+x-incidents:
+  - date: '2024-06-19'
+    type: ransomware
+    attributedTo: BlackSuit
+    ransomPaidUSD: 25000000
+    dealersAffected: 15000
+    estimatedDealerLossesUSD: 605000000
+    recoveryDate: '2024-07-04'
+    summary: >-
+      CDK Global suffered a BlackSuit ransomware attack that took most services offline, disrupting
+      thousands of U.S. and Canadian car dealerships. CDK paid ~$25M in bitcoin to restore access;
+      most dealers were restored by July 4, 2024.
+include: []
+maintainers:
+  - FN: Kin Lane
+    email: info@apievangelist.com
+    X-twitter: kinlane

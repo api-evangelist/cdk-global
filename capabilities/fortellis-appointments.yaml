@@ -1,0 +1,95 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Fortellis Service Appointments
+  description: >-
+    Fortellis Service Appointments capability. Query, create, retrieve, update, and cancel
+    dealership service-appointment records via the Fortellis API gateway. Self-contained Naftiko
+    capability covering one Fortellis business surface.
+  tags:
+    - Fortellis
+    - CDK Global
+    - Appointments
+    - Service
+    - Fixed Operations
+  created: '2026-05-23'
+  modified: '2026-05-23'
+binds:
+  - namespace: env
+    keys:
+      FORTELLIS_ACCESS_TOKEN: FORTELLIS_ACCESS_TOKEN
+      FORTELLIS_SUBSCRIPTION_ID: FORTELLIS_SUBSCRIPTION_ID
+capability:
+  consumes:
+    - type: http
+      namespace: fortellis-appointments
+      baseUri: https://api.fortellis.io/sales/notification/v3
+      description: Fortellis Service Appointments — book, look up, update, and cancel.
+      resources:
+        - name: appointments
+          path: /
+          operations:
+            - name: queryAppointments
+              method: GET
+              description: Query service appointments
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+              inputParameters:
+                - name: Authorization
+                  in: header
+                  type: string
+                  required: true
+                - name: Subscription-Id
+                  in: header
+                  type: string
+                  required: true
+            - name: createAppointment
+              method: POST
+              description: Create a new service appointment
+              outputRawFormat: json
+              inputParameters:
+                - name: Authorization
+                  in: header
+                  type: string
+                  required: true
+                - name: Subscription-Id
+                  in: header
+                  type: string
+                  required: true
+                - name: body
+                  in: body
+                  type: object
+                  required: true
+        - name: appointment-by-id
+          path: /{appointmentId}
+          operations:
+            - name: getAppointment
+              method: GET
+              description: Retrieve a single service appointment by id
+              inputParameters:
+                - name: appointmentId
+                  in: path
+                  type: string
+                  required: true
+            - name: updateAppointment
+              method: PUT
+              description: Update an existing service appointment
+              inputParameters:
+                - name: appointmentId
+                  in: path
+                  type: string
+                  required: true
+                - name: body
+                  in: body
+                  type: object
+                  required: true
+            - name: deleteAppointment
+              method: DELETE
+              description: Cancel / delete a service appointment
+              inputParameters:
+                - name: appointmentId
+                  in: path
+                  type: string
+                  required: true

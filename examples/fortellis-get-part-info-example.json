@@ -1,0 +1,25 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "https://api.fortellis.io/sales/parts-store/v47/all-product-info/15400-PLM-A02",
+    "headers": {
+      "Authorization": "Bearer eyJhbGciOiJSUzI1NiIs...",
+      "Subscription-Id": "8a7d0e4b-3d2f-4c61-9aef-1a2b3c4d5e6f",
+      "Data-Owner-Id": "ddc0c4ad-1c8e-43f0-bcd2-9b3e1f4a5d22",
+      "Accept": "application/json"
+    }
+  },
+  "response": {
+    "status": 200,
+    "headers": { "Content-Type": "application/json" },
+    "body": {
+      "productNumber": "15400-PLM-A02",
+      "description": "Oil Filter — 2018-2024 Honda Accord 1.5T",
+      "manufacturer": "Honda Genuine Parts",
+      "price": 12.49,
+      "currency": "USD",
+      "available": true,
+      "onHandQuantity": 38
+    }
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/cdk-global/main/json-schema/fortellis-event.json",
+  "title": "Fortellis Event",
+  "description": "An event record delivered by Fortellis Event Relay to a sink webhook.",
+  "type": "object",
+  "required": ["fortellisEventId", "channel", "payload"],
+  "properties": {
+    "fortellisEventId": {
+      "type": "string",
+      "format": "uuid",
+      "description": "UUID assigned by Fortellis at receipt of the event; idempotency key for sinks."
+    },
+    "xRequestId": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Correlation id mirrored from the source's X-Request-Id header."
+    },
+    "dataOwnerId": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Fortellis organization UUID identifying the dealer the event concerns."
+    },
+    "channel": {
+      "type": "integer",
+      "description": "Channel identifier (path segment used when the event was posted by the source)."
+    },
+    "occurredAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "payload": {
+      "description": "The event payload — schema defined by the corresponding AsyncAPI specification.",
+      "type": "object"
+    }
+  }
+}

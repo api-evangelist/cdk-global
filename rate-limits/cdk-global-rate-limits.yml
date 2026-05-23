@@ -1,0 +1,76 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: CDK Global
+providerId: cdk-global
+created: '2026-05-23'
+modified: '2026-05-23'
+reconciled: false
+tags:
+  - Rate Limiting
+  - Fortellis
+  - APIs
+  - Events
+description: >-
+  Fortellis does not publicly document per-tier rate limits in its developer portal. Limits are
+  applied per subscription and per API; ISVs raise concerns through Fortellis support to lift
+  them. The Event Relay specification explicitly warns that rejected events block the partition
+  and trigger retries — placing an implicit upper bound on sink throughput. The values below
+  capture documented conventions and inferred patterns; precise numerics are negotiated.
+sources:
+  - https://docs.fortellis.io
+  - https://github.com/Fortellis/Fortellis-Event-Relay-Webhook
+  - https://fortellis.io
+headers:
+  requestId: X-Request-Id
+  eventId: Fortellis-Event-Id
+  dataOwner: Data-Owner-Id
+  subscription: Subscription-Id
+responseCodes:
+  throttled: 429
+  serviceUnavailable: 503
+  unauthorized: 401
+  forbidden: 403
+limits:
+  - name: API requests per subscription
+    scope: subscription
+    metric: requests_per_minute
+    limit: null
+    timeFrame: minute
+    notes: >-
+      Per-subscription rate limit enforced by Fortellis API gateway. Concrete value is not
+      publicly published; ISVs receive limits as part of subscription provisioning.
+
+  - name: Event Relay sink throughput
+    scope: subscription
+    metric: events_per_second
+    limit: null
+    timeFrame: second
+    notes: >-
+      Rejected events ("400 / 401 / 403 / 500 / 503") halt the partition and trigger retries
+      until the sink succeeds — Fortellis will not move forward to the next record while a
+      partition is in error. Failed retransmissions may be billable.
+
+  - name: Event Relay extended-pause window
+    scope: subscription
+    metric: duplicate_delivery_risk
+    limit: null
+    timeFrame: hours
+    notes: >-
+      Extended pause periods (sink down for extended time) increase the probability of
+      duplicate record delivery. Sinks must be idempotent on Fortellis-Event-Id.
+
+  - name: Concurrent in-flight requests
+    scope: subscription
+    metric: concurrent_requests
+    limit: null
+    timeFrame: concurrent
+    notes: >-
+      Per-subscription concurrency cap. Not publicly documented; enforced at gateway.
+backoffStrategy:
+  type: exponential
+  initialDelaySeconds: 1
+  maxDelaySeconds: 300
+  notes: >-
+    Recommended client-side backoff on 429 / 503 — Fortellis enforces server-side retry on Event
+    Relay independently.

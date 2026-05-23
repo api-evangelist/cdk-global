@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/cdk-global/main/json-schema/fortellis-part.json",
+  "title": "Fortellis Part",
+  "description": "A dealership parts inventory record on the Fortellis Parts Store API.",
+  "type": "object",
+  "required": ["productNumber"],
+  "properties": {
+    "productNumber": { "type": "string" },
+    "description": { "type": "string" },
+    "manufacturer": { "type": "string" },
+    "price": { "type": "number", "minimum": 0 },
+    "currency": { "type": "string", "default": "USD", "minLength": 3, "maxLength": 3 },
+    "available": { "type": "boolean" },
+    "onHandQuantity": { "type": "integer", "minimum": 0 },
+    "size": {
+      "type": "object",
+      "properties": {
+        "length": { "type": "number" },
+        "width": { "type": "number" },
+        "height": { "type": "number" },
+        "weight": { "type": "number" },
+        "unit": { "type": "string", "enum": ["in", "cm", "mm"] },
+        "weightUnit": { "type": "string", "enum": ["lb", "kg"] }
+      }
+    }
+  }
+}
