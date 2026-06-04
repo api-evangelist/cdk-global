@@ -1,0 +1,116 @@
+arazzo: 1.0.1
+info:
+  title: CDK Global Update Data Record
+  summary: Read a data-domain record, branch on whether it exists, then update it.
+  description: >-
+    Updates a record in the Fortellis data domain sample API only when it is
+    present. The workflow reads the record by its identifier, branches on whether
+    a record was returned, and posts an update with revised fields when the
+    record exists. The shipped sample spec is a pet-adoption template; the same
+    operations model any dealership data-domain record update. Every step spells
+    out its request inline so the flow can be read and executed without opening
+    the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: dataDomainApi
+  url: ../openapi/fortellis-pet-adoption-openapi.yml
+  type: openapi
+workflows:
+- workflowId: update-data-record
+  summary: Read a record then update it when it exists.
+  description: >-
+    Reads a data-domain record by identifier, branches on whether it was found,
+    and applies an update with revised fields when present.
+  inputs:
+    type: object
+    required:
+    - subscriptionId
+    - requestId
+    - authorization
+    - recordId
+    - name
+    properties:
+      subscriptionId:
+        type: string
+        description: The Fortellis Marketplace subscription identifier.
+      requestId:
+        type: string
+        description: A correlation UUID echoed back across systems.
+      authorization:
+        type: string
+        description: The Fortellis OAuth 2.0 bearer token (or Basic auth on the simulator).
+      recordId:
+        type: string
+        description: The identifier of the record to update.
+      name:
+        type: string
+        description: The revised record name.
+      type:
+        type: string
+        description: The revised record type from the sample schema enum.
+  steps:
+  - stepId: loadRecord
+    description: >-
+      Read the record by its identifier and branch on whether it exists.
+    operationId: readPets
+    parameters:
+    - name: petId
+      in: path
+      value: $inputs.recordId
+    - name: Request-Id
+      in: header
+      value: $inputs.requestId
+    - name: Subscription-Id
+      in: header
+      value: $inputs.subscriptionId
+    - name: Authorization
+      in: header
+      value: $inputs.authorization
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      recordId: $response.body#/petId
+    onSuccess:
+    - name: recordFound
+      type: goto
+      stepId: applyUpdate
+      criteria:
+      - context: $response.body
+        condition: $.petId != null
+        type: jsonpath
+    - name: recordMissing
+      type: end
+      criteria:
+      - context: $response.body
+        condition: $.petId == null
+        type: jsonpath
+  - stepId: applyUpdate
+    description: >-
+      Post the update to the record with the revised name and type.
+    operationId: updatePets
+    parameters:
+    - name: petId
+      in: path
+      value: $inputs.recordId
+    - name: Request-Id
+      in: header
+      value: $inputs.requestId
+    - name: Subscription-Id
+      in: header
+      value: $inputs.subscriptionId
+    - name: Authorization
+      in: header
+      value: $inputs.authorization
+    requestBody:
+      contentType: application/json
+      payload:
+        name: $inputs.name
+        type: $inputs.type
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      recordId: $response.body#/petId
+      name: $response.body#/name
+  outputs:
+    recordId: $steps.applyUpdate.outputs.recordId
+    name: $steps.applyUpdate.outputs.name

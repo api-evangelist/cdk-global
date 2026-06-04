@@ -1,0 +1,128 @@
+arazzo: 1.0.1
+info:
+  title: CDK Global Parts Inventory Lookup
+  summary: List parts inventory, pull a product's detail, then read its size.
+  description: >-
+    Walks the parts store from the catalog down to a single product's
+    dimensions. The workflow lists all product information, selects the first
+    product's number, reads that product's full detail, and then reads the
+    product size to determine whether there is space to stock it. Every step
+    spells out its request inline so the flow can be read and executed without
+    opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: partsStoreApi
+  url: ../openapi/fortellis-parts-store-openapi.yml
+  type: openapi
+workflows:
+- workflowId: parts-inventory-lookup
+  summary: Drill from the parts catalog into a single product's detail and size.
+  description: >-
+    Lists all products, resolves the first product number, then reads that
+    product's detail and physical size.
+  inputs:
+    type: object
+    required:
+    - subscriptionId
+    - requestId
+    - authorization
+    - userId
+    - organization
+    properties:
+      subscriptionId:
+        type: string
+        description: The Fortellis Marketplace subscription identifier.
+      requestId:
+        type: string
+        description: A correlation GUID echoed back across systems.
+      authorization:
+        type: string
+        description: The Fortellis OAuth 2.0 bearer token (or Basic auth on the simulator).
+      userId:
+        type: string
+        description: Identifies the user accessing the account.
+      organization:
+        type: string
+        description: Identifies the organization that the user is in.
+  steps:
+  - stepId: listProducts
+    description: >-
+      List all product information and take the first product's number for the
+      drill-down.
+    operationId: allProductInfo
+    parameters:
+    - name: User-Id
+      in: header
+      value: $inputs.userId
+    - name: Organization
+      in: header
+      value: $inputs.organization
+    - name: Request-Id
+      in: header
+      value: $inputs.requestId
+    - name: Subscription-Id
+      in: header
+      value: $inputs.subscriptionId
+    - name: Authorization
+      in: header
+      value: $inputs.authorization
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      productNumber: $response.body#/products/0/id
+  - stepId: readProduct
+    description: >-
+      Read the full detail for the resolved product number.
+    operationId: productInformation
+    parameters:
+    - name: productNumber
+      in: path
+      value: $steps.listProducts.outputs.productNumber
+    - name: User-Id
+      in: header
+      value: $inputs.userId
+    - name: Organization
+      in: header
+      value: $inputs.organization
+    - name: Request-Id
+      in: header
+      value: $inputs.requestId
+    - name: Subscription-Id
+      in: header
+      value: $inputs.subscriptionId
+    - name: Authorization
+      in: header
+      value: $inputs.authorization
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      productName: $response.body#/name
+      location: $response.body#/location
+  - stepId: readProductSize
+    description: >-
+      Read the product's physical size to decide if there is inventory space for
+      it.
+    operationId: productDescription
+    parameters:
+    - name: productNumber
+      in: path
+      value: $steps.listProducts.outputs.productNumber
+    - name: Request-Id
+      in: header
+      value: $inputs.requestId
+    - name: Subscription-Id
+      in: header
+      value: $inputs.subscriptionId
+    - name: Authorization
+      in: header
+      value: $inputs.authorization
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      productWidth: $response.body#/productWidth
+      productHeight: $response.body#/productHeight
+      productWeight: $response.body#/productWeight
+  outputs:
+    productNumber: $steps.listProducts.outputs.productNumber
+    productName: $steps.readProduct.outputs.productName
+    productWeight: $steps.readProductSize.outputs.productWeight

@@ -1,0 +1,109 @@
+arazzo: 1.0.1
+info:
+  title: CDK Global Schedule Service Appointment
+  summary: Create a service appointment for a vehicle and read it back to confirm.
+  description: >-
+    Books a vehicle into the dealership service department by creating a service
+    appointment with the requested date/time and services, then queries the new
+    appointment by its identifier to confirm the booking was persisted. Every
+    step spells out its request inline so the flow can be read and executed
+    without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: appointmentsApi
+  url: ../openapi/fortellis-appointments-openapi.yml
+  type: openapi
+workflows:
+- workflowId: schedule-service-appointment
+  summary: Create a service appointment and confirm it by reading it back.
+  description: >-
+    Creates an appointment in the service department for the supplied vehicle,
+    customer, and requested services, then retrieves the created appointment by
+    its identifier to verify it exists.
+  inputs:
+    type: object
+    required:
+    - subscriptionId
+    - requestId
+    - authorization
+    - dateTime
+    - requestedServices
+    properties:
+      subscriptionId:
+        type: string
+        description: The Fortellis Marketplace subscription identifier.
+      requestId:
+        type: string
+        description: A correlation GUID echoed back across systems.
+      authorization:
+        type: string
+        description: The Fortellis OAuth 2.0 bearer token (or Basic auth on the simulator).
+      dateTime:
+        type: string
+        description: The ISO 8601 encoded date and time of the appointment.
+      requestedServices:
+        type: array
+        description: The list of requested services to perform on the vehicle.
+      vehicleHref:
+        type: string
+        description: The hyperlink to the Vehicle resource scheduled for the appointment.
+      customerHref:
+        type: string
+        description: The hyperlink to the customer requesting the service.
+      concerns:
+        type: string
+        description: Customer concerns that prompted the appointment.
+  steps:
+  - stepId: createAppointment
+    description: >-
+      Create the service appointment with the supplied date/time, requested
+      services, and optional vehicle and customer links.
+    operationId: createAppointment
+    parameters:
+    - name: Request-Id
+      in: header
+      value: $inputs.requestId
+    - name: Subscription-Id
+      in: header
+      value: $inputs.subscriptionId
+    - name: Authorization
+      in: header
+      value: $inputs.authorization
+    requestBody:
+      contentType: application/json
+      payload:
+        dateTime: $inputs.dateTime
+        requestedServices: $inputs.requestedServices
+        vehicleHref: $inputs.vehicleHref
+        customerHref: $inputs.customerHref
+        concerns: $inputs.concerns
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      appointmentId: $response.body#/appointmentId
+  - stepId: confirmAppointment
+    description: >-
+      Read the newly created appointment back by its identifier to confirm the
+      booking was stored.
+    operationId: queryAppointment
+    parameters:
+    - name: appointmentId
+      in: path
+      value: $steps.createAppointment.outputs.appointmentId
+    - name: Request-Id
+      in: header
+      value: $inputs.requestId
+    - name: Subscription-Id
+      in: header
+      value: $inputs.subscriptionId
+    - name: Authorization
+      in: header
+      value: $inputs.authorization
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      appointmentId: $response.body#/appointmentId
+      dateTime: $response.body#/dateTime
+  outputs:
+    appointmentId: $steps.confirmAppointment.outputs.appointmentId
+    dateTime: $steps.confirmAppointment.outputs.dateTime

@@ -1,0 +1,117 @@
+arazzo: 1.0.1
+info:
+  title: CDK Global Parts Availability Check
+  summary: Health-check the parts store, then look up a product only when it is up.
+  description: >-
+    Guards a parts lookup behind a service health check. The workflow pings the
+    parts store heartbeat, branches on whether the server reports it is up, and
+    only then reads the requested product's detail. This avoids issuing the
+    product call against an unavailable backend. Every step spells out its
+    request inline so the flow can be read and executed without opening the
+    underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: partsStoreApi
+  url: ../openapi/fortellis-parts-store-openapi.yml
+  type: openapi
+workflows:
+- workflowId: parts-availability-check
+  summary: Confirm the parts store is healthy before reading a product.
+  description: >-
+    Calls the heartbeat endpoint, branches on the reported status code, and
+    reads the requested product's detail only when the server is up.
+  inputs:
+    type: object
+    required:
+    - subscriptionId
+    - requestId
+    - authorization
+    - userId
+    - organization
+    - productNumber
+    properties:
+      subscriptionId:
+        type: string
+        description: The Fortellis Marketplace subscription identifier.
+      requestId:
+        type: string
+        description: A correlation GUID echoed back across systems.
+      authorization:
+        type: string
+        description: The Fortellis OAuth 2.0 bearer token (or Basic auth on the simulator).
+      userId:
+        type: string
+        description: Identifies the user accessing the account.
+      organization:
+        type: string
+        description: Identifies the organization that the user is in.
+      productNumber:
+        type: string
+        description: The product number to read once the store is confirmed healthy.
+  steps:
+  - stepId: pingStore
+    description: >-
+      Ping the parts store heartbeat and branch on whether it reports the server
+      is up.
+    operationId: healthMonitor
+    parameters:
+    - name: Request-Id
+      in: header
+      value: $inputs.requestId
+    - name: Subscription-Id
+      in: header
+      value: $inputs.subscriptionId
+    - name: Authorization
+      in: header
+      value: $inputs.authorization
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      healthCode: $response.body#/code
+    onSuccess:
+    - name: storeUp
+      type: goto
+      stepId: readProduct
+      criteria:
+      - context: $response.body
+        condition: $.code == 200
+        type: jsonpath
+    - name: storeDown
+      type: end
+      criteria:
+      - context: $response.body
+        condition: $.code != 200
+        type: jsonpath
+  - stepId: readProduct
+    description: >-
+      Read the requested product's detail now that the store is confirmed
+      healthy.
+    operationId: productInformation
+    parameters:
+    - name: productNumber
+      in: path
+      value: $inputs.productNumber
+    - name: User-Id
+      in: header
+      value: $inputs.userId
+    - name: Organization
+      in: header
+      value: $inputs.organization
+    - name: Request-Id
+      in: header
+      value: $inputs.requestId
+    - name: Subscription-Id
+      in: header
+      value: $inputs.subscriptionId
+    - name: Authorization
+      in: header
+      value: $inputs.authorization
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      productName: $response.body#/name
+      location: $response.body#/location
+  outputs:
+    healthCode: $steps.pingStore.outputs.healthCode
+    productName: $steps.readProduct.outputs.productName
+    location: $steps.readProduct.outputs.location

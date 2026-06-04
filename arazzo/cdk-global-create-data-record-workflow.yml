@@ -1,0 +1,99 @@
+arazzo: 1.0.1
+info:
+  title: CDK Global Create Data Record
+  summary: Add a record to the data domain store and read it back by its identifier.
+  description: >-
+    Demonstrates the create-then-confirm pattern against the Fortellis data
+    domain sample API. The workflow adds a record to the store and reads it back
+    by the identifier the service assigns, confirming the record was persisted.
+    The shipped sample spec is a pet-adoption template; the same operations model
+    any dealership data-domain record (for example a customer or inventory
+    record), and the record fields used here are exactly those the sample
+    defines. Every step spells out its request inline so the flow can be read and
+    executed without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: dataDomainApi
+  url: ../openapi/fortellis-pet-adoption-openapi.yml
+  type: openapi
+workflows:
+- workflowId: create-data-record
+  summary: Create a data-domain record and confirm it by reading it back.
+  description: >-
+    Adds a record to the data store using the sample record fields, then reads
+    the assigned record back by its identifier to verify it exists.
+  inputs:
+    type: object
+    required:
+    - subscriptionId
+    - requestId
+    - authorization
+    - name
+    - type
+    properties:
+      subscriptionId:
+        type: string
+        description: The Fortellis Marketplace subscription identifier.
+      requestId:
+        type: string
+        description: A correlation UUID echoed back across systems.
+      authorization:
+        type: string
+        description: The Fortellis OAuth 2.0 bearer token (or Basic auth on the simulator).
+      name:
+        type: string
+        description: The name of the record (required by the sample schema).
+      type:
+        type: string
+        description: The record type from the sample schema enum.
+  steps:
+  - stepId: addRecord
+    description: >-
+      Add the record to the data store; the service assigns and returns the
+      record identifier.
+    operationId: addPet
+    parameters:
+    - name: Request-Id
+      in: header
+      value: $inputs.requestId
+    - name: Subscription-Id
+      in: header
+      value: $inputs.subscriptionId
+    - name: Authorization
+      in: header
+      value: $inputs.authorization
+    requestBody:
+      contentType: application/json
+      payload:
+        name: $inputs.name
+        type: $inputs.type
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      recordId: $response.body#/petId
+  - stepId: confirmRecord
+    description: >-
+      Read the newly created record back by its assigned identifier to confirm
+      it was stored.
+    operationId: readPets
+    parameters:
+    - name: petId
+      in: path
+      value: $steps.addRecord.outputs.recordId
+    - name: Request-Id
+      in: header
+      value: $inputs.requestId
+    - name: Subscription-Id
+      in: header
+      value: $inputs.subscriptionId
+    - name: Authorization
+      in: header
+      value: $inputs.authorization
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      recordId: $response.body#/petId
+      name: $response.body#/name
+  outputs:
+    recordId: $steps.confirmRecord.outputs.recordId
+    name: $steps.confirmRecord.outputs.name

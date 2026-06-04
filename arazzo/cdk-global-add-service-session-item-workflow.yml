@@ -1,0 +1,159 @@
+arazzo: 1.0.1
+info:
+  title: CDK Global Add Service Session Item
+  summary: Create a booking session, add a requested service item, and read it back.
+  description: >-
+    Builds out the requested-services side of an online service booking. The
+    workflow creates a booking session, adds a requested service item describing
+    the work to be performed, and reads the session's item list back to confirm
+    the item was attached. Every step spells out its request inline so the flow
+    can be read and executed without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: bookingSessionsApi
+  url: ../openapi/fortellis-user-service-openapi.yml
+  type: openapi
+workflows:
+- workflowId: add-service-session-item
+  summary: Attach a requested service item to a new booking session and confirm it.
+  description: >-
+    Creates a booking session, posts a requested service item onto it, and
+    queries the session's items to verify the item was persisted.
+  inputs:
+    type: object
+    required:
+    - subscriptionId
+    - requestId
+    - authorization
+    - storeIdList
+    - searchWindowStart
+    - searchWindowEnd
+    - itemText
+    - itemComment
+    - servicePackageId
+    - specificationId
+    properties:
+      subscriptionId:
+        type: string
+        description: The Fortellis Marketplace subscription identifier.
+      requestId:
+        type: string
+        description: A correlation ID echoed back across systems.
+      authorization:
+        type: string
+        description: The Fortellis OAuth 2.0 bearer token (or Basic auth on the simulator).
+      storeIdList:
+        type: array
+        description: The identifiers of the stores to search for availability.
+      vehicleSpecId:
+        type: string
+        description: The vehicle service model identifier.
+      customerId:
+        type: string
+        description: The identifier of the customer.
+      searchWindowStart:
+        type: string
+        description: The start of the availability search window (date-time).
+      searchWindowEnd:
+        type: string
+        description: The end of the availability search window (date-time).
+      itemText:
+        type: string
+        description: A text label for the requested service item.
+      itemComment:
+        type: string
+        description: A comment describing the requested service item.
+      servicePackageId:
+        type: string
+        description: The service package id, unique when coupled with vehicleSpecId.
+      specificationId:
+        type: string
+        description: The specific instance of the service package.
+  steps:
+  - stepId: createSession
+    description: >-
+      Create the booking session that the requested service item will be added
+      to.
+    operationId: createBookingSession
+    parameters:
+    - name: Request-Id
+      in: header
+      value: $inputs.requestId
+    - name: Subscription-Id
+      in: header
+      value: $inputs.subscriptionId
+    - name: Authorization
+      in: header
+      value: $inputs.authorization
+    - name: Content-Type
+      in: header
+      value: application/json
+    requestBody:
+      contentType: application/json
+      payload:
+        storeIdList: $inputs.storeIdList
+        vehicleSpecId: $inputs.vehicleSpecId
+        customerId: $inputs.customerId
+        searchWindowStart: $inputs.searchWindowStart
+        searchWindowEnd: $inputs.searchWindowEnd
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      bookingSessionId: $response.body#/bookingSessionId
+  - stepId: addItem
+    description: >-
+      Add a requested service item describing the work to be performed to the
+      booking session.
+    operationId: addBookingSessionItem
+    parameters:
+    - name: bookingSessionId
+      in: path
+      value: $steps.createSession.outputs.bookingSessionId
+    - name: Request-Id
+      in: header
+      value: $inputs.requestId
+    - name: Subscription-Id
+      in: header
+      value: $inputs.subscriptionId
+    - name: Authorization
+      in: header
+      value: $inputs.authorization
+    - name: Content-Type
+      in: header
+      value: application/json
+    requestBody:
+      contentType: application/json
+      payload:
+        text: $inputs.itemText
+        comment: $inputs.itemComment
+        id: $inputs.servicePackageId
+        specificationId: $inputs.specificationId
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      bookingSessionId: $response.body#/bookingSessionId
+  - stepId: confirmItems
+    description: >-
+      Query the booking session's requested service items to confirm the item
+      was attached.
+    operationId: queryBookingSessionItems
+    parameters:
+    - name: bookingSessionId
+      in: path
+      value: $steps.createSession.outputs.bookingSessionId
+    - name: Request-Id
+      in: header
+      value: $inputs.requestId
+    - name: Subscription-Id
+      in: header
+      value: $inputs.subscriptionId
+    - name: Authorization
+      in: header
+      value: $inputs.authorization
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      itemId: $response.body#/itemId
+  outputs:
+    bookingSessionId: $steps.createSession.outputs.bookingSessionId
+    itemId: $steps.confirmItems.outputs.itemId

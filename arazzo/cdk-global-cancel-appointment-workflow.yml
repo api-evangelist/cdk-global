@@ -1,0 +1,112 @@
+arazzo: 1.0.1
+info:
+  title: CDK Global Cancel Service Appointment
+  summary: Find a customer's appointment, confirm it exists, then cancel it with a reason.
+  description: >-
+    Cancels a vehicle service appointment safely. The flow queries appointments
+    filtered by the customer link to locate the booking, branches on whether a
+    match was found, and only when one exists submits a cancellation carrying a
+    free-form reason. Every step spells out its request inline so the flow can be
+    read and executed without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: appointmentsApi
+  url: ../openapi/fortellis-appointments-openapi.yml
+  type: openapi
+workflows:
+- workflowId: cancel-appointment
+  summary: Locate an appointment by customer and cancel it when present.
+  description: >-
+    Queries appointments for the supplied customer link, branches on whether a
+    booking was returned, and cancels the located appointment with the supplied
+    reason.
+  inputs:
+    type: object
+    required:
+    - subscriptionId
+    - requestId
+    - authorization
+    - customerHref
+    - reason
+    properties:
+      subscriptionId:
+        type: string
+        description: The Fortellis Marketplace subscription identifier.
+      requestId:
+        type: string
+        description: A correlation GUID echoed back across systems.
+      authorization:
+        type: string
+        description: The Fortellis OAuth 2.0 bearer token (or Basic auth on the simulator).
+      customerHref:
+        type: string
+        description: The customer resource hyperlink to filter the appointment query.
+      reason:
+        type: string
+        description: Free-form comments explaining why the appointment is cancelled.
+  steps:
+  - stepId: findAppointment
+    description: >-
+      Query appointments filtered by the customer link to locate the booking to
+      cancel.
+    operationId: queryAppointments
+    parameters:
+    - name: customerHref
+      in: query
+      value: $inputs.customerHref
+    - name: Request-Id
+      in: header
+      value: $inputs.requestId
+    - name: Subscription-Id
+      in: header
+      value: $inputs.subscriptionId
+    - name: Authorization
+      in: header
+      value: $inputs.authorization
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      appointmentId: $response.body#/items/appointmentId
+    onSuccess:
+    - name: appointmentFound
+      type: goto
+      stepId: cancelAppointment
+      criteria:
+      - context: $response.body
+        condition: $.items.appointmentId != null
+        type: jsonpath
+    - name: appointmentMissing
+      type: end
+      criteria:
+      - context: $response.body
+        condition: $.items.appointmentId == null
+        type: jsonpath
+  - stepId: cancelAppointment
+    description: >-
+      Cancel the located appointment, supplying the cancellation reason in the
+      request body.
+    operationId: cancelAppointment
+    parameters:
+    - name: appointmentId
+      in: path
+      value: $steps.findAppointment.outputs.appointmentId
+    - name: Request-Id
+      in: header
+      value: $inputs.requestId
+    - name: Subscription-Id
+      in: header
+      value: $inputs.subscriptionId
+    - name: Authorization
+      in: header
+      value: $inputs.authorization
+    requestBody:
+      contentType: application/json
+      payload:
+        reason: $inputs.reason
+    successCriteria:
+    - condition: $statusCode == 204
+    outputs:
+      statusCode: $statusCode
+  outputs:
+    cancelledAppointmentId: $steps.findAppointment.outputs.appointmentId
+    cancelStatus: $steps.cancelAppointment.outputs.statusCode

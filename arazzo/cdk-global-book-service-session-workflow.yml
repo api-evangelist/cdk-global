@@ -1,0 +1,174 @@
+arazzo: 1.0.1
+info:
+  title: CDK Global Book Service Session
+  summary: Create a booking session, discover an available store and slot, and book it.
+  description: >-
+    Walks the full online service booking flow for a dealership. The workflow
+    creates a booking session for a vehicle and customer across one or more
+    stores, queries the stores that have availability, queries the open
+    appointment slots for the chosen store, and books the final slot to confirm
+    the appointment. Every step spells out its request inline so the flow can be
+    read and executed without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: bookingSessionsApi
+  url: ../openapi/fortellis-user-service-openapi.yml
+  type: openapi
+workflows:
+- workflowId: book-service-session
+  summary: Drive a booking session from creation through booking an appointment slot.
+  description: >-
+    Creates a booking session, resolves an available store, lists that store's
+    open slots, and books the first available slot to finalize the service
+    appointment.
+  inputs:
+    type: object
+    required:
+    - subscriptionId
+    - requestId
+    - authorization
+    - storeIdList
+    - searchWindowStart
+    - searchWindowEnd
+    properties:
+      subscriptionId:
+        type: string
+        description: The Fortellis Marketplace subscription identifier.
+      requestId:
+        type: string
+        description: A correlation ID echoed back across systems.
+      authorization:
+        type: string
+        description: The Fortellis OAuth 2.0 bearer token (or Basic auth on the simulator).
+      storeIdList:
+        type: array
+        description: The identifiers of the stores to search for availability.
+      vehicleSpecId:
+        type: string
+        description: The vehicle service model identifier.
+      customerId:
+        type: string
+        description: The identifier of the customer.
+      searchWindowStart:
+        type: string
+        description: The start of the availability search window (date-time).
+      searchWindowEnd:
+        type: string
+        description: The end of the availability search window (date-time).
+      requestedTransportation:
+        type: string
+        description: The requested customer transportation (e.g. WAITER, LOANER).
+  steps:
+  - stepId: createSession
+    description: >-
+      Create the booking session that scopes the vehicle, customer, store list,
+      and search window for the rest of the flow.
+    operationId: createBookingSession
+    parameters:
+    - name: Request-Id
+      in: header
+      value: $inputs.requestId
+    - name: Subscription-Id
+      in: header
+      value: $inputs.subscriptionId
+    - name: Authorization
+      in: header
+      value: $inputs.authorization
+    - name: Content-Type
+      in: header
+      value: application/json
+    requestBody:
+      contentType: application/json
+      payload:
+        storeIdList: $inputs.storeIdList
+        vehicleSpecId: $inputs.vehicleSpecId
+        customerId: $inputs.customerId
+        searchWindowStart: $inputs.searchWindowStart
+        searchWindowEnd: $inputs.searchWindowEnd
+        requestedTransportation: $inputs.requestedTransportation
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      bookingSessionId: $response.body#/bookingSessionId
+  - stepId: findAvailableStore
+    description: >-
+      Query the stores that have availability for this booking session and take
+      the first store returned.
+    operationId: queryBookingSessionStoreAvailability
+    parameters:
+    - name: bookingSessionId
+      in: path
+      value: $steps.createSession.outputs.bookingSessionId
+    - name: Request-Id
+      in: header
+      value: $inputs.requestId
+    - name: Subscription-Id
+      in: header
+      value: $inputs.subscriptionId
+    - name: Authorization
+      in: header
+      value: $inputs.authorization
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      storeId: $response.body#/0/storeId
+  - stepId: findAvailableSlot
+    description: >-
+      Query the open appointment slots for the resolved store and take the first
+      slot returned.
+    operationId: queryBookingSessionsAvailableStoreSlots
+    parameters:
+    - name: bookingSessionId
+      in: path
+      value: $steps.createSession.outputs.bookingSessionId
+    - name: storeId
+      in: path
+      value: $steps.findAvailableStore.outputs.storeId
+    - name: Request-Id
+      in: header
+      value: $inputs.requestId
+    - name: Subscription-Id
+      in: header
+      value: $inputs.subscriptionId
+    - name: Authorization
+      in: header
+      value: $inputs.authorization
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      slotId: $response.body#/0/slotId
+  - stepId: bookSlot
+    description: >-
+      Book the selected appointment slot, the final step in the booking process,
+      producing the confirmed appointment.
+    operationId: bookAppointmentSlot
+    parameters:
+    - name: bookingSessionId
+      in: path
+      value: $steps.createSession.outputs.bookingSessionId
+    - name: storeId
+      in: path
+      value: $steps.findAvailableStore.outputs.storeId
+    - name: slotId
+      in: path
+      value: $steps.findAvailableSlot.outputs.slotId
+    - name: Request-Id
+      in: header
+      value: $inputs.requestId
+    - name: Subscription-Id
+      in: header
+      value: $inputs.subscriptionId
+    - name: Authorization
+      in: header
+      value: $inputs.authorization
+    - name: Content-Type
+      in: header
+      value: application/json
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      bookingSessionId: $response.body#/bookingSessionId
+  outputs:
+    bookingSessionId: $steps.createSession.outputs.bookingSessionId
+    storeId: $steps.findAvailableStore.outputs.storeId
+    slotId: $steps.findAvailableSlot.outputs.slotId

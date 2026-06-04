@@ -1,0 +1,125 @@
+arazzo: 1.0.1
+info:
+  title: CDK Global Reschedule Service Appointment
+  summary: Read an existing appointment, update its date/time, then confirm the change.
+  description: >-
+    Reschedules a vehicle service appointment by first reading the existing
+    appointment to capture its current services, posting an update that carries
+    the new date/time while preserving the requested services, and finally
+    reading the appointment back to confirm the new time. Every step spells out
+    its request inline so the flow can be read and executed without opening the
+    underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: appointmentsApi
+  url: ../openapi/fortellis-appointments-openapi.yml
+  type: openapi
+workflows:
+- workflowId: reschedule-appointment
+  summary: Move an existing service appointment to a new date and time.
+  description: >-
+    Loads the current appointment, applies a new date/time while retaining the
+    originally requested services, and verifies the rescheduled time by reading
+    the appointment again.
+  inputs:
+    type: object
+    required:
+    - subscriptionId
+    - requestId
+    - authorization
+    - appointmentId
+    - newDateTime
+    properties:
+      subscriptionId:
+        type: string
+        description: The Fortellis Marketplace subscription identifier.
+      requestId:
+        type: string
+        description: A correlation GUID echoed back across systems.
+      authorization:
+        type: string
+        description: The Fortellis OAuth 2.0 bearer token (or Basic auth on the simulator).
+      appointmentId:
+        type: string
+        description: The identifier of the appointment to reschedule.
+      newDateTime:
+        type: string
+        description: The new ISO 8601 encoded date and time for the appointment.
+  steps:
+  - stepId: loadAppointment
+    description: >-
+      Read the existing appointment to capture the requested services that must
+      be carried over into the update.
+    operationId: queryAppointment
+    parameters:
+    - name: appointmentId
+      in: path
+      value: $inputs.appointmentId
+    - name: Request-Id
+      in: header
+      value: $inputs.requestId
+    - name: Subscription-Id
+      in: header
+      value: $inputs.subscriptionId
+    - name: Authorization
+      in: header
+      value: $inputs.authorization
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      requestedServices: $response.body#/requestedServices
+      vehicleHref: $response.body#/vehicleHref
+      customerHref: $response.body#/customerHref
+  - stepId: applyNewTime
+    description: >-
+      Post the appointment update carrying the new date/time and the previously
+      requested services so the booking is moved rather than emptied.
+    operationId: updateAppointment
+    parameters:
+    - name: appointmentId
+      in: path
+      value: $inputs.appointmentId
+    - name: Request-Id
+      in: header
+      value: $inputs.requestId
+    - name: Subscription-Id
+      in: header
+      value: $inputs.subscriptionId
+    - name: Authorization
+      in: header
+      value: $inputs.authorization
+    requestBody:
+      contentType: application/json
+      payload:
+        dateTime: $inputs.newDateTime
+        requestedServices: $steps.loadAppointment.outputs.requestedServices
+        vehicleHref: $steps.loadAppointment.outputs.vehicleHref
+        customerHref: $steps.loadAppointment.outputs.customerHref
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      appointmentId: $response.body#/appointmentId
+  - stepId: confirmReschedule
+    description: >-
+      Read the appointment back to confirm the new date/time has been applied.
+    operationId: queryAppointment
+    parameters:
+    - name: appointmentId
+      in: path
+      value: $inputs.appointmentId
+    - name: Request-Id
+      in: header
+      value: $inputs.requestId
+    - name: Subscription-Id
+      in: header
+      value: $inputs.subscriptionId
+    - name: Authorization
+      in: header
+      value: $inputs.authorization
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      dateTime: $response.body#/dateTime
+  outputs:
+    appointmentId: $steps.applyNewTime.outputs.appointmentId
+    dateTime: $steps.confirmReschedule.outputs.dateTime

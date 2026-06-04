@@ -1,0 +1,115 @@
+arazzo: 1.0.1
+info:
+  title: CDK Global Remove Service Session Item
+  summary: Confirm a booking session item exists, then remove it from the session.
+  description: >-
+    Removes a requested service item from a booking session safely. The workflow
+    first reads the item by its identifier and branches on whether it was found,
+    only issuing the delete when the item is present so the flow does not act on
+    a missing item. Every step spells out its request inline so the flow can be
+    read and executed without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: bookingSessionsApi
+  url: ../openapi/fortellis-user-service-openapi.yml
+  type: openapi
+workflows:
+- workflowId: remove-service-session-item
+  summary: Read a booking session item then delete it when it exists.
+  description: >-
+    Queries a requested service item by identifier, branches on whether it was
+    returned, and removes the item from the booking session when present.
+  inputs:
+    type: object
+    required:
+    - subscriptionId
+    - requestId
+    - authorization
+    - bookingSessionId
+    - itemId
+    properties:
+      subscriptionId:
+        type: string
+        description: The Fortellis Marketplace subscription identifier.
+      requestId:
+        type: string
+        description: A correlation ID echoed back across systems.
+      authorization:
+        type: string
+        description: The Fortellis OAuth 2.0 bearer token (or Basic auth on the simulator).
+      bookingSessionId:
+        type: string
+        description: The identifier of the booking session that owns the item.
+      itemId:
+        type: string
+        description: The identifier of the requested service item to remove.
+  steps:
+  - stepId: loadItem
+    description: >-
+      Query the requested service item by its identifier and branch on whether
+      the item exists.
+    operationId: queryRequestedServiceItemById
+    parameters:
+    - name: bookingSessionId
+      in: path
+      value: $inputs.bookingSessionId
+    - name: itemId
+      in: path
+      value: $inputs.itemId
+    - name: Request-Id
+      in: header
+      value: $inputs.requestId
+    - name: Subscription-Id
+      in: header
+      value: $inputs.subscriptionId
+    - name: Authorization
+      in: header
+      value: $inputs.authorization
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      itemId: $response.body#/itemId
+    onSuccess:
+    - name: itemFound
+      type: goto
+      stepId: removeItem
+      criteria:
+      - context: $response.body
+        condition: $.itemId != null
+        type: jsonpath
+    - name: itemMissing
+      type: end
+      criteria:
+      - context: $response.body
+        condition: $.itemId == null
+        type: jsonpath
+  - stepId: removeItem
+    description: >-
+      Remove the located service item from the booking session.
+    operationId: removeBookingSessionItem
+    parameters:
+    - name: bookingSessionId
+      in: path
+      value: $inputs.bookingSessionId
+    - name: itemId
+      in: path
+      value: $inputs.itemId
+    - name: Request-Id
+      in: header
+      value: $inputs.requestId
+    - name: Subscription-Id
+      in: header
+      value: $inputs.subscriptionId
+    - name: Authorization
+      in: header
+      value: $inputs.authorization
+    - name: Content-Type
+      in: header
+      value: application/json
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      success: $response.body#/success
+  outputs:
+    removedItemId: $steps.loadItem.outputs.itemId
+    removeStatus: $steps.removeItem.outputs.success

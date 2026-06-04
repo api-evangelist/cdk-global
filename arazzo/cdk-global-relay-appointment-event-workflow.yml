@@ -1,0 +1,121 @@
+arazzo: 1.0.1
+info:
+  title: CDK Global Relay Appointment Event
+  summary: Read a service appointment, then relay it as an event to an event sink.
+  description: >-
+    Bridges the service appointments API and the Fortellis Event Relay webhook.
+    The workflow reads a service appointment by its identifier and then posts the
+    appointment payload as an event onto a relay channel for an event sink to
+    consume asynchronously. The event payload is a free-form object per the relay
+    contract, so the appointment fields are carried as-is. Every step spells out
+    its request inline so the flow can be read and executed without opening the
+    underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: appointmentsApi
+  url: ../openapi/fortellis-appointments-openapi.yml
+  type: openapi
+- name: eventRelayApi
+  url: ../openapi/fortellis-event-relay-webhook-openapi.yml
+  type: openapi
+workflows:
+- workflowId: relay-appointment-event
+  summary: Read an appointment and publish it to an event relay channel.
+  description: >-
+    Loads a service appointment by identifier and posts its key fields as an
+    event onto the supplied relay channel for downstream sinks.
+  inputs:
+    type: object
+    required:
+    - subscriptionId
+    - requestId
+    - authorization
+    - appointmentId
+    - channel
+    - fortellisEventId
+    - sinkAuthorization
+    properties:
+      subscriptionId:
+        type: string
+        description: The Fortellis Marketplace subscription identifier.
+      requestId:
+        type: string
+        description: A correlation GUID echoed back across systems.
+      authorization:
+        type: string
+        description: The Fortellis token for the appointments API.
+      appointmentId:
+        type: string
+        description: The identifier of the appointment to relay.
+      channel:
+        type: integer
+        description: The relay channel the event was posted on.
+      fortellisEventId:
+        type: string
+        description: The unique Fortellis-assigned event identifier (UUID).
+      sinkAuthorization:
+        type: string
+        description: The credentials the relay uses to authenticate to the event sink.
+      dataOwnerId:
+        type: string
+        description: The Fortellis Organization Id the event represents (UUID).
+  steps:
+  - stepId: loadAppointment
+    description: >-
+      Read the service appointment that will be relayed as an event.
+    operationId: queryAppointment
+    parameters:
+    - name: appointmentId
+      in: path
+      value: $inputs.appointmentId
+    - name: Request-Id
+      in: header
+      value: $inputs.requestId
+    - name: Subscription-Id
+      in: header
+      value: $inputs.subscriptionId
+    - name: Authorization
+      in: header
+      value: $inputs.authorization
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      appointmentId: $response.body#/appointmentId
+      dateTime: $response.body#/dateTime
+      customerHref: $response.body#/customerHref
+      vehicleHref: $response.body#/vehicleHref
+  - stepId: relayEvent
+    description: >-
+      Post the appointment payload as an event onto the relay channel for the
+      event sink to process asynchronously.
+    operationId: postEvent
+    parameters:
+    - name: channel
+      in: path
+      value: $inputs.channel
+    - name: X-Request-Id
+      in: header
+      value: $inputs.requestId
+    - name: Fortellis-Event-Id
+      in: header
+      value: $inputs.fortellisEventId
+    - name: Authorization
+      in: header
+      value: $inputs.sinkAuthorization
+    - name: Data-Owner-Id
+      in: header
+      value: $inputs.dataOwnerId
+    requestBody:
+      contentType: application/json
+      payload:
+        appointmentId: $steps.loadAppointment.outputs.appointmentId
+        dateTime: $steps.loadAppointment.outputs.dateTime
+        customerHref: $steps.loadAppointment.outputs.customerHref
+        vehicleHref: $steps.loadAppointment.outputs.vehicleHref
+    successCriteria:
+    - condition: $statusCode == 202
+    outputs:
+      statusCode: $statusCode
+  outputs:
+    relayedAppointmentId: $steps.loadAppointment.outputs.appointmentId
+    relayStatus: $steps.relayEvent.outputs.statusCode
