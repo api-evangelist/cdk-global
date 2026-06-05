@@ -2,15 +2,14 @@ aid: cdk-global
 url: https://raw.githubusercontent.com/api-evangelist/cdk-global/main/apis.yml
 name: CDK Global
 description: >-
-  CDK Global is the dominant U.S. dealer management system (DMS) provider, serving roughly 15,000
-  automotive dealerships with software covering sales, F&I, fixed operations, parts, CRM, and
-  digital retail. CDK was spun out of ADP in 2014 and acquired by Brookfield Business Partners in
-  July 2022 for $8.3B (taken private). The company operates the Fortellis platform — a developer
-  marketplace and integration hub with 135+ published APIs, 425+ marketplace apps, 82,000+ dealer
-  integrations, and 6.7B+ API transactions per year — exposing CDK DMS data to ISVs, OEMs, and
-  third-party automotive systems. CDK suffered a major BlackSuit ransomware attack on June 19, 2024,
-  paying ~$25M in bitcoin to restore service over roughly two weeks; the outage caused an estimated
-  $605M in dealer losses and triggered numerous lawsuits.
+  CDK Global is the dominant U.S. dealer management system (DMS) provider, serving roughly 15,000 automotive dealerships
+  with software covering sales, F&I, fixed operations, parts, CRM, and digital retail. CDK was spun out of ADP in 2014
+  and acquired by Brookfield Business Partners in July 2022 for $8.3B (taken private). The company operates the
+  Fortellis platform — a developer marketplace and integration hub with 135+ published APIs, 425+ marketplace apps,
+  82,000+ dealer integrations, and 6.7B+ API transactions per year — exposing CDK DMS data to ISVs, OEMs, and
+  third-party automotive systems. CDK suffered a major BlackSuit ransomware attack on June 19, 2024, paying ~$25M in
+  bitcoin to restore service over roughly two weeks; the outage caused an estimated $605M in dealer losses and triggered
+  numerous lawsuits.
 image: https://avatars.githubusercontent.com/u/46600511
 tags:
   - Automotive
@@ -33,10 +32,10 @@ apis:
   - aid: cdk-global:fortellis-platform
     name: Fortellis Platform
     description: >-
-      Fortellis is CDK Global's open automotive commerce platform — an API gateway, app marketplace,
-      and developer community that brokers data flow between dealerships, ISVs, OEMs, heavy-truck,
-      and powersports systems. Fortellis publishes 135+ APIs, lists 425+ marketplace apps, and
-      processes 6.7B+ API transactions per year across 82K+ dealer integrations.
+      Fortellis is CDK Global's open automotive commerce platform — an API gateway, app marketplace, and developer
+      community that brokers data flow between dealerships, ISVs, OEMs, heavy-truck, and powersports systems. Fortellis
+      publishes 135+ APIs, lists 425+ marketplace apps, and processes 6.7B+ API transactions per year across 82K+ dealer
+      integrations.
     humanURL: https://fortellis.io
     baseURL: https://api.fortellis.io
     image: https://avatars.githubusercontent.com/u/46600511
@@ -64,9 +63,9 @@ apis:
   - aid: cdk-global:fortellis-appointments-api
     name: Fortellis Service Appointments API
     description: >-
-      Service-appointments API for booking, querying, updating, and cancelling vehicle service
-      appointments at a dealership service department. Used by scheduling systems integrating with
-      CDK and other DMS providers via Fortellis.
+      Service-appointments API for booking, querying, updating, and cancelling vehicle service appointments at a
+      dealership service department. Used by scheduling systems integrating with CDK and other DMS providers via
+      Fortellis.
     humanURL: https://apidocs.fortellis.io
     baseURL: https://api.fortellis.io/sales/notification/v3
     tags:
@@ -81,13 +80,11 @@ apis:
         url: https://apidocs.fortellis.io
       - type: SourceRepo
         url: https://github.com/Fortellis/example-spec
-      - type: NaftikoCapability
-        url: capabilities/fortellis-appointments.yaml
   - aid: cdk-global:fortellis-user-service-api
     name: Fortellis User / Booking Sessions API
     description: >-
-      Booking-sessions API illustrating Fortellis's REST conventions: session creation, item
-      management, store availability, and slot reservation for service scheduling workflows.
+      Booking-sessions API illustrating Fortellis's REST conventions: session creation, item management, store
+      availability, and slot reservation for service scheduling workflows.
     humanURL: https://apidocs.fortellis.io
     baseURL: https://api.fortellis.io/service/sessions/v4
     tags:
@@ -101,13 +98,11 @@ apis:
         url: https://apidocs.fortellis.io
       - type: SourceRepo
         url: https://github.com/Fortellis/example-spec
-      - type: NaftikoCapability
-        url: capabilities/fortellis-user-service.yaml
   - aid: cdk-global:fortellis-parts-store-api
     name: Fortellis Parts Store API
     description: >-
-      Parts-store reference API exposing product info, sizing, and ping/health for dealership parts
-      inventory and procurement integrations.
+      Parts-store reference API exposing product info, sizing, and ping/health for dealership parts inventory and
+      procurement integrations.
     humanURL: https://apidocs.fortellis.io
     baseURL: https://api.fortellis.io/sales/parts-store/v47
     tags:
@@ -121,13 +116,11 @@ apis:
         url: https://apidocs.fortellis.io
       - type: SourceRepo
         url: https://github.com/Fortellis/example-spec
-      - type: NaftikoCapability
-        url: capabilities/fortellis-parts-store.yaml
   - aid: cdk-global:fortellis-pet-adoption-api
     name: Fortellis Reference Pet Adoption API
     description: >-
-      Reference / tutorial API distributed by Fortellis for developers learning the platform's
-      OpenAPI conventions, OAuth flows, and admin-API patterns.
+      Reference / tutorial API distributed by Fortellis for developers learning the platform's OpenAPI conventions,
+      OAuth flows, and admin-API patterns.
     humanURL: https://apidocs.fortellis.io
     baseURL: https://api.fortellis.io/data/v1/example/pet-adoption
     tags:
@@ -139,15 +132,12 @@ apis:
         url: openapi/fortellis-pet-adoption-openapi.yml
       - type: SourceRepo
         url: https://github.com/Fortellis/example-spec
-      - type: NaftikoCapability
-        url: capabilities/fortellis-pet-adoption.yaml
   - aid: cdk-global:fortellis-event-relay-webhook
     name: Fortellis Event Relay Webhook
     description: >-
-      Webhook contract that event-sink applications implement to receive asynchronous events from
-      Fortellis Event Relay. Defines payload envelope, required headers (X-Request-Id,
-      Fortellis-Event-Id, Authorization, Data-Owner-Id), and retry semantics for guaranteed
-      delivery.
+      Webhook contract that event-sink applications implement to receive asynchronous events from Fortellis Event Relay.
+      Defines payload envelope, required headers (X-Request-Id, Fortellis-Event-Id, Authorization, Data-Owner-Id), and
+      retry semantics for guaranteed delivery.
     humanURL: https://github.com/Fortellis/Fortellis-Event-Relay-Webhook
     baseURL: https://api.fortellis.io/v1/webhook
     tags:
@@ -160,13 +150,11 @@ apis:
         url: openapi/fortellis-event-relay-webhook-openapi.yml
       - type: SourceRepo
         url: https://github.com/Fortellis/Fortellis-Event-Relay-Webhook
-      - type: NaftikoCapability
-        url: capabilities/fortellis-event-relay-webhook.yaml
   - aid: cdk-global:fortellis-event-relay-data-plane
     name: Fortellis Event Relay Data Plane Proxy (AsyncAPI)
     description: >-
-      AsyncAPI specification for the Fortellis Event Relay data-plane proxy used by event sources
-      to publish events into Fortellis for fan-out to subscribers.
+      AsyncAPI specification for the Fortellis Event Relay data-plane proxy used by event sources to publish events into
+      Fortellis for fan-out to subscribers.
     humanURL: https://github.com/Fortellis/Event-Relay-Specs
     tags:
       - Events
@@ -181,8 +169,8 @@ apis:
   - aid: cdk-global:fortellis-async-hello-world
     name: Fortellis AsyncAPI Hello World Reference
     description: >-
-      Hello World AsyncAPI reference distributed by Fortellis to teach the asynchronous API
-      pattern, channel topology, and message envelope conventions used across Fortellis event APIs.
+      Hello World AsyncAPI reference distributed by Fortellis to teach the asynchronous API pattern, channel topology,
+      and message envelope conventions used across Fortellis event APIs.
     humanURL: https://github.com/Fortellis/AsyncAPIHelloWorld
     tags:
       - AsyncAPI
@@ -195,48 +183,50 @@ apis:
       - type: SourceRepo
         url: https://github.com/Fortellis/AsyncAPIHelloWorld
 common:
+  - type: PostmanWorkspace
+    url: https://www.postman.com/kinlaneapi/cdk-global/overview
   - type: ArazzoWorkflows
     url: arazzo/
     workflows:
-    - url: arazzo/cdk-global-add-service-session-item-workflow.yml
-      name: CDK Global Add Service Session Item
-      summary: Create a booking session, add a requested service item, and read it back.
-    - url: arazzo/cdk-global-book-service-session-workflow.yml
-      name: CDK Global Book Service Session
-      summary: Create a booking session, discover an available store and slot, and book it.
-    - url: arazzo/cdk-global-cancel-appointment-workflow.yml
-      name: CDK Global Cancel Service Appointment
-      summary: Find a customer's appointment, confirm it exists, then cancel it with a reason.
-    - url: arazzo/cdk-global-create-data-record-workflow.yml
-      name: CDK Global Create Data Record
-      summary: Add a record to the data domain store and read it back by its identifier.
-    - url: arazzo/cdk-global-inspect-available-slot-workflow.yml
-      name: CDK Global Inspect Available Slot
-      summary: List a store's open slots and pull the full detail of the first slot.
-    - url: arazzo/cdk-global-parts-availability-check-workflow.yml
-      name: CDK Global Parts Availability Check
-      summary: Health-check the parts store, then look up a product only when it is up.
-    - url: arazzo/cdk-global-parts-inventory-lookup-workflow.yml
-      name: CDK Global Parts Inventory Lookup
-      summary: List parts inventory, pull a product's detail, then read its size.
-    - url: arazzo/cdk-global-relay-appointment-event-workflow.yml
-      name: CDK Global Relay Appointment Event
-      summary: Read a service appointment, then relay it as an event to an event sink.
-    - url: arazzo/cdk-global-remove-service-session-item-workflow.yml
-      name: CDK Global Remove Service Session Item
-      summary: Confirm a booking session item exists, then remove it from the session.
-    - url: arazzo/cdk-global-reschedule-appointment-workflow.yml
-      name: CDK Global Reschedule Service Appointment
-      summary: Read an existing appointment, update its date/time, then confirm the change.
-    - url: arazzo/cdk-global-schedule-service-appointment-workflow.yml
-      name: CDK Global Schedule Service Appointment
-      summary: Create a service appointment for a vehicle and read it back to confirm.
-    - url: arazzo/cdk-global-update-data-record-workflow.yml
-      name: CDK Global Update Data Record
-      summary: Read a data-domain record, branch on whether it exists, then update it.
-    - url: arazzo/cdk-global-update-service-session-item-workflow.yml
-      name: CDK Global Update Service Session Item
-      summary: Create a booking session, query a requested item, and update its details.
+      - url: arazzo/cdk-global-add-service-session-item-workflow.yml
+        name: CDK Global Add Service Session Item
+        summary: Create a booking session, add a requested service item, and read it back.
+      - url: arazzo/cdk-global-book-service-session-workflow.yml
+        name: CDK Global Book Service Session
+        summary: Create a booking session, discover an available store and slot, and book it.
+      - url: arazzo/cdk-global-cancel-appointment-workflow.yml
+        name: CDK Global Cancel Service Appointment
+        summary: Find a customer's appointment, confirm it exists, then cancel it with a reason.
+      - url: arazzo/cdk-global-create-data-record-workflow.yml
+        name: CDK Global Create Data Record
+        summary: Add a record to the data domain store and read it back by its identifier.
+      - url: arazzo/cdk-global-inspect-available-slot-workflow.yml
+        name: CDK Global Inspect Available Slot
+        summary: List a store's open slots and pull the full detail of the first slot.
+      - url: arazzo/cdk-global-parts-availability-check-workflow.yml
+        name: CDK Global Parts Availability Check
+        summary: Health-check the parts store, then look up a product only when it is up.
+      - url: arazzo/cdk-global-parts-inventory-lookup-workflow.yml
+        name: CDK Global Parts Inventory Lookup
+        summary: List parts inventory, pull a product's detail, then read its size.
+      - url: arazzo/cdk-global-relay-appointment-event-workflow.yml
+        name: CDK Global Relay Appointment Event
+        summary: Read a service appointment, then relay it as an event to an event sink.
+      - url: arazzo/cdk-global-remove-service-session-item-workflow.yml
+        name: CDK Global Remove Service Session Item
+        summary: Confirm a booking session item exists, then remove it from the session.
+      - url: arazzo/cdk-global-reschedule-appointment-workflow.yml
+        name: CDK Global Reschedule Service Appointment
+        summary: Read an existing appointment, update its date/time, then confirm the change.
+      - url: arazzo/cdk-global-schedule-service-appointment-workflow.yml
+        name: CDK Global Schedule Service Appointment
+        summary: Create a service appointment for a vehicle and read it back to confirm.
+      - url: arazzo/cdk-global-update-data-record-workflow.yml
+        name: CDK Global Update Data Record
+        summary: Read a data-domain record, branch on whether it exists, then update it.
+      - url: arazzo/cdk-global-update-service-session-item-workflow.yml
+        name: CDK Global Update Service Session Item
+        summary: Create a booking session, query a requested item, and update its details.
   - type: Website
     url: https://www.cdkglobal.com
   - type: Portal
@@ -303,7 +293,7 @@ x-fortune:
   - Fortune 1000
 x-ownership:
   parent: Brookfield Business Partners
-  acquiredDate: '2022-07'
+  acquiredDate: 2022-07
   acquisitionValueUSD: 8300000000
   publicStatus: private
 x-incidents:
@@ -315,9 +305,9 @@ x-incidents:
     estimatedDealerLossesUSD: 605000000
     recoveryDate: '2024-07-04'
     summary: >-
-      CDK Global suffered a BlackSuit ransomware attack that took most services offline, disrupting
-      thousands of U.S. and Canadian car dealerships. CDK paid ~$25M in bitcoin to restore access;
-      most dealers were restored by July 4, 2024.
+      CDK Global suffered a BlackSuit ransomware attack that took most services offline, disrupting thousands of U.S.
+      and Canadian car dealerships. CDK paid ~$25M in bitcoin to restore access; most dealers were restored by July 4,
+      2024.
 include: []
 maintainers:
   - FN: Kin Lane
