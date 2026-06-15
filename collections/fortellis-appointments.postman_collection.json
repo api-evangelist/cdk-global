@@ -1,0 +1,3362 @@
+{
+  "item": [
+    {
+      "id": "4a4f4ac5-1a28-44ca-8556-125a3ccdf039",
+      "name": "undefined",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [],
+      "event": []
+    },
+    {
+      "id": "1d6884ee-2b15-489d-b440-3b9a5f6347b2",
+      "name": "query",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "87740c18-616d-4c7b-af2b-b5560bad6dcf",
+          "name": "Query appointments",
+          "request": {
+            "name": "Query appointments",
+            "description": {
+              "content": "Query appointments",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "dateTimeInterval",
+                  "value": "<string>",
+                  "description": "The ISO 8601 data and time interval to filter the appointment query"
+                },
+                {
+                  "disabled": false,
+                  "key": "vehicleHref",
+                  "value": "<string>",
+                  "description": "The vehicle resource hyperlink to filter query results"
+                },
+                {
+                  "disabled": false,
+                  "key": "customerHref",
+                  "value": "<string>",
+                  "description": "The customer resource hyperlink to filter query results"
+                },
+                {
+                  "disabled": false,
+                  "key": "advisorHref",
+                  "value": "<string>",
+                  "description": "The advisor resource hyperlink to filter query results"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "This header describes the characters that the client will accept.",
+                "key": "Accept-Charset",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "This header describes the languages that the client accepts.",
+                "key": "Accept-Language",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "Specifies a conditional request to only return the resource when it does match one of the included ETag values",
+                "key": "If-Match",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "Specifies a conditional request to only return the resource when it doesn't match one of the included ETag values",
+                "key": "If-None-Match",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "This header describes the preferences of the client calling the API.",
+                "key": "Prefer",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) You must include the Request-Id in every call to track the same call across systems.",
+                "key": "Request-Id",
+                "value": "<guid>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.",
+                "key": "Subscription-Id",
+                "value": "<guid>"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fd2c5037-74c8-4b5c-85d1-e1aae49f3f7d",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "dateTimeInterval",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "vehicleHref",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "customerHref",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "advisorHref",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the characters that the API will accept.",
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the characters that the client will accept.",
+                    "key": "Accept-Charset",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the languages that the client accepts.",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specifies a conditional request to only return the resource when it does match one of the included ETag values",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specifies a conditional request to only return the resource when it doesn't match one of the included ETag values",
+                    "key": "If-None-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the preferences of the client calling the API.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) You must include the Request-Id in every call to track the same call across systems.",
+                    "key": "Request-Id",
+                    "value": "<guid>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.",
+                    "key": "Subscription-Id",
+                    "value": "<guid>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Provides authorization to access Fortellis APIs. For calling a Fortellis Provider, this must be an OAuth 2.0 token issued by the Fortellis authorization server, but you may call the simulator platform with Basic Authorization using your API key and secret.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "Request-Id",
+                  "value": "string",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"items\": {\n    \"appointmentId\": \"123\",\n    \"dateTime\": \"2019-06-10T16:15:00+08:00\",\n    \"requestedServices\": [\n      {\n        \"description\": \"Filler, Tail Lamp Center - Replace (Labor Only)\",\n        \"sourceHref\": \"api.fortellis.io/service/reference/v4/service-packages/model/CHEV-CAMAC-2001-US/packages/BF018/specifications/8994972\"\n      }\n    ],\n    \"vehicleHref\": \"api.fortellis.io/service/v1/vehicles/123\",\n    \"vehicleMileage\": {\n      \"value\": 75201,\n      \"units\": \"MILES\"\n    },\n    \"customerHref\": \"api.fortellis.io/service/v1/customers/123\",\n    \"contact\": {\n      \"label\": \"mobile\",\n      \"uri\": \"tel:1-234-567-8900\",\n      \"preferences\": [\n        {\n          \"startDay\": \"MON\",\n          \"endDay\": \"FRI\",\n          \"startTime\": \"1000\",\n          \"endTime\": \"1600\"\n        }\n      ]\n    },\n    \"transportHref\": \"api.fortellis.io/service/v1/scheduling/lookups/transports/123\",\n    \"advisorHref\": \"api.fortellis.io/service/v1/scheduling/lookups/advisors/123\",\n    \"concerns\": \"My driver side front door rattles when I drive faster than 45\",\n    \"remarks\": \"Customer reports that driver side front door exhibits a rattle above 45mph\",\n    \"links\": {\n      \"self\": {\n        \"href\": \"api.fortellis.io/service/v3/appointments/123\"\n      }\n    }\n  },\n  \"totalItems\": 1,\n  \"totalPages\": 1,\n  \"links\": {\n    \"first\": {\n      \"href\": \"api.fortellis.io/service/v3/appointments?page=1&pageSize=1\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2ddd6912-a809-49d1-ae11-5e9773678d6f",
+              "name": "400 - Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "dateTimeInterval",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "vehicleHref",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "customerHref",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "advisorHref",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the characters that the API will accept.",
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the characters that the client will accept.",
+                    "key": "Accept-Charset",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the languages that the client accepts.",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specifies a conditional request to only return the resource when it does match one of the included ETag values",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specifies a conditional request to only return the resource when it doesn't match one of the included ETag values",
+                    "key": "If-None-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the preferences of the client calling the API.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) You must include the Request-Id in every call to track the same call across systems.",
+                    "key": "Request-Id",
+                    "value": "<guid>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.",
+                    "key": "Subscription-Id",
+                    "value": "<guid>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Provides authorization to access Fortellis APIs. For calling a Fortellis Provider, this must be an OAuth 2.0 token issued by the Fortellis authorization server, but you may call the simulator platform with Basic Authorization using your API key and secret.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "Content-Language",
+                  "value": "string",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Request-Id",
+                  "value": "string",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"code\": 24,\n  \"message\": \"Error Message used for debugging\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6e70b326-1d07-4a8c-983d-c765281762ac",
+              "name": "401 - Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "dateTimeInterval",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "vehicleHref",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "customerHref",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "advisorHref",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the characters that the API will accept.",
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the characters that the client will accept.",
+                    "key": "Accept-Charset",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the languages that the client accepts.",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specifies a conditional request to only return the resource when it does match one of the included ETag values",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specifies a conditional request to only return the resource when it doesn't match one of the included ETag values",
+                    "key": "If-None-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the preferences of the client calling the API.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) You must include the Request-Id in every call to track the same call across systems.",
+                    "key": "Request-Id",
+                    "value": "<guid>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.",
+                    "key": "Subscription-Id",
+                    "value": "<guid>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Provides authorization to access Fortellis APIs. For calling a Fortellis Provider, this must be an OAuth 2.0 token issued by the Fortellis authorization server, but you may call the simulator platform with Basic Authorization using your API key and secret.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "Content-Language",
+                  "value": "string",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Request-Id",
+                  "value": "string",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"code\": 24,\n  \"message\": \"Error Message used for debugging\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4a8be8b8-6427-44e3-b1bd-1635d72ff22c",
+              "name": "403 - Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "dateTimeInterval",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "vehicleHref",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "customerHref",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "advisorHref",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the characters that the API will accept.",
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the characters that the client will accept.",
+                    "key": "Accept-Charset",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the languages that the client accepts.",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specifies a conditional request to only return the resource when it does match one of the included ETag values",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specifies a conditional request to only return the resource when it doesn't match one of the included ETag values",
+                    "key": "If-None-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the preferences of the client calling the API.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) You must include the Request-Id in every call to track the same call across systems.",
+                    "key": "Request-Id",
+                    "value": "<guid>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.",
+                    "key": "Subscription-Id",
+                    "value": "<guid>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Provides authorization to access Fortellis APIs. For calling a Fortellis Provider, this must be an OAuth 2.0 token issued by the Fortellis authorization server, but you may call the simulator platform with Basic Authorization using your API key and secret.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "Content-Language",
+                  "value": "string",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Request-Id",
+                  "value": "string",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"code\": 24,\n  \"message\": \"Error Message used for debugging\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "df55ac0e-4e5e-42d8-84e2-a9d9ecdebe61",
+          "name": "Query an appointment",
+          "request": {
+            "name": "Query an appointment",
+            "description": {
+              "content": "Query an appointment",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":appointmentId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "appointmentId",
+                  "description": "(Required) The appointment identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "This header describes the characters that the client will accept.",
+                "key": "Accept-Charset",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "This header describes the languages that the client accepts.",
+                "key": "Accept-Language",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "Specifies a conditional request to only return the resource when it does match one of the included ETag values",
+                "key": "If-Match",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "Specifies a conditional request to only return the resource when it doesn't match one of the included ETag values",
+                "key": "If-None-Match",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "This header describes the preferences of the client calling the API.",
+                "key": "Prefer",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) You must include the Request-Id in every call to track the same call across systems.",
+                "key": "Request-Id",
+                "value": "<guid>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.",
+                "key": "Subscription-Id",
+                "value": "<guid>"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9a0f838f-13f5-4da8-8acd-00250f320d08",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":appointmentId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "appointmentId",
+                      "description": "(Required) The appointment identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the characters that the API will accept.",
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the characters that the client will accept.",
+                    "key": "Accept-Charset",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the languages that the client accepts.",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specifies a conditional request to only return the resource when it does match one of the included ETag values",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specifies a conditional request to only return the resource when it doesn't match one of the included ETag values",
+                    "key": "If-None-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the preferences of the client calling the API.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) You must include the Request-Id in every call to track the same call across systems.",
+                    "key": "Request-Id",
+                    "value": "<guid>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.",
+                    "key": "Subscription-Id",
+                    "value": "<guid>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Provides authorization to access Fortellis APIs. For calling a Fortellis Provider, this must be an OAuth 2.0 token issued by the Fortellis authorization server, but you may call the simulator platform with Basic Authorization using your API key and secret.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "Request-Id",
+                  "value": "string",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Preference-Applied",
+                  "value": "return=minimal",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"appointmentId\": \"string\",\n  \"dateTime\": \"<string>\",\n  \"links\": {\n    \"self\": {\n      \"href\": \"api.fortellis.io/service/v3/appointments/123\"\n    }\n  },\n  \"requestedServices\": [\n    {\n      \"description\": \"Replace Air Filter\",\n      \"sourceHref\": \"api.fortellis.io/service/reference/v4/service-packages/model/CHEV-CAMAC-2001-US/packages/BF018/specifications/8994972\"\n    },\n    {\n      \"description\": \"Replace Air Filter\",\n      \"sourceHref\": \"api.fortellis.io/service/reference/v4/service-packages/model/CHEV-CAMAC-2001-US/packages/BF018/specifications/8994972\"\n    }\n  ],\n  \"vehicleHref\": \"<string>\",\n  \"vehicleSpec\": {\n    \"makeCode\": \"CHEV\",\n    \"modelCode\": \"CAMAC\",\n    \"modelYear\": 2001\n  },\n  \"vehicleMileage\": {\n    \"value\": 75201,\n    \"units\": \"MILES\"\n  },\n  \"customerHref\": \"<string>\",\n  \"contact\": {\n    \"label\": \"Home Information\",\n    \"uri\": \"https://examle.com/person/contact\",\n    \"preferences\": {\n      \"items\": {\n        \"startDay\": [\n          \"MON\"\n        ],\n        \"endDay\": [\n          \"SAT\"\n        ],\n        \"startTime\": \"1985-04-12T23:20:50.52Z\",\n        \"endTime\": \"1985-04-18T23:20:50.52Z\",\n        \"timezone\": \"CST\"\n      }\n    }\n  },\n  \"transportHref\": \"<string>\",\n  \"advisorHref\": \"<string>\",\n  \"teamHref\": \"<string>\",\n  \"concerns\": \"<string>\",\n  \"remarks\": \"<string>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2f7d6364-9be5-4cf0-84fc-e194f0bf72af",
+              "name": "400 - Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":appointmentId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "appointmentId",
+                      "description": "(Required) The appointment identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the characters that the API will accept.",
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the characters that the client will accept.",
+                    "key": "Accept-Charset",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the languages that the client accepts.",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specifies a conditional request to only return the resource when it does match one of the included ETag values",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specifies a conditional request to only return the resource when it doesn't match one of the included ETag values",
+                    "key": "If-None-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the preferences of the client calling the API.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) You must include the Request-Id in every call to track the same call across systems.",
+                    "key": "Request-Id",
+                    "value": "<guid>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.",
+                    "key": "Subscription-Id",
+                    "value": "<guid>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Provides authorization to access Fortellis APIs. For calling a Fortellis Provider, this must be an OAuth 2.0 token issued by the Fortellis authorization server, but you may call the simulator platform with Basic Authorization using your API key and secret.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "Content-Language",
+                  "value": "string",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Request-Id",
+                  "value": "string",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"code\": 24,\n  \"message\": \"Error Message used for debugging\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ae111262-29f3-45e2-a715-9449d3dd2e8a",
+              "name": "401 - Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":appointmentId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "appointmentId",
+                      "description": "(Required) The appointment identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the characters that the API will accept.",
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the characters that the client will accept.",
+                    "key": "Accept-Charset",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the languages that the client accepts.",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specifies a conditional request to only return the resource when it does match one of the included ETag values",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specifies a conditional request to only return the resource when it doesn't match one of the included ETag values",
+                    "key": "If-None-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the preferences of the client calling the API.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) You must include the Request-Id in every call to track the same call across systems.",
+                    "key": "Request-Id",
+                    "value": "<guid>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.",
+                    "key": "Subscription-Id",
+                    "value": "<guid>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Provides authorization to access Fortellis APIs. For calling a Fortellis Provider, this must be an OAuth 2.0 token issued by the Fortellis authorization server, but you may call the simulator platform with Basic Authorization using your API key and secret.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "Content-Language",
+                  "value": "string",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Request-Id",
+                  "value": "string",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"code\": 24,\n  \"message\": \"Error Message used for debugging\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "36e07c21-0016-40dd-b6a9-d3f46a7d0c8d",
+              "name": "403 - Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":appointmentId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "appointmentId",
+                      "description": "(Required) The appointment identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the characters that the API will accept.",
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the characters that the client will accept.",
+                    "key": "Accept-Charset",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the languages that the client accepts.",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specifies a conditional request to only return the resource when it does match one of the included ETag values",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specifies a conditional request to only return the resource when it doesn't match one of the included ETag values",
+                    "key": "If-None-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the preferences of the client calling the API.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) You must include the Request-Id in every call to track the same call across systems.",
+                    "key": "Request-Id",
+                    "value": "<guid>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.",
+                    "key": "Subscription-Id",
+                    "value": "<guid>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Provides authorization to access Fortellis APIs. For calling a Fortellis Provider, this must be an OAuth 2.0 token issued by the Fortellis authorization server, but you may call the simulator platform with Basic Authorization using your API key and secret.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "Content-Language",
+                  "value": "string",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Request-Id",
+                  "value": "string",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"code\": 24,\n  \"message\": \"Error Message used for debugging\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fc0398c7-e03d-41ce-9be5-92583d3bd72f",
+              "name": "404 - Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":appointmentId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "appointmentId",
+                      "description": "(Required) The appointment identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the characters that the API will accept.",
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the characters that the client will accept.",
+                    "key": "Accept-Charset",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the languages that the client accepts.",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specifies a conditional request to only return the resource when it does match one of the included ETag values",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specifies a conditional request to only return the resource when it doesn't match one of the included ETag values",
+                    "key": "If-None-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the preferences of the client calling the API.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) You must include the Request-Id in every call to track the same call across systems.",
+                    "key": "Request-Id",
+                    "value": "<guid>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.",
+                    "key": "Subscription-Id",
+                    "value": "<guid>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Provides authorization to access Fortellis APIs. For calling a Fortellis Provider, this must be an OAuth 2.0 token issued by the Fortellis authorization server, but you may call the simulator platform with Basic Authorization using your API key and secret.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "Content-Language",
+                  "value": "string",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Request-Id",
+                  "value": "string",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"code\": 24,\n  \"message\": \"Error Message used for debugging\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "e5553a02-995f-49d9-8dc5-bec499d5a734",
+      "name": "create",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "605e5604-1ab8-4134-b70b-f5c41391113a",
+          "name": "Create an appointment",
+          "request": {
+            "name": "Create an appointment",
+            "description": {
+              "content": "Creates an appointment.  Creating an appointment using this endpoint does not require the underlying system to implement any appointment capacity checks or dependent resource reservations. It is suggested that the service-scheduling API be used for this purpose.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "This header describes the characters that the client will accept.",
+                "key": "Accept-Charset",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "This header describes the languages that the client accepts.",
+                "key": "Accept-Language",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "Specifies a conditional request to only return the resource when it does match one of the included ETag values",
+                "key": "If-Match",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "Specifies a conditional request to only return the resource when it doesn't match one of the included ETag values",
+                "key": "If-None-Match",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "This header describes the preferences of the client calling the API.",
+                "key": "Prefer",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) You must include the Request-Id in every call to track the same call across systems.",
+                "key": "Request-Id",
+                "value": "<guid>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.",
+                "key": "Subscription-Id",
+                "value": "<guid>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"dateTime\": \"<string>\",\n  \"requestedServices\": [\n    {\n      \"description\": \"<string>\",\n      \"concern\": \"<string>\",\n      \"sourceHref\": \"<string>\",\n      \"overrides\": {\n        \"quote\": {\n          \"currencyCode\": \"<string>\",\n          \"netPrice\": \"<number>\",\n          \"grossValue\": \"<number>\",\n          \"taxValue\": \"<number>\",\n          \"taxRate\": \"<number>\",\n          \"netDiscountedPrice\": \"<number>\",\n          \"grossDiscountedPrice\": \"<number>\"\n        }\n      }\n    },\n    {\n      \"description\": \"<string>\",\n      \"concern\": \"<string>\",\n      \"sourceHref\": \"<string>\",\n      \"overrides\": {\n        \"quote\": {\n          \"currencyCode\": \"<string>\",\n          \"netPrice\": \"<number>\",\n          \"grossValue\": \"<number>\",\n          \"taxValue\": \"<number>\",\n          \"taxRate\": \"<number>\",\n          \"netDiscountedPrice\": \"<number>\",\n          \"grossDiscountedPrice\": \"<number>\"\n        }\n      }\n    }\n  ],\n  \"vehicleHref\": \"<string>\",\n  \"vehicleSpec\": {\n    \"makeCode\": \"<string>\",\n    \"modelCode\": \"<string>\",\n    \"modelYear\": \"<number>\"\n  },\n  \"vehicleMileage\": {\n    \"units\": \"<string>\",\n    \"value\": \"<number>\"\n  },\n  \"customerHref\": \"<string>\",\n  \"contact\": {\n    \"label\": \"<string>\",\n    \"uri\": \"<string>\",\n    \"preferences\": \"<object>\"\n  },\n  \"transportHref\": \"<string>\",\n  \"advisorHref\": \"<string>\",\n  \"teamHref\": \"<string>\",\n  \"concerns\": \"<string>\",\n  \"remarks\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "45365ea9-8f33-43cb-b375-814736e08867",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the characters that the API will accept.",
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the characters that the client will accept.",
+                    "key": "Accept-Charset",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the languages that the client accepts.",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specifies a conditional request to only return the resource when it does match one of the included ETag values",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specifies a conditional request to only return the resource when it doesn't match one of the included ETag values",
+                    "key": "If-None-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the preferences of the client calling the API.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) You must include the Request-Id in every call to track the same call across systems.",
+                    "key": "Request-Id",
+                    "value": "<guid>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.",
+                    "key": "Subscription-Id",
+                    "value": "<guid>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Provides authorization to access Fortellis APIs. For calling a Fortellis Provider, this must be an OAuth 2.0 token issued by the Fortellis authorization server, but you may call the simulator platform with Basic Authorization using your API key and secret.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"dateTime\": \"<string>\",\n  \"requestedServices\": [\n    {\n      \"description\": \"Replace Air Filter\",\n      \"sourceHref\": \"api.fortellis.io/service/reference/v4/service-packages/model/CHEV-CAMAC-2001-US/packages/BF018/specifications/8994972\"\n    },\n    {\n      \"description\": \"Replace Air Filter\",\n      \"sourceHref\": \"api.fortellis.io/service/reference/v4/service-packages/model/CHEV-CAMAC-2001-US/packages/BF018/specifications/8994972\"\n    }\n  ],\n  \"vehicleHref\": \"<string>\",\n  \"vehicleSpec\": {\n    \"makeCode\": \"CHEV\",\n    \"modelCode\": \"CAMAC\",\n    \"modelYear\": 2001\n  },\n  \"vehicleMileage\": {\n    \"value\": 75201,\n    \"units\": \"MILES\"\n  },\n  \"customerHref\": \"<string>\",\n  \"contact\": {\n    \"label\": \"Home Information\",\n    \"uri\": \"https://examle.com/person/contact\",\n    \"preferences\": {\n      \"items\": {\n        \"startDay\": [\n          \"MON\"\n        ],\n        \"endDay\": [\n          \"SAT\"\n        ],\n        \"startTime\": \"1985-04-12T23:20:50.52Z\",\n        \"endTime\": \"1985-04-18T23:20:50.52Z\",\n        \"timezone\": \"CST\"\n      }\n    }\n  },\n  \"transportHref\": \"<string>\",\n  \"advisorHref\": \"<string>\",\n  \"teamHref\": \"<string>\",\n  \"concerns\": \"<string>\",\n  \"remarks\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "Request-Id",
+                  "value": "string",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Preference-Applied",
+                  "value": "return=minimal",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"appointmentId\": \"string\",\n  \"dateTime\": \"<string>\",\n  \"links\": {\n    \"self\": {\n      \"href\": \"api.fortellis.io/service/v3/appointments/123\"\n    }\n  },\n  \"requestedServices\": [\n    {\n      \"description\": \"Replace Air Filter\",\n      \"sourceHref\": \"api.fortellis.io/service/reference/v4/service-packages/model/CHEV-CAMAC-2001-US/packages/BF018/specifications/8994972\"\n    },\n    {\n      \"description\": \"Replace Air Filter\",\n      \"sourceHref\": \"api.fortellis.io/service/reference/v4/service-packages/model/CHEV-CAMAC-2001-US/packages/BF018/specifications/8994972\"\n    }\n  ],\n  \"vehicleHref\": \"<string>\",\n  \"vehicleSpec\": {\n    \"makeCode\": \"CHEV\",\n    \"modelCode\": \"CAMAC\",\n    \"modelYear\": 2001\n  },\n  \"vehicleMileage\": {\n    \"value\": 75201,\n    \"units\": \"MILES\"\n  },\n  \"customerHref\": \"<string>\",\n  \"contact\": {\n    \"label\": \"Home Information\",\n    \"uri\": \"https://examle.com/person/contact\",\n    \"preferences\": {\n      \"items\": {\n        \"startDay\": [\n          \"MON\"\n        ],\n        \"endDay\": [\n          \"SAT\"\n        ],\n        \"startTime\": \"1985-04-12T23:20:50.52Z\",\n        \"endTime\": \"1985-04-18T23:20:50.52Z\",\n        \"timezone\": \"CST\"\n      }\n    }\n  },\n  \"transportHref\": \"<string>\",\n  \"advisorHref\": \"<string>\",\n  \"teamHref\": \"<string>\",\n  \"concerns\": \"<string>\",\n  \"remarks\": \"<string>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9abe7538-c0ab-4020-8062-f097dc9a866d",
+              "name": "400 - Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the characters that the API will accept.",
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the characters that the client will accept.",
+                    "key": "Accept-Charset",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the languages that the client accepts.",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specifies a conditional request to only return the resource when it does match one of the included ETag values",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specifies a conditional request to only return the resource when it doesn't match one of the included ETag values",
+                    "key": "If-None-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the preferences of the client calling the API.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) You must include the Request-Id in every call to track the same call across systems.",
+                    "key": "Request-Id",
+                    "value": "<guid>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.",
+                    "key": "Subscription-Id",
+                    "value": "<guid>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Provides authorization to access Fortellis APIs. For calling a Fortellis Provider, this must be an OAuth 2.0 token issued by the Fortellis authorization server, but you may call the simulator platform with Basic Authorization using your API key and secret.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"dateTime\": \"<string>\",\n  \"requestedServices\": [\n    {\n      \"description\": \"Replace Air Filter\",\n      \"sourceHref\": \"api.fortellis.io/service/reference/v4/service-packages/model/CHEV-CAMAC-2001-US/packages/BF018/specifications/8994972\"\n    },\n    {\n      \"description\": \"Replace Air Filter\",\n      \"sourceHref\": \"api.fortellis.io/service/reference/v4/service-packages/model/CHEV-CAMAC-2001-US/packages/BF018/specifications/8994972\"\n    }\n  ],\n  \"vehicleHref\": \"<string>\",\n  \"vehicleSpec\": {\n    \"makeCode\": \"CHEV\",\n    \"modelCode\": \"CAMAC\",\n    \"modelYear\": 2001\n  },\n  \"vehicleMileage\": {\n    \"value\": 75201,\n    \"units\": \"MILES\"\n  },\n  \"customerHref\": \"<string>\",\n  \"contact\": {\n    \"label\": \"Home Information\",\n    \"uri\": \"https://examle.com/person/contact\",\n    \"preferences\": {\n      \"items\": {\n        \"startDay\": [\n          \"MON\"\n        ],\n        \"endDay\": [\n          \"SAT\"\n        ],\n        \"startTime\": \"1985-04-12T23:20:50.52Z\",\n        \"endTime\": \"1985-04-18T23:20:50.52Z\",\n        \"timezone\": \"CST\"\n      }\n    }\n  },\n  \"transportHref\": \"<string>\",\n  \"advisorHref\": \"<string>\",\n  \"teamHref\": \"<string>\",\n  \"concerns\": \"<string>\",\n  \"remarks\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "Content-Language",
+                  "value": "string",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Request-Id",
+                  "value": "string",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"code\": 24,\n  \"message\": \"Error Message used for debugging\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3f087dc6-dc3e-42f4-9620-1a7ead8c2c0c",
+              "name": "401 - Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the characters that the API will accept.",
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the characters that the client will accept.",
+                    "key": "Accept-Charset",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the languages that the client accepts.",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specifies a conditional request to only return the resource when it does match one of the included ETag values",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specifies a conditional request to only return the resource when it doesn't match one of the included ETag values",
+                    "key": "If-None-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the preferences of the client calling the API.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) You must include the Request-Id in every call to track the same call across systems.",
+                    "key": "Request-Id",
+                    "value": "<guid>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.",
+                    "key": "Subscription-Id",
+                    "value": "<guid>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Provides authorization to access Fortellis APIs. For calling a Fortellis Provider, this must be an OAuth 2.0 token issued by the Fortellis authorization server, but you may call the simulator platform with Basic Authorization using your API key and secret.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"dateTime\": \"<string>\",\n  \"requestedServices\": [\n    {\n      \"description\": \"Replace Air Filter\",\n      \"sourceHref\": \"api.fortellis.io/service/reference/v4/service-packages/model/CHEV-CAMAC-2001-US/packages/BF018/specifications/8994972\"\n    },\n    {\n      \"description\": \"Replace Air Filter\",\n      \"sourceHref\": \"api.fortellis.io/service/reference/v4/service-packages/model/CHEV-CAMAC-2001-US/packages/BF018/specifications/8994972\"\n    }\n  ],\n  \"vehicleHref\": \"<string>\",\n  \"vehicleSpec\": {\n    \"makeCode\": \"CHEV\",\n    \"modelCode\": \"CAMAC\",\n    \"modelYear\": 2001\n  },\n  \"vehicleMileage\": {\n    \"value\": 75201,\n    \"units\": \"MILES\"\n  },\n  \"customerHref\": \"<string>\",\n  \"contact\": {\n    \"label\": \"Home Information\",\n    \"uri\": \"https://examle.com/person/contact\",\n    \"preferences\": {\n      \"items\": {\n        \"startDay\": [\n          \"MON\"\n        ],\n        \"endDay\": [\n          \"SAT\"\n        ],\n        \"startTime\": \"1985-04-12T23:20:50.52Z\",\n        \"endTime\": \"1985-04-18T23:20:50.52Z\",\n        \"timezone\": \"CST\"\n      }\n    }\n  },\n  \"transportHref\": \"<string>\",\n  \"advisorHref\": \"<string>\",\n  \"teamHref\": \"<string>\",\n  \"concerns\": \"<string>\",\n  \"remarks\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "Content-Language",
+                  "value": "string",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Request-Id",
+                  "value": "string",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"code\": 24,\n  \"message\": \"Error Message used for debugging\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cdd1c4e8-8bfe-401d-b46d-789f94dcb68e",
+              "name": "403 - Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the characters that the API will accept.",
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the characters that the client will accept.",
+                    "key": "Accept-Charset",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the languages that the client accepts.",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specifies a conditional request to only return the resource when it does match one of the included ETag values",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specifies a conditional request to only return the resource when it doesn't match one of the included ETag values",
+                    "key": "If-None-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the preferences of the client calling the API.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) You must include the Request-Id in every call to track the same call across systems.",
+                    "key": "Request-Id",
+                    "value": "<guid>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.",
+                    "key": "Subscription-Id",
+                    "value": "<guid>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Provides authorization to access Fortellis APIs. For calling a Fortellis Provider, this must be an OAuth 2.0 token issued by the Fortellis authorization server, but you may call the simulator platform with Basic Authorization using your API key and secret.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"dateTime\": \"<string>\",\n  \"requestedServices\": [\n    {\n      \"description\": \"Replace Air Filter\",\n      \"sourceHref\": \"api.fortellis.io/service/reference/v4/service-packages/model/CHEV-CAMAC-2001-US/packages/BF018/specifications/8994972\"\n    },\n    {\n      \"description\": \"Replace Air Filter\",\n      \"sourceHref\": \"api.fortellis.io/service/reference/v4/service-packages/model/CHEV-CAMAC-2001-US/packages/BF018/specifications/8994972\"\n    }\n  ],\n  \"vehicleHref\": \"<string>\",\n  \"vehicleSpec\": {\n    \"makeCode\": \"CHEV\",\n    \"modelCode\": \"CAMAC\",\n    \"modelYear\": 2001\n  },\n  \"vehicleMileage\": {\n    \"value\": 75201,\n    \"units\": \"MILES\"\n  },\n  \"customerHref\": \"<string>\",\n  \"contact\": {\n    \"label\": \"Home Information\",\n    \"uri\": \"https://examle.com/person/contact\",\n    \"preferences\": {\n      \"items\": {\n        \"startDay\": [\n          \"MON\"\n        ],\n        \"endDay\": [\n          \"SAT\"\n        ],\n        \"startTime\": \"1985-04-12T23:20:50.52Z\",\n        \"endTime\": \"1985-04-18T23:20:50.52Z\",\n        \"timezone\": \"CST\"\n      }\n    }\n  },\n  \"transportHref\": \"<string>\",\n  \"advisorHref\": \"<string>\",\n  \"teamHref\": \"<string>\",\n  \"concerns\": \"<string>\",\n  \"remarks\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "Content-Language",
+                  "value": "string",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Request-Id",
+                  "value": "string",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"code\": 24,\n  \"message\": \"Error Message used for debugging\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "027016ff-af38-4f56-86f4-52d75950971e",
+      "name": "update",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d8cebd3c-acfd-4369-b34a-7cf0788e0c8c",
+          "name": "Update an appointment",
+          "request": {
+            "name": "Update an appointment",
+            "description": {
+              "content": "Update an appointment.  This method does not guarantee that resource reservations associated with the appointment (advisors, transports, reserved equipment/parts) will be updated.  It is suggested that the service-scheduling API be used for this purpose.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":appointmentId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "appointmentId",
+                  "description": "(Required) The appointment identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "This header describes the characters that the client will accept.",
+                "key": "Accept-Charset",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "This header describes the languages that the client accepts.",
+                "key": "Accept-Language",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "Specifies a conditional request to only return the resource when it does match one of the included ETag values",
+                "key": "If-Match",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "Specifies a conditional request to only return the resource when it doesn't match one of the included ETag values",
+                "key": "If-None-Match",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "This header describes the preferences of the client calling the API.",
+                "key": "Prefer",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) You must include the Request-Id in every call to track the same call across systems.",
+                "key": "Request-Id",
+                "value": "<guid>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.",
+                "key": "Subscription-Id",
+                "value": "<guid>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"dateTime\": \"<string>\",\n  \"requestedServices\": [\n    {\n      \"description\": \"<string>\",\n      \"concern\": \"<string>\",\n      \"sourceHref\": \"<string>\",\n      \"overrides\": {\n        \"quote\": {\n          \"currencyCode\": \"<string>\",\n          \"netPrice\": \"<number>\",\n          \"grossValue\": \"<number>\",\n          \"taxValue\": \"<number>\",\n          \"taxRate\": \"<number>\",\n          \"netDiscountedPrice\": \"<number>\",\n          \"grossDiscountedPrice\": \"<number>\"\n        }\n      }\n    },\n    {\n      \"description\": \"<string>\",\n      \"concern\": \"<string>\",\n      \"sourceHref\": \"<string>\",\n      \"overrides\": {\n        \"quote\": {\n          \"currencyCode\": \"<string>\",\n          \"netPrice\": \"<number>\",\n          \"grossValue\": \"<number>\",\n          \"taxValue\": \"<number>\",\n          \"taxRate\": \"<number>\",\n          \"netDiscountedPrice\": \"<number>\",\n          \"grossDiscountedPrice\": \"<number>\"\n        }\n      }\n    }\n  ],\n  \"vehicleHref\": \"<string>\",\n  \"vehicleSpec\": {\n    \"makeCode\": \"<string>\",\n    \"modelCode\": \"<string>\",\n    \"modelYear\": \"<number>\"\n  },\n  \"vehicleMileage\": {\n    \"units\": \"<string>\",\n    \"value\": \"<number>\"\n  },\n  \"customerHref\": \"<string>\",\n  \"contact\": {\n    \"label\": \"<string>\",\n    \"uri\": \"<string>\",\n    \"preferences\": \"<object>\"\n  },\n  \"transportHref\": \"<string>\",\n  \"advisorHref\": \"<string>\",\n  \"teamHref\": \"<string>\",\n  \"concerns\": \"<string>\",\n  \"remarks\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "af49cff9-78ea-4506-bfd3-7807d8471acb",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":appointmentId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "appointmentId",
+                      "description": "(Required) The appointment identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the characters that the API will accept.",
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the characters that the client will accept.",
+                    "key": "Accept-Charset",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the languages that the client accepts.",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specifies a conditional request to only return the resource when it does match one of the included ETag values",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specifies a conditional request to only return the resource when it doesn't match one of the included ETag values",
+                    "key": "If-None-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the preferences of the client calling the API.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) You must include the Request-Id in every call to track the same call across systems.",
+                    "key": "Request-Id",
+                    "value": "<guid>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.",
+                    "key": "Subscription-Id",
+                    "value": "<guid>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Provides authorization to access Fortellis APIs. For calling a Fortellis Provider, this must be an OAuth 2.0 token issued by the Fortellis authorization server, but you may call the simulator platform with Basic Authorization using your API key and secret.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"dateTime\": \"<string>\",\n  \"requestedServices\": [\n    {\n      \"description\": \"Replace Air Filter\",\n      \"sourceHref\": \"api.fortellis.io/service/reference/v4/service-packages/model/CHEV-CAMAC-2001-US/packages/BF018/specifications/8994972\"\n    },\n    {\n      \"description\": \"Replace Air Filter\",\n      \"sourceHref\": \"api.fortellis.io/service/reference/v4/service-packages/model/CHEV-CAMAC-2001-US/packages/BF018/specifications/8994972\"\n    }\n  ],\n  \"vehicleHref\": \"<string>\",\n  \"vehicleSpec\": {\n    \"makeCode\": \"CHEV\",\n    \"modelCode\": \"CAMAC\",\n    \"modelYear\": 2001\n  },\n  \"vehicleMileage\": {\n    \"value\": 75201,\n    \"units\": \"MILES\"\n  },\n  \"customerHref\": \"<string>\",\n  \"contact\": {\n    \"label\": \"Home Information\",\n    \"uri\": \"https://examle.com/person/contact\",\n    \"preferences\": {\n      \"items\": {\n        \"startDay\": [\n          \"MON\"\n        ],\n        \"endDay\": [\n          \"SAT\"\n        ],\n        \"startTime\": \"1985-04-12T23:20:50.52Z\",\n        \"endTime\": \"1985-04-18T23:20:50.52Z\",\n        \"timezone\": \"CST\"\n      }\n    }\n  },\n  \"transportHref\": \"<string>\",\n  \"advisorHref\": \"<string>\",\n  \"teamHref\": \"<string>\",\n  \"concerns\": \"<string>\",\n  \"remarks\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "Request-Id",
+                  "value": "string",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Preference-Applied",
+                  "value": "return=minimal",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"appointmentId\": \"string\",\n  \"dateTime\": \"<string>\",\n  \"links\": {\n    \"self\": {\n      \"href\": \"api.fortellis.io/service/v3/appointments/123\"\n    }\n  },\n  \"requestedServices\": [\n    {\n      \"description\": \"Replace Air Filter\",\n      \"sourceHref\": \"api.fortellis.io/service/reference/v4/service-packages/model/CHEV-CAMAC-2001-US/packages/BF018/specifications/8994972\"\n    },\n    {\n      \"description\": \"Replace Air Filter\",\n      \"sourceHref\": \"api.fortellis.io/service/reference/v4/service-packages/model/CHEV-CAMAC-2001-US/packages/BF018/specifications/8994972\"\n    }\n  ],\n  \"vehicleHref\": \"<string>\",\n  \"vehicleSpec\": {\n    \"makeCode\": \"CHEV\",\n    \"modelCode\": \"CAMAC\",\n    \"modelYear\": 2001\n  },\n  \"vehicleMileage\": {\n    \"value\": 75201,\n    \"units\": \"MILES\"\n  },\n  \"customerHref\": \"<string>\",\n  \"contact\": {\n    \"label\": \"Home Information\",\n    \"uri\": \"https://examle.com/person/contact\",\n    \"preferences\": {\n      \"items\": {\n        \"startDay\": [\n          \"MON\"\n        ],\n        \"endDay\": [\n          \"SAT\"\n        ],\n        \"startTime\": \"1985-04-12T23:20:50.52Z\",\n        \"endTime\": \"1985-04-18T23:20:50.52Z\",\n        \"timezone\": \"CST\"\n      }\n    }\n  },\n  \"transportHref\": \"<string>\",\n  \"advisorHref\": \"<string>\",\n  \"teamHref\": \"<string>\",\n  \"concerns\": \"<string>\",\n  \"remarks\": \"<string>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2abf7b1d-cb09-4717-94c0-fcf2796ed544",
+              "name": "400 - Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":appointmentId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "appointmentId",
+                      "description": "(Required) The appointment identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the characters that the API will accept.",
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the characters that the client will accept.",
+                    "key": "Accept-Charset",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the languages that the client accepts.",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specifies a conditional request to only return the resource when it does match one of the included ETag values",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specifies a conditional request to only return the resource when it doesn't match one of the included ETag values",
+                    "key": "If-None-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the preferences of the client calling the API.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) You must include the Request-Id in every call to track the same call across systems.",
+                    "key": "Request-Id",
+                    "value": "<guid>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.",
+                    "key": "Subscription-Id",
+                    "value": "<guid>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Provides authorization to access Fortellis APIs. For calling a Fortellis Provider, this must be an OAuth 2.0 token issued by the Fortellis authorization server, but you may call the simulator platform with Basic Authorization using your API key and secret.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"dateTime\": \"<string>\",\n  \"requestedServices\": [\n    {\n      \"description\": \"Replace Air Filter\",\n      \"sourceHref\": \"api.fortellis.io/service/reference/v4/service-packages/model/CHEV-CAMAC-2001-US/packages/BF018/specifications/8994972\"\n    },\n    {\n      \"description\": \"Replace Air Filter\",\n      \"sourceHref\": \"api.fortellis.io/service/reference/v4/service-packages/model/CHEV-CAMAC-2001-US/packages/BF018/specifications/8994972\"\n    }\n  ],\n  \"vehicleHref\": \"<string>\",\n  \"vehicleSpec\": {\n    \"makeCode\": \"CHEV\",\n    \"modelCode\": \"CAMAC\",\n    \"modelYear\": 2001\n  },\n  \"vehicleMileage\": {\n    \"value\": 75201,\n    \"units\": \"MILES\"\n  },\n  \"customerHref\": \"<string>\",\n  \"contact\": {\n    \"label\": \"Home Information\",\n    \"uri\": \"https://examle.com/person/contact\",\n    \"preferences\": {\n      \"items\": {\n        \"startDay\": [\n          \"MON\"\n        ],\n        \"endDay\": [\n          \"SAT\"\n        ],\n        \"startTime\": \"1985-04-12T23:20:50.52Z\",\n        \"endTime\": \"1985-04-18T23:20:50.52Z\",\n        \"timezone\": \"CST\"\n      }\n    }\n  },\n  \"transportHref\": \"<string>\",\n  \"advisorHref\": \"<string>\",\n  \"teamHref\": \"<string>\",\n  \"concerns\": \"<string>\",\n  \"remarks\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "Content-Language",
+                  "value": "string",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Request-Id",
+                  "value": "string",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"code\": 24,\n  \"message\": \"Error Message used for debugging\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f2225d5e-cc3e-40ac-a533-ebffc8f6e92c",
+              "name": "401 - Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":appointmentId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "appointmentId",
+                      "description": "(Required) The appointment identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the characters that the API will accept.",
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the characters that the client will accept.",
+                    "key": "Accept-Charset",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the languages that the client accepts.",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specifies a conditional request to only return the resource when it does match one of the included ETag values",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specifies a conditional request to only return the resource when it doesn't match one of the included ETag values",
+                    "key": "If-None-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the preferences of the client calling the API.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) You must include the Request-Id in every call to track the same call across systems.",
+                    "key": "Request-Id",
+                    "value": "<guid>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.",
+                    "key": "Subscription-Id",
+                    "value": "<guid>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Provides authorization to access Fortellis APIs. For calling a Fortellis Provider, this must be an OAuth 2.0 token issued by the Fortellis authorization server, but you may call the simulator platform with Basic Authorization using your API key and secret.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"dateTime\": \"<string>\",\n  \"requestedServices\": [\n    {\n      \"description\": \"Replace Air Filter\",\n      \"sourceHref\": \"api.fortellis.io/service/reference/v4/service-packages/model/CHEV-CAMAC-2001-US/packages/BF018/specifications/8994972\"\n    },\n    {\n      \"description\": \"Replace Air Filter\",\n      \"sourceHref\": \"api.fortellis.io/service/reference/v4/service-packages/model/CHEV-CAMAC-2001-US/packages/BF018/specifications/8994972\"\n    }\n  ],\n  \"vehicleHref\": \"<string>\",\n  \"vehicleSpec\": {\n    \"makeCode\": \"CHEV\",\n    \"modelCode\": \"CAMAC\",\n    \"modelYear\": 2001\n  },\n  \"vehicleMileage\": {\n    \"value\": 75201,\n    \"units\": \"MILES\"\n  },\n  \"customerHref\": \"<string>\",\n  \"contact\": {\n    \"label\": \"Home Information\",\n    \"uri\": \"https://examle.com/person/contact\",\n    \"preferences\": {\n      \"items\": {\n        \"startDay\": [\n          \"MON\"\n        ],\n        \"endDay\": [\n          \"SAT\"\n        ],\n        \"startTime\": \"1985-04-12T23:20:50.52Z\",\n        \"endTime\": \"1985-04-18T23:20:50.52Z\",\n        \"timezone\": \"CST\"\n      }\n    }\n  },\n  \"transportHref\": \"<string>\",\n  \"advisorHref\": \"<string>\",\n  \"teamHref\": \"<string>\",\n  \"concerns\": \"<string>\",\n  \"remarks\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "Content-Language",
+                  "value": "string",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Request-Id",
+                  "value": "string",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"code\": 24,\n  \"message\": \"Error Message used for debugging\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ed04ecb3-b3ef-45c9-bb9a-100cf5b06b0f",
+              "name": "403 - Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":appointmentId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "appointmentId",
+                      "description": "(Required) The appointment identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the characters that the API will accept.",
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the characters that the client will accept.",
+                    "key": "Accept-Charset",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the languages that the client accepts.",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specifies a conditional request to only return the resource when it does match one of the included ETag values",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specifies a conditional request to only return the resource when it doesn't match one of the included ETag values",
+                    "key": "If-None-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the preferences of the client calling the API.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) You must include the Request-Id in every call to track the same call across systems.",
+                    "key": "Request-Id",
+                    "value": "<guid>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.",
+                    "key": "Subscription-Id",
+                    "value": "<guid>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Provides authorization to access Fortellis APIs. For calling a Fortellis Provider, this must be an OAuth 2.0 token issued by the Fortellis authorization server, but you may call the simulator platform with Basic Authorization using your API key and secret.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"dateTime\": \"<string>\",\n  \"requestedServices\": [\n    {\n      \"description\": \"Replace Air Filter\",\n      \"sourceHref\": \"api.fortellis.io/service/reference/v4/service-packages/model/CHEV-CAMAC-2001-US/packages/BF018/specifications/8994972\"\n    },\n    {\n      \"description\": \"Replace Air Filter\",\n      \"sourceHref\": \"api.fortellis.io/service/reference/v4/service-packages/model/CHEV-CAMAC-2001-US/packages/BF018/specifications/8994972\"\n    }\n  ],\n  \"vehicleHref\": \"<string>\",\n  \"vehicleSpec\": {\n    \"makeCode\": \"CHEV\",\n    \"modelCode\": \"CAMAC\",\n    \"modelYear\": 2001\n  },\n  \"vehicleMileage\": {\n    \"value\": 75201,\n    \"units\": \"MILES\"\n  },\n  \"customerHref\": \"<string>\",\n  \"contact\": {\n    \"label\": \"Home Information\",\n    \"uri\": \"https://examle.com/person/contact\",\n    \"preferences\": {\n      \"items\": {\n        \"startDay\": [\n          \"MON\"\n        ],\n        \"endDay\": [\n          \"SAT\"\n        ],\n        \"startTime\": \"1985-04-12T23:20:50.52Z\",\n        \"endTime\": \"1985-04-18T23:20:50.52Z\",\n        \"timezone\": \"CST\"\n      }\n    }\n  },\n  \"transportHref\": \"<string>\",\n  \"advisorHref\": \"<string>\",\n  \"teamHref\": \"<string>\",\n  \"concerns\": \"<string>\",\n  \"remarks\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "Content-Language",
+                  "value": "string",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Request-Id",
+                  "value": "string",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"code\": 24,\n  \"message\": \"Error Message used for debugging\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8199b567-faff-4c4b-88be-63e8e6bc81f0",
+              "name": "404 - Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":appointmentId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "appointmentId",
+                      "description": "(Required) The appointment identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the characters that the API will accept.",
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the characters that the client will accept.",
+                    "key": "Accept-Charset",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the languages that the client accepts.",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specifies a conditional request to only return the resource when it does match one of the included ETag values",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specifies a conditional request to only return the resource when it doesn't match one of the included ETag values",
+                    "key": "If-None-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the preferences of the client calling the API.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) You must include the Request-Id in every call to track the same call across systems.",
+                    "key": "Request-Id",
+                    "value": "<guid>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.",
+                    "key": "Subscription-Id",
+                    "value": "<guid>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Provides authorization to access Fortellis APIs. For calling a Fortellis Provider, this must be an OAuth 2.0 token issued by the Fortellis authorization server, but you may call the simulator platform with Basic Authorization using your API key and secret.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"dateTime\": \"<string>\",\n  \"requestedServices\": [\n    {\n      \"description\": \"Replace Air Filter\",\n      \"sourceHref\": \"api.fortellis.io/service/reference/v4/service-packages/model/CHEV-CAMAC-2001-US/packages/BF018/specifications/8994972\"\n    },\n    {\n      \"description\": \"Replace Air Filter\",\n      \"sourceHref\": \"api.fortellis.io/service/reference/v4/service-packages/model/CHEV-CAMAC-2001-US/packages/BF018/specifications/8994972\"\n    }\n  ],\n  \"vehicleHref\": \"<string>\",\n  \"vehicleSpec\": {\n    \"makeCode\": \"CHEV\",\n    \"modelCode\": \"CAMAC\",\n    \"modelYear\": 2001\n  },\n  \"vehicleMileage\": {\n    \"value\": 75201,\n    \"units\": \"MILES\"\n  },\n  \"customerHref\": \"<string>\",\n  \"contact\": {\n    \"label\": \"Home Information\",\n    \"uri\": \"https://examle.com/person/contact\",\n    \"preferences\": {\n      \"items\": {\n        \"startDay\": [\n          \"MON\"\n        ],\n        \"endDay\": [\n          \"SAT\"\n        ],\n        \"startTime\": \"1985-04-12T23:20:50.52Z\",\n        \"endTime\": \"1985-04-18T23:20:50.52Z\",\n        \"timezone\": \"CST\"\n      }\n    }\n  },\n  \"transportHref\": \"<string>\",\n  \"advisorHref\": \"<string>\",\n  \"teamHref\": \"<string>\",\n  \"concerns\": \"<string>\",\n  \"remarks\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "Content-Language",
+                  "value": "string",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Request-Id",
+                  "value": "string",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"code\": 24,\n  \"message\": \"Error Message used for debugging\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "cc8c7680-97b9-4477-8e79-cb3c9dbccb29",
+      "name": "cancel",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a03e87a8-7a8a-46ae-9812-69712c6a95e1",
+          "name": "Cancel an appointment",
+          "request": {
+            "name": "Cancel an appointment",
+            "description": {
+              "content": "Cancels an appointment.  This method does not guarantee that resource reservations associated with the appointment (advisors, transports, reserved equipment/parts) will be released.  It is suggested that the service-scheduling API be used for this purpose.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":appointmentId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "appointmentId",
+                  "description": "(Required) The appointment identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "This header describes the characters that the client will accept.",
+                "key": "Accept-Charset",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "This header describes the languages that the client accepts.",
+                "key": "Accept-Language",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "Specifies a conditional request to only return the resource when it does match one of the included ETag values",
+                "key": "If-Match",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "Specifies a conditional request to only return the resource when it doesn't match one of the included ETag values",
+                "key": "If-None-Match",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "This header describes the preferences of the client calling the API.",
+                "key": "Prefer",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) You must include the Request-Id in every call to track the same call across systems.",
+                "key": "Request-Id",
+                "value": "<guid>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.",
+                "key": "Subscription-Id",
+                "value": "<guid>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"reason\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8b7b836c-82a9-44db-9b3c-6e6edc53a9c6",
+              "name": "204 - Non Content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":appointmentId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "appointmentId",
+                      "description": "(Required) The appointment identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the characters that the API will accept.",
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the characters that the client will accept.",
+                    "key": "Accept-Charset",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the languages that the client accepts.",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specifies a conditional request to only return the resource when it does match one of the included ETag values",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specifies a conditional request to only return the resource when it doesn't match one of the included ETag values",
+                    "key": "If-None-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the preferences of the client calling the API.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) You must include the Request-Id in every call to track the same call across systems.",
+                    "key": "Request-Id",
+                    "value": "<guid>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.",
+                    "key": "Subscription-Id",
+                    "value": "<guid>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Provides authorization to access Fortellis APIs. For calling a Fortellis Provider, this must be an OAuth 2.0 token issued by the Fortellis authorization server, but you may call the simulator platform with Basic Authorization using your API key and secret.",
+                    "key": "Authorization",
+                    "value": "string"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"reason\": \"Rescheduled for the following week\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "Content-Language",
+                  "value": "string",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Request-Id",
+                  "value": "string",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2d59c5dd-d243-4345-be01-0ea94b0f826b",
+              "name": "400 - Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":appointmentId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "appointmentId",
+                      "description": "(Required) The appointment identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the characters that the API will accept.",
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the characters that the client will accept.",
+                    "key": "Accept-Charset",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the languages that the client accepts.",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specifies a conditional request to only return the resource when it does match one of the included ETag values",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specifies a conditional request to only return the resource when it doesn't match one of the included ETag values",
+                    "key": "If-None-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the preferences of the client calling the API.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) You must include the Request-Id in every call to track the same call across systems.",
+                    "key": "Request-Id",
+                    "value": "<guid>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.",
+                    "key": "Subscription-Id",
+                    "value": "<guid>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Provides authorization to access Fortellis APIs. For calling a Fortellis Provider, this must be an OAuth 2.0 token issued by the Fortellis authorization server, but you may call the simulator platform with Basic Authorization using your API key and secret.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"reason\": \"Rescheduled for the following week\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "Content-Language",
+                  "value": "string",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Request-Id",
+                  "value": "string",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"code\": 24,\n  \"message\": \"Error Message used for debugging\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3cf719f3-7132-4c5d-9c13-a9e234069eba",
+              "name": "401 - Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":appointmentId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "appointmentId",
+                      "description": "(Required) The appointment identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the characters that the API will accept.",
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the characters that the client will accept.",
+                    "key": "Accept-Charset",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the languages that the client accepts.",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specifies a conditional request to only return the resource when it does match one of the included ETag values",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specifies a conditional request to only return the resource when it doesn't match one of the included ETag values",
+                    "key": "If-None-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the preferences of the client calling the API.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) You must include the Request-Id in every call to track the same call across systems.",
+                    "key": "Request-Id",
+                    "value": "<guid>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.",
+                    "key": "Subscription-Id",
+                    "value": "<guid>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Provides authorization to access Fortellis APIs. For calling a Fortellis Provider, this must be an OAuth 2.0 token issued by the Fortellis authorization server, but you may call the simulator platform with Basic Authorization using your API key and secret.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"reason\": \"Rescheduled for the following week\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "Content-Language",
+                  "value": "string",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Request-Id",
+                  "value": "string",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"code\": 24,\n  \"message\": \"Error Message used for debugging\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5ad949ab-7571-4a45-9587-e500bc7e8136",
+              "name": "403 - Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":appointmentId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "appointmentId",
+                      "description": "(Required) The appointment identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the characters that the API will accept.",
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the characters that the client will accept.",
+                    "key": "Accept-Charset",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the languages that the client accepts.",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specifies a conditional request to only return the resource when it does match one of the included ETag values",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specifies a conditional request to only return the resource when it doesn't match one of the included ETag values",
+                    "key": "If-None-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the preferences of the client calling the API.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) You must include the Request-Id in every call to track the same call across systems.",
+                    "key": "Request-Id",
+                    "value": "<guid>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.",
+                    "key": "Subscription-Id",
+                    "value": "<guid>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Provides authorization to access Fortellis APIs. For calling a Fortellis Provider, this must be an OAuth 2.0 token issued by the Fortellis authorization server, but you may call the simulator platform with Basic Authorization using your API key and secret.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"reason\": \"Rescheduled for the following week\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "Content-Language",
+                  "value": "string",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Request-Id",
+                  "value": "string",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"code\": 24,\n  \"message\": \"Error Message used for debugging\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f926d312-002f-4ac3-99fa-4361b589e428",
+              "name": "404 - Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":appointmentId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "appointmentId",
+                      "description": "(Required) The appointment identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the characters that the API will accept.",
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the characters that the client will accept.",
+                    "key": "Accept-Charset",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the languages that the client accepts.",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specifies a conditional request to only return the resource when it does match one of the included ETag values",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specifies a conditional request to only return the resource when it doesn't match one of the included ETag values",
+                    "key": "If-None-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the preferences of the client calling the API.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) You must include the Request-Id in every call to track the same call across systems.",
+                    "key": "Request-Id",
+                    "value": "<guid>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.",
+                    "key": "Subscription-Id",
+                    "value": "<guid>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Provides authorization to access Fortellis APIs. For calling a Fortellis Provider, this must be an OAuth 2.0 token issued by the Fortellis authorization server, but you may call the simulator platform with Basic Authorization using your API key and secret.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"reason\": \"Rescheduled for the following week\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "Content-Language",
+                  "value": "string",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Request-Id",
+                  "value": "string",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"code\": 24,\n  \"message\": \"Error Message used for debugging\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://fortellis.io/sales/notification/v3",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "anonymous"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://identity.fortellis.io/oauth2/"
+      },
+      {
+        "key": "grant_type",
+        "value": "implicit"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "769df596-119e-42b4-af3e-561a7177d695",
+    "name": "appointments",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "## Fortellis - Service - Appointments\nA service appointment is a booking of a vehicle into the service department for work that needs to be carried out on the vehicle. This could be a service, repair, body repair, government test etc.\n\n## What does this API do?\nThe API will allow you to query, create and manage service appointments. \n\n## Intended Audience\nIt is expected that systems that require create, read, update, and delete access to appointments will use this API.  Systems implementing service-scheduling will use this API to store appointment records.\n\n\nContact Support:\n Name: Developer Evangelists\n Email: support@fortellis.io",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,337 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "appointments",
+    "version": "3.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "query",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Query appointments",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/",
+            "headers": [
+              {
+                "name": "Accept",
+                "value": ""
+              },
+              {
+                "name": "Accept-Charset",
+                "value": ""
+              },
+              {
+                "name": "Accept-Language",
+                "value": ""
+              },
+              {
+                "name": "If-Match",
+                "value": ""
+              },
+              {
+                "name": "If-None-Match",
+                "value": ""
+              },
+              {
+                "name": "Prefer",
+                "value": ""
+              },
+              {
+                "name": "Request-Id",
+                "value": ""
+              },
+              {
+                "name": "Subscription-Id",
+                "value": ""
+              },
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "dateTimeInterval",
+                "value": "",
+                "type": "query",
+                "description": "The ISO 8601 data and time interval to filter the appointment query"
+              },
+              {
+                "name": "vehicleHref",
+                "value": "",
+                "type": "query",
+                "description": "The vehicle resource hyperlink to filter query results"
+              },
+              {
+                "name": "customerHref",
+                "value": "",
+                "type": "query",
+                "description": "The customer resource hyperlink to filter query results"
+              },
+              {
+                "name": "advisorHref",
+                "value": "",
+                "type": "query",
+                "description": "The advisor resource hyperlink to filter query results"
+              }
+            ]
+          },
+          "docs": "Query appointments"
+        },
+        {
+          "info": {
+            "name": "Query an appointment",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/:appointmentId",
+            "headers": [
+              {
+                "name": "Accept",
+                "value": ""
+              },
+              {
+                "name": "Accept-Charset",
+                "value": ""
+              },
+              {
+                "name": "Accept-Language",
+                "value": ""
+              },
+              {
+                "name": "If-Match",
+                "value": ""
+              },
+              {
+                "name": "If-None-Match",
+                "value": ""
+              },
+              {
+                "name": "Prefer",
+                "value": ""
+              },
+              {
+                "name": "Request-Id",
+                "value": ""
+              },
+              {
+                "name": "Subscription-Id",
+                "value": ""
+              },
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "appointmentId",
+                "value": "",
+                "type": "path",
+                "description": "The appointment identifier"
+              }
+            ]
+          },
+          "docs": "Query an appointment"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "create",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create an appointment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/",
+            "headers": [
+              {
+                "name": "Accept",
+                "value": ""
+              },
+              {
+                "name": "Accept-Charset",
+                "value": ""
+              },
+              {
+                "name": "Accept-Language",
+                "value": ""
+              },
+              {
+                "name": "If-Match",
+                "value": ""
+              },
+              {
+                "name": "If-None-Match",
+                "value": ""
+              },
+              {
+                "name": "Prefer",
+                "value": ""
+              },
+              {
+                "name": "Request-Id",
+                "value": ""
+              },
+              {
+                "name": "Subscription-Id",
+                "value": ""
+              },
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Creates an appointment.  Creating an appointment using this endpoint does not require the underlying system to implement any appointment capacity checks or dependent resource reservations. It is suggested that the service-scheduling API be used for this purpose.\n"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "update",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Update an appointment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/:appointmentId",
+            "headers": [
+              {
+                "name": "Accept",
+                "value": ""
+              },
+              {
+                "name": "Accept-Charset",
+                "value": ""
+              },
+              {
+                "name": "Accept-Language",
+                "value": ""
+              },
+              {
+                "name": "If-Match",
+                "value": ""
+              },
+              {
+                "name": "If-None-Match",
+                "value": ""
+              },
+              {
+                "name": "Prefer",
+                "value": ""
+              },
+              {
+                "name": "Request-Id",
+                "value": ""
+              },
+              {
+                "name": "Subscription-Id",
+                "value": ""
+              },
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "appointmentId",
+                "value": "",
+                "type": "path",
+                "description": "The appointment identifier"
+              }
+            ]
+          },
+          "docs": "Update an appointment.  This method does not guarantee that resource reservations associated with the appointment (advisors, transports, reserved equipment/parts) will be updated.  It is suggested that the service-scheduling API be used for this purpose.\n"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "cancel",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Cancel an appointment",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/:appointmentId",
+            "headers": [
+              {
+                "name": "Accept",
+                "value": ""
+              },
+              {
+                "name": "Accept-Charset",
+                "value": ""
+              },
+              {
+                "name": "Accept-Language",
+                "value": ""
+              },
+              {
+                "name": "If-Match",
+                "value": ""
+              },
+              {
+                "name": "If-None-Match",
+                "value": ""
+              },
+              {
+                "name": "Prefer",
+                "value": ""
+              },
+              {
+                "name": "Request-Id",
+                "value": ""
+              },
+              {
+                "name": "Subscription-Id",
+                "value": ""
+              },
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "appointmentId",
+                "value": "",
+                "type": "path",
+                "description": "The appointment identifier"
+              }
+            ]
+          },
+          "docs": "Cancels an appointment.  This method does not guarantee that resource reservations associated with the appointment (advisors, transports, reserved equipment/parts) will be released.  It is suggested that the service-scheduling API be used for this purpose.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

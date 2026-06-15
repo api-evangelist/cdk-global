@@ -1,0 +1,677 @@
+{
+  "item": [
+    {
+      "id": "5101f19e-523b-4af6-aaa4-5a40216f91b5",
+      "name": "events",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "97e439b2-404e-4dab-99c3-a2d452ce2527",
+          "name": "Post an event.",
+          "request": {
+            "name": "Post an event.",
+            "description": {
+              "content": "Event delivery endpoint to be implemented on the client-side.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "event",
+                ":channel"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "channel",
+                  "description": "(Required) the channel/path used when the event was posted by the source.  Please consult the related AsyncAPI specification."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "A correlation ID that should mirror the value of the X-Request-Id request\nheader provided by the client.\n",
+                "key": "X-Request-Id",
+                "value": "<uuid>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) This is a unique ID for the event assigned by Fortellis at time receipt and provided to the event source.",
+                "key": "Fortellis-Event-Id",
+                "value": "<uuid>"
+              },
+              {
+                "disabled": false,
+                "description": "A Fortellis Organization Id that identifies the organization represented by the event.\n",
+                "key": "Data-Owner-Id",
+                "value": "<uuid>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1a70589a-4f22-41f6-ba9e-a95502ec917d",
+              "name": "Accepted the event for asynchronous processing.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "event",
+                    ":channel"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "channel",
+                      "description": "(Required) the channel/path used when the event was posted by the source.  Please consult the related AsyncAPI specification."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "A correlation ID that should mirror the value of the X-Request-Id request\nheader provided by the client.\n",
+                    "key": "X-Request-Id",
+                    "value": "<uuid>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) This is a unique ID for the event assigned by Fortellis at time receipt and provided to the event source.",
+                    "key": "Fortellis-Event-Id",
+                    "value": "<uuid>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Contains credentials that allows the caller to authenticate itself with the\nAPI. See RFC 7235 and RFC 7617 for more details.\n",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A Fortellis Organization Id that identifies the organization represented by the event.\n",
+                    "key": "Data-Owner-Id",
+                    "value": "<uuid>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"key1\": \"value1\",\n  \"key2\": \"value2\",\n  \"key3\": [\n    \"arr-value1\",\n    \"arr-value2\",\n    \"arr-value3\"\n  ],\n  \"key4\": {\n    \"sub-key1\": \"sub-value1\",\n    \"sub-key2\": \"sub-value2\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "The matching correlation identifier to the request by the client.",
+                  "key": "X-Request-Id",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a90d526d-eb70-4857-ba62-452c65bed602",
+              "name": "400 - Bad Request Rejection of an event will place the record and its partition on hold and trigger us to attempt retransmission until we succeed. **We will not move forward to the next record when we receive an error.** Failed attempts at transmission may be billable, and placing a subscription in an extended pause period increases the possibility of duplicate record delivery.  Synchronous Validation of any elements other than the headers is discouraged.\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "event",
+                    ":channel"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "channel",
+                      "description": "(Required) the channel/path used when the event was posted by the source.  Please consult the related AsyncAPI specification."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "A correlation ID that should mirror the value of the X-Request-Id request\nheader provided by the client.\n",
+                    "key": "X-Request-Id",
+                    "value": "<uuid>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) This is a unique ID for the event assigned by Fortellis at time receipt and provided to the event source.",
+                    "key": "Fortellis-Event-Id",
+                    "value": "<uuid>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Contains credentials that allows the caller to authenticate itself with the\nAPI. See RFC 7235 and RFC 7617 for more details.\n",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A Fortellis Organization Id that identifies the organization represented by the event.\n",
+                    "key": "Data-Owner-Id",
+                    "value": "<uuid>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"key1\": \"value1\",\n  \"key2\": \"value2\",\n  \"key3\": [\n    \"arr-value1\",\n    \"arr-value2\",\n    \"arr-value3\"\n  ],\n  \"key4\": {\n    \"sub-key1\": \"sub-value1\",\n    \"sub-key2\": \"sub-value2\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Invalid Event received",
+                  "key": "X-Request-Id",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"code\": 400,\n  \"message\": \"Bad Request\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3af01bb6-a9cb-4156-b873-088f92cb2a03",
+              "name": "401 - Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "event",
+                    ":channel"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "channel",
+                      "description": "(Required) the channel/path used when the event was posted by the source.  Please consult the related AsyncAPI specification."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "A correlation ID that should mirror the value of the X-Request-Id request\nheader provided by the client.\n",
+                    "key": "X-Request-Id",
+                    "value": "<uuid>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) This is a unique ID for the event assigned by Fortellis at time receipt and provided to the event source.",
+                    "key": "Fortellis-Event-Id",
+                    "value": "<uuid>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Contains credentials that allows the caller to authenticate itself with the\nAPI. See RFC 7235 and RFC 7617 for more details.\n",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A Fortellis Organization Id that identifies the organization represented by the event.\n",
+                    "key": "Data-Owner-Id",
+                    "value": "<uuid>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"key1\": \"value1\",\n  \"key2\": \"value2\",\n  \"key3\": [\n    \"arr-value1\",\n    \"arr-value2\",\n    \"arr-value3\"\n  ],\n  \"key4\": {\n    \"sub-key1\": \"sub-value1\",\n    \"sub-key2\": \"sub-value2\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "The matching correlation identifier to the request by the client.",
+                  "key": "X-Request-Id",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"code\": 400,\n  \"message\": \"Bad Request\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "96096f63-c3bb-4afe-8038-40b86faf3f89",
+              "name": "403 - Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "event",
+                    ":channel"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "channel",
+                      "description": "(Required) the channel/path used when the event was posted by the source.  Please consult the related AsyncAPI specification."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "A correlation ID that should mirror the value of the X-Request-Id request\nheader provided by the client.\n",
+                    "key": "X-Request-Id",
+                    "value": "<uuid>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) This is a unique ID for the event assigned by Fortellis at time receipt and provided to the event source.",
+                    "key": "Fortellis-Event-Id",
+                    "value": "<uuid>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Contains credentials that allows the caller to authenticate itself with the\nAPI. See RFC 7235 and RFC 7617 for more details.\n",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A Fortellis Organization Id that identifies the organization represented by the event.\n",
+                    "key": "Data-Owner-Id",
+                    "value": "<uuid>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"key1\": \"value1\",\n  \"key2\": \"value2\",\n  \"key3\": [\n    \"arr-value1\",\n    \"arr-value2\",\n    \"arr-value3\"\n  ],\n  \"key4\": {\n    \"sub-key1\": \"sub-value1\",\n    \"sub-key2\": \"sub-value2\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "The matching correlation identifier to the request by the client.",
+                  "key": "X-Request-Id",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"code\": 400,\n  \"message\": \"Bad Request\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5d1fa9cd-0ea3-46d1-a8c7-59bda1822ab4",
+              "name": "404 - Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "event",
+                    ":channel"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "channel",
+                      "description": "(Required) the channel/path used when the event was posted by the source.  Please consult the related AsyncAPI specification."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "A correlation ID that should mirror the value of the X-Request-Id request\nheader provided by the client.\n",
+                    "key": "X-Request-Id",
+                    "value": "<uuid>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) This is a unique ID for the event assigned by Fortellis at time receipt and provided to the event source.",
+                    "key": "Fortellis-Event-Id",
+                    "value": "<uuid>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Contains credentials that allows the caller to authenticate itself with the\nAPI. See RFC 7235 and RFC 7617 for more details.\n",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A Fortellis Organization Id that identifies the organization represented by the event.\n",
+                    "key": "Data-Owner-Id",
+                    "value": "<uuid>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"key1\": \"value1\",\n  \"key2\": \"value2\",\n  \"key3\": [\n    \"arr-value1\",\n    \"arr-value2\",\n    \"arr-value3\"\n  ],\n  \"key4\": {\n    \"sub-key1\": \"sub-value1\",\n    \"sub-key2\": \"sub-value2\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "The matching correlation identifier to the request by the client.",
+                  "key": "X-Request-Id",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"code\": 400,\n  \"message\": \"Bad Request\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e69957fa-e22a-4547-8ce4-5d8eafd795f8",
+              "name": "500 - Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "event",
+                    ":channel"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "channel",
+                      "description": "(Required) the channel/path used when the event was posted by the source.  Please consult the related AsyncAPI specification."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "A correlation ID that should mirror the value of the X-Request-Id request\nheader provided by the client.\n",
+                    "key": "X-Request-Id",
+                    "value": "<uuid>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) This is a unique ID for the event assigned by Fortellis at time receipt and provided to the event source.",
+                    "key": "Fortellis-Event-Id",
+                    "value": "<uuid>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Contains credentials that allows the caller to authenticate itself with the\nAPI. See RFC 7235 and RFC 7617 for more details.\n",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A Fortellis Organization Id that identifies the organization represented by the event.\n",
+                    "key": "Data-Owner-Id",
+                    "value": "<uuid>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"key1\": \"value1\",\n  \"key2\": \"value2\",\n  \"key3\": [\n    \"arr-value1\",\n    \"arr-value2\",\n    \"arr-value3\"\n  ],\n  \"key4\": {\n    \"sub-key1\": \"sub-value1\",\n    \"sub-key2\": \"sub-value2\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "The matching correlation identifier to the request by the client.",
+                  "key": "X-Request-Id",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"code\": 400,\n  \"message\": \"Bad Request\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "224db8bb-b3f5-49d4-b122-2114fed1753c",
+              "name": "503 - Service Unavailable",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "event",
+                    ":channel"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "channel",
+                      "description": "(Required) the channel/path used when the event was posted by the source.  Please consult the related AsyncAPI specification."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "A correlation ID that should mirror the value of the X-Request-Id request\nheader provided by the client.\n",
+                    "key": "X-Request-Id",
+                    "value": "<uuid>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) This is a unique ID for the event assigned by Fortellis at time receipt and provided to the event source.",
+                    "key": "Fortellis-Event-Id",
+                    "value": "<uuid>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Contains credentials that allows the caller to authenticate itself with the\nAPI. See RFC 7235 and RFC 7617 for more details.\n",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "A Fortellis Organization Id that identifies the organization represented by the event.\n",
+                    "key": "Data-Owner-Id",
+                    "value": "<uuid>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"key1\": \"value1\",\n  \"key2\": \"value2\",\n  \"key3\": [\n    \"arr-value1\",\n    \"arr-value2\",\n    \"arr-value3\"\n  ],\n  \"key4\": {\n    \"sub-key1\": \"sub-value1\",\n    \"sub-key2\": \"sub-value2\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "The matching correlation identifier to the request by the client.",
+                  "key": "X-Request-Id",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"code\": 400,\n  \"message\": \"Bad Request\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/v1/webhook",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "57b6bafc-1afa-433e-8e9e-2e1ec8bc336b",
+    "name": "Fortellis Event Relay Webhook",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Provides an Event Sink the ability to receive event through Fortellis Event Relay.\n\nContact Support:\n Name: Fortellis Team\n Email: support@fortellis.io",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,2524 @@
+{
+  "info": {
+    "_postman_id": "b14a6b13-0262-44c6-a926-5bd9a1f89448",
+    "name": "Pet Adoption",
+    "description": "A pet adoption API.\n\nContact Support:\n Name: John Doe\n Email: john.doe@example.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:06:29.000Z",
+    "updatedAt": "2026-06-05T15:06:29.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-b14a6b13-0262-44c6-a926-5bd9a1f89448"
+  },
+  "item": [
+    {
+      "name": "pets",
+      "item": [
+        {
+          "name": "{petId}",
+          "item": [
+            {
+              "name": "Get the description of a pet available for adoption",
+              "id": "6519d271-b027-4258-a7a7-6a1c182fcaca",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "(Required) A correlation ID that should be returned back to the caller to \nindicate the return of the given request\n",
+                    "key": "Request-Id",
+                    "value": "<uuid>"
+                  },
+                  {
+                    "description": "(Required) The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.",
+                    "key": "Subscription-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/pets/:petId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "pets",
+                    ":petId"
+                  ],
+                  "variable": [
+                    {
+                      "id": "6cbdf151-651d-4222-99f7-f24a19e7e70f",
+                      "key": "petId",
+                      "value": "<string>",
+                      "description": "(Required) The unique identifier of a pet adoption record."
+                    }
+                  ]
+                },
+                "description": "Get the description of a pet available for adoption"
+              },
+              "response": [
+                {
+                  "id": "4b40b6bf-8fca-4ce5-a4b4-18a9fc8a114c",
+                  "name": "OK",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "(Required) A correlation ID that should be returned back to the caller to \nindicate the return of the given request\n",
+                        "key": "Request-Id",
+                        "value": "<uuid>"
+                      },
+                      {
+                        "description": "(Required) The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.",
+                        "key": "Subscription-Id",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "*/*"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/pets/:petId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "pets",
+                        ":petId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "petId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "*/*"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"petId\": \"<string>\",\n  \"name\": \"<string>\",\n  \"type\": \"dog\"\n}",
+                  "createdAt": "2026-06-05T15:06:30.000Z",
+                  "updatedAt": "2026-06-05T15:06:30.000Z",
+                  "uid": "35240-4b40b6bf-8fca-4ce5-a4b4-18a9fc8a114c"
+                },
+                {
+                  "id": "f36b9f86-2708-4d6e-9974-4d7440d84b1a",
+                  "name": "400 - Bad Request",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "(Required) A correlation ID that should be returned back to the caller to \nindicate the return of the given request\n",
+                        "key": "Request-Id",
+                        "value": "<uuid>"
+                      },
+                      {
+                        "description": "(Required) The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.",
+                        "key": "Subscription-Id",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "*/*"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/pets/:petId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "pets",
+                        ":petId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "petId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "*/*"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "Request-Id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-06-05T15:06:30.000Z",
+                  "updatedAt": "2026-06-05T15:06:30.000Z",
+                  "uid": "35240-f36b9f86-2708-4d6e-9974-4d7440d84b1a"
+                },
+                {
+                  "id": "fcbb10e3-2eb5-42eb-acb0-ab48a4f72f7b",
+                  "name": "401 - Unauthorized",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "(Required) A correlation ID that should be returned back to the caller to \nindicate the return of the given request\n",
+                        "key": "Request-Id",
+                        "value": "<uuid>"
+                      },
+                      {
+                        "description": "(Required) The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.",
+                        "key": "Subscription-Id",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "*/*"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/pets/:petId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "pets",
+                        ":petId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "petId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "*/*"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "Request-Id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-06-05T15:06:30.000Z",
+                  "updatedAt": "2026-06-05T15:06:30.000Z",
+                  "uid": "35240-fcbb10e3-2eb5-42eb-acb0-ab48a4f72f7b"
+                },
+                {
+                  "id": "99892aec-b9f4-478c-97a0-c11a9f90841d",
+                  "name": "403 - Forbidden",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "(Required) A correlation ID that should be returned back to the caller to \nindicate the return of the given request\n",
+                        "key": "Request-Id",
+                        "value": "<uuid>"
+                      },
+                      {
+                        "description": "(Required) The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.",
+                        "key": "Subscription-Id",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "*/*"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/pets/:petId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "pets",
+                        ":petId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "petId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "text",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "*/*"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "Request-Id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-06-05T15:06:30.000Z",
+                  "updatedAt": "2026-06-05T15:06:30.000Z",
+                  "uid": "35240-99892aec-b9f4-478c-97a0-c11a9f90841d"
+                },
+                {
+                  "id": "37bafb5b-6500-44ba-a428-a76f90f61f75",
+                  "name": "404 - Not Found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "(Required) A correlation ID that should be returned back to the caller to \nindicate the return of the given request\n",
+                        "key": "Request-Id",
+                        "value": "<uuid>"
+                      },
+                      {
+                        "description": "(Required) The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.",
+                        "key": "Subscription-Id",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "*/*"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/pets/:petId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "pets",
+                        ":petId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "petId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "text",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "*/*"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "Request-Id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-06-05T15:06:30.000Z",
+                  "updatedAt": "2026-06-05T15:06:30.000Z",
+                  "uid": "35240-37bafb5b-6500-44ba-a428-a76f90f61f75"
+                },
+                {
+                  "id": "93c6e2ad-a555-46e5-8dbf-14d6da6149fd",
+                  "name": "503 - Service Unavailable",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "(Required) A correlation ID that should be returned back to the caller to \nindicate the return of the given request\n",
+                        "key": "Request-Id",
+                        "value": "<uuid>"
+                      },
+                      {
+                        "description": "(Required) The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.",
+                        "key": "Subscription-Id",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "*/*"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/pets/:petId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "pets",
+                        ":petId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "petId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Service Unavailable",
+                  "code": 503,
+                  "_postman_previewlanguage": "text",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "*/*"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "Request-Id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-06-05T15:06:30.000Z",
+                  "updatedAt": "2026-06-05T15:06:30.000Z",
+                  "uid": "35240-93c6e2ad-a555-46e5-8dbf-14d6da6149fd"
+                }
+              ],
+              "createdAt": "2026-06-05T15:06:30.000Z",
+              "updatedAt": "2026-06-05T15:06:30.000Z",
+              "uid": "35240-6519d271-b027-4258-a7a7-6a1c182fcaca"
+            },
+            {
+              "name": "Update the description of a pet available for adoption",
+              "id": "cb2742b5-8dbf-4a4c-a5de-3f4ef975502a",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) A correlation ID that should be returned back to the caller to \nindicate the return of the given request\n",
+                    "key": "Request-Id",
+                    "value": "<uuid>"
+                  },
+                  {
+                    "description": "(Required) The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.",
+                    "key": "Subscription-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"type\": \"cat\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/pets/:petId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "pets",
+                    ":petId"
+                  ],
+                  "variable": [
+                    {
+                      "id": "45974149-3c39-44ea-898e-233b64ddab58",
+                      "key": "petId",
+                      "value": "<string>",
+                      "description": "(Required) The unique identifier of a pet adoption record."
+                    }
+                  ]
+                },
+                "description": "Update the description of a pet available for adoption"
+              },
+              "response": [
+                {
+                  "id": "d7a7bf7d-951e-455c-9a75-09279eef8206",
+                  "name": "OK",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "description": "(Required) A correlation ID that should be returned back to the caller to \nindicate the return of the given request\n",
+                        "key": "Request-Id",
+                        "value": "<uuid>"
+                      },
+                      {
+                        "description": "(Required) The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.",
+                        "key": "Subscription-Id",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "*/*"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"type\": \"cat\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/pets/:petId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "pets",
+                        ":petId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "petId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "*/*"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"petId\": \"<string>\",\n  \"name\": \"<string>\",\n  \"type\": \"dog\"\n}",
+                  "createdAt": "2026-06-05T15:06:30.000Z",
+                  "updatedAt": "2026-06-05T15:06:30.000Z",
+                  "uid": "35240-d7a7bf7d-951e-455c-9a75-09279eef8206"
+                },
+                {
+                  "id": "7a6bb0cc-1842-4d00-8e24-25fb7682fb4e",
+                  "name": "400 - Bad Request",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "description": "(Required) A correlation ID that should be returned back to the caller to \nindicate the return of the given request\n",
+                        "key": "Request-Id",
+                        "value": "<uuid>"
+                      },
+                      {
+                        "description": "(Required) The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.",
+                        "key": "Subscription-Id",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "*/*"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"type\": \"cat\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/pets/:petId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "pets",
+                        ":petId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "petId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "*/*"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "Request-Id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-06-05T15:06:30.000Z",
+                  "updatedAt": "2026-06-05T15:06:30.000Z",
+                  "uid": "35240-7a6bb0cc-1842-4d00-8e24-25fb7682fb4e"
+                },
+                {
+                  "id": "5c986171-aae2-4b73-9528-d054d80cfc7b",
+                  "name": "401 - Unauthorized",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "description": "(Required) A correlation ID that should be returned back to the caller to \nindicate the return of the given request\n",
+                        "key": "Request-Id",
+                        "value": "<uuid>"
+                      },
+                      {
+                        "description": "(Required) The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.",
+                        "key": "Subscription-Id",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "*/*"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"type\": \"cat\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/pets/:petId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "pets",
+                        ":petId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "petId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "*/*"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "Request-Id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-06-05T15:06:30.000Z",
+                  "updatedAt": "2026-06-05T15:06:30.000Z",
+                  "uid": "35240-5c986171-aae2-4b73-9528-d054d80cfc7b"
+                },
+                {
+                  "id": "cc03779e-3d57-4b27-8103-18c241e6e8a3",
+                  "name": "403 - Forbidden",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "description": "(Required) A correlation ID that should be returned back to the caller to \nindicate the return of the given request\n",
+                        "key": "Request-Id",
+                        "value": "<uuid>"
+                      },
+                      {
+                        "description": "(Required) The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.",
+                        "key": "Subscription-Id",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "*/*"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"type\": \"cat\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/pets/:petId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "pets",
+                        ":petId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "petId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "text",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "*/*"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "Request-Id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-06-05T15:06:30.000Z",
+                  "updatedAt": "2026-06-05T15:06:30.000Z",
+                  "uid": "35240-cc03779e-3d57-4b27-8103-18c241e6e8a3"
+                },
+                {
+                  "id": "71597e20-d8bc-4d3b-8b13-b22f4c15a2fb",
+                  "name": "404 - Not Found",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "description": "(Required) A correlation ID that should be returned back to the caller to \nindicate the return of the given request\n",
+                        "key": "Request-Id",
+                        "value": "<uuid>"
+                      },
+                      {
+                        "description": "(Required) The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.",
+                        "key": "Subscription-Id",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "*/*"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"type\": \"cat\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/pets/:petId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "pets",
+                        ":petId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "petId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "text",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "*/*"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "Request-Id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-06-05T15:06:30.000Z",
+                  "updatedAt": "2026-06-05T15:06:30.000Z",
+                  "uid": "35240-71597e20-d8bc-4d3b-8b13-b22f4c15a2fb"
+                },
+                {
+                  "id": "78f5969a-88a6-4d34-878b-a341af60d3dd",
+                  "name": "423 - Locked",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "description": "(Required) A correlation ID that should be returned back to the caller to \nindicate the return of the given request\n",
+                        "key": "Request-Id",
+                        "value": "<uuid>"
+                      },
+                      {
+                        "description": "(Required) The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.",
+                        "key": "Subscription-Id",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "*/*"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"type\": \"cat\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/pets/:petId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "pets",
+                        ":petId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "petId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Locked (WebDAV) (RFC 4918)",
+                  "code": 423,
+                  "_postman_previewlanguage": "text",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "*/*"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "Request-Id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-06-05T15:06:30.000Z",
+                  "updatedAt": "2026-06-05T15:06:30.000Z",
+                  "uid": "35240-78f5969a-88a6-4d34-878b-a341af60d3dd"
+                },
+                {
+                  "id": "fca905f7-2a59-4ecf-9a03-9b7c7cfe2ff7",
+                  "name": "503 - Service Unavailable",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "description": "(Required) A correlation ID that should be returned back to the caller to \nindicate the return of the given request\n",
+                        "key": "Request-Id",
+                        "value": "<uuid>"
+                      },
+                      {
+                        "description": "(Required) The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.",
+                        "key": "Subscription-Id",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "*/*"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"type\": \"cat\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/pets/:petId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "pets",
+                        ":petId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "petId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Service Unavailable",
+                  "code": 503,
+                  "_postman_previewlanguage": "text",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "*/*"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "Request-Id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-06-05T15:06:30.000Z",
+                  "updatedAt": "2026-06-05T15:06:30.000Z",
+                  "uid": "35240-fca905f7-2a59-4ecf-9a03-9b7c7cfe2ff7"
+                }
+              ],
+              "createdAt": "2026-06-05T15:06:30.000Z",
+              "updatedAt": "2026-06-05T15:06:30.000Z",
+              "uid": "35240-cb2742b5-8dbf-4a4c-a5de-3f4ef975502a"
+            },
+            {
+              "name": "Delete a pet so they are no longer available for adoption",
+              "id": "18af8eeb-bce6-44d9-8fba-3444d69050b0",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "description": "(Required) A correlation ID that should be returned back to the caller to \nindicate the return of the given request\n",
+                    "key": "Request-Id",
+                    "value": "<uuid>"
+                  },
+                  {
+                    "description": "(Required) The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.",
+                    "key": "Subscription-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/pets/:petId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "pets",
+                    ":petId"
+                  ],
+                  "variable": [
+                    {
+                      "id": "6b5ba4f1-117a-435d-a37d-0391f59d78f1",
+                      "key": "petId",
+                      "value": "<string>",
+                      "description": "(Required) The unique identifier of a pet adoption record."
+                    }
+                  ]
+                },
+                "description": "Delete a pet so they are no longer available for adoption"
+              },
+              "response": [
+                {
+                  "id": "74282442-5465-4c70-b049-067abc48028c",
+                  "name": "204 - No Content",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "description": "(Required) A correlation ID that should be returned back to the caller to \nindicate the return of the given request\n",
+                        "key": "Request-Id",
+                        "value": "<uuid>"
+                      },
+                      {
+                        "description": "(Required) The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.",
+                        "key": "Subscription-Id",
+                        "value": "<string>"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/pets/:petId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "pets",
+                        ":petId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "petId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "No Content",
+                  "code": 204,
+                  "_postman_previewlanguage": "text",
+                  "header": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "Request-Id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T15:06:30.000Z",
+                  "updatedAt": "2026-06-05T15:06:30.000Z",
+                  "uid": "35240-74282442-5465-4c70-b049-067abc48028c"
+                },
+                {
+                  "id": "ecf14ca1-a7c9-435f-bcf0-11a81ca84d35",
+                  "name": "400 - Bad Request",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "description": "(Required) A correlation ID that should be returned back to the caller to \nindicate the return of the given request\n",
+                        "key": "Request-Id",
+                        "value": "<uuid>"
+                      },
+                      {
+                        "description": "(Required) The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.",
+                        "key": "Subscription-Id",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "*/*"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/pets/:petId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "pets",
+                        ":petId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "petId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "*/*"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "Request-Id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-06-05T15:06:30.000Z",
+                  "updatedAt": "2026-06-05T15:06:30.000Z",
+                  "uid": "35240-ecf14ca1-a7c9-435f-bcf0-11a81ca84d35"
+                },
+                {
+                  "id": "fdd59852-9957-4a3d-b58b-588e5f8ad5f6",
+                  "name": "401 - Unauthorized",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "description": "(Required) A correlation ID that should be returned back to the caller to \nindicate the return of the given request\n",
+                        "key": "Request-Id",
+                        "value": "<uuid>"
+                      },
+                      {
+                        "description": "(Required) The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.",
+                        "key": "Subscription-Id",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "*/*"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/pets/:petId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "pets",
+                        ":petId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "petId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "*/*"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "Request-Id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-06-05T15:06:30.000Z",
+                  "updatedAt": "2026-06-05T15:06:30.000Z",
+                  "uid": "35240-fdd59852-9957-4a3d-b58b-588e5f8ad5f6"
+                },
+                {
+                  "id": "440289ed-ecd6-488a-9843-a1bc33e3ba08",
+                  "name": "403 - Forbidden",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "description": "(Required) A correlation ID that should be returned back to the caller to \nindicate the return of the given request\n",
+                        "key": "Request-Id",
+                        "value": "<uuid>"
+                      },
+                      {
+                        "description": "(Required) The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.",
+                        "key": "Subscription-Id",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "*/*"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/pets/:petId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "pets",
+                        ":petId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "petId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "text",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "*/*"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "Request-Id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-06-05T15:06:30.000Z",
+                  "updatedAt": "2026-06-05T15:06:30.000Z",
+                  "uid": "35240-440289ed-ecd6-488a-9843-a1bc33e3ba08"
+                },
+                {
+                  "id": "9fdb3ceb-1a16-43d9-9753-603708b59acd",
+                  "name": "404 - Not Found",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "description": "(Required) A correlation ID that should be returned back to the caller to \nindicate the return of the given request\n",
+                        "key": "Request-Id",
+                        "value": "<uuid>"
+                      },
+                      {
+                        "description": "(Required) The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.",
+                        "key": "Subscription-Id",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "*/*"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/pets/:petId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "pets",
+                        ":petId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "petId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "text",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "*/*"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "Request-Id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-06-05T15:06:30.000Z",
+                  "updatedAt": "2026-06-05T15:06:30.000Z",
+                  "uid": "35240-9fdb3ceb-1a16-43d9-9753-603708b59acd"
+                },
+                {
+                  "id": "f1ba1d28-9f0b-46ad-b5cc-de9c8d0e3cf3",
+                  "name": "423 - Locked",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "description": "(Required) A correlation ID that should be returned back to the caller to \nindicate the return of the given request\n",
+                        "key": "Request-Id",
+                        "value": "<uuid>"
+                      },
+                      {
+                        "description": "(Required) The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.",
+                        "key": "Subscription-Id",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "*/*"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/pets/:petId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "pets",
+                        ":petId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "petId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Locked (WebDAV) (RFC 4918)",
+                  "code": 423,
+                  "_postman_previewlanguage": "text",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "*/*"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "Request-Id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-06-05T15:06:30.000Z",
+                  "updatedAt": "2026-06-05T15:06:30.000Z",
+                  "uid": "35240-f1ba1d28-9f0b-46ad-b5cc-de9c8d0e3cf3"
+                },
+                {
+                  "id": "66996c78-5701-430d-83a7-f900d97b7f19",
+                  "name": "503 - Service Unavailable",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "description": "(Required) A correlation ID that should be returned back to the caller to \nindicate the return of the given request\n",
+                        "key": "Request-Id",
+                        "value": "<uuid>"
+                      },
+                      {
+                        "description": "(Required) The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.",
+                        "key": "Subscription-Id",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "*/*"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/pets/:petId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "pets",
+                        ":petId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "petId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Service Unavailable",
+                  "code": 503,
+                  "_postman_previewlanguage": "text",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "*/*"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "Request-Id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-06-05T15:06:30.000Z",
+                  "updatedAt": "2026-06-05T15:06:30.000Z",
+                  "uid": "35240-66996c78-5701-430d-83a7-f900d97b7f19"
+                }
+              ],
+              "createdAt": "2026-06-05T15:06:30.000Z",
+              "updatedAt": "2026-06-05T15:06:30.000Z",
+              "uid": "35240-18af8eeb-bce6-44d9-8fba-3444d69050b0"
+            }
+          ],
+          "id": "76998900-2dbe-49dd-baff-84fa1825df6d",
+          "createdAt": "2026-06-05T15:06:30.000Z",
+          "updatedAt": "2026-06-05T15:06:30.000Z",
+          "uid": "35240-76998900-2dbe-49dd-baff-84fa1825df6d"
+        },
+        {
+          "name": "Query pets available for adoption",
+          "id": "dbcdf791-d20a-4465-b18d-b70075d9f1d4",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "description": "(Required) A correlation ID that should be returned back to the caller to \nindicate the return of the given request\n",
+                "key": "Request-Id",
+                "value": "<uuid>"
+              },
+              {
+                "description": "(Required) The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.",
+                "key": "Subscription-Id",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/pets?name=<string>&breed=<string>&page=<number>&pageSize=<number>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "pets"
+              ],
+              "query": [
+                {
+                  "description": "Allows pet searches to be filtered by name",
+                  "key": "name",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Allows pet searches to be filtered by breed",
+                  "key": "breed",
+                  "value": "<string>"
+                },
+                {
+                  "description": "This is a pagination control for the request page of query result items\nto return in the response. It must be greater than or equal to one.  If \ngreater than the total number of available pages, the returned page will \nbe the last available page.\n",
+                  "key": "page",
+                  "value": "<number>"
+                },
+                {
+                  "description": "This is a pagination control for the requested number of items returned\nper page. It must be greater than or equal to one. This may be overridden\nand clamped to a maximum value by the resource owner.\n",
+                  "key": "pageSize",
+                  "value": "<number>"
+                }
+              ]
+            },
+            "description": "Query pets available for adoption"
+          },
+          "response": [
+            {
+              "id": "e715a404-a005-4650-a01a-d3483983c908",
+              "name": "OK",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "(Required) A correlation ID that should be returned back to the caller to \nindicate the return of the given request\n",
+                    "key": "Request-Id",
+                    "value": "<uuid>"
+                  },
+                  {
+                    "description": "(Required) The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.",
+                    "key": "Subscription-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/pets?name=<string>&breed=<string>&page=<number>&pageSize=<number>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "pets"
+                  ],
+                  "query": [
+                    {
+                      "description": "Allows pet searches to be filtered by name",
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Allows pet searches to be filtered by breed",
+                      "key": "breed",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "This is a pagination control for the request page of query result items\nto return in the response. It must be greater than or equal to one.  If \ngreater than the total number of available pages, the returned page will \nbe the last available page.\n",
+                      "key": "page",
+                      "value": "<number>"
+                    },
+                    {
+                      "description": "This is a pagination control for the requested number of items returned\nper page. It must be greater than or equal to one. This may be overridden\nand clamped to a maximum value by the resource owner.\n",
+                      "key": "pageSize",
+                      "value": "<number>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"items\": [\n    {\n      \"petId\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"dog\"\n    },\n    {\n      \"petId\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"cat\"\n    }\n  ],\n  \"totalItems\": \"<number>\",\n  \"totalPages\": \"<number>\",\n  \"links\": {\n    \"firstPage\": \"<string>\",\n    \"nextPage\": \"<string>\",\n    \"prevPage\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-06-05T15:06:30.000Z",
+              "updatedAt": "2026-06-05T15:06:30.000Z",
+              "uid": "35240-e715a404-a005-4650-a01a-d3483983c908"
+            },
+            {
+              "id": "355056f2-d5ae-4b04-a3c5-633fd58f9b57",
+              "name": "400 - Bad Request",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "(Required) A correlation ID that should be returned back to the caller to \nindicate the return of the given request\n",
+                    "key": "Request-Id",
+                    "value": "<uuid>"
+                  },
+                  {
+                    "description": "(Required) The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.",
+                    "key": "Subscription-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/pets?name=<string>&breed=<string>&page=<number>&pageSize=<number>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "pets"
+                  ],
+                  "query": [
+                    {
+                      "description": "Allows pet searches to be filtered by name",
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Allows pet searches to be filtered by breed",
+                      "key": "breed",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "This is a pagination control for the request page of query result items\nto return in the response. It must be greater than or equal to one.  If \ngreater than the total number of available pages, the returned page will \nbe the last available page.\n",
+                      "key": "page",
+                      "value": "<number>"
+                    },
+                    {
+                      "description": "This is a pagination control for the requested number of items returned\nper page. It must be greater than or equal to one. This may be overridden\nand clamped to a maximum value by the resource owner.\n",
+                      "key": "pageSize",
+                      "value": "<number>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "text",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                },
+                {
+                  "disabled": false,
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "key": "Request-Id",
+                  "value": "<string>"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-06-05T15:06:30.000Z",
+              "updatedAt": "2026-06-05T15:06:30.000Z",
+              "uid": "35240-355056f2-d5ae-4b04-a3c5-633fd58f9b57"
+            },
+            {
+              "id": "11a78392-7762-42ca-883b-e62bd7db3450",
+              "name": "401 - Unauthorized",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "(Required) A correlation ID that should be returned back to the caller to \nindicate the return of the given request\n",
+                    "key": "Request-Id",
+                    "value": "<uuid>"
+                  },
+                  {
+                    "description": "(Required) The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.",
+                    "key": "Subscription-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/pets?name=<string>&breed=<string>&page=<number>&pageSize=<number>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "pets"
+                  ],
+                  "query": [
+                    {
+                      "description": "Allows pet searches to be filtered by name",
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Allows pet searches to be filtered by breed",
+                      "key": "breed",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "This is a pagination control for the request page of query result items\nto return in the response. It must be greater than or equal to one.  If \ngreater than the total number of available pages, the returned page will \nbe the last available page.\n",
+                      "key": "page",
+                      "value": "<number>"
+                    },
+                    {
+                      "description": "This is a pagination control for the requested number of items returned\nper page. It must be greater than or equal to one. This may be overridden\nand clamped to a maximum value by the resource owner.\n",
+                      "key": "pageSize",
+                      "value": "<number>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "text",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                },
+                {
+                  "disabled": false,
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "key": "Request-Id",
+                  "value": "<string>"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-06-05T15:06:30.000Z",
+              "updatedAt": "2026-06-05T15:06:30.000Z",
+              "uid": "35240-11a78392-7762-42ca-883b-e62bd7db3450"
+            },
+            {
+              "id": "f3ac7632-4198-4b06-833a-840ec12b65e8",
+              "name": "403 - Forbidden",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "(Required) A correlation ID that should be returned back to the caller to \nindicate the return of the given request\n",
+                    "key": "Request-Id",
+                    "value": "<uuid>"
+                  },
+                  {
+                    "description": "(Required) The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.",
+                    "key": "Subscription-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/pets?name=<string>&breed=<string>&page=<number>&pageSize=<number>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "pets"
+                  ],
+                  "query": [
+                    {
+                      "description": "Allows pet searches to be filtered by name",
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Allows pet searches to be filtered by breed",
+                      "key": "breed",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "This is a pagination control for the request page of query result items\nto return in the response. It must be greater than or equal to one.  If \ngreater than the total number of available pages, the returned page will \nbe the last available page.\n",
+                      "key": "page",
+                      "value": "<number>"
+                    },
+                    {
+                      "description": "This is a pagination control for the requested number of items returned\nper page. It must be greater than or equal to one. This may be overridden\nand clamped to a maximum value by the resource owner.\n",
+                      "key": "pageSize",
+                      "value": "<number>"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "text",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                },
+                {
+                  "disabled": false,
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "key": "Request-Id",
+                  "value": "<string>"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-06-05T15:06:30.000Z",
+              "updatedAt": "2026-06-05T15:06:30.000Z",
+              "uid": "35240-f3ac7632-4198-4b06-833a-840ec12b65e8"
+            },
+            {
+              "id": "d65b9127-d491-403c-958e-bfbb5099a42b",
+              "name": "503 - Service Unavailable",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "(Required) A correlation ID that should be returned back to the caller to \nindicate the return of the given request\n",
+                    "key": "Request-Id",
+                    "value": "<uuid>"
+                  },
+                  {
+                    "description": "(Required) The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.",
+                    "key": "Subscription-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/pets?name=<string>&breed=<string>&page=<number>&pageSize=<number>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "pets"
+                  ],
+                  "query": [
+                    {
+                      "description": "Allows pet searches to be filtered by name",
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Allows pet searches to be filtered by breed",
+                      "key": "breed",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "This is a pagination control for the request page of query result items\nto return in the response. It must be greater than or equal to one.  If \ngreater than the total number of available pages, the returned page will \nbe the last available page.\n",
+                      "key": "page",
+                      "value": "<number>"
+                    },
+                    {
+                      "description": "This is a pagination control for the requested number of items returned\nper page. It must be greater than or equal to one. This may be overridden\nand clamped to a maximum value by the resource owner.\n",
+                      "key": "pageSize",
+                      "value": "<number>"
+                    }
+                  ]
+                }
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "_postman_previewlanguage": "text",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                },
+                {
+                  "disabled": false,
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "key": "Request-Id",
+                  "value": "<string>"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-06-05T15:06:30.000Z",
+              "updatedAt": "2026-06-05T15:06:30.000Z",
+              "uid": "35240-d65b9127-d491-403c-958e-bfbb5099a42b"
+            }
+          ],
+          "createdAt": "2026-06-05T15:06:30.000Z",
+          "updatedAt": "2026-06-05T15:06:30.000Z",
+          "uid": "35240-dbcdf791-d20a-4465-b18d-b70075d9f1d4"
+        },
+        {
+          "name": "Adds a pet to the store",
+          "id": "bed276de-c2bf-4082-af7a-fb785da439b7",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "description": "(Required) A correlation ID that should be returned back to the caller to \nindicate the return of the given request\n",
+                "key": "Request-Id",
+                "value": "<uuid>"
+              },
+              {
+                "description": "(Required) The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.",
+                "key": "Subscription-Id",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"type\": \"cat\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/pets",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "pets"
+              ]
+            },
+            "description": "Adds a pet to the store"
+          },
+          "response": [
+            {
+              "id": "5b0dc099-7c4a-4a02-b085-9f65f48e0053",
+              "name": "OK",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) A correlation ID that should be returned back to the caller to \nindicate the return of the given request\n",
+                    "key": "Request-Id",
+                    "value": "<uuid>"
+                  },
+                  {
+                    "description": "(Required) The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.",
+                    "key": "Subscription-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"type\": \"cat\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/pets",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "pets"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"petId\": \"<string>\",\n  \"name\": \"<string>\",\n  \"type\": \"dog\"\n}",
+              "createdAt": "2026-06-05T15:06:30.000Z",
+              "updatedAt": "2026-06-05T15:06:30.000Z",
+              "uid": "35240-5b0dc099-7c4a-4a02-b085-9f65f48e0053"
+            },
+            {
+              "id": "88434983-55d7-4dd9-b113-07c327219f0c",
+              "name": "400 - Bad Request",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) A correlation ID that should be returned back to the caller to \nindicate the return of the given request\n",
+                    "key": "Request-Id",
+                    "value": "<uuid>"
+                  },
+                  {
+                    "description": "(Required) The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.",
+                    "key": "Subscription-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"type\": \"cat\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/pets",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "pets"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "text",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                },
+                {
+                  "disabled": false,
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "key": "Request-Id",
+                  "value": "<string>"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-06-05T15:06:30.000Z",
+              "updatedAt": "2026-06-05T15:06:30.000Z",
+              "uid": "35240-88434983-55d7-4dd9-b113-07c327219f0c"
+            },
+            {
+              "id": "d3e4d3de-7254-42e1-854e-ad02f2f34172",
+              "name": "401 - Unauthorized",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) A correlation ID that should be returned back to the caller to \nindicate the return of the given request\n",
+                    "key": "Request-Id",
+                    "value": "<uuid>"
+                  },
+                  {
+                    "description": "(Required) The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.",
+                    "key": "Subscription-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"type\": \"cat\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/pets",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "pets"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "text",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                },
+                {
+                  "disabled": false,
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "key": "Request-Id",
+                  "value": "<string>"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-06-05T15:06:30.000Z",
+              "updatedAt": "2026-06-05T15:06:30.000Z",
+              "uid": "35240-d3e4d3de-7254-42e1-854e-ad02f2f34172"
+            },
+            {
+              "id": "3b3e2b79-b05c-4aad-bf2e-ce1b9eb437c2",
+              "name": "403 - Forbidden",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) A correlation ID that should be returned back to the caller to \nindicate the return of the given request\n",
+                    "key": "Request-Id",
+                    "value": "<uuid>"
+                  },
+                  {
+                    "description": "(Required) The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.",
+                    "key": "Subscription-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"type\": \"cat\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/pets",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "pets"
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "text",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                },
+                {
+                  "disabled": false,
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "key": "Request-Id",
+                  "value": "<string>"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-06-05T15:06:30.000Z",
+              "updatedAt": "2026-06-05T15:06:30.000Z",
+              "uid": "35240-3b3e2b79-b05c-4aad-bf2e-ce1b9eb437c2"
+            },
+            {
+              "id": "5ab1b930-288a-4551-a05f-8e8c9fba1fcc",
+              "name": "503 - Service Unavailable",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) A correlation ID that should be returned back to the caller to \nindicate the return of the given request\n",
+                    "key": "Request-Id",
+                    "value": "<uuid>"
+                  },
+                  {
+                    "description": "(Required) The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.",
+                    "key": "Subscription-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"type\": \"cat\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/pets",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "pets"
+                  ]
+                }
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "_postman_previewlanguage": "text",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                },
+                {
+                  "disabled": false,
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "key": "Request-Id",
+                  "value": "<string>"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-06-05T15:06:30.000Z",
+              "updatedAt": "2026-06-05T15:06:30.000Z",
+              "uid": "35240-5ab1b930-288a-4551-a05f-8e8c9fba1fcc"
+            }
+          ],
+          "createdAt": "2026-06-05T15:06:30.000Z",
+          "updatedAt": "2026-06-05T15:06:30.000Z",
+          "uid": "35240-bed276de-c2bf-4082-af7a-fb785da439b7"
+        }
+      ],
+      "id": "117bb4cd-46c1-4af7-ad7f-17b588cf1f26",
+      "createdAt": "2026-06-05T15:06:30.000Z",
+      "updatedAt": "2026-06-05T15:06:30.000Z",
+      "uid": "35240-117bb4cd-46c1-4af7-ad7f-17b588cf1f26"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "pets.adopt pets.manage",
+        "type": "string"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://identity.fortellis.io/oauth2/",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "implicit",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.fortellis.io/data/v1/example/pet-adoption"
+    }
+  ]
+}

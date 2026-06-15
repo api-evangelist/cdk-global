@@ -1,0 +1,158 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Fortellis Sample Application",
+    "version": "47.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "query",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Server example operation",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/all-product-info",
+            "headers": [
+              {
+                "name": "User-Id",
+                "value": ""
+              },
+              {
+                "name": "Organization",
+                "value": ""
+              },
+              {
+                "name": "Request-Id",
+                "value": ""
+              },
+              {
+                "name": "Subscription-Id",
+                "value": ""
+              },
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "email",
+                "value": "",
+                "type": "query",
+                "description": "Filters customers by email address"
+              }
+            ]
+          },
+          "docs": "You can use this call to get the information on all of the products at this resource that you need to use."
+        },
+        {
+          "info": {
+            "name": "Specific Product",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/all-product-info/:productNumber",
+            "headers": [
+              {
+                "name": "User-Id",
+                "value": ""
+              },
+              {
+                "name": "Organization",
+                "value": ""
+              },
+              {
+                "name": "Request-Id",
+                "value": ""
+              },
+              {
+                "name": "Subscription-Id",
+                "value": ""
+              },
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "productNumber",
+                "value": "",
+                "type": "path",
+                "description": "Filters for a specific product"
+              }
+            ]
+          },
+          "docs": "Find a specific product."
+        },
+        {
+          "info": {
+            "name": "Specific Product Description",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/all-product-info/:productNumber/product-size",
+            "headers": [
+              {
+                "name": "Request-Id",
+                "value": ""
+              },
+              {
+                "name": "Subscription-Id",
+                "value": ""
+              },
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "productNumber",
+                "value": "",
+                "type": "path",
+                "description": "Filters for a specific product"
+              }
+            ]
+          },
+          "docs": "Find the description for a specific product."
+        },
+        {
+          "info": {
+            "name": "Server heartbeat operation",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/ping",
+            "headers": [
+              {
+                "name": "Request-Id",
+                "value": ""
+              },
+              {
+                "name": "Subscription-Id",
+                "value": ""
+              },
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Solutions can use this operation to check that the server is still available and responding to requests."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

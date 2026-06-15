@@ -1,0 +1,59 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Fortellis Event Relay Webhook",
+    "version": "1.0.0-oas3"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "events",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Post an event.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/webhook/event/:channel",
+            "headers": [
+              {
+                "name": "X-Request-Id",
+                "value": ""
+              },
+              {
+                "name": "Fortellis-Event-Id",
+                "value": ""
+              },
+              {
+                "name": "Authorization",
+                "value": ""
+              },
+              {
+                "name": "Data-Owner-Id",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "channel",
+                "value": "",
+                "type": "path",
+                "description": "the channel/path used when the event was posted by the source.  Please consult the related AsyncAPI specification."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Event delivery endpoint to be implemented on the client-side."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

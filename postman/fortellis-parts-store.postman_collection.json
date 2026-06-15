@@ -1,0 +1,1706 @@
+{
+  "info": {
+    "_postman_id": "76067bb5-08f2-46b6-acd3-9ea6917a134b",
+    "name": "Fortellis Sample Application",
+    "description": "# Fortellis Products - Fortellis Domain - Fortellis Spec\n  \n  For the product, enter the product that the API should promote.\n  \n  For the domain, enter one of the following Fortellis domains.\n  * Vehicles Sales\n  * Document\n  * Service\n  * CRM\n  * Vehicle Media\n  * Data\n  * Payment\n  \n  For the name, enter the common name that you would like to provide for the specification.\n  \n# What does this API do?\nSpec Providers can supply excellent specs to encourage the adoption and the implementation of those specs by others within the automotive space. Specs should include descriptions that start with an executive summary of what solution and implementations could do with the spec. The description should then provide information on specifically what features the specification offers. Finally, the description should explain how solution and implementation providers can use the spec to achieve personal, departmental, and organizational goals. With this format, Spec Providers can show the value and benefit of the spec outside of their organization and encourage the adoption of their spec by other providers and solutions, increasing the possible implementations, solutions, and users of their APIs and solutions.\n\n# Intended Audience\nSpec Providers that are trying to create specs that can pass the linter requirements can start with this spec and replace this placeholder text with the information that suits their specs.\n\n\nContact Support:\n Name: Developer Evangelists\n Email: support@fortellis.io",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:06:26.000Z",
+    "updatedAt": "2026-06-05T15:06:27.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-76067bb5-08f2-46b6-acd3-9ea6917a134b"
+  },
+  "item": [
+    {
+      "name": "all-product-info",
+      "item": [
+        {
+          "name": "{productNumber}",
+          "item": [
+            {
+              "name": "product-size",
+              "item": [
+                {
+                  "name": "Specific Product Description",
+                  "id": "9f57d56b-664f-4539-b7cc-b7a134b91d08",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "(Required) A correlation ID that should be returned back to the caller to indicate the return of the given request",
+                        "key": "Request-Id",
+                        "value": "<string>"
+                      },
+                      {
+                        "description": "(Required) The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.",
+                        "key": "Subscription-Id",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "*/*"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/all-product-info/:productNumber/product-size",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "all-product-info",
+                        ":productNumber",
+                        "product-size"
+                      ],
+                      "variable": [
+                        {
+                          "id": "8c2afe54-4d38-4e40-8546-769b77215e38",
+                          "key": "productNumber",
+                          "value": "<number>",
+                          "description": "(Required) Filters for a specific product"
+                        }
+                      ]
+                    },
+                    "description": "Find the description for a specific product."
+                  },
+                  "response": [
+                    {
+                      "id": "aaabe491-d335-4cf3-98de-d4140ce93d81",
+                      "name": "This sends the product size for a particular product to help you determine if you have the inventory space for that product.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "(Required) A correlation ID that should be returned back to the caller to indicate the return of the given request",
+                            "key": "Request-Id",
+                            "value": "<string>"
+                          },
+                          {
+                            "description": "(Required) The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.",
+                            "key": "Subscription-Id",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "*/*"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/all-product-info/:productNumber/product-size",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "all-product-info",
+                            ":productNumber",
+                            "product-size"
+                          ],
+                          "variable": [
+                            {
+                              "key": "productNumber"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "*/*"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "",
+                            "type": "text/plain"
+                          },
+                          "key": "Request-Id",
+                          "value": "<string>"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"productWidth\": \"<string>\",\n  \"productHeight\": \"<string>\",\n  \"productLength\": \"<string>\",\n  \"productWeight\": \"<string>\",\n  \"links\": {\n    \"self\": {\n      \"href\": \"<string>\",\n      \"method\": \"<string>\"\n    },\n    \"allProductInfo\": {\n      \"href\": \"<string>\",\n      \"method\": \"<string>\"\n    },\n    \"thisProductInfo\": {\n      \"href\": \"<string>\",\n      \"method\": \"<string>\"\n    },\n    \"ping\": {\n      \"href\": \"<string>\",\n      \"method\": \"<string>\"\n    }\n  }\n}",
+                      "createdAt": "2026-06-05T15:06:27.000Z",
+                      "updatedAt": "2026-06-05T15:06:27.000Z",
+                      "uid": "35240-aaabe491-d335-4cf3-98de-d4140ce93d81"
+                    },
+                    {
+                      "id": "34e9428f-95c1-4d07-9963-653f9901338a",
+                      "name": "400 - Bad Request",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "(Required) A correlation ID that should be returned back to the caller to indicate the return of the given request",
+                            "key": "Request-Id",
+                            "value": "<string>"
+                          },
+                          {
+                            "description": "(Required) The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.",
+                            "key": "Subscription-Id",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "*/*"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/all-product-info/:productNumber/product-size",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "all-product-info",
+                            ":productNumber",
+                            "product-size"
+                          ],
+                          "variable": [
+                            {
+                              "key": "productNumber"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "*/*"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "",
+                            "type": "text/plain"
+                          },
+                          "key": "Request-Id",
+                          "value": "<string>"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-06-05T15:06:27.000Z",
+                      "updatedAt": "2026-06-05T15:06:27.000Z",
+                      "uid": "35240-34e9428f-95c1-4d07-9963-653f9901338a"
+                    },
+                    {
+                      "id": "3ac05cdd-9338-4bd2-8ffc-8a12be49edfb",
+                      "name": "401 - Unauthorized",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "(Required) A correlation ID that should be returned back to the caller to indicate the return of the given request",
+                            "key": "Request-Id",
+                            "value": "<string>"
+                          },
+                          {
+                            "description": "(Required) The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.",
+                            "key": "Subscription-Id",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "*/*"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/all-product-info/:productNumber/product-size",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "all-product-info",
+                            ":productNumber",
+                            "product-size"
+                          ],
+                          "variable": [
+                            {
+                              "key": "productNumber"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "*/*"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "",
+                            "type": "text/plain"
+                          },
+                          "key": "Request-Id",
+                          "value": "<string>"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-06-05T15:06:27.000Z",
+                      "updatedAt": "2026-06-05T15:06:27.000Z",
+                      "uid": "35240-3ac05cdd-9338-4bd2-8ffc-8a12be49edfb"
+                    },
+                    {
+                      "id": "132eb2f7-4f94-49ca-ab1a-b039211b0dd7",
+                      "name": "403 - Forbidden",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "(Required) A correlation ID that should be returned back to the caller to indicate the return of the given request",
+                            "key": "Request-Id",
+                            "value": "<string>"
+                          },
+                          {
+                            "description": "(Required) The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.",
+                            "key": "Subscription-Id",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "*/*"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/all-product-info/:productNumber/product-size",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "all-product-info",
+                            ":productNumber",
+                            "product-size"
+                          ],
+                          "variable": [
+                            {
+                              "key": "productNumber"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "text",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "*/*"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "",
+                            "type": "text/plain"
+                          },
+                          "key": "Request-Id",
+                          "value": "<string>"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-06-05T15:06:27.000Z",
+                      "updatedAt": "2026-06-05T15:06:27.000Z",
+                      "uid": "35240-132eb2f7-4f94-49ca-ab1a-b039211b0dd7"
+                    },
+                    {
+                      "id": "62958055-f3ff-42fb-91b7-d78437fbb8d3",
+                      "name": "503 - Service Unavailable",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "(Required) A correlation ID that should be returned back to the caller to indicate the return of the given request",
+                            "key": "Request-Id",
+                            "value": "<string>"
+                          },
+                          {
+                            "description": "(Required) The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.",
+                            "key": "Subscription-Id",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "*/*"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/all-product-info/:productNumber/product-size",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "all-product-info",
+                            ":productNumber",
+                            "product-size"
+                          ],
+                          "variable": [
+                            {
+                              "key": "productNumber"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Service Unavailable",
+                      "code": 503,
+                      "_postman_previewlanguage": "text",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "*/*"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "",
+                            "type": "text/plain"
+                          },
+                          "key": "Request-Id",
+                          "value": "<string>"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-06-05T15:06:27.000Z",
+                      "updatedAt": "2026-06-05T15:06:27.000Z",
+                      "uid": "35240-62958055-f3ff-42fb-91b7-d78437fbb8d3"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:06:27.000Z",
+                  "updatedAt": "2026-06-05T15:06:27.000Z",
+                  "uid": "35240-9f57d56b-664f-4539-b7cc-b7a134b91d08"
+                }
+              ],
+              "id": "9f91b2a2-2994-477e-a264-63bec8f2159f",
+              "createdAt": "2026-06-05T15:06:27.000Z",
+              "updatedAt": "2026-06-05T15:06:27.000Z",
+              "uid": "35240-9f91b2a2-2994-477e-a264-63bec8f2159f"
+            },
+            {
+              "name": "Specific Product",
+              "id": "72323567-bff3-4708-9b5e-1f17ffe83b9e",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "(Required) Identifies the user accessing the account",
+                    "key": "User-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "description": "(Required) Identifies the organization that the user is in",
+                    "key": "Organization",
+                    "value": "<string>"
+                  },
+                  {
+                    "description": "(Required) A correlation ID that should be returned back to the caller to indicate the return of the given request",
+                    "key": "Request-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "description": "(Required) The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.",
+                    "key": "Subscription-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/all-product-info/:productNumber",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "all-product-info",
+                    ":productNumber"
+                  ],
+                  "variable": [
+                    {
+                      "id": "d6d2dd9a-2050-4882-a740-8c2151b9793e",
+                      "key": "productNumber",
+                      "value": "<number>",
+                      "description": "(Required) Filters for a specific product"
+                    }
+                  ]
+                },
+                "description": "Find a specific product."
+              },
+              "response": [
+                {
+                  "id": "148bda3b-dcf5-484a-95af-06412ecb13fe",
+                  "name": "This sends the information on a particular product based on the product number.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "(Required) Identifies the user accessing the account",
+                        "key": "User-Id",
+                        "value": "<string>"
+                      },
+                      {
+                        "description": "(Required) Identifies the organization that the user is in",
+                        "key": "Organization",
+                        "value": "<string>"
+                      },
+                      {
+                        "description": "(Required) A correlation ID that should be returned back to the caller to indicate the return of the given request",
+                        "key": "Request-Id",
+                        "value": "<string>"
+                      },
+                      {
+                        "description": "(Required) The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.",
+                        "key": "Subscription-Id",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "*/*"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/all-product-info/:productNumber",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "all-product-info",
+                        ":productNumber"
+                      ],
+                      "variable": [
+                        {
+                          "key": "productNumber"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "*/*"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "Request-Id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"links\": {\n    \"self\": {\n      \"href\": \"<string>\",\n      \"method\": \"<string>\"\n    },\n    \"allProductInfo\": {\n      \"href\": \"<string>\",\n      \"method\": \"<string>\"\n    },\n    \"thisProductSize\": {\n      \"href\": \"<string>\",\n      \"method\": \"<string>\"\n    },\n    \"ping\": {\n      \"href\": \"<string>\",\n      \"method\": \"<string>\"\n    }\n  },\n  \"number\": \"<integer>\",\n  \"location\": \"<string>\",\n  \"productSize\": {\n    \"productWidth\": \"<string>\",\n    \"productHeight\": \"<string>\",\n    \"productWeight\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-06-05T15:06:27.000Z",
+                  "updatedAt": "2026-06-05T15:06:27.000Z",
+                  "uid": "35240-148bda3b-dcf5-484a-95af-06412ecb13fe"
+                },
+                {
+                  "id": "cd3580d4-264b-4783-b56b-8b98984067e0",
+                  "name": "400 - Bad Request",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "(Required) Identifies the user accessing the account",
+                        "key": "User-Id",
+                        "value": "<string>"
+                      },
+                      {
+                        "description": "(Required) Identifies the organization that the user is in",
+                        "key": "Organization",
+                        "value": "<string>"
+                      },
+                      {
+                        "description": "(Required) A correlation ID that should be returned back to the caller to indicate the return of the given request",
+                        "key": "Request-Id",
+                        "value": "<string>"
+                      },
+                      {
+                        "description": "(Required) The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.",
+                        "key": "Subscription-Id",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "*/*"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/all-product-info/:productNumber",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "all-product-info",
+                        ":productNumber"
+                      ],
+                      "variable": [
+                        {
+                          "key": "productNumber"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "*/*"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "Request-Id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-06-05T15:06:27.000Z",
+                  "updatedAt": "2026-06-05T15:06:27.000Z",
+                  "uid": "35240-cd3580d4-264b-4783-b56b-8b98984067e0"
+                },
+                {
+                  "id": "49c10549-e277-49ad-971f-4d4347479f15",
+                  "name": "401 - Unauthorized",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "(Required) Identifies the user accessing the account",
+                        "key": "User-Id",
+                        "value": "<string>"
+                      },
+                      {
+                        "description": "(Required) Identifies the organization that the user is in",
+                        "key": "Organization",
+                        "value": "<string>"
+                      },
+                      {
+                        "description": "(Required) A correlation ID that should be returned back to the caller to indicate the return of the given request",
+                        "key": "Request-Id",
+                        "value": "<string>"
+                      },
+                      {
+                        "description": "(Required) The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.",
+                        "key": "Subscription-Id",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "*/*"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/all-product-info/:productNumber",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "all-product-info",
+                        ":productNumber"
+                      ],
+                      "variable": [
+                        {
+                          "key": "productNumber"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "*/*"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "Request-Id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-06-05T15:06:27.000Z",
+                  "updatedAt": "2026-06-05T15:06:27.000Z",
+                  "uid": "35240-49c10549-e277-49ad-971f-4d4347479f15"
+                },
+                {
+                  "id": "68ef4620-4a82-4e60-b0d3-dee24c23d22d",
+                  "name": "403 - Forbidden",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "(Required) Identifies the user accessing the account",
+                        "key": "User-Id",
+                        "value": "<string>"
+                      },
+                      {
+                        "description": "(Required) Identifies the organization that the user is in",
+                        "key": "Organization",
+                        "value": "<string>"
+                      },
+                      {
+                        "description": "(Required) A correlation ID that should be returned back to the caller to indicate the return of the given request",
+                        "key": "Request-Id",
+                        "value": "<string>"
+                      },
+                      {
+                        "description": "(Required) The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.",
+                        "key": "Subscription-Id",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "*/*"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/all-product-info/:productNumber",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "all-product-info",
+                        ":productNumber"
+                      ],
+                      "variable": [
+                        {
+                          "key": "productNumber"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "text",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "*/*"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "Request-Id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-06-05T15:06:27.000Z",
+                  "updatedAt": "2026-06-05T15:06:27.000Z",
+                  "uid": "35240-68ef4620-4a82-4e60-b0d3-dee24c23d22d"
+                },
+                {
+                  "id": "ed9652b8-a5bf-4a09-934e-8e1aeacd524f",
+                  "name": "503 - Service Unavailable",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "(Required) Identifies the user accessing the account",
+                        "key": "User-Id",
+                        "value": "<string>"
+                      },
+                      {
+                        "description": "(Required) Identifies the organization that the user is in",
+                        "key": "Organization",
+                        "value": "<string>"
+                      },
+                      {
+                        "description": "(Required) A correlation ID that should be returned back to the caller to indicate the return of the given request",
+                        "key": "Request-Id",
+                        "value": "<string>"
+                      },
+                      {
+                        "description": "(Required) The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.",
+                        "key": "Subscription-Id",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "*/*"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/all-product-info/:productNumber",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "all-product-info",
+                        ":productNumber"
+                      ],
+                      "variable": [
+                        {
+                          "key": "productNumber"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Service Unavailable",
+                  "code": 503,
+                  "_postman_previewlanguage": "text",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "*/*"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "Request-Id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-06-05T15:06:27.000Z",
+                  "updatedAt": "2026-06-05T15:06:27.000Z",
+                  "uid": "35240-ed9652b8-a5bf-4a09-934e-8e1aeacd524f"
+                }
+              ],
+              "createdAt": "2026-06-05T15:06:27.000Z",
+              "updatedAt": "2026-06-05T15:06:27.000Z",
+              "uid": "35240-72323567-bff3-4708-9b5e-1f17ffe83b9e"
+            }
+          ],
+          "id": "4b4a3066-8c2b-44c0-bc19-24d56c484ec9",
+          "createdAt": "2026-06-05T15:06:27.000Z",
+          "updatedAt": "2026-06-05T15:06:27.000Z",
+          "uid": "35240-4b4a3066-8c2b-44c0-bc19-24d56c484ec9"
+        },
+        {
+          "name": "Server example operation",
+          "id": "d21f9015-16ff-46c9-b7da-12ba2dba7a02",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "description": "(Required) Identifies the user accessing the account",
+                "key": "User-Id",
+                "value": "<string>"
+              },
+              {
+                "description": "(Required) Identifies the organization that the user is in",
+                "key": "Organization",
+                "value": "<string>"
+              },
+              {
+                "description": "(Required) A correlation ID that should be returned back to the caller to indicate the return of the given request",
+                "key": "Request-Id",
+                "value": "<string>"
+              },
+              {
+                "description": "(Required) The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.",
+                "key": "Subscription-Id",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/all-product-info?email=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "all-product-info"
+              ],
+              "query": [
+                {
+                  "description": "Filters customers by email address",
+                  "key": "email",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "You can use this call to get the information on all of the products at this resource that you need to use."
+          },
+          "response": [
+            {
+              "id": "6efc7eea-76c8-4401-9b9f-00a861e12850",
+              "name": "This sends a response with all the products, their size, and their location.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "(Required) Identifies the user accessing the account",
+                    "key": "User-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "description": "(Required) Identifies the organization that the user is in",
+                    "key": "Organization",
+                    "value": "<string>"
+                  },
+                  {
+                    "description": "(Required) A correlation ID that should be returned back to the caller to indicate the return of the given request",
+                    "key": "Request-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "description": "(Required) The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.",
+                    "key": "Subscription-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/all-product-info?email=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "all-product-info"
+                  ],
+                  "query": [
+                    {
+                      "description": "Filters customers by email address",
+                      "key": "email",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                },
+                {
+                  "disabled": false,
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "key": "Request-Id",
+                  "value": "<string>"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"products\": [\n    {\n      \"name\": \"<string>\",\n      \"id\": \"<string>\",\n      \"productSize\": {\n        \"name\": \"<string>\",\n        \"number\": \"<integer>\",\n        \"location\": \"<string>\",\n        \"productSize\": {\n          \"productWidth\": \"<string>\",\n          \"productHeight\": \"<string>\",\n          \"productWeight\": \"<string>\"\n        }\n      }\n    },\n    {\n      \"name\": \"<string>\",\n      \"id\": \"<string>\",\n      \"productSize\": {\n        \"name\": \"<string>\",\n        \"number\": \"<integer>\",\n        \"location\": \"<string>\",\n        \"productSize\": {\n          \"productWidth\": \"<string>\",\n          \"productHeight\": \"<string>\",\n          \"productWeight\": \"<string>\"\n        }\n      }\n    }\n  ],\n  \"links\": {\n    \"self\": {\n      \"href\": \"<string>\",\n      \"method\": \"<string>\"\n    },\n    \"thisProductInfo\": {\n      \"href\": \"<string>\",\n      \"method\": \"<string>\"\n    },\n    \"thisProductSize\": {\n      \"href\": \"<string>\",\n      \"method\": \"<string>\"\n    },\n    \"ping\": {\n      \"href\": \"<string>\",\n      \"method\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:06:27.000Z",
+              "updatedAt": "2026-06-05T15:06:27.000Z",
+              "uid": "35240-6efc7eea-76c8-4401-9b9f-00a861e12850"
+            },
+            {
+              "id": "0a0cc6e0-6b67-4546-95f5-c537b21f28ef",
+              "name": "400 - Bad Request",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "(Required) Identifies the user accessing the account",
+                    "key": "User-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "description": "(Required) Identifies the organization that the user is in",
+                    "key": "Organization",
+                    "value": "<string>"
+                  },
+                  {
+                    "description": "(Required) A correlation ID that should be returned back to the caller to indicate the return of the given request",
+                    "key": "Request-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "description": "(Required) The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.",
+                    "key": "Subscription-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/all-product-info?email=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "all-product-info"
+                  ],
+                  "query": [
+                    {
+                      "description": "Filters customers by email address",
+                      "key": "email",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "text",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                },
+                {
+                  "disabled": false,
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "key": "Request-Id",
+                  "value": "<string>"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-06-05T15:06:27.000Z",
+              "updatedAt": "2026-06-05T15:06:27.000Z",
+              "uid": "35240-0a0cc6e0-6b67-4546-95f5-c537b21f28ef"
+            },
+            {
+              "id": "2a5c205f-e1f8-47ab-937d-8560f15ac677",
+              "name": "401 - Unauthorized",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "(Required) Identifies the user accessing the account",
+                    "key": "User-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "description": "(Required) Identifies the organization that the user is in",
+                    "key": "Organization",
+                    "value": "<string>"
+                  },
+                  {
+                    "description": "(Required) A correlation ID that should be returned back to the caller to indicate the return of the given request",
+                    "key": "Request-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "description": "(Required) The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.",
+                    "key": "Subscription-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/all-product-info?email=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "all-product-info"
+                  ],
+                  "query": [
+                    {
+                      "description": "Filters customers by email address",
+                      "key": "email",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "text",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                },
+                {
+                  "disabled": false,
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "key": "Request-Id",
+                  "value": "<string>"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-06-05T15:06:27.000Z",
+              "updatedAt": "2026-06-05T15:06:27.000Z",
+              "uid": "35240-2a5c205f-e1f8-47ab-937d-8560f15ac677"
+            },
+            {
+              "id": "3d7b5633-c75c-42ff-9c9d-c7a68ae2a58e",
+              "name": "403 - Forbidden",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "(Required) Identifies the user accessing the account",
+                    "key": "User-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "description": "(Required) Identifies the organization that the user is in",
+                    "key": "Organization",
+                    "value": "<string>"
+                  },
+                  {
+                    "description": "(Required) A correlation ID that should be returned back to the caller to indicate the return of the given request",
+                    "key": "Request-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "description": "(Required) The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.",
+                    "key": "Subscription-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/all-product-info?email=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "all-product-info"
+                  ],
+                  "query": [
+                    {
+                      "description": "Filters customers by email address",
+                      "key": "email",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "text",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                },
+                {
+                  "disabled": false,
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "key": "Request-Id",
+                  "value": "<string>"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-06-05T15:06:27.000Z",
+              "updatedAt": "2026-06-05T15:06:27.000Z",
+              "uid": "35240-3d7b5633-c75c-42ff-9c9d-c7a68ae2a58e"
+            },
+            {
+              "id": "eed13cb7-ffda-405e-a2f6-95e578559857",
+              "name": "503 - Service Unavailable",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "(Required) Identifies the user accessing the account",
+                    "key": "User-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "description": "(Required) Identifies the organization that the user is in",
+                    "key": "Organization",
+                    "value": "<string>"
+                  },
+                  {
+                    "description": "(Required) A correlation ID that should be returned back to the caller to indicate the return of the given request",
+                    "key": "Request-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "description": "(Required) The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.",
+                    "key": "Subscription-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/all-product-info?email=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "all-product-info"
+                  ],
+                  "query": [
+                    {
+                      "description": "Filters customers by email address",
+                      "key": "email",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "_postman_previewlanguage": "text",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                },
+                {
+                  "disabled": false,
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "key": "Request-Id",
+                  "value": "<string>"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-06-05T15:06:27.000Z",
+              "updatedAt": "2026-06-05T15:06:27.000Z",
+              "uid": "35240-eed13cb7-ffda-405e-a2f6-95e578559857"
+            }
+          ],
+          "createdAt": "2026-06-05T15:06:27.000Z",
+          "updatedAt": "2026-06-05T15:06:27.000Z",
+          "uid": "35240-d21f9015-16ff-46c9-b7da-12ba2dba7a02"
+        }
+      ],
+      "id": "89f8bd4a-c9b3-41b4-b6c2-86bb30b07945",
+      "createdAt": "2026-06-05T15:06:27.000Z",
+      "updatedAt": "2026-06-05T15:06:27.000Z",
+      "uid": "35240-89f8bd4a-c9b3-41b4-b6c2-86bb30b07945"
+    },
+    {
+      "name": "ping",
+      "item": [
+        {
+          "name": "Server heartbeat operation",
+          "id": "e17edb80-0613-4266-b85c-83f60f5a6ea2",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "description": "(Required) A correlation ID that should be returned back to the caller to indicate the return of the given request",
+                "key": "Request-Id",
+                "value": "<string>"
+              },
+              {
+                "description": "(Required) The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.",
+                "key": "Subscription-Id",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/ping",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "ping"
+              ]
+            },
+            "description": "Solutions can use this operation to check that the server is still available and responding to requests."
+          },
+          "response": [
+            {
+              "id": "e99b03fa-87da-41c7-97ad-92018269523d",
+              "name": "200 - OK",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "(Required) A correlation ID that should be returned back to the caller to indicate the return of the given request",
+                    "key": "Request-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "description": "(Required) The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.",
+                    "key": "Subscription-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/ping",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "ping"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                },
+                {
+                  "disabled": false,
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "key": "Request-Id",
+                  "value": "<string>"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<number>\",\n  \"links\": {\n    \"self\": {\n      \"href\": \"<string>\",\n      \"method\": \"<string>\"\n    },\n    \"allProductInfo\": {\n      \"href\": \"<string>\",\n      \"method\": \"<string>\"\n    },\n    \"thisProductInfo\": {\n      \"href\": \"<string>\",\n      \"method\": \"<string>\"\n    },\n    \"thisProductSize\": {\n      \"href\": \"<string>\",\n      \"method\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-06-05T15:06:27.000Z",
+              "updatedAt": "2026-06-05T15:06:27.000Z",
+              "uid": "35240-e99b03fa-87da-41c7-97ad-92018269523d"
+            },
+            {
+              "id": "d97ddd58-011f-4e24-80f9-86345ce4ee68",
+              "name": "400 - Bad Request",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "(Required) A correlation ID that should be returned back to the caller to indicate the return of the given request",
+                    "key": "Request-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "description": "(Required) The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.",
+                    "key": "Subscription-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/ping",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "ping"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "text",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                },
+                {
+                  "disabled": false,
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "key": "Request-Id",
+                  "value": "<string>"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-06-05T15:06:27.000Z",
+              "updatedAt": "2026-06-05T15:06:27.000Z",
+              "uid": "35240-d97ddd58-011f-4e24-80f9-86345ce4ee68"
+            },
+            {
+              "id": "f1fb3f7e-1aa0-4ff8-9d8e-a4e82e376058",
+              "name": "401 - Unauthorized",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "(Required) A correlation ID that should be returned back to the caller to indicate the return of the given request",
+                    "key": "Request-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "description": "(Required) The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.",
+                    "key": "Subscription-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/ping",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "ping"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "text",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                },
+                {
+                  "disabled": false,
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "key": "Request-Id",
+                  "value": "<string>"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-06-05T15:06:27.000Z",
+              "updatedAt": "2026-06-05T15:06:27.000Z",
+              "uid": "35240-f1fb3f7e-1aa0-4ff8-9d8e-a4e82e376058"
+            },
+            {
+              "id": "f1b333cb-5ed4-4518-b46b-c6d5618c2d3a",
+              "name": "403 - Forbidden",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "(Required) A correlation ID that should be returned back to the caller to indicate the return of the given request",
+                    "key": "Request-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "description": "(Required) The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.",
+                    "key": "Subscription-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/ping",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "ping"
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "text",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                },
+                {
+                  "disabled": false,
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "key": "Request-Id",
+                  "value": "<string>"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-06-05T15:06:27.000Z",
+              "updatedAt": "2026-06-05T15:06:27.000Z",
+              "uid": "35240-f1b333cb-5ed4-4518-b46b-c6d5618c2d3a"
+            },
+            {
+              "id": "08db8c8d-6e3b-4018-ad04-7ea239001eaa",
+              "name": "503 - Service Unavailable",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "(Required) A correlation ID that should be returned back to the caller to indicate the return of the given request",
+                    "key": "Request-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "description": "(Required) The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.",
+                    "key": "Subscription-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/ping",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "ping"
+                  ]
+                }
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "_postman_previewlanguage": "text",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                },
+                {
+                  "disabled": false,
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "key": "Request-Id",
+                  "value": "<string>"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-06-05T15:06:27.000Z",
+              "updatedAt": "2026-06-05T15:06:27.000Z",
+              "uid": "35240-08db8c8d-6e3b-4018-ad04-7ea239001eaa"
+            }
+          ],
+          "createdAt": "2026-06-05T15:06:27.000Z",
+          "updatedAt": "2026-06-05T15:06:27.000Z",
+          "uid": "35240-e17edb80-0613-4266-b85c-83f60f5a6ea2"
+        }
+      ],
+      "id": "bc08baa7-aa54-4f5c-81eb-d025b741108e",
+      "createdAt": "2026-06-05T15:06:27.000Z",
+      "updatedAt": "2026-06-05T15:06:27.000Z",
+      "uid": "35240-bc08baa7-aa54-4f5c-81eb-d025b741108e"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "anonymous",
+        "type": "string"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://identity.fortellis.io/oauth2/",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "implicit",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.fortellis.io/sales/parts-store/v47"
+    }
+  ]
+}
