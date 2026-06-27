@@ -50,7 +50,7 @@ apis:
         url: https://docs.fortellis.io
       - type: APIReference
         url: https://apidocs.fortellis.io
-      - type: SignUp
+      - type: Signup
         url: https://sso.fortellis.io
       - type: Portal
         url: https://fortellis.io
@@ -185,48 +185,45 @@ apis:
 common:
   - type: PostmanWorkspace
     url: https://www.postman.com/kinlaneapi/cdk-global/overview
-  - type: ArazzoWorkflows
-    url: arazzo/
-    workflows:
-      - url: arazzo/cdk-global-add-service-session-item-workflow.yml
-        name: CDK Global Add Service Session Item
-        summary: Create a booking session, add a requested service item, and read it back.
-      - url: arazzo/cdk-global-book-service-session-workflow.yml
-        name: CDK Global Book Service Session
-        summary: Create a booking session, discover an available store and slot, and book it.
-      - url: arazzo/cdk-global-cancel-appointment-workflow.yml
-        name: CDK Global Cancel Service Appointment
-        summary: Find a customer's appointment, confirm it exists, then cancel it with a reason.
-      - url: arazzo/cdk-global-create-data-record-workflow.yml
-        name: CDK Global Create Data Record
-        summary: Add a record to the data domain store and read it back by its identifier.
-      - url: arazzo/cdk-global-inspect-available-slot-workflow.yml
-        name: CDK Global Inspect Available Slot
-        summary: List a store's open slots and pull the full detail of the first slot.
-      - url: arazzo/cdk-global-parts-availability-check-workflow.yml
-        name: CDK Global Parts Availability Check
-        summary: Health-check the parts store, then look up a product only when it is up.
-      - url: arazzo/cdk-global-parts-inventory-lookup-workflow.yml
-        name: CDK Global Parts Inventory Lookup
-        summary: List parts inventory, pull a product's detail, then read its size.
-      - url: arazzo/cdk-global-relay-appointment-event-workflow.yml
-        name: CDK Global Relay Appointment Event
-        summary: Read a service appointment, then relay it as an event to an event sink.
-      - url: arazzo/cdk-global-remove-service-session-item-workflow.yml
-        name: CDK Global Remove Service Session Item
-        summary: Confirm a booking session item exists, then remove it from the session.
-      - url: arazzo/cdk-global-reschedule-appointment-workflow.yml
-        name: CDK Global Reschedule Service Appointment
-        summary: Read an existing appointment, update its date/time, then confirm the change.
-      - url: arazzo/cdk-global-schedule-service-appointment-workflow.yml
-        name: CDK Global Schedule Service Appointment
-        summary: Create a service appointment for a vehicle and read it back to confirm.
-      - url: arazzo/cdk-global-update-data-record-workflow.yml
-        name: CDK Global Update Data Record
-        summary: Read a data-domain record, branch on whether it exists, then update it.
-      - url: arazzo/cdk-global-update-service-session-item-workflow.yml
-        name: CDK Global Update Service Session Item
-        summary: Create a booking session, query a requested item, and update its details.
+  - type: Arazzo
+    url: arazzo/cdk-global-add-service-session-item-workflow.yml
+    name: CDK Global Add Service Session Item
+  - type: Arazzo
+    url: arazzo/cdk-global-book-service-session-workflow.yml
+    name: CDK Global Book Service Session
+  - type: Arazzo
+    url: arazzo/cdk-global-cancel-appointment-workflow.yml
+    name: CDK Global Cancel Service Appointment
+  - type: Arazzo
+    url: arazzo/cdk-global-create-data-record-workflow.yml
+    name: CDK Global Create Data Record
+  - type: Arazzo
+    url: arazzo/cdk-global-inspect-available-slot-workflow.yml
+    name: CDK Global Inspect Available Slot
+  - type: Arazzo
+    url: arazzo/cdk-global-parts-availability-check-workflow.yml
+    name: CDK Global Parts Availability Check
+  - type: Arazzo
+    url: arazzo/cdk-global-parts-inventory-lookup-workflow.yml
+    name: CDK Global Parts Inventory Lookup
+  - type: Arazzo
+    url: arazzo/cdk-global-relay-appointment-event-workflow.yml
+    name: CDK Global Relay Appointment Event
+  - type: Arazzo
+    url: arazzo/cdk-global-remove-service-session-item-workflow.yml
+    name: CDK Global Remove Service Session Item
+  - type: Arazzo
+    url: arazzo/cdk-global-reschedule-appointment-workflow.yml
+    name: CDK Global Reschedule Service Appointment
+  - type: Arazzo
+    url: arazzo/cdk-global-schedule-service-appointment-workflow.yml
+    name: CDK Global Schedule Service Appointment
+  - type: Arazzo
+    url: arazzo/cdk-global-update-data-record-workflow.yml
+    name: CDK Global Update Data Record
+  - type: Arazzo
+    url: arazzo/cdk-global-update-service-session-item-workflow.yml
+    name: CDK Global Update Service Session Item
   - type: Website
     url: https://www.cdkglobal.com
   - type: Portal
@@ -235,7 +232,7 @@ common:
     url: https://docs.fortellis.io
   - type: APIReference
     url: https://apidocs.fortellis.io
-  - type: SignUp
+  - type: Signup
     url: https://sso.fortellis.io
   - type: Marketplace
     url: https://fortellis.io/marketplace
@@ -245,7 +242,7 @@ common:
     url: https://identity.fortellis.io/oauth2/
   - type: GitHubOrganization
     url: https://github.com/Fortellis
-  - type: SDK
+  - type: SDKs
     url: https://github.com/Fortellis/fortellis-cli
   - type: CLI
     url: https://www.npmjs.com/package/@fortellis/fortellis-cli
@@ -257,11 +254,11 @@ common:
     url: https://github.com/Fortellis/api-spec-push-action
   - type: SpecLinter
     url: https://github.com/Fortellis/fortellis-spec-linter
-  - type: SDK
+  - type: SDKs
     url: https://github.com/Fortellis/python-admin-api
-  - type: SDK
+  - type: SDKs
     url: https://github.com/Fortellis/Admin-API-Implementation-Java
-  - type: SDK
+  - type: SDKs
     url: https://github.com/Fortellis/admin-api-implementation
   - type: Sample
     url: https://github.com/Fortellis/Java-Public-Webhook-Example
