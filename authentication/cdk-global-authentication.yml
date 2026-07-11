@@ -1,0 +1,21 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/fortellis-appointments-openapi.yml, openapi/fortellis-parts-store-openapi.yml,
+  openapi/fortellis-pet-adoption-openapi.yml, openapi/fortellis-user-service-openapi.yml
+summary:
+  types:
+  - oauth2
+  oauth2_flows:
+  - implicit
+schemes:
+- name: permission-model
+  type: oauth2
+  flows:
+  - flow: implicit
+    authorizationUrl: https://identity.fortellis.io/oauth2/
+    scopes: 1
+  sources:
+  - openapi/fortellis-appointments-openapi.yml
+  - openapi/fortellis-parts-store-openapi.yml
+  - openapi/fortellis-pet-adoption-openapi.yml
+  - openapi/fortellis-user-service-openapi.yml

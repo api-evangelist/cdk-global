@@ -183,6 +183,10 @@ apis:
       - type: SourceRepo
         url: https://github.com/Fortellis/AsyncAPIHelloWorld
 common:
+  - type: DomainSecurity
+    url: security/cdk-global-domain-security.yml
+  - type: Authentication
+    url: authentication/cdk-global-authentication.yml
   - type: OAuthScopes
     url: scopes/cdk-global-scopes.yml
   - type: PostmanWorkspace
