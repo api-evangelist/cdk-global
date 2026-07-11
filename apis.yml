@@ -183,6 +183,8 @@ apis:
       - type: SourceRepo
         url: https://github.com/Fortellis/AsyncAPIHelloWorld
 common:
+  - type: OAuthScopes
+    url: scopes/cdk-global-scopes.yml
   - type: PostmanWorkspace
     url: https://www.postman.com/kinlaneapi/cdk-global/overview
   - type: Arazzo
@@ -284,6 +286,8 @@ common:
     url: json-ld/cdk-global-context.jsonld
   - type: SpectralRules
     url: rules/fortellis-rules.yml
+  - url: https://fortellis.io/insights
+    type: Blog
 x-profiled: '2026-05-23'
 x-type: company
 x-fortune:

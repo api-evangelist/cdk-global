@@ -1,0 +1,47 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/fortellis-appointments-openapi.yml, openapi/fortellis-parts-store-openapi.yml,
+  openapi/fortellis-pet-adoption-openapi.yml, openapi/fortellis-user-service-openapi.yml
+schemes:
+- name: permission-model
+  source: openapi/fortellis-appointments-openapi.yml
+  flows:
+  - flow: implicit
+    authorizationUrl: https://identity.fortellis.io/oauth2/
+- name: permission-model
+  source: openapi/fortellis-parts-store-openapi.yml
+  flows:
+  - flow: implicit
+    authorizationUrl: https://identity.fortellis.io/oauth2/
+- name: permission-model
+  source: openapi/fortellis-pet-adoption-openapi.yml
+  flows:
+  - flow: implicit
+    authorizationUrl: https://identity.fortellis.io/oauth2/
+- name: permission-model
+  source: openapi/fortellis-user-service-openapi.yml
+  flows:
+  - flow: implicit
+    authorizationUrl: https://identity.fortellis.io/oauth2/
+scopes:
+- scope: anonymous
+  description: Create, Query, Update, and Delete appointments
+  flows:
+  - implicit
+  sources:
+  - openapi/fortellis-appointments-openapi.yml
+  - openapi/fortellis-parts-store-openapi.yml
+  - openapi/fortellis-pet-adoption-openapi.yml
+  - openapi/fortellis-user-service-openapi.yml
+- scope: pets.adopt
+  description: permission to query, read, and adopt pets
+  flows:
+  - implicit
+  sources:
+  - openapi/fortellis-pet-adoption-openapi.yml
+- scope: pets.manage
+  description: permission to add, modify, and remove pets
+  flows:
+  - implicit
+  sources:
+  - openapi/fortellis-pet-adoption-openapi.yml
