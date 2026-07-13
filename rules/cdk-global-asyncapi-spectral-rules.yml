@@ -1,0 +1,30 @@
+# cdk-global — AsyncAPI Spectral ruleset (strengthened)
+# Plain Spectral. Rules measured from this provider's own AsyncAPI event
+# conventions by strengthen_asyncapi.py, then self-validated against the spec.
+#
+# Provenance:
+#   - server-security-defined: 1/1 servers
+#   - security-schemes: ['fortellisOAuth2']
+extends:
+  - spectral:asyncapi
+rules:
+  server-security-defined:
+    description: Servers should declare their security requirements.
+    severity: warn
+    given: $.servers[*]
+    then:
+      field: security
+      function: truthy
+  security-schemes-defined:
+    description: Security schemes should be defined in components.
+    severity: warn
+    given: $.components
+    then:
+      field: securitySchemes
+      function: truthy
+  no-empty-descriptions:
+    description: Descriptions must not be empty strings.
+    severity: warn
+    given: $..description
+    then:
+      function: truthy
