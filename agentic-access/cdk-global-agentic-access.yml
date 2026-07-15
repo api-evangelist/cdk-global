@@ -1,0 +1,387 @@
+generated: '2026-07-15'
+method: generated
+source: openapi/fortellis-appointments-openapi.yml, openapi/fortellis-event-relay-webhook-openapi.yml,
+  openapi/fortellis-parts-store-openapi.yml, openapi/fortellis-pet-adoption-openapi.yml, openapi/fortellis-user-service-openapi.yml
+description: Recommended x-agentic-access execution contracts, classified heuristically from
+  the OpenAPI. A governance starting point for exposing this API to AI agents — review and bind
+  audience per deployment. See research/curity/agentic-governance/.
+summary:
+  operations: 25
+  by_action_class:
+    connected: 13
+    acting: 12
+  by_consequence:
+    read: 13
+    write: 12
+  human_in_the_loop_required: 0
+operations:
+- path: /
+  method: get
+  operationId: queryAppointments
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+    scope:
+    - anonymous
+- path: /
+  method: post
+  operationId: createAppointment
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - anonymous
+- path: /{appointmentId}
+  method: get
+  operationId: queryAppointment
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+    scope:
+    - anonymous
+- path: /{appointmentId}
+  method: post
+  operationId: updateAppointment
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - anonymous
+- path: /{appointmentId}
+  method: delete
+  operationId: cancelAppointment
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - anonymous
+- path: /event/{channel}
+  method: post
+  operationId: postEvent
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /all-product-info
+  method: get
+  operationId: allProductInfo
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+    scope:
+    - anonymous
+- path: /all-product-info/{productNumber}
+  method: get
+  operationId: productInformation
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+    scope:
+    - anonymous
+- path: /all-product-info/{productNumber}/product-size
+  method: get
+  operationId: productDescription
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+    scope:
+    - anonymous
+- path: /ping
+  method: get
+  operationId: healthMonitor
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+    scope:
+    - anonymous
+- path: /pets
+  method: get
+  operationId: queryPets
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+    scope:
+    - anonymous
+- path: /pets
+  method: post
+  operationId: addPet
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - anonymous
+- path: /pets/{petId}
+  method: get
+  operationId: readPets
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+    scope:
+    - anonymous
+- path: /pets/{petId}
+  method: post
+  operationId: updatePets
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - anonymous
+- path: /pets/{petId}
+  method: delete
+  operationId: deletePets
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - anonymous
+- path: /booking-sessions
+  method: post
+  operationId: createBookingSession
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - anonymous
+- path: /booking-sessions/{bookingSessionId}/items
+  method: post
+  operationId: addBookingSessionItem
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - anonymous
+- path: /booking-sessions/{bookingSessionId}/items
+  method: get
+  operationId: queryBookingSessionItems
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+    scope:
+    - anonymous
+- path: /booking-sessions/{bookingSessionId}/items/{itemId}
+  method: post
+  operationId: updateBookingSessionItem
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - anonymous
+- path: /booking-sessions/{bookingSessionId}/items/{itemId}
+  method: get
+  operationId: queryRequestedServiceItemById
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+    scope:
+    - anonymous
+- path: /booking-sessions/{bookingSessionId}/items/{itemId}
+  method: delete
+  operationId: removeBookingSessionItem
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - anonymous
+- path: /booking-sessions/{bookingSessionId}/available-stores
+  method: get
+  operationId: queryBookingSessionStoreAvailability
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+    scope:
+    - anonymous
+- path: /booking-sessions/{bookingSessionId}/available-stores/{storeId}/slots
+  method: get
+  operationId: queryBookingSessionsAvailableStoreSlots
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+    scope:
+    - anonymous
+- path: /booking-sessions/{bookingSessionId}/available-stores/{storeId}/slots/{slotId}
+  method: get
+  operationId: queryBookingSessionsAvailableSlot
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+    scope:
+    - anonymous
+- path: /booking-sessions/{bookingSessionId}/available-stores/{storeId}/slots/{slotId}
+  method: post
+  operationId: bookAppointmentSlot
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - anonymous

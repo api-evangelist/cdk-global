@@ -183,6 +183,8 @@ apis:
       - type: SourceRepo
         url: https://github.com/Fortellis/AsyncAPIHelloWorld
 common:
+  - type: AgenticAccess
+    url: agentic-access/cdk-global-agentic-access.yml
   - type: DomainSecurity
     url: security/cdk-global-domain-security.yml
   - type: Authentication
