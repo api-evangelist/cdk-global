@@ -1,0 +1,215 @@
+swagger: '2.0'
+info:
+  version: 3.0.0
+  title: appointments adopt cancel API
+  description: "## Fortellis - Service - Appointments\nA service appointment is a booking of a vehicle into the service department for work that needs to be carried out on the vehicle. This could be a service, repair, body repair, government test etc.\n\n## What does this API do?\nThe API will allow you to query, create and manage service appointments. \n\n## Intended Audience\nIt is expected that systems that require create, read, update, and delete access to appointments will use this API.  Systems implementing service-scheduling will use this API to store appointment records.\n"
+  contact:
+    name: Developer Evangelists
+    url: https://example.com
+    email: support@fortellis.io
+host: fortellis.io
+basePath: /sales/notification/v3
+schemes:
+- https
+security:
+- permission-model:
+  - anonymous
+tags:
+- name: cancel
+paths:
+  /{appointmentId}:
+    delete:
+      consumes:
+      - application/json
+      summary: Cancel an appointment
+      description: 'Cancels an appointment.  This method does not guarantee that resource reservations associated with the appointment (advisors, transports, reserved equipment/parts) will be released.  It is suggested that the service-scheduling API be used for this purpose.
+
+        '
+      operationId: cancelAppointment
+      tags:
+      - cancel
+      parameters:
+      - $ref: '#/parameters/header.Accept'
+      - $ref: '#/parameters/header.Accept-Charset'
+      - $ref: '#/parameters/header.Accept-Language'
+      - $ref: '#/parameters/header.If-Match'
+      - $ref: '#/parameters/header.If-None-Match'
+      - $ref: '#/parameters/header.Prefer'
+      - $ref: '#/parameters/header.Request-Id'
+      - $ref: '#/parameters/header.Subscription-Id'
+      - $ref: '#/parameters/header.Authorization'
+      - $ref: '#/parameters/path.appointmentId'
+      - $ref: '#/parameters/body.CancelRequest'
+      produces:
+      - application/json
+      responses:
+        '204':
+          $ref: '#/responses/Success'
+        '400':
+          $ref: '#/responses/BadRequest'
+        '401':
+          $ref: '#/responses/Unauthorized'
+        '403':
+          $ref: '#/responses/Forbidden'
+        '404':
+          $ref: '#/responses/NotFound'
+definitions:
+  CancelRequest:
+    description: This fields describes why a customer requested to cancel.
+    type: object
+    properties:
+      reason:
+        type: string
+        description: Free-form comments that explain why the appointment was cancelled
+    required:
+    - reason
+    example:
+      reason: Rescheduled for the following week
+  ErrorResponse:
+    description: This is a generic error schema.
+    type: object
+    properties:
+      code:
+        type: integer
+        format: int32
+      message:
+        type: string
+    required:
+    - code
+    - message
+    example:
+      code: 24
+      message: Error Message used for debugging
+parameters:
+  header.Request-Id:
+    name: Request-Id
+    in: header
+    required: true
+    type: string
+    format: guid
+    description: You must include the Request-Id in every call to track the same call across systems.
+  header.Accept-Language:
+    description: This header describes the languages that the client accepts.
+    name: Accept-Language
+    in: header
+    type: string
+  header.Prefer:
+    description: This header describes the preferences of the client calling the API.
+    name: Prefer
+    in: header
+    type: string
+    enum:
+    - return=representation
+    - return=minimal
+  path.appointmentId:
+    name: appointmentId
+    in: path
+    required: true
+    type: string
+    description: The appointment identifier
+  header.If-Match:
+    name: If-Match
+    in: header
+    type: string
+    description: Specifies a conditional request to only return the resource when it does match one of the included ETag values
+  body.CancelRequest:
+    name: CancelRequest
+    in: body
+    required: true
+    description: An appointment cancellation request
+    schema:
+      $ref: '#/definitions/CancelRequest'
+  header.Authorization:
+    name: Authorization
+    in: header
+    required: true
+    type: string
+    format: guid
+    description: Provides authorization to access Fortellis APIs. For calling a Fortellis Provider, this must be an OAuth 2.0 token issued by the Fortellis authorization server, but you may call the simulator platform with Basic Authorization using your API key and secret.
+  header.Accept:
+    description: This header describes the characters that the API will accept.
+    name: Accept
+    in: header
+    type: string
+    enum:
+    - application/json
+  header.Accept-Charset:
+    description: This header describes the characters that the client will accept.
+    name: Accept-Charset
+    in: header
+    type: string
+    enum:
+    - utf-8
+  header.Subscription-Id:
+    name: Subscription-Id
+    in: header
+    required: true
+    type: string
+    format: guid
+    description: The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.
+  header.If-None-Match:
+    name: If-None-Match
+    in: header
+    type: string
+    description: Specifies a conditional request to only return the resource when it doesn't match one of the included ETag values
+responses:
+  NotFound:
+    description: 404 - Not Found
+    headers:
+      Content-Language:
+        type: string
+      Content-Type:
+        type: string
+      Request-Id:
+        type: string
+    schema:
+      $ref: '#/definitions/ErrorResponse'
+  Unauthorized:
+    description: 401 - Unauthorized
+    headers:
+      Content-Language:
+        type: string
+      Content-Type:
+        type: string
+      Request-Id:
+        type: string
+    schema:
+      $ref: '#/definitions/ErrorResponse'
+  Forbidden:
+    description: 403 - Forbidden
+    headers:
+      Content-Language:
+        type: string
+      Content-Type:
+        type: string
+      Request-Id:
+        type: string
+    schema:
+      $ref: '#/definitions/ErrorResponse'
+  BadRequest:
+    description: 400 - Bad Request
+    headers:
+      Content-Language:
+        type: string
+      Content-Type:
+        type: string
+      Request-Id:
+        type: string
+    schema:
+      $ref: '#/definitions/ErrorResponse'
+  Success:
+    description: 204 - Non Content
+    headers:
+      Content-Language:
+        type: string
+      Content-Type:
+        type: string
+      Request-Id:
+        type: string
+securityDefinitions:
+  permission-model:
+    type: oauth2
+    flow: implicit
+    authorizationUrl: https://identity.fortellis.io/oauth2/
+    scopes:
+      anonymous: Create, Query, Update, and Delete appointments
