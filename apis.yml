@@ -10,6 +10,19 @@ description: >-
   third-party automotive systems. CDK suffered a major BlackSuit ransomware attack on June 19, 2024, paying ~$25M in
   bitcoin to restore service over roughly two weeks; the outage caused an estimated $605M in dealer losses and triggered
   numerous lawsuits.
+accessModel:
+  pricing: free
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Free · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 image: https://avatars.githubusercontent.com/u/46600511
 tags:
   - Automotive
@@ -29,159 +42,229 @@ tags:
 created: '2026-05-22'
 modified: '2026-05-23'
 apis:
-  - aid: cdk-global:fortellis-platform
-    name: Fortellis Platform
-    description: >-
-      Fortellis is CDK Global's open automotive commerce platform — an API gateway, app marketplace, and developer
-      community that brokers data flow between dealerships, ISVs, OEMs, heavy-truck, and powersports systems. Fortellis
-      publishes 135+ APIs, lists 425+ marketplace apps, and processes 6.7B+ API transactions per year across 82K+ dealer
-      integrations.
-    humanURL: https://fortellis.io
-    baseURL: https://api.fortellis.io
-    image: https://avatars.githubusercontent.com/u/46600511
-    tags:
-      - Fortellis
-      - Marketplace
-      - Developer Platform
-      - APIs
-      - Automotive
-    properties:
-      - type: Documentation
-        url: https://docs.fortellis.io
-      - type: APIReference
-        url: https://apidocs.fortellis.io
-      - type: Signup
-        url: https://sso.fortellis.io
-      - type: Portal
-        url: https://fortellis.io
-      - type: Community
-        url: https://fortellis.io/community
-      - type: Marketplace
-        url: https://fortellis.io/marketplace
-      - type: GitHubOrganization
-        url: https://github.com/Fortellis
-  - aid: cdk-global:fortellis-appointments-api
-    name: Fortellis Service Appointments API
-    description: >-
-      Service-appointments API for booking, querying, updating, and cancelling vehicle service appointments at a
-      dealership service department. Used by scheduling systems integrating with CDK and other DMS providers via
-      Fortellis.
-    humanURL: https://apidocs.fortellis.io
-    baseURL: https://api.fortellis.io/sales/notification/v3
-    tags:
-      - Appointments
-      - Service
-      - Fixed Operations
-      - Scheduling
-    properties:
-      - type: OpenAPI
-        url: openapi/fortellis-appointments-openapi.yml
-      - type: APIReference
-        url: https://apidocs.fortellis.io
-      - type: SourceRepo
-        url: https://github.com/Fortellis/example-spec
-  - aid: cdk-global:fortellis-user-service-api
-    name: Fortellis User / Booking Sessions API
-    description: >-
-      Booking-sessions API illustrating Fortellis's REST conventions: session creation, item management, store
-      availability, and slot reservation for service scheduling workflows.
-    humanURL: https://apidocs.fortellis.io
-    baseURL: https://api.fortellis.io/service/sessions/v4
-    tags:
-      - Booking Sessions
-      - Service
-      - Scheduling
-    properties:
-      - type: OpenAPI
-        url: openapi/fortellis-user-service-openapi.yml
-      - type: APIReference
-        url: https://apidocs.fortellis.io
-      - type: SourceRepo
-        url: https://github.com/Fortellis/example-spec
-  - aid: cdk-global:fortellis-parts-store-api
-    name: Fortellis Parts Store API
-    description: >-
-      Parts-store reference API exposing product info, sizing, and ping/health for dealership parts inventory and
-      procurement integrations.
-    humanURL: https://apidocs.fortellis.io
-    baseURL: https://api.fortellis.io/sales/parts-store/v47
-    tags:
-      - Parts
-      - Inventory
-      - Fixed Operations
-    properties:
-      - type: OpenAPI
-        url: openapi/fortellis-parts-store-openapi.yml
-      - type: APIReference
-        url: https://apidocs.fortellis.io
-      - type: SourceRepo
-        url: https://github.com/Fortellis/example-spec
-  - aid: cdk-global:fortellis-pet-adoption-api
-    name: Fortellis Reference Pet Adoption API
-    description: >-
-      Reference / tutorial API distributed by Fortellis for developers learning the platform's OpenAPI conventions,
-      OAuth flows, and admin-API patterns.
-    humanURL: https://apidocs.fortellis.io
-    baseURL: https://api.fortellis.io/data/v1/example/pet-adoption
-    tags:
-      - Reference
-      - Tutorial
-      - Developer Education
-    properties:
-      - type: OpenAPI
-        url: openapi/fortellis-pet-adoption-openapi.yml
-      - type: SourceRepo
-        url: https://github.com/Fortellis/example-spec
-  - aid: cdk-global:fortellis-event-relay-webhook
-    name: Fortellis Event Relay Webhook
-    description: >-
-      Webhook contract that event-sink applications implement to receive asynchronous events from Fortellis Event Relay.
-      Defines payload envelope, required headers (X-Request-Id, Fortellis-Event-Id, Authorization, Data-Owner-Id), and
-      retry semantics for guaranteed delivery.
-    humanURL: https://github.com/Fortellis/Fortellis-Event-Relay-Webhook
-    baseURL: https://api.fortellis.io/v1/webhook
-    tags:
-      - Events
-      - Webhooks
-      - Event Relay
-      - Asynchronous
-    properties:
-      - type: OpenAPI
-        url: openapi/fortellis-event-relay-webhook-openapi.yml
-      - type: SourceRepo
-        url: https://github.com/Fortellis/Fortellis-Event-Relay-Webhook
-  - aid: cdk-global:fortellis-event-relay-data-plane
-    name: Fortellis Event Relay Data Plane Proxy (AsyncAPI)
-    description: >-
-      AsyncAPI specification for the Fortellis Event Relay data-plane proxy used by event sources to publish events into
-      Fortellis for fan-out to subscribers.
-    humanURL: https://github.com/Fortellis/Event-Relay-Specs
-    tags:
-      - Events
-      - AsyncAPI
-      - Event Relay
-      - Publish-Subscribe
-    properties:
-      - type: AsyncAPI
-        url: asyncapi/fortellis-event-relay-data-plane-proxy-asyncapi.yml
-      - type: SourceRepo
-        url: https://github.com/Fortellis/Event-Relay-Specs
-  - aid: cdk-global:fortellis-async-hello-world
-    name: Fortellis AsyncAPI Hello World Reference
-    description: >-
-      Hello World AsyncAPI reference distributed by Fortellis to teach the asynchronous API pattern, channel topology,
-      and message envelope conventions used across Fortellis event APIs.
-    humanURL: https://github.com/Fortellis/AsyncAPIHelloWorld
-    tags:
-      - AsyncAPI
-      - Reference
-      - Events
-      - Developer Education
-    properties:
-      - type: AsyncAPI
-        url: asyncapi/fortellis-hello-world-asyncapi.yml
-      - type: SourceRepo
-        url: https://github.com/Fortellis/AsyncAPIHelloWorld
+- aid: cdk-global:fortellis-platform
+  name: Fortellis Platform
+  description: >-
+    Fortellis is CDK Global's open automotive commerce platform — an API gateway, app marketplace, and
+    developer community that brokers data flow between dealerships, ISVs, OEMs, heavy-truck, and powersports
+    systems. Fortellis publishes 135+ APIs, lists 425+ marketplace apps, and processes 6.7B+ API transactions
+    per year across 82K+ dealer integrations.
+  humanURL: https://fortellis.io
+  baseURL: https://api.fortellis.io
+  image: https://avatars.githubusercontent.com/u/46600511
+  tags:
+  - Fortellis
+  - Marketplace
+  - Developer Platform
+  - APIs
+  - Automotive
+  properties:
+  - type: Documentation
+    url: https://docs.fortellis.io
+  - type: APIReference
+    url: https://apidocs.fortellis.io
+  - type: Signup
+    url: https://sso.fortellis.io
+  - type: Portal
+    url: https://fortellis.io
+  - type: Community
+    url: https://fortellis.io/community
+  - type: Marketplace
+    url: https://fortellis.io/marketplace
+  - type: GitHubOrganization
+    url: https://github.com/Fortellis
+- aid: cdk-global:fortellis-event-relay-data-plane
+  name: Fortellis Event Relay Data Plane Proxy (AsyncAPI)
+  description: >-
+    AsyncAPI specification for the Fortellis Event Relay data-plane proxy used by event sources to publish
+    events into Fortellis for fan-out to subscribers.
+  humanURL: https://github.com/Fortellis/Event-Relay-Specs
+  tags:
+  - Events
+  - AsyncAPI
+  - Event Relay
+  - Publish-Subscribe
+  properties:
+  - type: AsyncAPI
+    url: asyncapi/fortellis-event-relay-data-plane-proxy-asyncapi.yml
+  - type: SourceRepo
+    url: https://github.com/Fortellis/Event-Relay-Specs
+- aid: cdk-global:fortellis-async-hello-world
+  name: Fortellis AsyncAPI Hello World Reference
+  description: >-
+    Hello World AsyncAPI reference distributed by Fortellis to teach the asynchronous API pattern, channel
+    topology, and message envelope conventions used across Fortellis event APIs.
+  humanURL: https://github.com/Fortellis/AsyncAPIHelloWorld
+  tags:
+  - AsyncAPI
+  - Reference
+  - Events
+  - Developer Education
+  properties:
+  - type: AsyncAPI
+    url: asyncapi/fortellis-hello-world-asyncapi.yml
+  - type: SourceRepo
+    url: https://github.com/Fortellis/AsyncAPIHelloWorld
+- aid: cdk-global:cdk-global-adopt-api
+  name: CDK Global adopt API
+  description: The adopt API from CDK Global — 2 operation(s) for adopt.
+  humanURL: https://fortellis.io
+  baseURL: https://api.fortellis.io
+  tags:
+  - adopt
+  properties:
+  - type: OpenAPI
+    url: openapi/cdk-global-adopt-api-openapi.yml
+  - type: APIReference
+    url: https://apidocs.fortellis.io
+  - type: SourceRepo
+    url: https://github.com/Fortellis/example-spec
+  - type: SourceRepo
+    url: https://github.com/Fortellis/Fortellis-Event-Relay-Webhook
+- aid: cdk-global:cdk-global-adopt-delete-api
+  name: CDK Global adopt delete API
+  description: The adopt delete API from CDK Global — 1 operation(s) for adopt delete.
+  humanURL: https://fortellis.io
+  baseURL: https://api.fortellis.io
+  tags:
+  - adopt delete
+  properties:
+  - type: OpenAPI
+    url: openapi/cdk-global-adopt-delete-api-openapi.yml
+  - type: APIReference
+    url: https://apidocs.fortellis.io
+  - type: SourceRepo
+    url: https://github.com/Fortellis/example-spec
+  - type: SourceRepo
+    url: https://github.com/Fortellis/Fortellis-Event-Relay-Webhook
+- aid: cdk-global:cdk-global-adopt-update-api
+  name: CDK Global adopt update API
+  description: The adopt update API from CDK Global — 1 operation(s) for adopt update.
+  humanURL: https://fortellis.io
+  baseURL: https://api.fortellis.io
+  tags:
+  - adopt update
+  properties:
+  - type: OpenAPI
+    url: openapi/cdk-global-adopt-update-api-openapi.yml
+  - type: APIReference
+    url: https://apidocs.fortellis.io
+  - type: SourceRepo
+    url: https://github.com/Fortellis/example-spec
+  - type: SourceRepo
+    url: https://github.com/Fortellis/Fortellis-Event-Relay-Webhook
+- aid: cdk-global:cdk-global-cancel-api
+  name: CDK Global cancel API
+  description: The cancel API from CDK Global — 1 operation(s) for cancel.
+  humanURL: https://fortellis.io
+  baseURL: https://api.fortellis.io
+  tags:
+  - cancel
+  properties:
+  - type: OpenAPI
+    url: openapi/cdk-global-cancel-api-openapi.yml
+  - type: APIReference
+    url: https://apidocs.fortellis.io
+  - type: SourceRepo
+    url: https://github.com/Fortellis/example-spec
+  - type: SourceRepo
+    url: https://github.com/Fortellis/Fortellis-Event-Relay-Webhook
+- aid: cdk-global:cdk-global-create-api
+  name: CDK Global create API
+  description: The create API from CDK Global — 1 operation(s) for create.
+  humanURL: https://fortellis.io
+  baseURL: https://api.fortellis.io
+  tags:
+  - create
+  properties:
+  - type: OpenAPI
+    url: openapi/cdk-global-create-api-openapi.yml
+  - type: APIReference
+    url: https://apidocs.fortellis.io
+  - type: SourceRepo
+    url: https://github.com/Fortellis/example-spec
+  - type: SourceRepo
+    url: https://github.com/Fortellis/Fortellis-Event-Relay-Webhook
+- aid: cdk-global:cdk-global-events-api
+  name: CDK Global events API
+  description: The events API from CDK Global — 1 operation(s) for events.
+  humanURL: https://fortellis.io
+  baseURL: https://api.fortellis.io
+  tags:
+  - events
+  properties:
+  - type: OpenAPI
+    url: openapi/cdk-global-events-api-openapi.yml
+  - type: APIReference
+    url: https://apidocs.fortellis.io
+  - type: SourceRepo
+    url: https://github.com/Fortellis/example-spec
+  - type: SourceRepo
+    url: https://github.com/Fortellis/Fortellis-Event-Relay-Webhook
+- aid: cdk-global:cdk-global-manage-api
+  name: CDK Global manage API
+  description: The manage API from CDK Global — 1 operation(s) for manage.
+  humanURL: https://fortellis.io
+  baseURL: https://api.fortellis.io
+  tags:
+  - manage
+  properties:
+  - type: OpenAPI
+    url: openapi/cdk-global-manage-api-openapi.yml
+  - type: APIReference
+    url: https://apidocs.fortellis.io
+  - type: SourceRepo
+    url: https://github.com/Fortellis/example-spec
+  - type: SourceRepo
+    url: https://github.com/Fortellis/Fortellis-Event-Relay-Webhook
+- aid: cdk-global:cdk-global-query-api
+  name: CDK Global query API
+  description: The query API from CDK Global — 6 operation(s) for query.
+  humanURL: https://fortellis.io
+  baseURL: https://api.fortellis.io
+  tags:
+  - query
+  properties:
+  - type: OpenAPI
+    url: openapi/cdk-global-query-api-openapi.yml
+  - type: APIReference
+    url: https://apidocs.fortellis.io
+  - type: SourceRepo
+    url: https://github.com/Fortellis/example-spec
+  - type: SourceRepo
+    url: https://github.com/Fortellis/Fortellis-Event-Relay-Webhook
+- aid: cdk-global:cdk-global-service-booking-api
+  name: CDK Global Service Booking API
+  description: The Service Booking API from CDK Global — 6 operation(s) for service booking.
+  humanURL: https://fortellis.io
+  baseURL: https://api.fortellis.io
+  tags:
+  - Service Booking
+  properties:
+  - type: OpenAPI
+    url: openapi/cdk-global-service-booking-api-openapi.yml
+  - type: APIReference
+    url: https://apidocs.fortellis.io
+  - type: SourceRepo
+    url: https://github.com/Fortellis/example-spec
+  - type: SourceRepo
+    url: https://github.com/Fortellis/Fortellis-Event-Relay-Webhook
+- aid: cdk-global:cdk-global-update-api
+  name: CDK Global update API
+  description: The update API from CDK Global — 1 operation(s) for update.
+  humanURL: https://fortellis.io
+  baseURL: https://api.fortellis.io
+  tags:
+  - update
+  properties:
+  - type: OpenAPI
+    url: openapi/cdk-global-update-api-openapi.yml
+  - type: APIReference
+    url: https://apidocs.fortellis.io
+  - type: SourceRepo
+    url: https://github.com/Fortellis/example-spec
+  - type: SourceRepo
+    url: https://github.com/Fortellis/Fortellis-Event-Relay-Webhook
 common:
   - type: AgenticAccess
     url: agentic-access/cdk-global-agentic-access.yml
