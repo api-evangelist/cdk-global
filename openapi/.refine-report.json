@@ -1,0 +1,32 @@
+{
+  "provider": "cdk-global",
+  "sources": [
+    "cdk-global-adopt-api-openapi.yml",
+    "cdk-global-adopt-delete-api-openapi.yml",
+    "cdk-global-adopt-update-api-openapi.yml",
+    "cdk-global-cancel-api-openapi.yml",
+    "cdk-global-create-api-openapi.yml",
+    "cdk-global-events-api-openapi.yml",
+    "cdk-global-manage-api-openapi.yml",
+    "cdk-global-query-api-openapi.yml",
+    "cdk-global-service-booking-api-openapi.yml",
+    "cdk-global-update-api-openapi.yml"
+  ],
+  "outputs": [
+    "cdk-global-adopt-api-openapi.yml",
+    "cdk-global-adopt-delete-api-openapi.yml",
+    "cdk-global-adopt-update-api-openapi.yml",
+    "cdk-global-cancel-api-openapi.yml",
+    "cdk-global-create-api-openapi.yml",
+    "cdk-global-events-api-openapi.yml",
+    "cdk-global-manage-api-openapi.yml",
+    "cdk-global-query-api-openapi.yml",
+    "cdk-global-service-booking-api-openapi.yml",
+    "cdk-global-update-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

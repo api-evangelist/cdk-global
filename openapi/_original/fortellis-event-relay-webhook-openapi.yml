@@ -1,0 +1,206 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0-oas3
+  title: Fortellis Event Relay Webhook
+  description: >-
+    Provides an Event Sink the ability to receive event through Fortellis Event
+    Relay.
+  contact:
+    name: Fortellis Team
+    url: https://fortellis.io
+    email: support@fortellis.io
+paths:
+  /event/{channel}:
+    post:
+      summary: Post an event.
+      description: Event delivery endpoint to be implemented on the client-side.
+      operationId: postEvent
+      tags:
+        - events
+      parameters:
+        - name: channel
+          in: path
+          description: the channel/path used when the event was posted by the source.  Please consult the related AsyncAPI specification.
+          required: true
+          schema:
+            type: integer
+        - $ref: '#/components/parameters/header.X-Request-Id'
+        - $ref: '#/components/parameters/header.Fortellis-Event-Id'
+        - $ref: '#/components/parameters/header.Authorization'
+        - $ref: '#/components/parameters/header.Data-Owner-Id'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Event'
+        description: >-
+          The event payload as it was received from the event's  Source.  
+          
+          While the message's payload should adhere to the corresponding AsyncAPI specification, the payload is not validated by Fortellis Event Relay upon receipt.  The platform considers the message payload and its specification a contract between the source and the sink.  As such, issues with that format should be addressed by those parties, and source request id and Fortellis Event Id are provided to facilitate that conversation.  
+          
+          Rejection of an event will place the record and its partition on hold and trigger us to attempt retransmission until we succeed. **We will not move forward to the next record when we receive an error.**  Failed attempts at transmission may be billable, and placing a subscription in an extended pause period increases the possibility of duplicate record delivery.  Synchronous Validation of any elements other than the headers is discouraged.
+        required: true
+      responses:
+        '202':
+          $ref: '#/components/responses/EventReceived'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
+servers:
+  - url: /v1/webhook
+components:
+  parameters:
+    header.Authorization:
+      name: Authorization
+      in: header
+      required: true
+      description: >
+        Contains credentials that allows the caller to authenticate itself with
+        the
+
+        API. See RFC 7235 and RFC 7617 for more details.
+      schema:
+        type: string
+    header.X-Request-Id:
+      name: X-Request-Id
+      in: header
+      description: >
+        A correlation ID that should mirror the value of the X-Request-Id
+        request
+
+        header provided by the client.
+      schema:
+        type: string
+        format: uuid
+    header.Data-Owner-Id:
+      name: Data-Owner-Id
+      in: header
+      required: false
+      description: >
+        A Fortellis Organization Id that identifies the organization represented
+        by the event.
+      schema:
+        type: string
+        format: uuid
+    header.Fortellis-Event-Id:
+      name: Fortellis-Event-Id
+      in: header
+      required: true
+      description:
+        This is a unique ID for the event assigned by Fortellis at time receipt and provided to the event source.
+      schema:
+        type: string
+        format: uuid
+  responses:
+    EventReceived:
+      description: Accepted the event for asynchronous processing.
+      headers:
+        X-Request-Id:
+          description: The matching correlation identifier to the request by the client.
+          schema:
+            type: string
+    BadRequest:
+      description: >
+        400 - Bad Request
+        Rejection of an event will place the record and its partition on hold and trigger us to attempt retransmission until we succeed. **We will not move forward to the next record when we receive an error.** Failed attempts at transmission may be billable, and placing a subscription in an extended pause period increases the possibility of duplicate record delivery.  Synchronous Validation of any elements other than the headers is discouraged.
+      headers:
+        X-Request-Id:
+          description: Invalid Event received
+          schema:
+            type: string
+      content:
+        '*/*':
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    Unauthorized:
+      description: 401 - Unauthorized
+      headers:
+        X-Request-Id:
+          description: The matching correlation identifier to the request by the client.
+          schema:
+            type: string
+      content:
+        '*/*':
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    Forbidden:
+      description: 403 - Forbidden
+      headers:
+        X-Request-Id:
+          description: The matching correlation identifier to the request by the client.
+          schema:
+            type: string
+      content:
+        '*/*':
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    NotFound:
+      description: 404 - Not Found
+      headers:
+        X-Request-Id:
+          description: The matching correlation identifier to the request by the client.
+          schema:
+            type: string
+      content:
+        '*/*':
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    InternalServerError:
+      description: 500 - Internal Server Error
+      headers:
+        X-Request-Id:
+          description: The matching correlation identifier to the request by the client.
+          schema:
+            type: string
+      content:
+        '*/*':
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    ServiceUnavailable:
+      description: 503 - Service Unavailable
+      headers:
+        X-Request-Id:
+          description: The matching correlation identifier to the request by the client.
+          schema:
+            type: string
+      content:
+        '*/*':
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+  schemas:
+    Event:
+      description: A single event record matching the schema defined in the corrisponding AsyncAPI.
+      type: object
+      example:
+        key1: value1
+        key2: value2
+        key3:
+          - arr-value1
+          - arr-value2
+          - arr-value3
+        key4:
+          sub-key1: sub-value1
+          sub-key2: sub-value2
+    ErrorResponse:
+      description: Common error response object.
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string
+      required:
+        - code
+        - message
+      example:
+        code: 400
+        message: Bad Request
