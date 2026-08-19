@@ -10,6 +10,7 @@ description: >-
   third-party automotive systems. CDK suffered a major BlackSuit ransomware attack on June 19, 2024, paying ~$25M in
   bitcoin to restore service over roughly two weeks; the outage caused an estimated $605M in dealer losses and triggered
   numerous lawsuits.
+specificationVersion: '0.23'
 accessModel:
   pricing: free
   onboarding: self-serve
