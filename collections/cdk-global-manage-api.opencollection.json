@@ -1,0 +1,43 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "appointments adopt manage API",
+    "version": "3.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "manage",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Adds a pet to the store",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/pets",
+            "headers": [
+              {
+                "name": "Request-Id",
+                "value": ""
+              },
+              {
+                "name": "Subscription-Id",
+                "value": ""
+              },
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Adds a pet to the store"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

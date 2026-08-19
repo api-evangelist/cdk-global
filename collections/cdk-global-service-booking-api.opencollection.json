@@ -1,0 +1,408 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "appointments adopt Service Booking API",
+    "version": "3.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Service Booking",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create a bookingSession",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/booking-sessions",
+            "headers": [
+              {
+                "name": "Request-Id",
+                "value": ""
+              },
+              {
+                "name": "Subscription-Id",
+                "value": ""
+              },
+              {
+                "name": "Authorization",
+                "value": ""
+              },
+              {
+                "name": "Content-Type",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Creates a Booking Session. This session encapsulates the process of establishing the vehicle to be serviced, what services will be performed, what customer transportation is requested, and which available appointment slots are available."
+        },
+        {
+          "info": {
+            "name": "Queries the service items of the Booking Session",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/booking-sessions/:bookingSessionId/items",
+            "headers": [
+              {
+                "name": "Request-Id",
+                "value": ""
+              },
+              {
+                "name": "Subscription-Id",
+                "value": ""
+              },
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "bookingSessionId",
+                "value": "",
+                "type": "path",
+                "description": "The identifier of the bookingSession"
+              }
+            ]
+          },
+          "docs": "Queries the requested service items of the Booking Session"
+        },
+        {
+          "info": {
+            "name": "Adds a requested service item to the Booking Session",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/booking-sessions/:bookingSessionId/items",
+            "headers": [
+              {
+                "name": "Request-Id",
+                "value": ""
+              },
+              {
+                "name": "Subscription-Id",
+                "value": ""
+              },
+              {
+                "name": "Authorization",
+                "value": ""
+              },
+              {
+                "name": "Content-Type",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "bookingSessionId",
+                "value": "",
+                "type": "path",
+                "description": "The identifier of the bookingSession"
+              }
+            ]
+          },
+          "docs": "Adds a requested service item to the Booking Session"
+        },
+        {
+          "info": {
+            "name": "Queries a requested service item by identifier",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/booking-sessions/:bookingSessionId/items/:itemId",
+            "headers": [
+              {
+                "name": "Request-Id",
+                "value": ""
+              },
+              {
+                "name": "Subscription-Id",
+                "value": ""
+              },
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "bookingSessionId",
+                "value": "",
+                "type": "path",
+                "description": "The identifier of the bookingSession"
+              },
+              {
+                "name": "itemId",
+                "value": "",
+                "type": "path",
+                "description": "The identifier of the item"
+              }
+            ]
+          },
+          "docs": "Queries a requested service item by identifier"
+        },
+        {
+          "info": {
+            "name": "Updates a requested service item to the Booking Session",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/booking-sessions/:bookingSessionId/items/:itemId",
+            "headers": [
+              {
+                "name": "Request-Id",
+                "value": ""
+              },
+              {
+                "name": "Subscription-Id",
+                "value": ""
+              },
+              {
+                "name": "Authorization",
+                "value": ""
+              },
+              {
+                "name": "Content-Type",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "bookingSessionId",
+                "value": "",
+                "type": "path",
+                "description": "The identifier of the bookingSession"
+              },
+              {
+                "name": "itemId",
+                "value": "",
+                "type": "path",
+                "description": "The identifier of the item"
+              }
+            ]
+          },
+          "docs": "Updates a requested service item to the Booking Session"
+        },
+        {
+          "info": {
+            "name": "Removes a service item from the Booking Session",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/booking-sessions/:bookingSessionId/items/:itemId",
+            "headers": [
+              {
+                "name": "Request-Id",
+                "value": ""
+              },
+              {
+                "name": "Subscription-Id",
+                "value": ""
+              },
+              {
+                "name": "Authorization",
+                "value": ""
+              },
+              {
+                "name": "Content-Type",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "bookingSessionId",
+                "value": "",
+                "type": "path",
+                "description": "The identifier of the bookingSession"
+              },
+              {
+                "name": "itemId",
+                "value": "",
+                "type": "path",
+                "description": "The identifier of the item"
+              }
+            ]
+          },
+          "docs": "Removes a service item from the Booking Session"
+        },
+        {
+          "info": {
+            "name": "Queries the store availability for appointments for booking",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/booking-sessions/:bookingSessionId/available-stores",
+            "headers": [
+              {
+                "name": "Request-Id",
+                "value": ""
+              },
+              {
+                "name": "Subscription-Id",
+                "value": ""
+              },
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "bookingSessionId",
+                "value": "",
+                "type": "path",
+                "description": "The identifier of the bookingSession"
+              }
+            ]
+          },
+          "docs": "Queries the store availability for appointments for booking"
+        },
+        {
+          "info": {
+            "name": "Queries the available appointment slots by store",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/booking-sessions/:bookingSessionId/available-stores/:storeId/slots",
+            "headers": [
+              {
+                "name": "Request-Id",
+                "value": ""
+              },
+              {
+                "name": "Subscription-Id",
+                "value": ""
+              },
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "bookingSessionId",
+                "value": "",
+                "type": "path",
+                "description": "The identifier of the bookingSession"
+              },
+              {
+                "name": "storeId",
+                "value": "",
+                "type": "path",
+                "description": "The store identifier => 000001"
+              }
+            ]
+          },
+          "docs": "Queries the available appointment slots by store"
+        },
+        {
+          "info": {
+            "name": "Queries an available appointment slot",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/booking-sessions/:bookingSessionId/available-stores/:storeId/slots/:slotId",
+            "headers": [
+              {
+                "name": "Request-Id",
+                "value": ""
+              },
+              {
+                "name": "Subscription-Id",
+                "value": ""
+              },
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "bookingSessionId",
+                "value": "",
+                "type": "path",
+                "description": "The identifier of the bookingSession"
+              },
+              {
+                "name": "storeId",
+                "value": "",
+                "type": "path",
+                "description": "The store identifier => 000001"
+              },
+              {
+                "name": "slotId",
+                "value": "",
+                "type": "path",
+                "description": "The slot identifier"
+              }
+            ]
+          },
+          "docs": "Queries an available appointment slot"
+        },
+        {
+          "info": {
+            "name": "Books an appointment slot. This is the final step in the appointment booking process.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/booking-sessions/:bookingSessionId/available-stores/:storeId/slots/:slotId",
+            "headers": [
+              {
+                "name": "Request-Id",
+                "value": ""
+              },
+              {
+                "name": "Subscription-Id",
+                "value": ""
+              },
+              {
+                "name": "Authorization",
+                "value": ""
+              },
+              {
+                "name": "Content-Type",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "bookingSessionId",
+                "value": "",
+                "type": "path",
+                "description": "The identifier of the bookingSession"
+              },
+              {
+                "name": "storeId",
+                "value": "",
+                "type": "path",
+                "description": "The store identifier => 000001"
+              },
+              {
+                "name": "slotId",
+                "value": "",
+                "type": "path",
+                "description": "The slot identifier"
+              }
+            ]
+          },
+          "docs": "Books an appointment slot. This is the final step in the appointment booking process."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

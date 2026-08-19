@@ -1,0 +1,3137 @@
+{
+  "item": [
+    {
+      "id": "7ea9014b-7cc5-4bf5-920f-d4a8ecf0b022",
+      "name": "query",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c58e03c4-b7de-4754-bb2e-6dda16cc5689",
+          "name": "Query appointments",
+          "request": {
+            "name": "Query appointments",
+            "description": {
+              "content": "Query appointments",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "dateTimeInterval",
+                  "value": "<string>",
+                  "description": "The ISO 8601 data and time interval to filter the appointment query"
+                },
+                {
+                  "disabled": false,
+                  "key": "vehicleHref",
+                  "value": "<string>",
+                  "description": "The vehicle resource hyperlink to filter query results"
+                },
+                {
+                  "disabled": false,
+                  "key": "customerHref",
+                  "value": "<string>",
+                  "description": "The customer resource hyperlink to filter query results"
+                },
+                {
+                  "disabled": false,
+                  "key": "advisorHref",
+                  "value": "<string>",
+                  "description": "The advisor resource hyperlink to filter query results"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "This header describes the characters that the client will accept.",
+                "key": "Accept-Charset",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "This header describes the languages that the client accepts.",
+                "key": "Accept-Language",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "Specifies a conditional request to only return the resource when it does match one of the included ETag values",
+                "key": "If-Match",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "Specifies a conditional request to only return the resource when it doesn't match one of the included ETag values",
+                "key": "If-None-Match",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "This header describes the preferences of the client calling the API.",
+                "key": "Prefer",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) You must include the Request-Id in every call to track the same call across systems.",
+                "key": "Request-Id",
+                "value": "<guid>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.",
+                "key": "Subscription-Id",
+                "value": "<guid>"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9ae1266d-cdd0-49b8-aef9-cc191b0f8116",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "dateTimeInterval",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "vehicleHref",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "customerHref",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "advisorHref",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the characters that the API will accept.",
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the characters that the client will accept.",
+                    "key": "Accept-Charset",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the languages that the client accepts.",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specifies a conditional request to only return the resource when it does match one of the included ETag values",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specifies a conditional request to only return the resource when it doesn't match one of the included ETag values",
+                    "key": "If-None-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the preferences of the client calling the API.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) You must include the Request-Id in every call to track the same call across systems.",
+                    "key": "Request-Id",
+                    "value": "<guid>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.",
+                    "key": "Subscription-Id",
+                    "value": "<guid>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Provides authorization to access Fortellis APIs. For calling a Fortellis Provider, this must be an OAuth 2.0 token issued by the Fortellis authorization server, but you may call the simulator platform with Basic Authorization using your API key and secret.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "Request-Id",
+                  "value": "string",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"items\": {\n    \"appointmentId\": \"123\",\n    \"dateTime\": \"2019-06-10T16:15:00+08:00\",\n    \"requestedServices\": [\n      {\n        \"description\": \"Filler, Tail Lamp Center - Replace (Labor Only)\",\n        \"sourceHref\": \"api.fortellis.io/service/reference/v4/service-packages/model/CHEV-CAMAC-2001-US/packages/BF018/specifications/8994972\"\n      }\n    ],\n    \"vehicleHref\": \"api.fortellis.io/service/v1/vehicles/123\",\n    \"vehicleMileage\": {\n      \"value\": 75201,\n      \"units\": \"MILES\"\n    },\n    \"customerHref\": \"api.fortellis.io/service/v1/customers/123\",\n    \"contact\": {\n      \"label\": \"mobile\",\n      \"uri\": \"tel:1-234-567-8900\",\n      \"preferences\": [\n        {\n          \"startDay\": \"MON\",\n          \"endDay\": \"FRI\",\n          \"startTime\": \"1000\",\n          \"endTime\": \"1600\"\n        }\n      ]\n    },\n    \"transportHref\": \"api.fortellis.io/service/v1/scheduling/lookups/transports/123\",\n    \"advisorHref\": \"api.fortellis.io/service/v1/scheduling/lookups/advisors/123\",\n    \"concerns\": \"My driver side front door rattles when I drive faster than 45\",\n    \"remarks\": \"Customer reports that driver side front door exhibits a rattle above 45mph\",\n    \"links\": {\n      \"self\": {\n        \"href\": \"api.fortellis.io/service/v3/appointments/123\"\n      }\n    }\n  },\n  \"totalItems\": 1,\n  \"totalPages\": 1,\n  \"links\": {\n    \"first\": {\n      \"href\": \"api.fortellis.io/service/v3/appointments?page=1&pageSize=1\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "26f3f369-970f-4a4d-8711-c84c058dede6",
+              "name": "400 - Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "dateTimeInterval",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "vehicleHref",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "customerHref",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "advisorHref",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the characters that the API will accept.",
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the characters that the client will accept.",
+                    "key": "Accept-Charset",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the languages that the client accepts.",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specifies a conditional request to only return the resource when it does match one of the included ETag values",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specifies a conditional request to only return the resource when it doesn't match one of the included ETag values",
+                    "key": "If-None-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the preferences of the client calling the API.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) You must include the Request-Id in every call to track the same call across systems.",
+                    "key": "Request-Id",
+                    "value": "<guid>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.",
+                    "key": "Subscription-Id",
+                    "value": "<guid>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Provides authorization to access Fortellis APIs. For calling a Fortellis Provider, this must be an OAuth 2.0 token issued by the Fortellis authorization server, but you may call the simulator platform with Basic Authorization using your API key and secret.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "Content-Language",
+                  "value": "string",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Request-Id",
+                  "value": "string",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"code\": 24,\n  \"message\": \"Error Message used for debugging\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0cbea4c7-afad-4eb8-ad14-c41a7219e159",
+              "name": "401 - Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "dateTimeInterval",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "vehicleHref",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "customerHref",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "advisorHref",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the characters that the API will accept.",
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the characters that the client will accept.",
+                    "key": "Accept-Charset",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the languages that the client accepts.",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specifies a conditional request to only return the resource when it does match one of the included ETag values",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specifies a conditional request to only return the resource when it doesn't match one of the included ETag values",
+                    "key": "If-None-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the preferences of the client calling the API.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) You must include the Request-Id in every call to track the same call across systems.",
+                    "key": "Request-Id",
+                    "value": "<guid>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.",
+                    "key": "Subscription-Id",
+                    "value": "<guid>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Provides authorization to access Fortellis APIs. For calling a Fortellis Provider, this must be an OAuth 2.0 token issued by the Fortellis authorization server, but you may call the simulator platform with Basic Authorization using your API key and secret.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "Content-Language",
+                  "value": "string",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Request-Id",
+                  "value": "string",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"code\": 24,\n  \"message\": \"Error Message used for debugging\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c5a66585-82ef-43ea-a1d3-0ff5c00bdf82",
+              "name": "403 - Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "dateTimeInterval",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "vehicleHref",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "customerHref",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "advisorHref",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the characters that the API will accept.",
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the characters that the client will accept.",
+                    "key": "Accept-Charset",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the languages that the client accepts.",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specifies a conditional request to only return the resource when it does match one of the included ETag values",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specifies a conditional request to only return the resource when it doesn't match one of the included ETag values",
+                    "key": "If-None-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the preferences of the client calling the API.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) You must include the Request-Id in every call to track the same call across systems.",
+                    "key": "Request-Id",
+                    "value": "<guid>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.",
+                    "key": "Subscription-Id",
+                    "value": "<guid>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Provides authorization to access Fortellis APIs. For calling a Fortellis Provider, this must be an OAuth 2.0 token issued by the Fortellis authorization server, but you may call the simulator platform with Basic Authorization using your API key and secret.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "Content-Language",
+                  "value": "string",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Request-Id",
+                  "value": "string",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"code\": 24,\n  \"message\": \"Error Message used for debugging\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f66e4b6d-cb39-499f-9562-ebcac18e899f",
+          "name": "Query an appointment",
+          "request": {
+            "name": "Query an appointment",
+            "description": {
+              "content": "Query an appointment",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":appointmentId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "appointmentId",
+                  "description": "(Required) The appointment identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "This header describes the characters that the client will accept.",
+                "key": "Accept-Charset",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "This header describes the languages that the client accepts.",
+                "key": "Accept-Language",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "Specifies a conditional request to only return the resource when it does match one of the included ETag values",
+                "key": "If-Match",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "Specifies a conditional request to only return the resource when it doesn't match one of the included ETag values",
+                "key": "If-None-Match",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "This header describes the preferences of the client calling the API.",
+                "key": "Prefer",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) You must include the Request-Id in every call to track the same call across systems.",
+                "key": "Request-Id",
+                "value": "<guid>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.",
+                "key": "Subscription-Id",
+                "value": "<guid>"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "390e59ac-06bb-4994-b3ef-dbc93f19ef79",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":appointmentId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "appointmentId",
+                      "description": "(Required) The appointment identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the characters that the API will accept.",
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the characters that the client will accept.",
+                    "key": "Accept-Charset",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the languages that the client accepts.",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specifies a conditional request to only return the resource when it does match one of the included ETag values",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specifies a conditional request to only return the resource when it doesn't match one of the included ETag values",
+                    "key": "If-None-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the preferences of the client calling the API.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) You must include the Request-Id in every call to track the same call across systems.",
+                    "key": "Request-Id",
+                    "value": "<guid>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.",
+                    "key": "Subscription-Id",
+                    "value": "<guid>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Provides authorization to access Fortellis APIs. For calling a Fortellis Provider, this must be an OAuth 2.0 token issued by the Fortellis authorization server, but you may call the simulator platform with Basic Authorization using your API key and secret.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "Request-Id",
+                  "value": "string",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Preference-Applied",
+                  "value": "return=minimal",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"appointmentId\": \"123\",\n  \"dateTime\": \"2019-06-10T16:15:00+08:00\",\n  \"requestedServices\": [\n    {\n      \"description\": \"Filler, Tail Lamp Center - Replace (Labor Only)\",\n      \"sourceHref\": \"api.fortellis.io/service/reference/v4/service-packages/model/CHEV-CAMAC-2001-US/packages/BF018/specifications/8994972\"\n    }\n  ],\n  \"vehicleHref\": \"api.fortellis.io/service/v1/vehicles/123\",\n  \"vehicleMileage\": {\n    \"value\": 34760,\n    \"units\": \"MILES\"\n  },\n  \"customerHref\": \"api.fortellis.io/service/v1/customers/123\",\n  \"contact\": {\n    \"label\": \"mobile\",\n    \"uri\": \"tel:1-234-567-8900\",\n    \"preferences\": {\n      \"items\": {\n        \"startDay\": [\n          \"MON\"\n        ],\n        \"endDay\": [\n          \"SAT\"\n        ]\n      },\n      \"startTime\": \"1985-04-12T23:20:50.52Z\",\n      \"endTime\": \"1985-04-18T23:20:50.52Z\",\n      \"timezone\": \"CST\"\n    }\n  },\n  \"transportHref\": \"api.fortellis.io/service/v1/scheduling/lookups/transports/123\",\n  \"advisorHref\": \"api.fortellis.io/service/v1/scheduling/lookups/advisors/123\",\n  \"concerns\": \"My driver side front door rattles when I drive faster than 45\",\n  \"remarks\": \"Customer reports that driver side front door exhibits a rattle above 45mph\",\n  \"links\": {\n    \"self\": {\n      \"href\": \"api.fortellis.io/service/v3/appointments/123\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "76484a67-ae9b-400b-92b8-9338df58b79a",
+              "name": "400 - Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":appointmentId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "appointmentId",
+                      "description": "(Required) The appointment identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the characters that the API will accept.",
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the characters that the client will accept.",
+                    "key": "Accept-Charset",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the languages that the client accepts.",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specifies a conditional request to only return the resource when it does match one of the included ETag values",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specifies a conditional request to only return the resource when it doesn't match one of the included ETag values",
+                    "key": "If-None-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the preferences of the client calling the API.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) You must include the Request-Id in every call to track the same call across systems.",
+                    "key": "Request-Id",
+                    "value": "<guid>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.",
+                    "key": "Subscription-Id",
+                    "value": "<guid>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Provides authorization to access Fortellis APIs. For calling a Fortellis Provider, this must be an OAuth 2.0 token issued by the Fortellis authorization server, but you may call the simulator platform with Basic Authorization using your API key and secret.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "Content-Language",
+                  "value": "string",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Request-Id",
+                  "value": "string",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"code\": 24,\n  \"message\": \"Error Message used for debugging\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9e41b85e-2fd4-4bdd-9cad-7aa84ac50bde",
+              "name": "401 - Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":appointmentId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "appointmentId",
+                      "description": "(Required) The appointment identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the characters that the API will accept.",
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the characters that the client will accept.",
+                    "key": "Accept-Charset",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the languages that the client accepts.",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specifies a conditional request to only return the resource when it does match one of the included ETag values",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specifies a conditional request to only return the resource when it doesn't match one of the included ETag values",
+                    "key": "If-None-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the preferences of the client calling the API.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) You must include the Request-Id in every call to track the same call across systems.",
+                    "key": "Request-Id",
+                    "value": "<guid>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.",
+                    "key": "Subscription-Id",
+                    "value": "<guid>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Provides authorization to access Fortellis APIs. For calling a Fortellis Provider, this must be an OAuth 2.0 token issued by the Fortellis authorization server, but you may call the simulator platform with Basic Authorization using your API key and secret.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "Content-Language",
+                  "value": "string",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Request-Id",
+                  "value": "string",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"code\": 24,\n  \"message\": \"Error Message used for debugging\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c9fc1a6a-e3f7-438d-9c98-9acf03465392",
+              "name": "403 - Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":appointmentId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "appointmentId",
+                      "description": "(Required) The appointment identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the characters that the API will accept.",
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the characters that the client will accept.",
+                    "key": "Accept-Charset",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the languages that the client accepts.",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specifies a conditional request to only return the resource when it does match one of the included ETag values",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specifies a conditional request to only return the resource when it doesn't match one of the included ETag values",
+                    "key": "If-None-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the preferences of the client calling the API.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) You must include the Request-Id in every call to track the same call across systems.",
+                    "key": "Request-Id",
+                    "value": "<guid>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.",
+                    "key": "Subscription-Id",
+                    "value": "<guid>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Provides authorization to access Fortellis APIs. For calling a Fortellis Provider, this must be an OAuth 2.0 token issued by the Fortellis authorization server, but you may call the simulator platform with Basic Authorization using your API key and secret.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "Content-Language",
+                  "value": "string",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Request-Id",
+                  "value": "string",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"code\": 24,\n  \"message\": \"Error Message used for debugging\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3d01ed93-0ab1-49fa-ae0f-463983e60682",
+              "name": "404 - Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":appointmentId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "appointmentId",
+                      "description": "(Required) The appointment identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the characters that the API will accept.",
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the characters that the client will accept.",
+                    "key": "Accept-Charset",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the languages that the client accepts.",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specifies a conditional request to only return the resource when it does match one of the included ETag values",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specifies a conditional request to only return the resource when it doesn't match one of the included ETag values",
+                    "key": "If-None-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the preferences of the client calling the API.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) You must include the Request-Id in every call to track the same call across systems.",
+                    "key": "Request-Id",
+                    "value": "<guid>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.",
+                    "key": "Subscription-Id",
+                    "value": "<guid>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Provides authorization to access Fortellis APIs. For calling a Fortellis Provider, this must be an OAuth 2.0 token issued by the Fortellis authorization server, but you may call the simulator platform with Basic Authorization using your API key and secret.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "Content-Language",
+                  "value": "string",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Request-Id",
+                  "value": "string",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"code\": 24,\n  \"message\": \"Error Message used for debugging\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2d26a6e6-2b67-44e7-9a20-0fbc361f377c",
+          "name": "Server example operation",
+          "request": {
+            "name": "Server example operation",
+            "description": {
+              "content": "You can use this call to get the information on all of the products at this resource that you need to use.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "all-product-info"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "email",
+                  "value": "<string>",
+                  "description": "Filters customers by email address"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Identifies the user accessing the account",
+                "key": "User-Id",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Identifies the organization that the user is in",
+                "key": "Organization",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) A correlation ID that should be returned back to the caller to indicate the return of the given request",
+                "key": "Request-Id",
+                "value": "<guid>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.",
+                "key": "Subscription-Id",
+                "value": "<guid>"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9669176e-76f8-4077-935b-d37306719b17",
+              "name": "This sends a response with all the products, their size, and their location.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "all-product-info"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "email",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Identifies the user accessing the account",
+                    "key": "User-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Identifies the organization that the user is in",
+                    "key": "Organization",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) A correlation ID that should be returned back to the caller to indicate the return of the given request",
+                    "key": "Request-Id",
+                    "value": "<guid>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.",
+                    "key": "Subscription-Id",
+                    "value": "<guid>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Provides authorization to access Fortellis APIs. For calling a Fortellis Provider, this must be an OAuth 2.0 token issued by the Fortellis authorization server, but you may call the simulator platform with Basic Authorization using your API key and secret.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "Request-Id",
+                  "value": "string",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"products\": [\n    {\n      \"name\": \"string\",\n      \"id\": \"string\",\n      \"productSize\": {\n        \"name\": \"string\",\n        \"number\": 2541,\n        \"location\": \"string\",\n        \"productSize\": {\n          \"productWidth\": \"string\",\n          \"productHeight\": \"string\",\n          \"productWeight\": \"string\"\n        }\n      }\n    },\n    {\n      \"name\": \"string\",\n      \"id\": \"string\",\n      \"productSize\": {\n        \"name\": \"string\",\n        \"number\": 9161,\n        \"location\": \"string\",\n        \"productSize\": {\n          \"productWidth\": \"string\",\n          \"productHeight\": \"string\",\n          \"productWeight\": \"string\"\n        }\n      }\n    }\n  ],\n  \"links\": {\n    \"self\": {\n      \"href\": \"string\",\n      \"method\": \"string\"\n    },\n    \"thisProductInfo\": {\n      \"href\": \"string\",\n      \"method\": \"string\"\n    },\n    \"thisProductSize\": {\n      \"href\": \"string\",\n      \"method\": \"string\"\n    },\n    \"ping\": {\n      \"href\": \"string\",\n      \"method\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b4aa40e0-5030-4893-8b25-c2117a2f7a85",
+              "name": "400 - Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "all-product-info"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "email",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Identifies the user accessing the account",
+                    "key": "User-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Identifies the organization that the user is in",
+                    "key": "Organization",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) A correlation ID that should be returned back to the caller to indicate the return of the given request",
+                    "key": "Request-Id",
+                    "value": "<guid>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.",
+                    "key": "Subscription-Id",
+                    "value": "<guid>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Provides authorization to access Fortellis APIs. For calling a Fortellis Provider, this must be an OAuth 2.0 token issued by the Fortellis authorization server, but you may call the simulator platform with Basic Authorization using your API key and secret.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "Request-Id",
+                  "value": "string",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"code\": 400,\n  \"message\": \"Bad Request\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "49dcde0d-23ad-4ef6-a71d-4f46b20843a7",
+              "name": "401 - Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "all-product-info"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "email",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Identifies the user accessing the account",
+                    "key": "User-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Identifies the organization that the user is in",
+                    "key": "Organization",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) A correlation ID that should be returned back to the caller to indicate the return of the given request",
+                    "key": "Request-Id",
+                    "value": "<guid>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.",
+                    "key": "Subscription-Id",
+                    "value": "<guid>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Provides authorization to access Fortellis APIs. For calling a Fortellis Provider, this must be an OAuth 2.0 token issued by the Fortellis authorization server, but you may call the simulator platform with Basic Authorization using your API key and secret.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "Request-Id",
+                  "value": "string",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"code\": 400,\n  \"message\": \"Bad Request\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "91d478ad-f6e6-479e-b647-45f8a908bd01",
+              "name": "403 - Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "all-product-info"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "email",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Identifies the user accessing the account",
+                    "key": "User-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Identifies the organization that the user is in",
+                    "key": "Organization",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) A correlation ID that should be returned back to the caller to indicate the return of the given request",
+                    "key": "Request-Id",
+                    "value": "<guid>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.",
+                    "key": "Subscription-Id",
+                    "value": "<guid>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Provides authorization to access Fortellis APIs. For calling a Fortellis Provider, this must be an OAuth 2.0 token issued by the Fortellis authorization server, but you may call the simulator platform with Basic Authorization using your API key and secret.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "Request-Id",
+                  "value": "string",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"code\": 400,\n  \"message\": \"Bad Request\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "135e4806-cb9e-44fc-942c-6809ddcda0ed",
+              "name": "503 - Service Unavailable",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "all-product-info"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "email",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Identifies the user accessing the account",
+                    "key": "User-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Identifies the organization that the user is in",
+                    "key": "Organization",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) A correlation ID that should be returned back to the caller to indicate the return of the given request",
+                    "key": "Request-Id",
+                    "value": "<guid>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.",
+                    "key": "Subscription-Id",
+                    "value": "<guid>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Provides authorization to access Fortellis APIs. For calling a Fortellis Provider, this must be an OAuth 2.0 token issued by the Fortellis authorization server, but you may call the simulator platform with Basic Authorization using your API key and secret.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "Request-Id",
+                  "value": "string",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"code\": 400,\n  \"message\": \"Bad Request\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "23af9296-432b-41d5-91cb-8a166811f707",
+          "name": "Specific Product",
+          "request": {
+            "name": "Specific Product",
+            "description": {
+              "content": "Find a specific product.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "all-product-info",
+                ":productNumber"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<number>",
+                  "key": "productNumber",
+                  "description": "(Required) Filters for a specific product"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Identifies the user accessing the account",
+                "key": "User-Id",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Identifies the organization that the user is in",
+                "key": "Organization",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) A correlation ID that should be returned back to the caller to indicate the return of the given request",
+                "key": "Request-Id",
+                "value": "<guid>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.",
+                "key": "Subscription-Id",
+                "value": "<guid>"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "daffc0e3-19bd-4024-80b6-a2e63e6ea1e7",
+              "name": "This sends the information on a particular product based on the product number.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "all-product-info",
+                    ":productNumber"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<number>",
+                      "key": "productNumber",
+                      "description": "(Required) Filters for a specific product"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Identifies the user accessing the account",
+                    "key": "User-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Identifies the organization that the user is in",
+                    "key": "Organization",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) A correlation ID that should be returned back to the caller to indicate the return of the given request",
+                    "key": "Request-Id",
+                    "value": "<guid>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.",
+                    "key": "Subscription-Id",
+                    "value": "<guid>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Provides authorization to access Fortellis APIs. For calling a Fortellis Provider, this must be an OAuth 2.0 token issued by the Fortellis authorization server, but you may call the simulator platform with Basic Authorization using your API key and secret.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "Request-Id",
+                  "value": "string",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"links\": {\n    \"self\": {\n      \"href\": \"string\",\n      \"method\": \"string\"\n    },\n    \"allProductInfo\": {\n      \"href\": \"string\",\n      \"method\": \"string\"\n    },\n    \"thisProductSize\": {\n      \"href\": \"string\",\n      \"method\": \"string\"\n    },\n    \"ping\": {\n      \"href\": \"string\",\n      \"method\": \"string\"\n    }\n  },\n  \"number\": 7155,\n  \"location\": \"string\",\n  \"productSize\": {\n    \"productWidth\": \"string\",\n    \"productHeight\": \"string\",\n    \"productWeight\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bbfba8cd-551a-4e6e-aead-4165c9cf6e07",
+              "name": "400 - Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "all-product-info",
+                    ":productNumber"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<number>",
+                      "key": "productNumber",
+                      "description": "(Required) Filters for a specific product"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Identifies the user accessing the account",
+                    "key": "User-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Identifies the organization that the user is in",
+                    "key": "Organization",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) A correlation ID that should be returned back to the caller to indicate the return of the given request",
+                    "key": "Request-Id",
+                    "value": "<guid>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.",
+                    "key": "Subscription-Id",
+                    "value": "<guid>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Provides authorization to access Fortellis APIs. For calling a Fortellis Provider, this must be an OAuth 2.0 token issued by the Fortellis authorization server, but you may call the simulator platform with Basic Authorization using your API key and secret.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "Request-Id",
+                  "value": "string",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"code\": 400,\n  \"message\": \"Bad Request\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5400d19c-7b92-401e-8748-21e636c1cf0b",
+              "name": "401 - Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "all-product-info",
+                    ":productNumber"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<number>",
+                      "key": "productNumber",
+                      "description": "(Required) Filters for a specific product"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Identifies the user accessing the account",
+                    "key": "User-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Identifies the organization that the user is in",
+                    "key": "Organization",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) A correlation ID that should be returned back to the caller to indicate the return of the given request",
+                    "key": "Request-Id",
+                    "value": "<guid>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.",
+                    "key": "Subscription-Id",
+                    "value": "<guid>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Provides authorization to access Fortellis APIs. For calling a Fortellis Provider, this must be an OAuth 2.0 token issued by the Fortellis authorization server, but you may call the simulator platform with Basic Authorization using your API key and secret.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "Request-Id",
+                  "value": "string",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"code\": 400,\n  \"message\": \"Bad Request\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "42b63d8d-b4a4-479d-8485-15014987240e",
+              "name": "403 - Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "all-product-info",
+                    ":productNumber"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<number>",
+                      "key": "productNumber",
+                      "description": "(Required) Filters for a specific product"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Identifies the user accessing the account",
+                    "key": "User-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Identifies the organization that the user is in",
+                    "key": "Organization",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) A correlation ID that should be returned back to the caller to indicate the return of the given request",
+                    "key": "Request-Id",
+                    "value": "<guid>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.",
+                    "key": "Subscription-Id",
+                    "value": "<guid>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Provides authorization to access Fortellis APIs. For calling a Fortellis Provider, this must be an OAuth 2.0 token issued by the Fortellis authorization server, but you may call the simulator platform with Basic Authorization using your API key and secret.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "Request-Id",
+                  "value": "string",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"code\": 400,\n  \"message\": \"Bad Request\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1a99989c-13e4-4949-8250-df6464b28b00",
+              "name": "503 - Service Unavailable",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "all-product-info",
+                    ":productNumber"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<number>",
+                      "key": "productNumber",
+                      "description": "(Required) Filters for a specific product"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Identifies the user accessing the account",
+                    "key": "User-Id",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Identifies the organization that the user is in",
+                    "key": "Organization",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) A correlation ID that should be returned back to the caller to indicate the return of the given request",
+                    "key": "Request-Id",
+                    "value": "<guid>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.",
+                    "key": "Subscription-Id",
+                    "value": "<guid>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Provides authorization to access Fortellis APIs. For calling a Fortellis Provider, this must be an OAuth 2.0 token issued by the Fortellis authorization server, but you may call the simulator platform with Basic Authorization using your API key and secret.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "Request-Id",
+                  "value": "string",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"code\": 400,\n  \"message\": \"Bad Request\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e26064b5-288a-40a2-a3d6-deed85d68aa7",
+          "name": "Specific Product Description",
+          "request": {
+            "name": "Specific Product Description",
+            "description": {
+              "content": "Find the description for a specific product.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "all-product-info",
+                ":productNumber",
+                "product-size"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<number>",
+                  "key": "productNumber",
+                  "description": "(Required) Filters for a specific product"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) A correlation ID that should be returned back to the caller to indicate the return of the given request",
+                "key": "Request-Id",
+                "value": "<guid>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.",
+                "key": "Subscription-Id",
+                "value": "<guid>"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8b8506f0-3b1c-41df-956d-412d2c186c52",
+              "name": "This sends the product size for a particular product to help you determine if you have the inventory space for that product.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "all-product-info",
+                    ":productNumber",
+                    "product-size"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<number>",
+                      "key": "productNumber",
+                      "description": "(Required) Filters for a specific product"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) A correlation ID that should be returned back to the caller to indicate the return of the given request",
+                    "key": "Request-Id",
+                    "value": "<guid>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.",
+                    "key": "Subscription-Id",
+                    "value": "<guid>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Provides authorization to access Fortellis APIs. For calling a Fortellis Provider, this must be an OAuth 2.0 token issued by the Fortellis authorization server, but you may call the simulator platform with Basic Authorization using your API key and secret.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "Request-Id",
+                  "value": "string",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"productWidth\": \"4 inches\",\n  \"productHeight\": \"1.8 cm\",\n  \"productLength\": \"4 inches\",\n  \"productWeight\": \"22 g\",\n  \"links\": {\n    \"self\": {\n      \"href\": \"/all-product-info/all-product-info/{productNumber}/product-size\",\n      \"method\": \"GET\"\n    },\n    \"allProductInfo\": {\n      \"href\": \"/all-product-info\",\n      \"method\": \"GET\"\n    },\n    \"thisProductInfo\": {\n      \"href\": \"/all-product-info/{productNumber}\",\n      \"method\": \"GET\"\n    },\n    \"ping\": {\n      \"href\": \"/ping\",\n      \"method\": \"GET\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "10fd1e4f-0e50-42b4-97d8-681d2f3a2d2a",
+              "name": "400 - Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "all-product-info",
+                    ":productNumber",
+                    "product-size"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<number>",
+                      "key": "productNumber",
+                      "description": "(Required) Filters for a specific product"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) A correlation ID that should be returned back to the caller to indicate the return of the given request",
+                    "key": "Request-Id",
+                    "value": "<guid>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.",
+                    "key": "Subscription-Id",
+                    "value": "<guid>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Provides authorization to access Fortellis APIs. For calling a Fortellis Provider, this must be an OAuth 2.0 token issued by the Fortellis authorization server, but you may call the simulator platform with Basic Authorization using your API key and secret.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "Request-Id",
+                  "value": "string",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"code\": 400,\n  \"message\": \"Bad Request\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "577eb4f4-0d11-4918-8276-7e0f649939af",
+              "name": "401 - Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "all-product-info",
+                    ":productNumber",
+                    "product-size"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<number>",
+                      "key": "productNumber",
+                      "description": "(Required) Filters for a specific product"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) A correlation ID that should be returned back to the caller to indicate the return of the given request",
+                    "key": "Request-Id",
+                    "value": "<guid>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.",
+                    "key": "Subscription-Id",
+                    "value": "<guid>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Provides authorization to access Fortellis APIs. For calling a Fortellis Provider, this must be an OAuth 2.0 token issued by the Fortellis authorization server, but you may call the simulator platform with Basic Authorization using your API key and secret.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "Request-Id",
+                  "value": "string",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"code\": 400,\n  \"message\": \"Bad Request\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d3976e34-c444-4a78-a4f2-b95f6dbba6d0",
+              "name": "403 - Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "all-product-info",
+                    ":productNumber",
+                    "product-size"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<number>",
+                      "key": "productNumber",
+                      "description": "(Required) Filters for a specific product"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) A correlation ID that should be returned back to the caller to indicate the return of the given request",
+                    "key": "Request-Id",
+                    "value": "<guid>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.",
+                    "key": "Subscription-Id",
+                    "value": "<guid>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Provides authorization to access Fortellis APIs. For calling a Fortellis Provider, this must be an OAuth 2.0 token issued by the Fortellis authorization server, but you may call the simulator platform with Basic Authorization using your API key and secret.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "Request-Id",
+                  "value": "string",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"code\": 400,\n  \"message\": \"Bad Request\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "437a7894-3519-4874-81b2-c42f156150a4",
+              "name": "503 - Service Unavailable",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "all-product-info",
+                    ":productNumber",
+                    "product-size"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<number>",
+                      "key": "productNumber",
+                      "description": "(Required) Filters for a specific product"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) A correlation ID that should be returned back to the caller to indicate the return of the given request",
+                    "key": "Request-Id",
+                    "value": "<guid>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.",
+                    "key": "Subscription-Id",
+                    "value": "<guid>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Provides authorization to access Fortellis APIs. For calling a Fortellis Provider, this must be an OAuth 2.0 token issued by the Fortellis authorization server, but you may call the simulator platform with Basic Authorization using your API key and secret.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "Request-Id",
+                  "value": "string",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"code\": 400,\n  \"message\": \"Bad Request\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "159c508e-9fe4-4ba4-bce6-dce260606a93",
+          "name": "Server heartbeat operation",
+          "request": {
+            "name": "Server heartbeat operation",
+            "description": {
+              "content": "Solutions can use this operation to check that the server is still available and responding to requests.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ping"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) A correlation ID that should be returned back to the caller to indicate the return of the given request",
+                "key": "Request-Id",
+                "value": "<guid>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.",
+                "key": "Subscription-Id",
+                "value": "<guid>"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ffe522de-34a9-4e31-86b7-7befabbca7b6",
+              "name": "200 - OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ping"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) A correlation ID that should be returned back to the caller to indicate the return of the given request",
+                    "key": "Request-Id",
+                    "value": "<guid>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.",
+                    "key": "Subscription-Id",
+                    "value": "<guid>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Provides authorization to access Fortellis APIs. For calling a Fortellis Provider, this must be an OAuth 2.0 token issued by the Fortellis authorization server, but you may call the simulator platform with Basic Authorization using your API key and secret.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "Request-Id",
+                  "value": "string",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"message\": \"The server is up\",\n  \"code\": 200,\n  \"links\": {\n    \"self\": {\n      \"href\": \"/ping\",\n      \"method\": \"GET\"\n    },\n    \"allProductInfo\": {\n      \"href\": \"/all-product-info\",\n      \"method\": \"GET\"\n    },\n    \"thisProductInfo\": {\n      \"href\": \"/all-product-info/{productNumber}\",\n      \"method\": \"GET\"\n    },\n    \"thisProductSize\": {\n      \"href\": \"/all-product-info/{productNumber}/product-size\",\n      \"method\": \"GET\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c0f60dfe-634d-47f6-8d7e-0802950d4b64",
+              "name": "400 - Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ping"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) A correlation ID that should be returned back to the caller to indicate the return of the given request",
+                    "key": "Request-Id",
+                    "value": "<guid>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.",
+                    "key": "Subscription-Id",
+                    "value": "<guid>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Provides authorization to access Fortellis APIs. For calling a Fortellis Provider, this must be an OAuth 2.0 token issued by the Fortellis authorization server, but you may call the simulator platform with Basic Authorization using your API key and secret.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "Request-Id",
+                  "value": "string",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"code\": 400,\n  \"message\": \"Bad Request\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "45263c8f-c6f8-46a5-9e37-e14b92380fbe",
+              "name": "401 - Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ping"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) A correlation ID that should be returned back to the caller to indicate the return of the given request",
+                    "key": "Request-Id",
+                    "value": "<guid>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.",
+                    "key": "Subscription-Id",
+                    "value": "<guid>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Provides authorization to access Fortellis APIs. For calling a Fortellis Provider, this must be an OAuth 2.0 token issued by the Fortellis authorization server, but you may call the simulator platform with Basic Authorization using your API key and secret.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "Request-Id",
+                  "value": "string",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"code\": 400,\n  \"message\": \"Bad Request\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "be4c45aa-a370-4ba1-a165-6337d15ba6ed",
+              "name": "403 - Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ping"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) A correlation ID that should be returned back to the caller to indicate the return of the given request",
+                    "key": "Request-Id",
+                    "value": "<guid>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.",
+                    "key": "Subscription-Id",
+                    "value": "<guid>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Provides authorization to access Fortellis APIs. For calling a Fortellis Provider, this must be an OAuth 2.0 token issued by the Fortellis authorization server, but you may call the simulator platform with Basic Authorization using your API key and secret.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "Request-Id",
+                  "value": "string",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"code\": 400,\n  \"message\": \"Bad Request\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4b91918b-d2ec-44a3-a37d-8176ad449114",
+              "name": "503 - Service Unavailable",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ping"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) A correlation ID that should be returned back to the caller to indicate the return of the given request",
+                    "key": "Request-Id",
+                    "value": "<guid>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.",
+                    "key": "Subscription-Id",
+                    "value": "<guid>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Provides authorization to access Fortellis APIs. For calling a Fortellis Provider, this must be an OAuth 2.0 token issued by the Fortellis authorization server, but you may call the simulator platform with Basic Authorization using your API key and secret.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "Request-Id",
+                  "value": "string",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"code\": 400,\n  \"message\": \"Bad Request\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://fortellis.io/sales/notification/v3",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "anonymous"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://identity.fortellis.io/oauth2/"
+      },
+      {
+        "key": "grant_type",
+        "value": "implicit"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "0e6273ab-4dd4-4fa9-8bc4-3f5717ab3d32",
+    "name": "appointments adopt query API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "## Fortellis - Service - Appointments\nA service appointment is a booking of a vehicle into the service department for work that needs to be carried out on the vehicle. This could be a service, repair, body repair, government test etc.\n\n## What does this API do?\nThe API will allow you to query, create and manage service appointments. \n\n## Intended Audience\nIt is expected that systems that require create, read, update, and delete access to appointments will use this API.  Systems implementing service-scheduling will use this API to store appointment records.\n\n\nContact Support:\n Name: Developer Evangelists\n Email: support@fortellis.io",
+      "type": "text/plain"
+    }
+  }
+}

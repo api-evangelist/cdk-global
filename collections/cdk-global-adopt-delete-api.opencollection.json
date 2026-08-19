@@ -1,0 +1,51 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "appointments adopt adopt delete API",
+    "version": "3.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "adopt delete",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Delete a pet so they are no longer available for adoption",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/pets/:petId",
+            "headers": [
+              {
+                "name": "Request-Id",
+                "value": ""
+              },
+              {
+                "name": "Subscription-Id",
+                "value": ""
+              },
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "petId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of a pet adoption record."
+              }
+            ]
+          },
+          "docs": "Delete a pet so they are no longer available for adoption"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,102 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "appointments adopt API",
+    "version": "3.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "adopt",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Query pets available for adoption",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/pets",
+            "headers": [
+              {
+                "name": "Request-Id",
+                "value": ""
+              },
+              {
+                "name": "Subscription-Id",
+                "value": ""
+              },
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "Allows pet searches to be filtered by name"
+              },
+              {
+                "name": "breed",
+                "value": "",
+                "type": "query",
+                "description": "Allows pet searches to be filtered by breed"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "This is a pagination control for the request page of query result items\nto return in the response. It must be greater than or equal to one.  If \ngreater than the total number of available pages, the returned page will \nbe the last available page.\n"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query",
+                "description": "This is a pagination control for the requested number of items returned\nper page. It must be greater than or equal to one. This may be overridden\nand clamped to a maximum value by the resource owner.\n"
+              }
+            ]
+          },
+          "docs": "Query pets available for adoption"
+        },
+        {
+          "info": {
+            "name": "Get the description of a pet available for adoption",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/pets/:petId",
+            "headers": [
+              {
+                "name": "Request-Id",
+                "value": ""
+              },
+              {
+                "name": "Subscription-Id",
+                "value": ""
+              },
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "petId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of a pet adoption record."
+              }
+            ]
+          },
+          "docs": "Get the description of a pet available for adoption"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

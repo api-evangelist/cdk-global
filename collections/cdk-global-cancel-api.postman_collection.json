@@ -1,0 +1,768 @@
+{
+  "item": [
+    {
+      "id": "5623486a-c9c9-46b6-b406-8ae3cbd49111",
+      "name": "cancel",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "0e8ed519-f67e-483c-818a-3f2586f989dd",
+          "name": "Cancel an appointment",
+          "request": {
+            "name": "Cancel an appointment",
+            "description": {
+              "content": "Cancels an appointment.  This method does not guarantee that resource reservations associated with the appointment (advisors, transports, reserved equipment/parts) will be released.  It is suggested that the service-scheduling API be used for this purpose.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":appointmentId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "appointmentId",
+                  "description": "(Required) The appointment identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "This header describes the characters that the client will accept.",
+                "key": "Accept-Charset",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "This header describes the languages that the client accepts.",
+                "key": "Accept-Language",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "Specifies a conditional request to only return the resource when it does match one of the included ETag values",
+                "key": "If-Match",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "Specifies a conditional request to only return the resource when it doesn't match one of the included ETag values",
+                "key": "If-None-Match",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "This header describes the preferences of the client calling the API.",
+                "key": "Prefer",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) You must include the Request-Id in every call to track the same call across systems.",
+                "key": "Request-Id",
+                "value": "<guid>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.",
+                "key": "Subscription-Id",
+                "value": "<guid>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"reason\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8750888a-1191-47c7-97d9-132e5254a863",
+              "name": "204 - Non Content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":appointmentId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "appointmentId",
+                      "description": "(Required) The appointment identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the characters that the API will accept.",
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the characters that the client will accept.",
+                    "key": "Accept-Charset",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the languages that the client accepts.",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specifies a conditional request to only return the resource when it does match one of the included ETag values",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specifies a conditional request to only return the resource when it doesn't match one of the included ETag values",
+                    "key": "If-None-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the preferences of the client calling the API.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) You must include the Request-Id in every call to track the same call across systems.",
+                    "key": "Request-Id",
+                    "value": "<guid>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.",
+                    "key": "Subscription-Id",
+                    "value": "<guid>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Provides authorization to access Fortellis APIs. For calling a Fortellis Provider, this must be an OAuth 2.0 token issued by the Fortellis authorization server, but you may call the simulator platform with Basic Authorization using your API key and secret.",
+                    "key": "Authorization",
+                    "value": "string"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"reason\": \"Rescheduled for the following week\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "Content-Language",
+                  "value": "string",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Request-Id",
+                  "value": "string",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1950ac08-dbe8-4eac-a17c-f7e0b5aee6de",
+              "name": "400 - Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":appointmentId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "appointmentId",
+                      "description": "(Required) The appointment identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the characters that the API will accept.",
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the characters that the client will accept.",
+                    "key": "Accept-Charset",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the languages that the client accepts.",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specifies a conditional request to only return the resource when it does match one of the included ETag values",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specifies a conditional request to only return the resource when it doesn't match one of the included ETag values",
+                    "key": "If-None-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the preferences of the client calling the API.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) You must include the Request-Id in every call to track the same call across systems.",
+                    "key": "Request-Id",
+                    "value": "<guid>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.",
+                    "key": "Subscription-Id",
+                    "value": "<guid>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Provides authorization to access Fortellis APIs. For calling a Fortellis Provider, this must be an OAuth 2.0 token issued by the Fortellis authorization server, but you may call the simulator platform with Basic Authorization using your API key and secret.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"reason\": \"Rescheduled for the following week\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "Content-Language",
+                  "value": "string",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Request-Id",
+                  "value": "string",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"code\": 24,\n  \"message\": \"Error Message used for debugging\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "aae15483-23c2-4bcb-b37a-a9e6b19d787d",
+              "name": "401 - Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":appointmentId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "appointmentId",
+                      "description": "(Required) The appointment identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the characters that the API will accept.",
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the characters that the client will accept.",
+                    "key": "Accept-Charset",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the languages that the client accepts.",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specifies a conditional request to only return the resource when it does match one of the included ETag values",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specifies a conditional request to only return the resource when it doesn't match one of the included ETag values",
+                    "key": "If-None-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the preferences of the client calling the API.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) You must include the Request-Id in every call to track the same call across systems.",
+                    "key": "Request-Id",
+                    "value": "<guid>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.",
+                    "key": "Subscription-Id",
+                    "value": "<guid>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Provides authorization to access Fortellis APIs. For calling a Fortellis Provider, this must be an OAuth 2.0 token issued by the Fortellis authorization server, but you may call the simulator platform with Basic Authorization using your API key and secret.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"reason\": \"Rescheduled for the following week\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "Content-Language",
+                  "value": "string",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Request-Id",
+                  "value": "string",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"code\": 24,\n  \"message\": \"Error Message used for debugging\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f219c808-c048-498f-89f9-721dcfdca188",
+              "name": "403 - Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":appointmentId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "appointmentId",
+                      "description": "(Required) The appointment identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the characters that the API will accept.",
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the characters that the client will accept.",
+                    "key": "Accept-Charset",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the languages that the client accepts.",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specifies a conditional request to only return the resource when it does match one of the included ETag values",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specifies a conditional request to only return the resource when it doesn't match one of the included ETag values",
+                    "key": "If-None-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the preferences of the client calling the API.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) You must include the Request-Id in every call to track the same call across systems.",
+                    "key": "Request-Id",
+                    "value": "<guid>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.",
+                    "key": "Subscription-Id",
+                    "value": "<guid>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Provides authorization to access Fortellis APIs. For calling a Fortellis Provider, this must be an OAuth 2.0 token issued by the Fortellis authorization server, but you may call the simulator platform with Basic Authorization using your API key and secret.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"reason\": \"Rescheduled for the following week\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "Content-Language",
+                  "value": "string",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Request-Id",
+                  "value": "string",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"code\": 24,\n  \"message\": \"Error Message used for debugging\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "90a9dcb2-7cbd-4025-9d69-490f3ec67324",
+              "name": "404 - Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":appointmentId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "appointmentId",
+                      "description": "(Required) The appointment identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the characters that the API will accept.",
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the characters that the client will accept.",
+                    "key": "Accept-Charset",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the languages that the client accepts.",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specifies a conditional request to only return the resource when it does match one of the included ETag values",
+                    "key": "If-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Specifies a conditional request to only return the resource when it doesn't match one of the included ETag values",
+                    "key": "If-None-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "This header describes the preferences of the client calling the API.",
+                    "key": "Prefer",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) You must include the Request-Id in every call to track the same call across systems.",
+                    "key": "Request-Id",
+                    "value": "<guid>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.",
+                    "key": "Subscription-Id",
+                    "value": "<guid>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Provides authorization to access Fortellis APIs. For calling a Fortellis Provider, this must be an OAuth 2.0 token issued by the Fortellis authorization server, but you may call the simulator platform with Basic Authorization using your API key and secret.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"reason\": \"Rescheduled for the following week\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "Content-Language",
+                  "value": "string",
+                  "description": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "Request-Id",
+                  "value": "string",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"code\": 24,\n  \"message\": \"Error Message used for debugging\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://fortellis.io/sales/notification/v3",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "anonymous"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://identity.fortellis.io/oauth2/"
+      },
+      {
+        "key": "grant_type",
+        "value": "implicit"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "062efd25-c327-4024-a3f8-f854a1930a79",
+    "name": "appointments adopt cancel API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "## Fortellis - Service - Appointments\nA service appointment is a booking of a vehicle into the service department for work that needs to be carried out on the vehicle. This could be a service, repair, body repair, government test etc.\n\n## What does this API do?\nThe API will allow you to query, create and manage service appointments. \n\n## Intended Audience\nIt is expected that systems that require create, read, update, and delete access to appointments will use this API.  Systems implementing service-scheduling will use this API to store appointment records.\n\n\nContact Support:\n Name: Developer Evangelists\n Email: support@fortellis.io",
+      "type": "text/plain"
+    }
+  }
+}

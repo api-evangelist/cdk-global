@@ -1,0 +1,67 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "appointments adopt create API",
+    "version": "3.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "create",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create an appointment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/",
+            "headers": [
+              {
+                "name": "Accept",
+                "value": ""
+              },
+              {
+                "name": "Accept-Charset",
+                "value": ""
+              },
+              {
+                "name": "Accept-Language",
+                "value": ""
+              },
+              {
+                "name": "If-Match",
+                "value": ""
+              },
+              {
+                "name": "If-None-Match",
+                "value": ""
+              },
+              {
+                "name": "Prefer",
+                "value": ""
+              },
+              {
+                "name": "Request-Id",
+                "value": ""
+              },
+              {
+                "name": "Subscription-Id",
+                "value": ""
+              },
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Creates an appointment.  Creating an appointment using this endpoint does not require the underlying system to implement any appointment capacity checks or dependent resource reservations. It is suggested that the service-scheduling API be used for this purpose.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
