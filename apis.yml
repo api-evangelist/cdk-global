@@ -37,6 +37,21 @@ tags:
   - Digital Retail
   - Marketplace
   - Developer Platform
+  - Event
+  - Webhook
+  - AsyncAPI
+tags_raw:
+  - Automotive
+  - Dealer Management
+  - DMS
+  - Auto Retail
+  - F&I
+  - Fixed Operations
+  - Parts
+  - CRM
+  - Digital Retail
+  - Marketplace
+  - Developer Platform
   - Events
   - Webhooks
   - AsyncAPI
@@ -54,6 +69,11 @@ apis:
   baseURL: https://api.fortellis.io
   image: https://avatars.githubusercontent.com/u/46600511
   tags:
+  - Fortellis
+  - Marketplace
+  - Developer Platform
+  - Automotive
+  tags_raw:
   - Fortellis
   - Marketplace
   - Developer Platform
@@ -81,6 +101,11 @@ apis:
     events into Fortellis for fan-out to subscribers.
   humanURL: https://github.com/Fortellis/Event-Relay-Specs
   tags:
+  - Event
+  - AsyncAPI
+  - Event Relay
+  - Publish Subscribe
+  tags_raw:
   - Events
   - AsyncAPI
   - Event Relay
@@ -97,6 +122,11 @@ apis:
     topology, and message envelope conventions used across Fortellis event APIs.
   humanURL: https://github.com/Fortellis/AsyncAPIHelloWorld
   tags:
+  - AsyncAPI
+  - Reference
+  - Event
+  - Developer Education
+  tags_raw:
   - AsyncAPI
   - Reference
   - Events
@@ -160,6 +190,8 @@ apis:
   humanURL: https://fortellis.io
   baseURL: https://api.fortellis.io
   tags:
+  - Cancel
+  tags_raw:
   - cancel
   properties:
   - type: OpenAPI
@@ -175,7 +207,8 @@ apis:
   description: The create API from CDK Global — 1 operation(s) for create.
   humanURL: https://fortellis.io
   baseURL: https://api.fortellis.io
-  tags:
+  tags: []
+  tags_raw:
   - create
   properties:
   - type: OpenAPI
@@ -192,6 +225,8 @@ apis:
   humanURL: https://fortellis.io
   baseURL: https://api.fortellis.io
   tags:
+  - Event
+  tags_raw:
   - events
   properties:
   - type: OpenAPI
@@ -208,6 +243,8 @@ apis:
   humanURL: https://fortellis.io
   baseURL: https://api.fortellis.io
   tags:
+  - Manage
+  tags_raw:
   - manage
   properties:
   - type: OpenAPI
@@ -224,6 +261,8 @@ apis:
   humanURL: https://fortellis.io
   baseURL: https://api.fortellis.io
   tags:
+  - Query
+  tags_raw:
   - query
   properties:
   - type: OpenAPI
@@ -255,7 +294,8 @@ apis:
   description: The update API from CDK Global — 1 operation(s) for update.
   humanURL: https://fortellis.io
   baseURL: https://api.fortellis.io
-  tags:
+  tags: []
+  tags_raw:
   - update
   properties:
   - type: OpenAPI
