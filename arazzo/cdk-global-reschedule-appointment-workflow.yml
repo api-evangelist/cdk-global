@@ -11,8 +11,11 @@ info:
     underlying OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
-- name: appointmentsApi
-  url: ../openapi/fortellis-appointments-openapi.yml
+- name: queryApi
+  url: ../openapi/cdk-global-query-api-openapi.yml
+  type: openapi
+- name: updateApi
+  url: ../openapi/cdk-global-update-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: reschedule-appointment

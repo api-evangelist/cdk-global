@@ -13,8 +13,11 @@ info:
     executed without opening the underlying OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
-- name: dataDomainApi
-  url: ../openapi/fortellis-pet-adoption-openapi.yml
+- name: adoptApi
+  url: ../openapi/cdk-global-adopt-api-openapi.yml
+  type: openapi
+- name: manageApi
+  url: ../openapi/cdk-global-manage-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: create-data-record

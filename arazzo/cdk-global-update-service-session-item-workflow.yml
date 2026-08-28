@@ -10,8 +10,8 @@ info:
     read and executed without opening the underlying OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
-- name: bookingSessionsApi
-  url: ../openapi/fortellis-user-service-openapi.yml
+- name: serviceBookingApi
+  url: ../openapi/cdk-global-service-booking-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: update-service-session-item

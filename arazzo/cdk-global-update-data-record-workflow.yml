@@ -12,8 +12,11 @@ info:
     the underlying OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
-- name: dataDomainApi
-  url: ../openapi/fortellis-pet-adoption-openapi.yml
+- name: adoptApi
+  url: ../openapi/cdk-global-adopt-api-openapi.yml
+  type: openapi
+- name: adoptUpdateApi
+  url: ../openapi/cdk-global-adopt-update-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: update-data-record

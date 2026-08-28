@@ -12,11 +12,11 @@ info:
     underlying OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
-- name: appointmentsApi
-  url: ../openapi/fortellis-appointments-openapi.yml
+- name: eventsApi
+  url: ../openapi/cdk-global-events-api-openapi.yml
   type: openapi
-- name: eventRelayApi
-  url: ../openapi/fortellis-event-relay-webhook-openapi.yml
+- name: queryApi
+  url: ../openapi/cdk-global-query-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: relay-appointment-event

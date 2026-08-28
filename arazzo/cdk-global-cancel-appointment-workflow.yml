@@ -10,8 +10,11 @@ info:
     read and executed without opening the underlying OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
-- name: appointmentsApi
-  url: ../openapi/fortellis-appointments-openapi.yml
+- name: cancelApi
+  url: ../openapi/cdk-global-cancel-api-openapi.yml
+  type: openapi
+- name: queryApi
+  url: ../openapi/cdk-global-query-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: cancel-appointment
