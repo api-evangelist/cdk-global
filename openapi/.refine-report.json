@@ -1,32 +1,57 @@
 {
   "provider": "cdk-global",
   "sources": [
-    "cdk-global-adopt-api-openapi.yml",
-    "cdk-global-adopt-delete-api-openapi.yml",
-    "cdk-global-adopt-update-api-openapi.yml",
-    "cdk-global-cancel-api-openapi.yml",
-    "cdk-global-create-api-openapi.yml",
-    "cdk-global-events-api-openapi.yml",
-    "cdk-global-manage-api-openapi.yml",
-    "cdk-global-query-api-openapi.yml",
-    "cdk-global-service-booking-api-openapi.yml",
-    "cdk-global-update-api-openapi.yml"
+    "_original/fortellis-appointments-openapi.yml",
+    "_original/fortellis-event-relay-webhook-openapi.yml",
+    "_original/fortellis-parts-store-openapi.yml",
+    "_original/fortellis-pet-adoption-openapi.yml",
+    "_original/fortellis-user-service-openapi.yml"
   ],
   "outputs": [
+    "cdk-global-cancel-api-openapi.yml",
+    "cdk-global-create-api-openapi.yml",
+    "cdk-global-query-api-openapi.yml",
+    "cdk-global-update-api-openapi.yml",
+    "cdk-global-events-api-openapi.yml",
     "cdk-global-adopt-api-openapi.yml",
     "cdk-global-adopt-delete-api-openapi.yml",
     "cdk-global-adopt-update-api-openapi.yml",
-    "cdk-global-cancel-api-openapi.yml",
-    "cdk-global-create-api-openapi.yml",
-    "cdk-global-events-api-openapi.yml",
     "cdk-global-manage-api-openapi.yml",
-    "cdk-global-query-api-openapi.yml",
-    "cdk-global-service-booking-api-openapi.yml",
-    "cdk-global-update-api-openapi.yml"
+    "cdk-global-service-booking-api-openapi.yml"
   ],
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (5 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "fortellis-appointments-openapi.yml: upgraded swagger 2.0 -> OpenAPI 3.2.0",
+    "fortellis-appointments-openapi.yml: declared missing tag: cancel",
+    "fortellis-appointments-openapi.yml: declared missing tag: create",
+    "fortellis-appointments-openapi.yml: declared missing tag: query",
+    "fortellis-appointments-openapi.yml: declared missing tag: update",
+    "fortellis-event-relay-webhook-openapi.yml: upgraded openapi 3.0.0 -> OpenAPI 3.2.0",
+    "fortellis-event-relay-webhook-openapi.yml: declared missing tag: events",
+    "fortellis-parts-store-openapi.yml: upgraded swagger 2.0 -> OpenAPI 3.2.0",
+    "fortellis-parts-store-openapi.yml: declared missing tag: query",
+    "fortellis-pet-adoption-openapi.yml: upgraded swagger 2.0 -> OpenAPI 3.2.0",
+    "fortellis-pet-adoption-openapi.yml: declared missing tag: adopt",
+    "fortellis-pet-adoption-openapi.yml: declared missing tag: adopt delete",
+    "fortellis-pet-adoption-openapi.yml: declared missing tag: adopt update",
+    "fortellis-pet-adoption-openapi.yml: declared missing tag: manage",
+    "fortellis-user-service-openapi.yml: upgraded swagger 2.0 -> OpenAPI 3.2.0",
+    "fortellis-user-service-openapi.yml: declared missing tag: Service Booking",
+    "tag 'query' spans 2 source specs (fortellis-appointments-openapi.yml, fortellis-parts-store-openapi.yml): per-path servers applied"
+  ],
+  "skipped": [
+    "cdk-global-adopt-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "cdk-global-adopt-delete-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "cdk-global-adopt-update-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "cdk-global-cancel-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "cdk-global-create-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "cdk-global-events-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "cdk-global-manage-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "cdk-global-query-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "cdk-global-service-booking-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "cdk-global-update-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

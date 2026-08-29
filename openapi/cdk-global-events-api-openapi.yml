@@ -1,19 +1,14 @@
-swagger: '2.0'
+openapi: 3.2.0
 info:
-  version: 3.0.0
-  title: appointments adopt events API
-  description: "## Fortellis - Service - Appointments\nA service appointment is a booking of a vehicle into the service department for work that needs to be carried out on the vehicle. This could be a service, repair, body repair, government test etc.\n\n## What does this API do?\nThe API will allow you to query, create and manage service appointments. \n\n## Intended Audience\nIt is expected that systems that require create, read, update, and delete access to appointments will use this API.  Systems implementing service-scheduling will use this API to store appointment records.\n"
+  version: 1.0.0-oas3
+  title: Fortellis Event Relay Webhook Events API
+  description: Provides an Event Sink the ability to receive event through Fortellis Event Relay.
   contact:
-    name: Developer Evangelists
-    url: https://example.com
+    name: Fortellis Team
+    url: https://fortellis.io
     email: support@fortellis.io
-host: fortellis.io
-basePath: /sales/notification/v3
-schemes:
-- https
-security:
-- permission-model:
-  - anonymous
+servers:
+- url: /v1/webhook
 tags:
 - name: events
 paths:
@@ -58,59 +53,7 @@ paths:
         '503':
           $ref: '#/components/responses/ServiceUnavailable'
 components:
-  parameters:
-    header.X-Request-Id:
-      name: X-Request-Id
-      in: header
-      description: 'A correlation ID that should mirror the value of the X-Request-Id request
-
-        header provided by the client.
-
-        '
-      schema:
-        type: string
-        format: uuid
-    header.Data-Owner-Id:
-      name: Data-Owner-Id
-      in: header
-      required: false
-      description: 'A Fortellis Organization Id that identifies the organization represented by the event.
-
-        '
-      schema:
-        type: string
-        format: uuid
-    header.Authorization:
-      name: Authorization
-      in: header
-      required: true
-      description: 'Contains credentials that allows the caller to authenticate itself with the
-
-        API. See RFC 7235 and RFC 7617 for more details.
-
-        '
-      schema:
-        type: string
-    header.Fortellis-Event-Id:
-      name: Fortellis-Event-Id
-      in: header
-      required: true
-      description: This is a unique ID for the event assigned by Fortellis at time receipt and provided to the event source.
-      schema:
-        type: string
-        format: uuid
   responses:
-    Forbidden:
-      description: 403 - Forbidden
-      headers:
-        X-Request-Id:
-          description: The matching correlation identifier to the request by the client.
-          schema:
-            type: string
-      content:
-        '*/*':
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
     BadRequest:
       description: '400 - Bad Request Rejection of an event will place the record and its partition on hold and trigger us to attempt retransmission until we succeed. **We will not move forward to the next record when we receive an error.** Failed attempts at transmission may be billable, and placing a subscription in an extended pause period increases the possibility of duplicate record delivery.  Synchronous Validation of any elements other than the headers is discouraged.
 
@@ -135,6 +78,17 @@ components:
         '*/*':
           schema:
             $ref: '#/components/schemas/ErrorResponse'
+    Forbidden:
+      description: 403 - Forbidden
+      headers:
+        X-Request-Id:
+          description: The matching correlation identifier to the request by the client.
+          schema:
+            type: string
+      content:
+        '*/*':
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
     Unauthorized:
       description: 401 - Unauthorized
       headers:
@@ -146,8 +100,8 @@ components:
         '*/*':
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-    ServiceUnavailable:
-      description: 503 - Service Unavailable
+    InternalServerError:
+      description: 500 - Internal Server Error
       headers:
         X-Request-Id:
           description: The matching correlation identifier to the request by the client.
@@ -164,8 +118,8 @@ components:
           description: The matching correlation identifier to the request by the client.
           schema:
             type: string
-    InternalServerError:
-      description: 500 - Internal Server Error
+    ServiceUnavailable:
+      description: 503 - Service Unavailable
       headers:
         X-Request-Id:
           description: The matching correlation identifier to the request by the client.
@@ -203,10 +157,44 @@ components:
         key4:
           sub-key1: sub-value1
           sub-key2: sub-value2
-securityDefinitions:
-  permission-model:
-    type: oauth2
-    flow: implicit
-    authorizationUrl: https://identity.fortellis.io/oauth2/
-    scopes:
-      anonymous: Create, Query, Update, and Delete appointments
+  parameters:
+    header.Fortellis-Event-Id:
+      name: Fortellis-Event-Id
+      in: header
+      required: true
+      description: This is a unique ID for the event assigned by Fortellis at time receipt and provided to the event source.
+      schema:
+        type: string
+        format: uuid
+    header.Authorization:
+      name: Authorization
+      in: header
+      required: true
+      description: 'Contains credentials that allows the caller to authenticate itself with the
+
+        API. See RFC 7235 and RFC 7617 for more details.
+
+        '
+      schema:
+        type: string
+    header.X-Request-Id:
+      name: X-Request-Id
+      in: header
+      description: 'A correlation ID that should mirror the value of the X-Request-Id request
+
+        header provided by the client.
+
+        '
+      schema:
+        type: string
+        format: uuid
+    header.Data-Owner-Id:
+      name: Data-Owner-Id
+      in: header
+      required: false
+      description: 'A Fortellis Organization Id that identifies the organization represented by the event.
+
+        '
+      schema:
+        type: string
+        format: uuid
