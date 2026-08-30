@@ -116,7 +116,7 @@ apis:
   - Event
   - AsyncAPI
   - Event Relay
-  - Publish Subscribe
+  - Publish-Subscribe
   tags_raw:
   - Events
   - AsyncAPI
@@ -202,7 +202,7 @@ apis:
   humanURL: https://fortellis.io
   baseURL: https://api.fortellis.io
   tags:
-  - Cancel
+  - cancel
   tags_raw:
   - cancel
   properties:
@@ -255,7 +255,7 @@ apis:
   humanURL: https://fortellis.io
   baseURL: https://api.fortellis.io
   tags:
-  - Manage
+  - manage
   tags_raw:
   - manage
   properties:
