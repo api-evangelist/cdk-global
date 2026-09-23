@@ -2,7 +2,9 @@ openapi: 3.2.0
 info:
   version: 3.0.0
   title: appointments Update API
-  description: "## Fortellis - Service - Appointments\nA service appointment is a booking of a vehicle into the service department for work that needs to be carried out on the vehicle. This could be a service, repair, body repair, government test etc.\n\n## What does this API do?\nThe API will allow you to query, create and manage service appointments. \n\n## Intended Audience\nIt is expected that systems that require create, read, update, and delete access to appointments will use this API.  Systems implementing service-scheduling will use this API to store appointment records.\n"
+  description: '## Fortellis - Service - Appointments
+
+    A service appointment is a booking of a vehicle into the service department for work that needs to be carried out on the vehicle.'
   contact:
     name: Developer Evangelists
     url: https://example.com
@@ -13,17 +15,15 @@ security:
 - permission-model:
   - anonymous
 tags:
-- name: update
+- name: Update
 paths:
   /{appointmentId}:
     post:
       summary: Update an appointment
-      description: 'Update an appointment.  This method does not guarantee that resource reservations associated with the appointment (advisors, transports, reserved equipment/parts) will be updated.  It is suggested that the service-scheduling API be used for this purpose.
-
-        '
+      description: Update an appointment. This method does not guarantee that resource reservations associated with the appointment (advisors, transports, reserved equipment/parts) will be updated. It is suggested that the service-scheduling API be used for this purpose.
       operationId: updateAppointment
       tags:
-      - update
+      - Update
       parameters:
       - $ref: '#/components/parameters/header.Accept'
       - $ref: '#/components/parameters/header.Accept-Charset'
@@ -48,30 +48,150 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
+  responses:
+    Unauthorized:
+      description: 401 - Unauthorized
+      headers:
+        Content-Language:
+          schema:
+            type: string
+        Content-Type:
+          schema:
+            type: string
+        Request-Id:
+          schema:
+            type: string
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    Forbidden:
+      description: 403 - Forbidden
+      headers:
+        Content-Language:
+          schema:
+            type: string
+        Content-Type:
+          schema:
+            type: string
+        Request-Id:
+          schema:
+            type: string
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    NotFound:
+      description: 404 - Not Found
+      headers:
+        Content-Language:
+          schema:
+            type: string
+        Content-Type:
+          schema:
+            type: string
+        Request-Id:
+          schema:
+            type: string
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    Appointment:
+      description: OK
+      headers:
+        Request-Id:
+          schema:
+            type: string
+        Preference-Applied:
+          schema:
+            type: string
+            enum:
+            - return=representation
+            - return=minimal
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/AppointmentResource'
+    BadRequest:
+      description: 400 - Bad Request
+      headers:
+        Content-Language:
+          schema:
+            type: string
+        Content-Type:
+          schema:
+            type: string
+        Request-Id:
+          schema:
+            type: string
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
   schemas:
-    RequestedService:
-      description: This fields describes the service requested.
+    VehicleSpecification:
+      description: This field describes the vehicle.
       type: object
       properties:
-        description:
+        makeCode:
           type: string
-          description: The textual description of the requested service
-        concern:
+          description: The make code of the vehicle
+        modelCode:
           type: string
-          description: The textual description of the concern that prompted the requested service
-        sourceHref:
-          type: string
-          description: "The hypermedia link to the source service specification.  This will \nlink to a service-packages Specification or LaborOperation resource.\n"
-        overrides:
-          type: object
-          properties:
-            quote:
-              $ref: '#/components/schemas/Price'
+          description: The model code of the vehicle
+        modelYear:
+          type: number
+          description: The model year of the vehicle
       required:
-      - description
+      - makeCode
+      - modelCode
+      - modelYear
       example:
-        description: Replace Air Filter
-        sourceHref: api.fortellis.io/service/reference/v4/service-packages/model/CHEV-CAMAC-2001-US/packages/BF018/specifications/8994972
+        makeCode: CHEV
+        modelCode: CAMAC
+        modelYear: 2001
+    AppointmentLinks:
+      description: This field describes the appointment links.
+      type: object
+      properties:
+        self:
+          $ref: '#/components/schemas/LinkDescriptionObject'
+          description: The canonical link to the appointment resource
+      required:
+      - self
+      example:
+        self:
+          href: api.fortellis.io/service/v3/appointments/123
+    ContactMethod:
+      description: This is the method that the customer would like you to use to contact them.
+      type: object
+      properties:
+        label:
+          type: string
+          description: A label used to describe the contact method (e.g. home, work-cell).
+        uri:
+          type: string
+          description: The RFC 3986 encoded URI address of the contact method.
+        preferences:
+          type: object
+          items:
+            $ref: '#/components/schemas/ContactPreference'
+      required:
+      - label
+      - uri
+      example:
+        label: Home Information
+        uri: https://examle.com/person/contact
+        preferences:
+          items:
+            startDay:
+            - MON
+            endDay:
+            - SAT
+            startTime: '1985-04-12T23:20:50.52Z'
+            endTime: '1985-04-18T23:20:50.52Z'
+            timezone: CST
     ErrorResponse:
       description: This is a generic error schema.
       type: object
@@ -155,6 +275,68 @@ components:
         links:
           self:
             href: api.fortellis.io/service/v3/appointments/123
+    ContactPreference:
+      description: This fields shows the customer's contact preferences.
+      type: object
+      required:
+      - startDay
+      - endDay
+      properties:
+        startDay:
+          type: string
+          enum:
+          - MON
+          - TUE
+          - WED
+          - THU
+          - FRI
+          - SAT
+          - SUN
+          description: The starting day of the interval
+        endDay:
+          type: string
+          enum:
+          - MON
+          - TUE
+          - WED
+          - THU
+          - FRI
+          - SAT
+          - SUN
+          description: The ending day of the interval
+        startTime:
+          type: string
+          description: The RFC 3339 encoded starting time of the interval
+        endTime:
+          type: string
+          description: The RFC 3339 encoded ending time of the interval
+        timeZone:
+          type: string
+          description: The IANA Timezone Database encoded timezone code of the interval
+      example:
+        startDay: MON
+        endDay: SAT
+        startTime: '1985-04-12T23:20:50.52Z'
+        endTime: '1985-04-18T23:20:50.52Z'
+        timezone: CST
+    Measurement:
+      description: This field will let you know about the value and the units of measurement.
+      type: object
+      required:
+      - units
+      - value
+      properties:
+        value:
+          type: number
+        units:
+          type: string
+          enum:
+          - MILES
+          - KM
+          - HOURS
+      example:
+        value: 75201
+        units: MILES
     Price:
       description: This field lists the cost of the appointment.
       type: object
@@ -192,6 +374,29 @@ components:
         grossValue: 57.24
         taxValue: 4.24
         taxRate: 8
+    RequestedService:
+      description: This fields describes the service requested.
+      type: object
+      properties:
+        description:
+          type: string
+          description: The textual description of the requested service
+        concern:
+          type: string
+          description: The textual description of the concern that prompted the requested service
+        sourceHref:
+          type: string
+          description: "The hypermedia link to the source service specification.  This will \nlink to a service-packages Specification or LaborOperation resource.\n"
+        overrides:
+          type: object
+          properties:
+            quote:
+              $ref: '#/components/schemas/Price'
+      required:
+      - description
+      example:
+        description: Replace Air Filter
+        sourceHref: api.fortellis.io/service/reference/v4/service-packages/model/CHEV-CAMAC-2001-US/packages/BF018/specifications/8994972
     Appointment:
       description: This definition defines the information and format in appointments.
       properties:
@@ -262,242 +467,7 @@ components:
         advisorHref: api.fortellis.io/service/v1/scheduling/lookups/advisors/123
         concerns: My driver side front door rattles when I drive faster than 45
         remarks: Customer reports that driver side front door exhibits a rattle above 45mph
-    AppointmentLinks:
-      description: This field describes the appointment links.
-      type: object
-      properties:
-        self:
-          $ref: '#/components/schemas/LinkDescriptionObject'
-          description: The canonical link to the appointment resource
-      required:
-      - self
-      example:
-        self:
-          href: api.fortellis.io/service/v3/appointments/123
-    ContactPreference:
-      description: This fields shows the customer's contact preferences.
-      type: object
-      required:
-      - startDay
-      - endDay
-      properties:
-        startDay:
-          type: string
-          enum:
-          - MON
-          - TUE
-          - WED
-          - THU
-          - FRI
-          - SAT
-          - SUN
-          description: The starting day of the interval
-        endDay:
-          type: string
-          enum:
-          - MON
-          - TUE
-          - WED
-          - THU
-          - FRI
-          - SAT
-          - SUN
-          description: The ending day of the interval
-        startTime:
-          type: string
-          description: The RFC 3339 encoded starting time of the interval
-        endTime:
-          type: string
-          description: The RFC 3339 encoded ending time of the interval
-        timeZone:
-          type: string
-          description: The IANA Timezone Database encoded timezone code of the interval
-      example:
-        startDay: MON
-        endDay: SAT
-        startTime: '1985-04-12T23:20:50.52Z'
-        endTime: '1985-04-18T23:20:50.52Z'
-        timezone: CST
-    VehicleSpecification:
-      description: This field describes the vehicle.
-      type: object
-      properties:
-        makeCode:
-          type: string
-          description: The make code of the vehicle
-        modelCode:
-          type: string
-          description: The model code of the vehicle
-        modelYear:
-          type: number
-          description: The model year of the vehicle
-      required:
-      - makeCode
-      - modelCode
-      - modelYear
-      example:
-        makeCode: CHEV
-        modelCode: CAMAC
-        modelYear: 2001
-    Measurement:
-      description: This field will let you know about the value and the units of measurement.
-      type: object
-      required:
-      - units
-      - value
-      properties:
-        value:
-          type: number
-        units:
-          type: string
-          enum:
-          - MILES
-          - KM
-          - HOURS
-      example:
-        value: 75201
-        units: MILES
-    ContactMethod:
-      description: This is the method that the customer would like you to use to contact them.
-      type: object
-      properties:
-        label:
-          type: string
-          description: A label used to describe the contact method (e.g. home, work-cell).
-        uri:
-          type: string
-          description: The RFC 3986 encoded URI address of the contact method.
-        preferences:
-          type: object
-          items:
-            $ref: '#/components/schemas/ContactPreference'
-      required:
-      - label
-      - uri
-      example:
-        label: Home Information
-        uri: https://examle.com/person/contact
-        preferences:
-          items:
-            startDay:
-            - MON
-            endDay:
-            - SAT
-            startTime: '1985-04-12T23:20:50.52Z'
-            endTime: '1985-04-18T23:20:50.52Z'
-            timezone: CST
-  responses:
-    Forbidden:
-      description: 403 - Forbidden
-      headers:
-        Content-Language:
-          schema:
-            type: string
-        Content-Type:
-          schema:
-            type: string
-        Request-Id:
-          schema:
-            type: string
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    Appointment:
-      description: OK
-      headers:
-        Request-Id:
-          schema:
-            type: string
-        Preference-Applied:
-          schema:
-            type: string
-            enum:
-            - return=representation
-            - return=minimal
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/AppointmentResource'
-    NotFound:
-      description: 404 - Not Found
-      headers:
-        Content-Language:
-          schema:
-            type: string
-        Content-Type:
-          schema:
-            type: string
-        Request-Id:
-          schema:
-            type: string
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    BadRequest:
-      description: 400 - Bad Request
-      headers:
-        Content-Language:
-          schema:
-            type: string
-        Content-Type:
-          schema:
-            type: string
-        Request-Id:
-          schema:
-            type: string
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    Unauthorized:
-      description: 401 - Unauthorized
-      headers:
-        Content-Language:
-          schema:
-            type: string
-        Content-Type:
-          schema:
-            type: string
-        Request-Id:
-          schema:
-            type: string
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
   parameters:
-    header.Authorization:
-      name: Authorization
-      in: header
-      required: true
-      description: Provides authorization to access Fortellis APIs. For calling a Fortellis Provider, this must be an OAuth 2.0 token issued by the Fortellis authorization server, but you may call the simulator platform with Basic Authorization using your API key and secret.
-      schema:
-        type: string
-        format: guid
-    header.If-None-Match:
-      name: If-None-Match
-      in: header
-      description: Specifies a conditional request to only return the resource when it doesn't match one of the included ETag values
-      schema:
-        type: string
-    header.Request-Id:
-      name: Request-Id
-      in: header
-      required: true
-      description: You must include the Request-Id in every call to track the same call across systems.
-      schema:
-        type: string
-        format: guid
-    header.Accept:
-      description: This header describes the characters that the API will accept.
-      name: Accept
-      in: header
-      schema:
-        type: string
-        enum:
-        - application/json
     path.appointmentId:
       name: appointmentId
       in: path
@@ -505,14 +475,13 @@ components:
       description: The appointment identifier
       schema:
         type: string
-    header.Subscription-Id:
-      name: Subscription-Id
-      in: header
+    body.UpdateRequest:
+      name: UpdateRequest
+      in: body
       required: true
-      description: The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.
+      description: The the defintion of the appointment update
       schema:
-        type: string
-        format: guid
+        $ref: '#/components/schemas/Appointment'
     header.Accept-Language:
       description: This header describes the languages that the client accepts.
       name: Accept-Language
@@ -525,6 +494,12 @@ components:
       description: Specifies a conditional request to only return the resource when it does match one of the included ETag values
       schema:
         type: string
+    header.If-None-Match:
+      name: If-None-Match
+      in: header
+      description: Specifies a conditional request to only return the resource when it doesn't match one of the included ETag values
+      schema:
+        type: string
     header.Accept-Charset:
       description: This header describes the characters that the client will accept.
       name: Accept-Charset
@@ -533,6 +508,38 @@ components:
         type: string
         enum:
         - utf-8
+    header.Accept:
+      description: This header describes the characters that the API will accept.
+      name: Accept
+      in: header
+      schema:
+        type: string
+        enum:
+        - application/json
+    header.Request-Id:
+      name: Request-Id
+      in: header
+      required: true
+      description: You must include the Request-Id in every call to track the same call across systems.
+      schema:
+        type: string
+        format: guid
+    header.Authorization:
+      name: Authorization
+      in: header
+      required: true
+      description: Provides authorization to access Fortellis APIs. For calling a Fortellis Provider, this must be an OAuth 2.0 token issued by the Fortellis authorization server, but you may call the simulator platform with Basic Authorization using your API key and secret.
+      schema:
+        type: string
+        format: guid
+    header.Subscription-Id:
+      name: Subscription-Id
+      in: header
+      required: true
+      description: The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.
+      schema:
+        type: string
+        format: guid
     header.Prefer:
       description: This header describes the preferences of the client calling the API.
       name: Prefer
@@ -542,13 +549,6 @@ components:
         enum:
         - return=representation
         - return=minimal
-    body.UpdateRequest:
-      name: UpdateRequest
-      in: body
-      required: true
-      description: The the defintion of the appointment update
-      schema:
-        $ref: '#/components/schemas/Appointment'
   securitySchemes:
     permission-model:
       type: oauth2

@@ -10,15 +10,14 @@ security:
 - permission-model:
   - anonymous
 tags:
-- name: query
+- name: Query
 paths:
   /:
     get:
       summary: Query appointments
-      description: Query appointments
       operationId: queryAppointments
       tags:
-      - query
+      - Query
       parameters:
       - $ref: '#/components/parameters/header.Accept'
       - $ref: '#/components/parameters/header.Accept-Charset'
@@ -47,10 +46,9 @@ paths:
   /{appointmentId}:
     get:
       summary: Query an appointment
-      description: Query an appointment
       operationId: queryAppointment
       tags:
-      - query
+      - Query
       parameters:
       - $ref: '#/components/parameters/header.Accept'
       - $ref: '#/components/parameters/header.Accept-Charset'
@@ -99,7 +97,7 @@ paths:
         '503':
           $ref: '#/components/responses/ServiceUnavailable'
       tags:
-      - query
+      - Query
       externalDocs:
         description: Find more info here.
         url: https://swagger.io
@@ -108,7 +106,7 @@ paths:
   /all-product-info/{productNumber}:
     get:
       tags:
-      - query
+      - Query
       summary: Specific Product
       description: Find a specific product.
       operationId: productInformation
@@ -135,7 +133,7 @@ paths:
   /all-product-info/{productNumber}/product-size:
     get:
       tags:
-      - query
+      - Query
       summary: Specific Product Description
       description: Find the description for a specific product.
       operationId: productDescription
@@ -160,7 +158,7 @@ paths:
   /ping:
     get:
       tags:
-      - query
+      - Query
       summary: Server heartbeat operation
       description: Solutions can use this operation to check that the server is still available and responding to requests.
       operationId: healthMonitor
@@ -182,45 +180,197 @@ paths:
     servers:
     - url: https://api.fortellis.io/sales/parts-store/v47
 components:
+  parameters:
+    path.appointmentId:
+      name: appointmentId
+      in: path
+      required: true
+      description: The appointment identifier
+      schema:
+        type: string
+    header.Accept-Language:
+      description: This header describes the languages that the client accepts.
+      name: Accept-Language
+      in: header
+      schema:
+        type: string
+    header.If-Match:
+      name: If-Match
+      in: header
+      description: Specifies a conditional request to only return the resource when it does match one of the included ETag values
+      schema:
+        type: string
+    header.If-None-Match:
+      name: If-None-Match
+      in: header
+      description: Specifies a conditional request to only return the resource when it doesn't match one of the included ETag values
+      schema:
+        type: string
+    header.Accept-Charset:
+      description: This header describes the characters that the client will accept.
+      name: Accept-Charset
+      in: header
+      schema:
+        type: string
+        enum:
+        - utf-8
+    header.Accept:
+      description: This header describes the characters that the API will accept.
+      name: Accept
+      in: header
+      schema:
+        type: string
+        enum:
+        - application/json
+    query.customerHref:
+      name: customerHref
+      in: query
+      required: false
+      description: The customer resource hyperlink to filter query results
+      schema:
+        type: string
+    query.dateTimeInterval:
+      name: dateTimeInterval
+      in: query
+      required: false
+      description: The ISO 8601 data and time interval to filter the appointment query
+      schema:
+        type: string
+    header.Request-Id:
+      name: Request-Id
+      in: header
+      required: true
+      description: You must include the Request-Id in every call to track the same call across systems.
+      schema:
+        type: string
+        format: guid
+    header.Authorization:
+      name: Authorization
+      in: header
+      required: true
+      description: Provides authorization to access Fortellis APIs. For calling a Fortellis Provider, this must be an OAuth 2.0 token issued by the Fortellis authorization server, but you may call the simulator platform with Basic Authorization using your API key and secret.
+      schema:
+        type: string
+        format: guid
+    header.Subscription-Id:
+      name: Subscription-Id
+      in: header
+      required: true
+      description: The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.
+      schema:
+        type: string
+        format: guid
+    query.advisorHref:
+      name: advisorHref
+      in: query
+      required: false
+      description: The advisor resource hyperlink to filter query results
+      schema:
+        type: string
+    header.Prefer:
+      description: This header describes the preferences of the client calling the API.
+      name: Prefer
+      in: header
+      schema:
+        type: string
+        enum:
+        - return=representation
+        - return=minimal
+    query.vehicleHref:
+      name: vehicleHref
+      in: query
+      required: false
+      description: The vehicle resource hyperlink to filter query results
+      schema:
+        type: string
+    query.email:
+      name: email
+      in: query
+      description: Filters customers by email address
+      schema:
+        type: string
+    header.Organization:
+      name: Organization
+      in: header
+      description: Identifies the organization that the user is in
+      required: true
+      schema:
+        type: string
+    path.productNumber:
+      name: productNumber
+      in: path
+      description: Filters for a specific product
+      required: true
+      schema:
+        type: number
+    header.Pididle:
+      name: User-Id
+      in: header
+      description: Identifies the user accessing the account
+      required: true
+      schema:
+        type: string
+    header.Request-Id_2:
+      name: Request-Id
+      in: header
+      required: true
+      description: A correlation ID that should be returned back to the caller to indicate the return of the given request
+      schema:
+        type: string
+        format: guid
   schemas:
-    RequestedService:
-      description: This fields describes the service requested.
+    VehicleSpecification:
+      description: This field describes the vehicle.
       type: object
       properties:
-        description:
+        makeCode:
           type: string
-          description: The textual description of the requested service
-        concern:
+          description: The make code of the vehicle
+        modelCode:
           type: string
-          description: The textual description of the concern that prompted the requested service
-        sourceHref:
-          type: string
-          description: "The hypermedia link to the source service specification.  This will \nlink to a service-packages Specification or LaborOperation resource.\n"
-        overrides:
-          type: object
-          properties:
-            quote:
-              $ref: '#/components/schemas/Price'
+          description: The model code of the vehicle
+        modelYear:
+          type: number
+          description: The model year of the vehicle
       required:
-      - description
+      - makeCode
+      - modelCode
+      - modelYear
       example:
-        description: Replace Air Filter
-        sourceHref: api.fortellis.io/service/reference/v4/service-packages/model/CHEV-CAMAC-2001-US/packages/BF018/specifications/8994972
-    ErrorResponse:
-      description: This is a generic error schema.
+        makeCode: CHEV
+        modelCode: CAMAC
+        modelYear: 2001
+    BaseCollectionLinks:
+      description: This field describes the base collection links for the particular endpoint.
       type: object
       properties:
-        code:
-          type: integer
-          format: int32
-        message:
-          type: string
+        next:
+          $ref: '#/components/schemas/LinkDescriptionObject'
+          description: The next page of query results
+        prev:
+          $ref: '#/components/schemas/LinkDescriptionObject'
+          description: The previous page of query results
+        first:
+          $ref: '#/components/schemas/LinkDescriptionObject'
+          description: The first page of query results
       required:
-      - code
-      - message
+      - first
       example:
-        code: 24
-        message: Error Message used for debugging
+        next:
+          href: https://example.com/next
+          rel: next
+          method: POST
+          title: Next page
+        prev:
+          href: https://example.com/prev
+          rel: prev
+          method: POST
+          title: Previous page
+        first:
+          href: https://example.com/first
+          rel: first
+          method: POST
+          title: First page
     AppointmentCollection:
       description: This field describes a collection of appointments.
       type: object
@@ -267,37 +417,62 @@ components:
         links:
           first:
             href: api.fortellis.io/service/v3/appointments?page=1&pageSize=1
-    BaseCollectionLinks:
-      description: This field describes the base collection links for the particular endpoint.
+    AppointmentLinks:
+      description: This field describes the appointment links.
       type: object
       properties:
-        next:
+        self:
           $ref: '#/components/schemas/LinkDescriptionObject'
-          description: The next page of query results
-        prev:
-          $ref: '#/components/schemas/LinkDescriptionObject'
-          description: The previous page of query results
-        first:
-          $ref: '#/components/schemas/LinkDescriptionObject'
-          description: The first page of query results
+          description: The canonical link to the appointment resource
       required:
-      - first
+      - self
       example:
-        next:
-          href: https://example.com/next
-          rel: next
-          method: POST
-          title: Next page
-        prev:
-          href: https://example.com/prev
-          rel: prev
-          method: POST
-          title: Previous page
-        first:
-          href: https://example.com/first
-          rel: first
-          method: POST
-          title: First page
+        self:
+          href: api.fortellis.io/service/v3/appointments/123
+    ContactMethod:
+      description: This is the method that the customer would like you to use to contact them.
+      type: object
+      properties:
+        label:
+          type: string
+          description: A label used to describe the contact method (e.g. home, work-cell).
+        uri:
+          type: string
+          description: The RFC 3986 encoded URI address of the contact method.
+        preferences:
+          type: object
+          items:
+            $ref: '#/components/schemas/ContactPreference'
+      required:
+      - label
+      - uri
+      example:
+        label: Home Information
+        uri: https://examle.com/person/contact
+        preferences:
+          items:
+            startDay:
+            - MON
+            endDay:
+            - SAT
+            startTime: '1985-04-12T23:20:50.52Z'
+            endTime: '1985-04-18T23:20:50.52Z'
+            timezone: CST
+    ErrorResponse:
+      description: This is a generic error schema.
+      type: object
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string
+      required:
+      - code
+      - message
+      example:
+        code: 24
+        message: Error Message used for debugging
     LinkDescriptionObject:
       description: These are the linked objects that you send with the request to comply with HATEOAS.
       type: object
@@ -366,6 +541,68 @@ components:
         links:
           self:
             href: api.fortellis.io/service/v3/appointments/123
+    ContactPreference:
+      description: This fields shows the customer's contact preferences.
+      type: object
+      required:
+      - startDay
+      - endDay
+      properties:
+        startDay:
+          type: string
+          enum:
+          - MON
+          - TUE
+          - WED
+          - THU
+          - FRI
+          - SAT
+          - SUN
+          description: The starting day of the interval
+        endDay:
+          type: string
+          enum:
+          - MON
+          - TUE
+          - WED
+          - THU
+          - FRI
+          - SAT
+          - SUN
+          description: The ending day of the interval
+        startTime:
+          type: string
+          description: The RFC 3339 encoded starting time of the interval
+        endTime:
+          type: string
+          description: The RFC 3339 encoded ending time of the interval
+        timeZone:
+          type: string
+          description: The IANA Timezone Database encoded timezone code of the interval
+      example:
+        startDay: MON
+        endDay: SAT
+        startTime: '1985-04-12T23:20:50.52Z'
+        endTime: '1985-04-18T23:20:50.52Z'
+        timezone: CST
+    Measurement:
+      description: This field will let you know about the value and the units of measurement.
+      type: object
+      required:
+      - units
+      - value
+      properties:
+        value:
+          type: number
+        units:
+          type: string
+          enum:
+          - MILES
+          - KM
+          - HOURS
+      example:
+        value: 75201
+        units: MILES
     Price:
       description: This field lists the cost of the appointment.
       type: object
@@ -403,6 +640,64 @@ components:
         grossValue: 57.24
         taxValue: 4.24
         taxRate: 8
+    RequestedService:
+      description: This fields describes the service requested.
+      type: object
+      properties:
+        description:
+          type: string
+          description: The textual description of the requested service
+        concern:
+          type: string
+          description: The textual description of the concern that prompted the requested service
+        sourceHref:
+          type: string
+          description: "The hypermedia link to the source service specification.  This will \nlink to a service-packages Specification or LaborOperation resource.\n"
+        overrides:
+          type: object
+          properties:
+            quote:
+              $ref: '#/components/schemas/Price'
+      required:
+      - description
+      example:
+        description: Replace Air Filter
+        sourceHref: api.fortellis.io/service/reference/v4/service-packages/model/CHEV-CAMAC-2001-US/packages/BF018/specifications/8994972
+    BaseCollection:
+      description: This field describes the base collection.
+      type: object
+      properties:
+        totalItems:
+          type: number
+          description: The total number of items contained in the collection
+        totalPages:
+          type: number
+          description: The total number of pages given the requested page size
+        links:
+          $ref: '#/components/schemas/BaseCollectionLinks'
+      required:
+      - totalItems
+      - totalPages
+      - links
+      example:
+        totalItems: 16
+        totalPages: 4
+        links:
+          first:
+            href: https://example.com/first
+            rel: first
+            method: POST
+            title: First page
+          next:
+            href: https://example.com/next
+            rel: next
+            method: POST
+            title: Next page
+          prev:
+            href: https://example.com/prev
+            rel: prev
+            method: POST
+            title: Previous page
     Appointment:
       description: This definition defines the information and format in appointments.
       properties:
@@ -473,187 +768,27 @@ components:
         advisorHref: api.fortellis.io/service/v1/scheduling/lookups/advisors/123
         concerns: My driver side front door rattles when I drive faster than 45
         remarks: Customer reports that driver side front door exhibits a rattle above 45mph
-    AppointmentLinks:
-      description: This field describes the appointment links.
+    PathProductNumber:
+      description: This gives you the unique identifier for the product.
       type: object
       properties:
-        self:
-          $ref: '#/components/schemas/LinkDescriptionObject'
-          description: The canonical link to the appointment resource
-      required:
-      - self
-      example:
-        self:
-          href: api.fortellis.io/service/v3/appointments/123
-    ContactPreference:
-      description: This fields shows the customer's contact preferences.
-      type: object
-      required:
-      - startDay
-      - endDay
-      properties:
-        startDay:
+        name:
           type: string
-          enum:
-          - MON
-          - TUE
-          - WED
-          - THU
-          - FRI
-          - SAT
-          - SUN
-          description: The starting day of the interval
-        endDay:
+        id:
           type: string
-          enum:
-          - MON
-          - TUE
-          - WED
-          - THU
-          - FRI
-          - SAT
-          - SUN
-          description: The ending day of the interval
-        startTime:
-          type: string
-          description: The RFC 3339 encoded starting time of the interval
-        endTime:
-          type: string
-          description: The RFC 3339 encoded ending time of the interval
-        timeZone:
-          type: string
-          description: The IANA Timezone Database encoded timezone code of the interval
-      example:
-        startDay: MON
-        endDay: SAT
-        startTime: '1985-04-12T23:20:50.52Z'
-        endTime: '1985-04-18T23:20:50.52Z'
-        timezone: CST
-    VehicleSpecification:
-      description: This field describes the vehicle.
-      type: object
-      properties:
-        makeCode:
-          type: string
-          description: The make code of the vehicle
-        modelCode:
-          type: string
-          description: The model code of the vehicle
-        modelYear:
-          type: number
-          description: The model year of the vehicle
-      required:
-      - makeCode
-      - modelCode
-      - modelYear
-      example:
-        makeCode: CHEV
-        modelCode: CAMAC
-        modelYear: 2001
-    BaseCollection:
-      description: This field describes the base collection.
-      type: object
-      properties:
-        totalItems:
-          type: number
-          description: The total number of items contained in the collection
-        totalPages:
-          type: number
-          description: The total number of pages given the requested page size
-        links:
-          $ref: '#/components/schemas/BaseCollectionLinks'
-      required:
-      - totalItems
-      - totalPages
-      - links
-      example:
-        totalItems: 16
-        totalPages: 4
-        links:
-          first:
-            href: https://example.com/first
-            rel: first
-            method: POST
-            title: First page
-          next:
-            href: https://example.com/next
-            rel: next
-            method: POST
-            title: Next page
-          prev:
-            href: https://example.com/prev
-            rel: prev
-            method: POST
-            title: Previous page
-    ContactMethod:
-      description: This is the method that the customer would like you to use to contact them.
-      type: object
-      properties:
-        label:
-          type: string
-          description: A label used to describe the contact method (e.g. home, work-cell).
-        uri:
-          type: string
-          description: The RFC 3986 encoded URI address of the contact method.
-        preferences:
-          type: object
-          items:
-            $ref: '#/components/schemas/ContactPreference'
-      required:
-      - label
-      - uri
-      example:
-        label: Home Information
-        uri: https://examle.com/person/contact
-        preferences:
-          items:
-            startDay:
-            - MON
-            endDay:
-            - SAT
-            startTime: '1985-04-12T23:20:50.52Z'
-            endTime: '1985-04-18T23:20:50.52Z'
-            timezone: CST
-    Measurement:
-      description: This field will let you know about the value and the units of measurement.
-      type: object
-      required:
-      - units
-      - value
-      properties:
-        value:
-          type: number
-        units:
-          type: string
-          enum:
-          - MILES
-          - KM
-          - HOURS
-      example:
-        value: 75201
-        units: MILES
-    ErrorResponse_2:
-      description: Common error response object.
-      properties:
-        code:
+        number:
           type: integer
-          format: int32
-        message:
+        location:
           type: string
-      required:
-      - code
-      - message
-      example:
-        code: 400
-        message: Bad Request
-    Health:
-      description: This is the code that tells you the server is okay.
-      type: object
-      properties:
-        message:
-          type: string
-        code:
-          type: number
+        productSize:
+          type: object
+          properties:
+            productWidth:
+              type: string
+            productHeight:
+              type: string
+            productWeight:
+              type: string
         links:
           type: object
           properties:
@@ -665,13 +800,6 @@ components:
                 method:
                   type: string
             allProductInfo:
-              type: object
-              properties:
-                href:
-                  type: string
-                method:
-                  type: string
-            thisProductInfo:
               type: object
               properties:
                 href:
@@ -679,62 +807,6 @@ components:
                 method:
                   type: string
             thisProductSize:
-              type: object
-              properties:
-                href:
-                  type: string
-                method:
-                  type: string
-      required:
-      - message
-      - code
-      - links
-      example:
-        message: The server is up
-        code: 200
-        links:
-          self:
-            href: /ping
-            method: GET
-          allProductInfo:
-            href: /all-product-info
-            method: GET
-          thisProductInfo:
-            href: /all-product-info/{productNumber}
-            method: GET
-          thisProductSize:
-            href: /all-product-info/{productNumber}/product-size
-            method: GET
-    ProductSize:
-      description: This describes the dimensions of the product to help determine if you have the space to store the product.
-      type: object
-      properties:
-        productWidth:
-          type: string
-        productHeight:
-          type: string
-        productLength:
-          type: string
-        productWeight:
-          type: string
-        links:
-          type: object
-          properties:
-            self:
-              type: object
-              properties:
-                href:
-                  type: string
-                method:
-                  type: string
-            allProductInfo:
-              type: object
-              properties:
-                href:
-                  type: string
-                method:
-                  type: string
-            thisProductInfo:
               type: object
               properties:
                 href:
@@ -749,25 +821,28 @@ components:
                 method:
                   type: string
       required:
-      - productWidth
-      - productHeight
-      - productLength
-      - productWeight
+      - id
+      - name
       - links
       example:
-        productWidth: 4 inches
-        productHeight: 1.8 cm
-        productLength: 4 inches
-        productWeight: 22 g
+        name: Radiator
+        id: SomeExampleId
+        number: 5
+        location: 9th & 10th floor, Binarius Building, Deepak Complex National Games Road, Opp Golf Course, Shastrinagar, Yerawada, Pune, Maharashtra 411006, India
+        ProductSize:
+          productWidth: 19-3/4 inches
+          productHeight: 19-1/8 inches
+          productLength: 2-3/16
+          productWeight: 17.8 lbs.
         links:
           self:
-            href: /all-product-info/all-product-info/{productNumber}/product-size
+            href: /all-product-info/{productNumber}
             method: GET
           allProductInfo:
             href: /all-product-info
             method: GET
-          thisProductInfo:
-            href: /all-product-info/{productNumber}
+          thisProductSize:
+            href: /all-product-info/all-product-info/{productNumber}/product-size
             method: GET
           ping:
             href: /ping
@@ -897,27 +972,32 @@ components:
           ping:
             href: /ping
             method: GET
-    PathProductNumber:
-      description: This gives you the unique identifier for the product.
+    ErrorResponse_2:
+      description: Common error response object.
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string
+      required:
+      - code
+      - message
+      example:
+        code: 400
+        message: Bad Request
+    ProductSize:
+      description: This describes the dimensions of the product to help determine if you have the space to store the product.
       type: object
       properties:
-        name:
+        productWidth:
           type: string
-        id:
+        productHeight:
           type: string
-        number:
-          type: integer
-        location:
+        productLength:
           type: string
-        productSize:
-          type: object
-          properties:
-            productWidth:
-              type: string
-            productHeight:
-              type: string
-            productWeight:
-              type: string
+        productWeight:
+          type: string
         links:
           type: object
           properties:
@@ -935,7 +1015,7 @@ components:
                   type: string
                 method:
                   type: string
-            thisProductSize:
+            thisProductInfo:
               type: object
               properties:
                 href:
@@ -950,35 +1030,123 @@ components:
                 method:
                   type: string
       required:
-      - id
-      - name
+      - productWidth
+      - productHeight
+      - productLength
+      - productWeight
       - links
       example:
-        name: Radiator
-        id: SomeExampleId
-        number: 5
-        location: 9th & 10th floor, Binarius Building, Deepak Complex National Games Road, Opp Golf Course, Shastrinagar, Yerawada, Pune, Maharashtra 411006, India
-        ProductSize:
-          productWidth: 19-3/4 inches
-          productHeight: 19-1/8 inches
-          productLength: 2-3/16
-          productWeight: 17.8 lbs.
+        productWidth: 4 inches
+        productHeight: 1.8 cm
+        productLength: 4 inches
+        productWeight: 22 g
         links:
           self:
-            href: /all-product-info/{productNumber}
+            href: /all-product-info/all-product-info/{productNumber}/product-size
             method: GET
           allProductInfo:
             href: /all-product-info
             method: GET
-          thisProductSize:
-            href: /all-product-info/all-product-info/{productNumber}/product-size
+          thisProductInfo:
+            href: /all-product-info/{productNumber}
             method: GET
           ping:
             href: /ping
             method: GET
+    Health:
+      description: This is the code that tells you the server is okay.
+      type: object
+      properties:
+        message:
+          type: string
+        code:
+          type: number
+        links:
+          type: object
+          properties:
+            self:
+              type: object
+              properties:
+                href:
+                  type: string
+                method:
+                  type: string
+            allProductInfo:
+              type: object
+              properties:
+                href:
+                  type: string
+                method:
+                  type: string
+            thisProductInfo:
+              type: object
+              properties:
+                href:
+                  type: string
+                method:
+                  type: string
+            thisProductSize:
+              type: object
+              properties:
+                href:
+                  type: string
+                method:
+                  type: string
+      required:
+      - message
+      - code
+      - links
+      example:
+        message: The server is up
+        code: 200
+        links:
+          self:
+            href: /ping
+            method: GET
+          allProductInfo:
+            href: /all-product-info
+            method: GET
+          thisProductInfo:
+            href: /all-product-info/{productNumber}
+            method: GET
+          thisProductSize:
+            href: /all-product-info/{productNumber}/product-size
+            method: GET
   responses:
+    Unauthorized:
+      description: 401 - Unauthorized
+      headers:
+        Content-Language:
+          schema:
+            type: string
+        Content-Type:
+          schema:
+            type: string
+        Request-Id:
+          schema:
+            type: string
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
     Forbidden:
       description: 403 - Forbidden
+      headers:
+        Content-Language:
+          schema:
+            type: string
+        Content-Type:
+          schema:
+            type: string
+        Request-Id:
+          schema:
+            type: string
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    NotFound:
+      description: 404 - Not Found
       headers:
         Content-Language:
           schema:
@@ -1009,32 +1177,6 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/AppointmentResource'
-    AppointmentCollection:
-      description: OK
-      headers:
-        Request-Id:
-          schema:
-            type: string
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/AppointmentCollection'
-    NotFound:
-      description: 404 - Not Found
-      headers:
-        Content-Language:
-          schema:
-            type: string
-        Content-Type:
-          schema:
-            type: string
-        Request-Id:
-          schema:
-            type: string
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
     BadRequest:
       description: 400 - Bad Request
       headers:
@@ -1051,24 +1193,48 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-    Unauthorized:
-      description: 401 - Unauthorized
+    AppointmentCollection:
+      description: OK
       headers:
-        Content-Language:
-          schema:
-            type: string
-        Content-Type:
-          schema:
-            type: string
         Request-Id:
           schema:
             type: string
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/ErrorResponse'
+            $ref: '#/components/schemas/AppointmentCollection'
+    Unauthorized_2:
+      description: 401 - Unauthorized
+      headers:
+        Request-Id:
+          schema:
+            type: string
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse_2'
     Forbidden_2:
       description: 403 - Forbidden
+      headers:
+        Request-Id:
+          schema:
+            type: string
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse_2'
+    Ping:
+      description: 200 - OK
+      headers:
+        Request-Id:
+          schema:
+            type: string
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Health'
+    ServiceUnavailable:
+      description: 503 - Service Unavailable
       headers:
         Request-Id:
           schema:
@@ -1087,16 +1253,6 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/PathProductNumber'
-    ServiceUnavailable:
-      description: 503 - Service Unavailable
-      headers:
-        Request-Id:
-          schema:
-            type: string
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse_2'
     AllProducts:
       description: This sends a response with all the products, their size, and their location.
       headers:
@@ -1107,16 +1263,6 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/AllProducts'
-    Ping:
-      description: 200 - OK
-      headers:
-        Request-Id:
-          schema:
-            type: string
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Health'
     ProductSize:
       description: This sends the product size for a particular product to help you determine if you have the inventory space for that product.
       headers:
@@ -1137,154 +1283,6 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse_2'
-    Unauthorized_2:
-      description: 401 - Unauthorized
-      headers:
-        Request-Id:
-          schema:
-            type: string
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse_2'
-  parameters:
-    header.Authorization:
-      name: Authorization
-      in: header
-      required: true
-      description: Provides authorization to access Fortellis APIs. For calling a Fortellis Provider, this must be an OAuth 2.0 token issued by the Fortellis authorization server, but you may call the simulator platform with Basic Authorization using your API key and secret.
-      schema:
-        type: string
-        format: guid
-    query.dateTimeInterval:
-      name: dateTimeInterval
-      in: query
-      required: false
-      description: The ISO 8601 data and time interval to filter the appointment query
-      schema:
-        type: string
-    header.If-None-Match:
-      name: If-None-Match
-      in: header
-      description: Specifies a conditional request to only return the resource when it doesn't match one of the included ETag values
-      schema:
-        type: string
-    query.customerHref:
-      name: customerHref
-      in: query
-      required: false
-      description: The customer resource hyperlink to filter query results
-      schema:
-        type: string
-    header.Request-Id:
-      name: Request-Id
-      in: header
-      required: true
-      description: You must include the Request-Id in every call to track the same call across systems.
-      schema:
-        type: string
-        format: guid
-    query.vehicleHref:
-      name: vehicleHref
-      in: query
-      required: false
-      description: The vehicle resource hyperlink to filter query results
-      schema:
-        type: string
-    query.advisorHref:
-      name: advisorHref
-      in: query
-      required: false
-      description: The advisor resource hyperlink to filter query results
-      schema:
-        type: string
-    path.appointmentId:
-      name: appointmentId
-      in: path
-      required: true
-      description: The appointment identifier
-      schema:
-        type: string
-    header.Accept:
-      description: This header describes the characters that the API will accept.
-      name: Accept
-      in: header
-      schema:
-        type: string
-        enum:
-        - application/json
-    header.Subscription-Id:
-      name: Subscription-Id
-      in: header
-      required: true
-      description: The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.
-      schema:
-        type: string
-        format: guid
-    header.Accept-Language:
-      description: This header describes the languages that the client accepts.
-      name: Accept-Language
-      in: header
-      schema:
-        type: string
-    header.If-Match:
-      name: If-Match
-      in: header
-      description: Specifies a conditional request to only return the resource when it does match one of the included ETag values
-      schema:
-        type: string
-    header.Accept-Charset:
-      description: This header describes the characters that the client will accept.
-      name: Accept-Charset
-      in: header
-      schema:
-        type: string
-        enum:
-        - utf-8
-    header.Prefer:
-      description: This header describes the preferences of the client calling the API.
-      name: Prefer
-      in: header
-      schema:
-        type: string
-        enum:
-        - return=representation
-        - return=minimal
-    header.Organization:
-      name: Organization
-      in: header
-      description: Identifies the organization that the user is in
-      required: true
-      schema:
-        type: string
-    header.Request-Id_2:
-      name: Request-Id
-      in: header
-      required: true
-      description: A correlation ID that should be returned back to the caller to indicate the return of the given request
-      schema:
-        type: string
-        format: guid
-    path.productNumber:
-      name: productNumber
-      in: path
-      description: Filters for a specific product
-      required: true
-      schema:
-        type: number
-    header.Pididle:
-      name: User-Id
-      in: header
-      description: Identifies the user accessing the account
-      required: true
-      schema:
-        type: string
-    query.email:
-      name: email
-      in: query
-      description: Filters customers by email address
-      schema:
-        type: string
   securitySchemes:
     permission-model:
       type: oauth2

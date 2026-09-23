@@ -2,7 +2,9 @@ openapi: 3.2.0
 info:
   version: 45.0.0
   title: Booking Sessions Service Booking API
-  description: "# Service Sessions - Service - Booking Sessions Spec\nThis spec describes an API implementation that allows a solution to book service sessions to a car dealership.\n\n# What does this API do?\nWith this spec, customers can use a solution to perform the following:\n\n* Create a booking session\n* Get the items in a booking session\n* Add items to the booking session\n* Remove items from a booking session\n* Query the service item by the identifier\n* Query the store\n* Query the store availability\n* Query the stores available session slots\n* Book the appointment     \n\n# Intended Audience\nThis spec gives API Providers the design for APIs that allow dealers to book sessions online at different stores.\nThis spec can give a design for a small API implementation or a large chain of dealerships that share a solution for booking service sessions. \n"
+  description: '# Service Sessions - Service - Booking Sessions Spec
+
+    This spec describes an API implementation that allows a solution to book service sessions to a car dealership.'
   contact:
     name: Developer Evangelists
     url: https://fortellis.io/contact-us
@@ -40,7 +42,6 @@ paths:
       summary: Adds a requested service item to the Booking Session
       tags:
       - Service Booking
-      description: Adds a requested service item to the Booking Session
       operationId: addBookingSessionItem
       responses:
         '201':
@@ -81,7 +82,6 @@ paths:
       summary: Updates a requested service item to the Booking Session
       tags:
       - Service Booking
-      description: Updates a requested service item to the Booking Session
       operationId: updateBookingSessionItem
       responses:
         '200':
@@ -104,7 +104,6 @@ paths:
       summary: Queries a requested service item by identifier
       tags:
       - Service Booking
-      description: Queries a requested service item by identifier
       operationId: queryRequestedServiceItemById
       responses:
         '200':
@@ -127,7 +126,6 @@ paths:
       summary: Removes a service item from the Booking Session
       tags:
       - Service Booking
-      description: Removes a service item from the Booking Session
       operationId: removeBookingSessionItem
       responses:
         '200':
@@ -150,7 +148,6 @@ paths:
       summary: Queries the store availability for appointments for booking
       tags:
       - Service Booking
-      description: Queries the store availability for appointments for booking
       operationId: queryBookingSessionStoreAvailability
       responses:
         '200':
@@ -173,7 +170,6 @@ paths:
       summary: Queries the available appointment slots by store
       tags:
       - Service Booking
-      description: Queries the available appointment slots by store
       operationId: queryBookingSessionsAvailableStoreSlots
       responses:
         '200':
@@ -197,7 +193,6 @@ paths:
       summary: Queries an available appointment slot
       tags:
       - Service Booking
-      description: Queries an available appointment slot
       operationId: queryBookingSessionsAvailableSlot
       responses:
         '200':
@@ -218,7 +213,7 @@ paths:
       - $ref: '#/components/parameters/path.storeId'
       - $ref: '#/components/parameters/path.slotId'
     post:
-      summary: Books an appointment slot. This is the final step in the appointment booking process.
+      summary: Books an appointment slot.
       tags:
       - Service Booking
       description: Books an appointment slot. This is the final step in the appointment booking process.
@@ -243,42 +238,171 @@ paths:
       - $ref: '#/components/parameters/path.storeId'
       - $ref: '#/components/parameters/path.slotId'
 components:
-  schemas:
+  parameters:
+    header.Content-Type:
+      description: This field shows the content type that the client sent.
+      name: Content-Type
+      in: header
+      required: true
+      schema:
+        type: string
+        enum:
+        - application/json
+    body.UpdateItemPayload:
+      name: UpdateItemPayload
+      in: body
+      description: The item update parameters
+      schema:
+        $ref: '#/components/schemas/AddItemPayload'
+    path.slotId:
+      name: slotId
+      in: path
+      description: The slot identifier
+      required: true
+      schema:
+        type: string
+        format: uuid
+    body.AddItemPayload:
+      name: AddItemPayload
+      in: body
+      description: The requested bookingSession
+      schema:
+        $ref: '#/components/schemas/AddItemPayload'
+    path.storeId:
+      name: storeId
+      in: path
+      description: The store identifier => 000001
+      required: true
+      schema:
+        type: string
+        format: uuid
+    path.bookingSessionId:
+      name: bookingSessionId
+      in: path
+      description: The identifier of the bookingSession
+      required: true
+      schema:
+        type: string
+    body.CreateBookingSessionPayload:
+      name: CreateBookingSessionPayload
+      in: body
+      description: The bookingSession parameters.
+      schema:
+        $ref: '#/components/schemas/CreateBookingSessionPayload'
+    path.itemId:
+      name: itemId
+      in: path
+      description: The identifier of the item
+      required: true
+      schema:
+        type: string
+    header.Request-Id:
+      name: Request-Id
+      required: true
+      in: header
+      description: A correlation ID that should be returned back to the caller to indicate the return of the given request
+      schema:
+        type: string
+    header.Authorization:
+      name: Authorization
+      in: header
+      required: true
+      description: Provides authorization to access Fortellis APIs. For calling a Fortellis Provider, this must be an OAuth 2.0 token issued by the Fortellis authorization server, but you may call the simulator platform with Basic Authorization using your API key and secret.
+      schema:
+        type: string
+        format: guid
+    header.Subscription-Id:
+      name: Subscription-Id
+      in: header
+      required: true
+      description: The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.
+      schema:
+        type: string
+        format: guid
+  responses:
+    OK:
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Ok'
+    Forbidden:
+      description: 403 - Forbidden
+      headers:
+        Request-Id:
+          schema:
+            type: string
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Created:
+      description: Created.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/BookingSession'
+    items:
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Item'
+    NotFound:
+      description: 404 - Not Found
+      headers:
+        Request-Id:
+          schema:
+            type: string
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    AvailableStore:
+      description: Okay - Available Store
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/AvailableStore'
+    Gone:
+      description: Gone
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    BadRequest:
+      description: 400 - Bad Request
+      headers:
+        Request-Id:
+          schema:
+            type: string
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
     Slot:
-      description: This field indicates the time slot that the store selects a time slot to offer the transportation.
+      description: OK - Slots
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/Slot'
+  schemas:
+    Ok:
+      description: This describes a successful POST to update an item.
       required:
-      - slotId
-      - storeId
-      - dateTime
-      - transportationOffer
+      - success
       - links
       properties:
-        slotId:
+        success:
           type: string
-          format: uuid
-          description: The identifier of the slot
-        storeId:
-          type: string
-          format: uuid
-          description: The identifier of the store
-        dateTime:
-          type: string
-          format: date-time
-          description: The date and time of the slot
-        transportationOffer:
-          $ref: '#/components/schemas/TransportationOffer'
         links:
           $ref: '#/components/schemas/LinksObject'
       example:
-        slotId: 85254b70-c4b0-4461-937f-34d3502796bd
-        dateTime: '2019-10-11T09:30:00+00:00'
-        storeId: 85254b70-c4b0-4461-937f-34d3502796bd
-        transportationOffer:
-          transportationOfferId: fd133724-3450-47c3-b4a4-f888dbf74e40
-          description: Midsized loaner car
-          cost:
-            baseCost: 0.0
-            currencyType: GBP
+        success: OK
         links:
           bookingSessions:
             functions: Create a booking session.
@@ -322,21 +446,6 @@ components:
               GET: true
               POST: true
               DELETE: false
-    Cost:
-      description: This is the description of the cost.
-      required:
-      - baseCost
-      - currencyType
-      properties:
-        baseCost:
-          type: number
-          description: The base cost
-        currencyType:
-          type: string
-          description: The currency type of the cost
-      example:
-        baseCost: 53.42
-        currencyType: US
     LinksObject:
       description: This is the common links object across all API calls.
       type: object
@@ -487,18 +596,60 @@ components:
             GET: true
             POST: true
             DELETE: false
-    Ok:
-      description: This describes a successful POST to update an item.
+    Cost:
+      description: This is the description of the cost.
       required:
-      - success
+      - baseCost
+      - currencyType
+      properties:
+        baseCost:
+          type: number
+          description: The base cost
+        currencyType:
+          type: string
+          description: The currency type of the cost
+      example:
+        baseCost: 53.42
+        currencyType: US
+    TransportationOption:
+      description: This indicates the option of transportation that the customer selected.
+      required:
+      - transportationOptionId
+      - description
+      properties:
+        transportationOptionId:
+          type: string
+          format: uuid
+          description: The identifier of the transportation option
+        description:
+          type: string
+      example:
+        transportationOptionId: 779913c9-bb93-46f0-8860-9c893128c62c
+        description: Some description
+    AvailableStore:
+      description: This shows when the store has available slots.
+      required:
+      - storeId
+      - slots
       - links
       properties:
-        success:
+        storeId:
           type: string
+          format: uuid
+          description: The identifier of the store
+        slots:
+          type: array
+          items:
+            $ref: '#/components/schemas/Slot'
+          description: The available appointment slots
         links:
           $ref: '#/components/schemas/LinksObject'
       example:
-        success: OK
+        storeId: 01b1a2a6-257d-4b35-b4c2-ae08153033ca
+        slots:
+        - time
+        - time
+        - time
         links:
           bookingSessions:
             functions: Create a booking session.
@@ -542,20 +693,6 @@ components:
               GET: true
               POST: true
               DELETE: false
-    Error:
-      description: This is the description of the error that you are getting.
-      required:
-      - code
-      - message
-      properties:
-        code:
-          type: integer
-          format: int32
-        message:
-          type: string
-      example:
-        code: 400
-        message: Bad Request
     CreateBookingSessionPayload:
       description: This is the booking session payload.
       required:
@@ -610,144 +747,6 @@ components:
           description: A courtesy loaner car has been reserved for Ms. Jones
         dateTime: '2019-10-11T09:32:04+00:00'
         status: BOOKED
-    AddItemPayload:
-      description: This describes the item that was added to the payload.
-      required:
-      - text
-      - comment
-      - id
-      - specificationId
-      properties:
-        text:
-          type: string
-          description: A text field.
-        comment:
-          type: string
-          description: A comment field.
-        id:
-          type: string
-          description: The service package Id.  Unique when coupled with vehicleSpecId
-        specificationId:
-          type: string
-          description: The specific instance of the service package.
-      example:
-        text: Windshield Wiper Motor - Replace
-        id: BY28
-        comment: Customer requested service.
-        specificationId: '21732242'
-    TransportationOption:
-      description: This indicates the option of transportation that the customer selected.
-      required:
-      - transportationOptionId
-      - description
-      properties:
-        transportationOptionId:
-          type: string
-          format: uuid
-          description: The identifier of the transportation option
-        description:
-          type: string
-      example:
-        transportationOptionId: 779913c9-bb93-46f0-8860-9c893128c62c
-        description: Some description
-    Item:
-      description: This give the service package that the store would like to offer to the consumer.
-      required:
-      - itemId
-      - text
-      - comment
-      - id
-      - specificationId
-      - links
-      properties:
-        itemId:
-          type: string
-          description: The unique identifier of the item
-        text:
-          type: string
-          description: A text field.
-        comment:
-          type: string
-          description: A comment field.
-        id:
-          type: string
-          description: The service package Id.  Unique when coupled with vehicleSpecId
-        specificationId:
-          type: string
-          description: The specific instance of the service package.
-        links:
-          $ref: '#/components/schemas/LinksObject'
-      example:
-        itemId: f74d81c1-fe33-4f1a-a5f6-ace24da670a8
-        text: 30,000 mile service - 2014 Toyota Camry
-        id: BY28
-        comment: Customer requested service.
-        specificationId: '21732242'
-        links:
-          bookingSessions:
-            functions: Create a booking session.
-            href: /booking-sessions
-            methods:
-              GET: false
-              POST: true
-              DELETE: false
-          bookingSessionItems:
-            functions: Create and query session items.
-            href: /booking-sessions/{bookingSessionId}/items
-            methods:
-              GET: true
-              POST: true
-              DELETE: false
-          bookingSessionItem:
-            functions: Create and delete session items.
-            href: /booking-sessions/{bookingSessionId}/items/{itemId}
-            methods:
-              GET: false
-              POST: true
-              DELETE: true
-          bookingSessionAvailableStores:
-            functions: Query the available stores.
-            href: /booking-sessions/{bookingSessionId}/available-stores
-            methods:
-              GET: true
-              POST: false
-              DELETE: false
-          bookingSessionAvailableStoreSlots:
-            functions: Query slots that an available store has.
-            href: /booking-sessions/{bookingSessionId}/available-stores/{storeId}/slots
-            methods:
-              GET: true
-              POST: false
-              DELETE: false
-          bookingSessionAvailableStoreSlot:
-            functions: Book and query a slot.
-            href: /booking-sessions/{bookingSessionId}/available-stores/{storeId}/slots/{slotId}
-            methods:
-              GET: true
-              POST: true
-              DELETE: false
-    TransportationOffer:
-      description: This is the offer to provide transportation.
-      required:
-      - transportationOfferId
-      - description
-      - cost
-      properties:
-        transportationOfferId:
-          type: string
-          format: uuid
-          description: The identifier of the transportation offer
-        description:
-          type: string
-          description: The description transportation offer
-        cost:
-          $ref: '#/components/schemas/Cost'
-      example:
-        transportationOfferId: fd133724-3450-47c3-b4a4-f888dbf74e40
-        description: Midsized loaner car
-        cost:
-          baseCost: 0.0
-          currencyType: GBP
     BookingSession:
       description: This confirms the booking session when you have booked something.
       required:
@@ -856,30 +855,53 @@ components:
               GET: true
               POST: true
               DELETE: false
-    AvailableStore:
-      description: This shows when the store has available slots.
+    Error:
+      description: This is the description of the error that you are getting.
       required:
-      - storeId
-      - slots
+      - code
+      - message
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string
+      example:
+        code: 400
+        message: Bad Request
+    Item:
+      description: This give the service package that the store would like to offer to the consumer.
+      required:
+      - itemId
+      - text
+      - comment
+      - id
+      - specificationId
       - links
       properties:
-        storeId:
+        itemId:
           type: string
-          format: uuid
-          description: The identifier of the store
-        slots:
-          type: array
-          items:
-            $ref: '#/components/schemas/Slot'
-          description: The available appointment slots
+          description: The unique identifier of the item
+        text:
+          type: string
+          description: A text field.
+        comment:
+          type: string
+          description: A comment field.
+        id:
+          type: string
+          description: The service package Id.  Unique when coupled with vehicleSpecId
+        specificationId:
+          type: string
+          description: The specific instance of the service package.
         links:
           $ref: '#/components/schemas/LinksObject'
       example:
-        storeId: 01b1a2a6-257d-4b35-b4c2-ae08153033ca
-        slots:
-        - time
-        - time
-        - time
+        itemId: f74d81c1-fe33-4f1a-a5f6-ace24da670a8
+        text: 30,000 mile service - 2014 Toyota Camry
+        id: BY28
+        comment: Customer requested service.
+        specificationId: '21732242'
         links:
           bookingSessions:
             functions: Create a booking session.
@@ -923,158 +945,131 @@ components:
               GET: true
               POST: true
               DELETE: false
-  parameters:
-    body.UpdateItemPayload:
-      name: UpdateItemPayload
-      in: body
-      description: The item update parameters
-      schema:
-        $ref: '#/components/schemas/AddItemPayload'
-    path.bookingSessionId:
-      name: bookingSessionId
-      in: path
-      description: The identifier of the bookingSession
-      required: true
-      schema:
-        type: string
-    header.Authorization:
-      name: Authorization
-      in: header
-      required: true
-      description: Provides authorization to access Fortellis APIs. For calling a Fortellis Provider, this must be an OAuth 2.0 token issued by the Fortellis authorization server, but you may call the simulator platform with Basic Authorization using your API key and secret.
-      schema:
-        type: string
-        format: guid
-    path.itemId:
-      name: itemId
-      in: path
-      description: The identifier of the item
-      required: true
-      schema:
-        type: string
-    header.Request-Id:
-      name: Request-Id
-      required: true
-      in: header
-      description: A correlation ID that should be returned back to the caller to indicate the return of the given request
-      schema:
-        type: string
-    header.Subscription-Id:
-      name: Subscription-Id
-      in: header
-      required: true
-      description: The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.
-      schema:
-        type: string
-        format: guid
-    header.Content-Type:
-      description: This field shows the content type that the client sent.
-      name: Content-Type
-      in: header
-      required: true
-      schema:
-        type: string
-        enum:
-        - application/json
-    path.slotId:
-      name: slotId
-      in: path
-      description: The slot identifier
-      required: true
-      schema:
-        type: string
-        format: uuid
-    body.AddItemPayload:
-      name: AddItemPayload
-      in: body
-      description: The requested bookingSession
-      schema:
-        $ref: '#/components/schemas/AddItemPayload'
-    body.CreateBookingSessionPayload:
-      name: CreateBookingSessionPayload
-      in: body
-      description: The bookingSession parameters.
-      schema:
-        $ref: '#/components/schemas/CreateBookingSessionPayload'
-    path.storeId:
-      name: storeId
-      in: path
-      description: The store identifier => 000001
-      required: true
-      schema:
-        type: string
-        format: uuid
-  responses:
-    Forbidden:
-      description: 403 - Forbidden
-      headers:
-        Request-Id:
-          schema:
-            type: string
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    OK:
-      description: OK
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Ok'
     Slot:
-      description: OK - Slots
-      content:
-        application/json:
-          schema:
-            type: array
-            items:
-              $ref: '#/components/schemas/Slot'
-    NotFound:
-      description: 404 - Not Found
-      headers:
-        Request-Id:
-          schema:
-            type: string
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    AvailableStore:
-      description: Okay - Available Store
-      content:
-        application/json:
-          schema:
-            type: array
-            items:
-              $ref: '#/components/schemas/AvailableStore'
-    Created:
-      description: Created.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/BookingSession'
-    BadRequest:
-      description: 400 - Bad Request
-      headers:
-        Request-Id:
-          schema:
-            type: string
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Gone:
-      description: Gone
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    items:
-      description: OK
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Item'
+      description: This field indicates the time slot that the store selects a time slot to offer the transportation.
+      required:
+      - slotId
+      - storeId
+      - dateTime
+      - transportationOffer
+      - links
+      properties:
+        slotId:
+          type: string
+          format: uuid
+          description: The identifier of the slot
+        storeId:
+          type: string
+          format: uuid
+          description: The identifier of the store
+        dateTime:
+          type: string
+          format: date-time
+          description: The date and time of the slot
+        transportationOffer:
+          $ref: '#/components/schemas/TransportationOffer'
+        links:
+          $ref: '#/components/schemas/LinksObject'
+      example:
+        slotId: 85254b70-c4b0-4461-937f-34d3502796bd
+        dateTime: '2019-10-11T09:30:00+00:00'
+        storeId: 85254b70-c4b0-4461-937f-34d3502796bd
+        transportationOffer:
+          transportationOfferId: fd133724-3450-47c3-b4a4-f888dbf74e40
+          description: Midsized loaner car
+          cost:
+            baseCost: 0.0
+            currencyType: GBP
+        links:
+          bookingSessions:
+            functions: Create a booking session.
+            href: /booking-sessions
+            methods:
+              GET: false
+              POST: true
+              DELETE: false
+          bookingSessionItems:
+            functions: Create and query session items.
+            href: /booking-sessions/{bookingSessionId}/items
+            methods:
+              GET: true
+              POST: true
+              DELETE: false
+          bookingSessionItem:
+            functions: Create and delete session items.
+            href: /booking-sessions/{bookingSessionId}/items/{itemId}
+            methods:
+              GET: false
+              POST: true
+              DELETE: true
+          bookingSessionAvailableStores:
+            functions: Query the available stores.
+            href: /booking-sessions/{bookingSessionId}/available-stores
+            methods:
+              GET: true
+              POST: false
+              DELETE: false
+          bookingSessionAvailableStoreSlots:
+            functions: Query slots that an available store has.
+            href: /booking-sessions/{bookingSessionId}/available-stores/{storeId}/slots
+            methods:
+              GET: true
+              POST: false
+              DELETE: false
+          bookingSessionAvailableStoreSlot:
+            functions: Book and query a slot.
+            href: /booking-sessions/{bookingSessionId}/available-stores/{storeId}/slots/{slotId}
+            methods:
+              GET: true
+              POST: true
+              DELETE: false
+    AddItemPayload:
+      description: This describes the item that was added to the payload.
+      required:
+      - text
+      - comment
+      - id
+      - specificationId
+      properties:
+        text:
+          type: string
+          description: A text field.
+        comment:
+          type: string
+          description: A comment field.
+        id:
+          type: string
+          description: The service package Id.  Unique when coupled with vehicleSpecId
+        specificationId:
+          type: string
+          description: The specific instance of the service package.
+      example:
+        text: Windshield Wiper Motor - Replace
+        id: BY28
+        comment: Customer requested service.
+        specificationId: '21732242'
+    TransportationOffer:
+      description: This is the offer to provide transportation.
+      required:
+      - transportationOfferId
+      - description
+      - cost
+      properties:
+        transportationOfferId:
+          type: string
+          format: uuid
+          description: The identifier of the transportation offer
+        description:
+          type: string
+          description: The description transportation offer
+        cost:
+          $ref: '#/components/schemas/Cost'
+      example:
+        transportationOfferId: fd133724-3450-47c3-b4a4-f888dbf74e40
+        description: Midsized loaner car
+        cost:
+          baseCost: 0.0
+          currencyType: GBP
   securitySchemes:
     permission-model:
       type: oauth2

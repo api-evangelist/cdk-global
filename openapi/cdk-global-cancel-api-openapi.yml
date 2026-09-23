@@ -2,7 +2,9 @@ openapi: 3.2.0
 info:
   version: 3.0.0
   title: appointments Cancel API
-  description: "## Fortellis - Service - Appointments\nA service appointment is a booking of a vehicle into the service department for work that needs to be carried out on the vehicle. This could be a service, repair, body repair, government test etc.\n\n## What does this API do?\nThe API will allow you to query, create and manage service appointments. \n\n## Intended Audience\nIt is expected that systems that require create, read, update, and delete access to appointments will use this API.  Systems implementing service-scheduling will use this API to store appointment records.\n"
+  description: '## Fortellis - Service - Appointments
+
+    A service appointment is a booking of a vehicle into the service department for work that needs to be carried out on the vehicle.'
   contact:
     name: Developer Evangelists
     url: https://example.com
@@ -13,17 +15,15 @@ security:
 - permission-model:
   - anonymous
 tags:
-- name: cancel
+- name: Cancel
 paths:
   /{appointmentId}:
     delete:
       summary: Cancel an appointment
-      description: 'Cancels an appointment.  This method does not guarantee that resource reservations associated with the appointment (advisors, transports, reserved equipment/parts) will be released.  It is suggested that the service-scheduling API be used for this purpose.
-
-        '
+      description: Cancels an appointment. This method does not guarantee that resource reservations associated with the appointment (advisors, transports, reserved equipment/parts) will be released. It is suggested that the service-scheduling API be used for this purpose.
       operationId: cancelAppointment
       tags:
-      - cancel
+      - Cancel
       parameters:
       - $ref: '#/components/parameters/header.Accept'
       - $ref: '#/components/parameters/header.Accept-Charset'
@@ -48,7 +48,117 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
+  parameters:
+    header.Accept:
+      description: This header describes the characters that the API will accept.
+      name: Accept
+      in: header
+      schema:
+        type: string
+        enum:
+        - application/json
+    header.Prefer:
+      description: This header describes the preferences of the client calling the API.
+      name: Prefer
+      in: header
+      schema:
+        type: string
+        enum:
+        - return=representation
+        - return=minimal
+    path.appointmentId:
+      name: appointmentId
+      in: path
+      required: true
+      description: The appointment identifier
+      schema:
+        type: string
+    header.Request-Id:
+      name: Request-Id
+      in: header
+      required: true
+      description: You must include the Request-Id in every call to track the same call across systems.
+      schema:
+        type: string
+        format: guid
+    header.Authorization:
+      name: Authorization
+      in: header
+      required: true
+      description: Provides authorization to access Fortellis APIs. For calling a Fortellis Provider, this must be an OAuth 2.0 token issued by the Fortellis authorization server, but you may call the simulator platform with Basic Authorization using your API key and secret.
+      schema:
+        type: string
+        format: guid
+    header.Subscription-Id:
+      name: Subscription-Id
+      in: header
+      required: true
+      description: The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.
+      schema:
+        type: string
+        format: guid
+    header.Accept-Language:
+      description: This header describes the languages that the client accepts.
+      name: Accept-Language
+      in: header
+      schema:
+        type: string
+    header.If-None-Match:
+      name: If-None-Match
+      in: header
+      description: Specifies a conditional request to only return the resource when it doesn't match one of the included ETag values
+      schema:
+        type: string
+    header.If-Match:
+      name: If-Match
+      in: header
+      description: Specifies a conditional request to only return the resource when it does match one of the included ETag values
+      schema:
+        type: string
+    header.Accept-Charset:
+      description: This header describes the characters that the client will accept.
+      name: Accept-Charset
+      in: header
+      schema:
+        type: string
+        enum:
+        - utf-8
+    body.CancelRequest:
+      name: CancelRequest
+      in: body
+      required: true
+      description: An appointment cancellation request
+      schema:
+        $ref: '#/components/schemas/CancelRequest'
   responses:
+    Unauthorized:
+      description: 401 - Unauthorized
+      headers:
+        Content-Language:
+          schema:
+            type: string
+        Content-Type:
+          schema:
+            type: string
+        Request-Id:
+          schema:
+            type: string
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    Success:
+      description: 204 - Non Content
+      headers:
+        Content-Language:
+          schema:
+            type: string
+        Content-Type:
+          schema:
+            type: string
+        Request-Id:
+          schema:
+            type: string
     BadRequest:
       description: 400 - Bad Request
       headers:
@@ -81,18 +191,6 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-    Success:
-      description: 204 - Non Content
-      headers:
-        Content-Language:
-          schema:
-            type: string
-        Content-Type:
-          schema:
-            type: string
-        Request-Id:
-          schema:
-            type: string
     Forbidden:
       description: 403 - Forbidden
       headers:
@@ -109,105 +207,18 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-    Unauthorized:
-      description: 401 - Unauthorized
-      headers:
-        Content-Language:
-          schema:
-            type: string
-        Content-Type:
-          schema:
-            type: string
-        Request-Id:
-          schema:
-            type: string
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-  parameters:
-    header.Accept:
-      description: This header describes the characters that the API will accept.
-      name: Accept
-      in: header
-      schema:
-        type: string
-        enum:
-        - application/json
-    path.appointmentId:
-      name: appointmentId
-      in: path
-      required: true
-      description: The appointment identifier
-      schema:
-        type: string
-    header.Subscription-Id:
-      name: Subscription-Id
-      in: header
-      required: true
-      description: The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.
-      schema:
-        type: string
-        format: guid
-    body.CancelRequest:
-      name: CancelRequest
-      in: body
-      required: true
-      description: An appointment cancellation request
-      schema:
-        $ref: '#/components/schemas/CancelRequest'
-    header.Prefer:
-      description: This header describes the preferences of the client calling the API.
-      name: Prefer
-      in: header
-      schema:
-        type: string
-        enum:
-        - return=representation
-        - return=minimal
-    header.Request-Id:
-      name: Request-Id
-      in: header
-      required: true
-      description: You must include the Request-Id in every call to track the same call across systems.
-      schema:
-        type: string
-        format: guid
-    header.Accept-Language:
-      description: This header describes the languages that the client accepts.
-      name: Accept-Language
-      in: header
-      schema:
-        type: string
-    header.Authorization:
-      name: Authorization
-      in: header
-      required: true
-      description: Provides authorization to access Fortellis APIs. For calling a Fortellis Provider, this must be an OAuth 2.0 token issued by the Fortellis authorization server, but you may call the simulator platform with Basic Authorization using your API key and secret.
-      schema:
-        type: string
-        format: guid
-    header.If-Match:
-      name: If-Match
-      in: header
-      description: Specifies a conditional request to only return the resource when it does match one of the included ETag values
-      schema:
-        type: string
-    header.Accept-Charset:
-      description: This header describes the characters that the client will accept.
-      name: Accept-Charset
-      in: header
-      schema:
-        type: string
-        enum:
-        - utf-8
-    header.If-None-Match:
-      name: If-None-Match
-      in: header
-      description: Specifies a conditional request to only return the resource when it doesn't match one of the included ETag values
-      schema:
-        type: string
   schemas:
+    CancelRequest:
+      description: This fields describes why a customer requested to cancel.
+      type: object
+      properties:
+        reason:
+          type: string
+          description: Free-form comments that explain why the appointment was cancelled
+      required:
+      - reason
+      example:
+        reason: Rescheduled for the following week
     ErrorResponse:
       description: This is a generic error schema.
       type: object
@@ -223,17 +234,6 @@ components:
       example:
         code: 24
         message: Error Message used for debugging
-    CancelRequest:
-      description: This fields describes why a customer requested to cancel.
-      type: object
-      properties:
-        reason:
-          type: string
-          description: Free-form comments that explain why the appointment was cancelled
-      required:
-      - reason
-      example:
-        reason: Rescheduled for the following week
   securitySchemes:
     permission-model:
       type: oauth2
