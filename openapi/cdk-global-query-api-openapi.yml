@@ -181,6 +181,58 @@ paths:
     - url: https://api.fortellis.io/sales/parts-store/v47
 components:
   parameters:
+    header.Authorization:
+      name: Authorization
+      in: header
+      required: true
+      description: Provides authorization to access Fortellis APIs. For calling a Fortellis Provider, this must be an OAuth 2.0 token issued by the Fortellis authorization server, but you may call the simulator platform with Basic Authorization using your API key and secret.
+      schema:
+        type: string
+        format: guid
+    header.Prefer:
+      description: This header describes the preferences of the client calling the API.
+      name: Prefer
+      in: header
+      schema:
+        type: string
+        enum:
+        - return=representation
+        - return=minimal
+    header.If-Match:
+      name: If-Match
+      in: header
+      description: Specifies a conditional request to only return the resource when it does match one of the included ETag values
+      schema:
+        type: string
+    header.Accept:
+      description: This header describes the characters that the API will accept.
+      name: Accept
+      in: header
+      schema:
+        type: string
+        enum:
+        - application/json
+    query.advisorHref:
+      name: advisorHref
+      in: query
+      required: false
+      description: The advisor resource hyperlink to filter query results
+      schema:
+        type: string
+    header.Subscription-Id:
+      name: Subscription-Id
+      in: header
+      required: true
+      description: The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.
+      schema:
+        type: string
+        format: guid
+    header.Accept-Language:
+      description: This header describes the languages that the client accepts.
+      name: Accept-Language
+      in: header
+      schema:
+        type: string
     path.appointmentId:
       name: appointmentId
       in: path
@@ -188,22 +240,11 @@ components:
       description: The appointment identifier
       schema:
         type: string
-    header.Accept-Language:
-      description: This header describes the languages that the client accepts.
-      name: Accept-Language
-      in: header
-      schema:
-        type: string
-    header.If-Match:
-      name: If-Match
-      in: header
-      description: Specifies a conditional request to only return the resource when it does match one of the included ETag values
-      schema:
-        type: string
-    header.If-None-Match:
-      name: If-None-Match
-      in: header
-      description: Specifies a conditional request to only return the resource when it doesn't match one of the included ETag values
+    query.dateTimeInterval:
+      name: dateTimeInterval
+      in: query
+      required: false
+      description: The ISO 8601 data and time interval to filter the appointment query
       schema:
         type: string
     header.Accept-Charset:
@@ -214,26 +255,17 @@ components:
         type: string
         enum:
         - utf-8
-    header.Accept:
-      description: This header describes the characters that the API will accept.
-      name: Accept
+    query.vehicleHref:
+      name: vehicleHref
+      in: query
+      required: false
+      description: The vehicle resource hyperlink to filter query results
+      schema:
+        type: string
+    header.If-None-Match:
+      name: If-None-Match
       in: header
-      schema:
-        type: string
-        enum:
-        - application/json
-    query.customerHref:
-      name: customerHref
-      in: query
-      required: false
-      description: The customer resource hyperlink to filter query results
-      schema:
-        type: string
-    query.dateTimeInterval:
-      name: dateTimeInterval
-      in: query
-      required: false
-      description: The ISO 8601 data and time interval to filter the appointment query
+      description: Specifies a conditional request to only return the resource when it doesn't match one of the included ETag values
       schema:
         type: string
     header.Request-Id:
@@ -244,43 +276,11 @@ components:
       schema:
         type: string
         format: guid
-    header.Authorization:
-      name: Authorization
-      in: header
-      required: true
-      description: Provides authorization to access Fortellis APIs. For calling a Fortellis Provider, this must be an OAuth 2.0 token issued by the Fortellis authorization server, but you may call the simulator platform with Basic Authorization using your API key and secret.
-      schema:
-        type: string
-        format: guid
-    header.Subscription-Id:
-      name: Subscription-Id
-      in: header
-      required: true
-      description: The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.
-      schema:
-        type: string
-        format: guid
-    query.advisorHref:
-      name: advisorHref
+    query.customerHref:
+      name: customerHref
       in: query
       required: false
-      description: The advisor resource hyperlink to filter query results
-      schema:
-        type: string
-    header.Prefer:
-      description: This header describes the preferences of the client calling the API.
-      name: Prefer
-      in: header
-      schema:
-        type: string
-        enum:
-        - return=representation
-        - return=minimal
-    query.vehicleHref:
-      name: vehicleHref
-      in: query
-      required: false
-      description: The vehicle resource hyperlink to filter query results
+      description: The customer resource hyperlink to filter query results
       schema:
         type: string
     query.email:
@@ -318,105 +318,178 @@ components:
       schema:
         type: string
         format: guid
-  schemas:
-    VehicleSpecification:
-      description: This field describes the vehicle.
-      type: object
-      properties:
-        makeCode:
-          type: string
-          description: The make code of the vehicle
-        modelCode:
-          type: string
-          description: The model code of the vehicle
-        modelYear:
-          type: number
-          description: The model year of the vehicle
-      required:
-      - makeCode
-      - modelCode
-      - modelYear
-      example:
-        makeCode: CHEV
-        modelCode: CAMAC
-        modelYear: 2001
-    BaseCollectionLinks:
-      description: This field describes the base collection links for the particular endpoint.
-      type: object
-      properties:
-        next:
-          $ref: '#/components/schemas/LinkDescriptionObject'
-          description: The next page of query results
-        prev:
-          $ref: '#/components/schemas/LinkDescriptionObject'
-          description: The previous page of query results
-        first:
-          $ref: '#/components/schemas/LinkDescriptionObject'
-          description: The first page of query results
-      required:
-      - first
-      example:
-        next:
-          href: https://example.com/next
-          rel: next
-          method: POST
-          title: Next page
-        prev:
-          href: https://example.com/prev
-          rel: prev
-          method: POST
-          title: Previous page
-        first:
-          href: https://example.com/first
-          rel: first
-          method: POST
-          title: First page
+  responses:
+    NotFound:
+      description: 404 - Not Found
+      headers:
+        Content-Language:
+          schema:
+            type: string
+        Content-Type:
+          schema:
+            type: string
+        Request-Id:
+          schema:
+            type: string
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    BadRequest:
+      description: 400 - Bad Request
+      headers:
+        Content-Language:
+          schema:
+            type: string
+        Content-Type:
+          schema:
+            type: string
+        Request-Id:
+          schema:
+            type: string
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
     AppointmentCollection:
-      description: This field describes a collection of appointments.
-      type: object
-      allOf:
-      - $ref: '#/components/schemas/BaseCollection'
-      - properties:
-          items:
-            type: object
-            items:
-              $ref: '#/components/schemas/Appointment'
-        required:
-        - items
-      required:
-      - items
-      example:
-        items:
-          appointmentId: '123'
-          dateTime: '2019-06-10T16:15:00+08:00'
-          requestedServices:
-          - description: Filler, Tail Lamp Center - Replace (Labor Only)
-            sourceHref: api.fortellis.io/service/reference/v4/service-packages/model/CHEV-CAMAC-2001-US/packages/BF018/specifications/8994972
-          vehicleHref: api.fortellis.io/service/v1/vehicles/123
-          vehicleMileage:
-            value: 75201
-            units: MILES
-          customerHref: api.fortellis.io/service/v1/customers/123
-          contact:
-            label: mobile
-            uri: tel:1-234-567-8900
-            preferences:
-            - startDay: MON
-              endDay: FRI
-              startTime: '1000'
-              endTime: '1600'
-          transportHref: api.fortellis.io/service/v1/scheduling/lookups/transports/123
-          advisorHref: api.fortellis.io/service/v1/scheduling/lookups/advisors/123
-          concerns: My driver side front door rattles when I drive faster than 45
-          remarks: Customer reports that driver side front door exhibits a rattle above 45mph
-          links:
-            self:
-              href: api.fortellis.io/service/v3/appointments/123
-        totalItems: 1
-        totalPages: 1
-        links:
-          first:
-            href: api.fortellis.io/service/v3/appointments?page=1&pageSize=1
+      description: OK
+      headers:
+        Request-Id:
+          schema:
+            type: string
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/AppointmentCollection'
+    Forbidden:
+      description: 403 - Forbidden
+      headers:
+        Content-Language:
+          schema:
+            type: string
+        Content-Type:
+          schema:
+            type: string
+        Request-Id:
+          schema:
+            type: string
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    Appointment:
+      description: OK
+      headers:
+        Request-Id:
+          schema:
+            type: string
+        Preference-Applied:
+          schema:
+            type: string
+            enum:
+            - return=representation
+            - return=minimal
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/AppointmentResource'
+    Unauthorized:
+      description: 401 - Unauthorized
+      headers:
+        Content-Language:
+          schema:
+            type: string
+        Content-Type:
+          schema:
+            type: string
+        Request-Id:
+          schema:
+            type: string
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    BadRequest_2:
+      description: 400 - Bad Request
+      headers:
+        Request-Id:
+          schema:
+            type: string
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse_2'
+    PathProductNumber:
+      description: This sends the information on a particular product based on the product number.
+      headers:
+        Request-Id:
+          schema:
+            type: string
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PathProductNumber'
+    AllProducts:
+      description: This sends a response with all the products, their size, and their location.
+      headers:
+        Request-Id:
+          schema:
+            type: string
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/AllProducts'
+    Forbidden_2:
+      description: 403 - Forbidden
+      headers:
+        Request-Id:
+          schema:
+            type: string
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse_2'
+    Ping:
+      description: 200 - OK
+      headers:
+        Request-Id:
+          schema:
+            type: string
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Health'
+    ProductSize:
+      description: This sends the product size for a particular product to help you determine if you have the inventory space for that product.
+      headers:
+        Request-Id:
+          schema:
+            type: string
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ProductSize'
+    ServiceUnavailable:
+      description: 503 - Service Unavailable
+      headers:
+        Request-Id:
+          schema:
+            type: string
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse_2'
+    Unauthorized_2:
+      description: 401 - Unauthorized
+      headers:
+        Request-Id:
+          schema:
+            type: string
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse_2'
+  schemas:
     AppointmentLinks:
       description: This field describes the appointment links.
       type: object
@@ -429,275 +502,6 @@ components:
       example:
         self:
           href: api.fortellis.io/service/v3/appointments/123
-    ContactMethod:
-      description: This is the method that the customer would like you to use to contact them.
-      type: object
-      properties:
-        label:
-          type: string
-          description: A label used to describe the contact method (e.g. home, work-cell).
-        uri:
-          type: string
-          description: The RFC 3986 encoded URI address of the contact method.
-        preferences:
-          type: object
-          items:
-            $ref: '#/components/schemas/ContactPreference'
-      required:
-      - label
-      - uri
-      example:
-        label: Home Information
-        uri: https://examle.com/person/contact
-        preferences:
-          items:
-            startDay:
-            - MON
-            endDay:
-            - SAT
-            startTime: '1985-04-12T23:20:50.52Z'
-            endTime: '1985-04-18T23:20:50.52Z'
-            timezone: CST
-    ErrorResponse:
-      description: This is a generic error schema.
-      type: object
-      properties:
-        code:
-          type: integer
-          format: int32
-        message:
-          type: string
-      required:
-      - code
-      - message
-      example:
-        code: 24
-        message: Error Message used for debugging
-    LinkDescriptionObject:
-      description: These are the linked objects that you send with the request to comply with HATEOAS.
-      type: object
-      properties:
-        href:
-          type: string
-          description: The target URI
-        rel:
-          type: string
-          description: The link relation type
-        method:
-          type: string
-          description: The HTTP verb that MUST be used to make a request to the target of the link
-        title:
-          type: string
-          description: A human readable title for the link that conveys the purpose of the link
-      required:
-      - href
-      example:
-        href: https://example.com
-        rel: self
-        method: POST
-        title: Reference to self at the Example
-    AppointmentResource:
-      description: This field describes the appointment resources.
-      allOf:
-      - $ref: '#/components/schemas/Appointment'
-      - type: object
-        properties:
-          appointmentId:
-            type: string
-            description: The appointment unique identifier
-          links:
-            $ref: '#/components/schemas/AppointmentLinks'
-            description: The hypermedia links of the Appointment resource
-      required:
-      - appointmentId
-      - links
-      example:
-        appointmentId: '123'
-        dateTime: '2019-06-10T16:15:00+08:00'
-        requestedServices:
-        - description: Filler, Tail Lamp Center - Replace (Labor Only)
-          sourceHref: api.fortellis.io/service/reference/v4/service-packages/model/CHEV-CAMAC-2001-US/packages/BF018/specifications/8994972
-        vehicleHref: api.fortellis.io/service/v1/vehicles/123
-        vehicleMileage:
-          value: 34760
-          units: MILES
-        customerHref: api.fortellis.io/service/v1/customers/123
-        contact:
-          label: mobile
-          uri: tel:1-234-567-8900
-          preferences:
-            items:
-              startDay:
-              - MON
-              endDay:
-              - SAT
-            startTime: '1985-04-12T23:20:50.52Z'
-            endTime: '1985-04-18T23:20:50.52Z'
-            timezone: CST
-        transportHref: api.fortellis.io/service/v1/scheduling/lookups/transports/123
-        advisorHref: api.fortellis.io/service/v1/scheduling/lookups/advisors/123
-        concerns: My driver side front door rattles when I drive faster than 45
-        remarks: Customer reports that driver side front door exhibits a rattle above 45mph
-        links:
-          self:
-            href: api.fortellis.io/service/v3/appointments/123
-    ContactPreference:
-      description: This fields shows the customer's contact preferences.
-      type: object
-      required:
-      - startDay
-      - endDay
-      properties:
-        startDay:
-          type: string
-          enum:
-          - MON
-          - TUE
-          - WED
-          - THU
-          - FRI
-          - SAT
-          - SUN
-          description: The starting day of the interval
-        endDay:
-          type: string
-          enum:
-          - MON
-          - TUE
-          - WED
-          - THU
-          - FRI
-          - SAT
-          - SUN
-          description: The ending day of the interval
-        startTime:
-          type: string
-          description: The RFC 3339 encoded starting time of the interval
-        endTime:
-          type: string
-          description: The RFC 3339 encoded ending time of the interval
-        timeZone:
-          type: string
-          description: The IANA Timezone Database encoded timezone code of the interval
-      example:
-        startDay: MON
-        endDay: SAT
-        startTime: '1985-04-12T23:20:50.52Z'
-        endTime: '1985-04-18T23:20:50.52Z'
-        timezone: CST
-    Measurement:
-      description: This field will let you know about the value and the units of measurement.
-      type: object
-      required:
-      - units
-      - value
-      properties:
-        value:
-          type: number
-        units:
-          type: string
-          enum:
-          - MILES
-          - KM
-          - HOURS
-      example:
-        value: 75201
-        units: MILES
-    Price:
-      description: This field lists the cost of the appointment.
-      type: object
-      properties:
-        currencyCode:
-          type: string
-          description: The ISO 4217 three letter currency code of the price
-        netPrice:
-          type: number
-          description: Price excluding sales tax / VAT expressed in the given currency
-        grossValue:
-          type: number
-          description: Price including sales tax / VAT expressed in the given currency
-        taxValue:
-          type: number
-          description: Value of tax expressed in the given currency
-        taxRate:
-          type: number
-          description: Tax rate as a percentage
-        netDiscountedPrice:
-          type: number
-          description: Discounted price exluding sales tax in the given currency
-        grossDiscountedPrice:
-          type: number
-          description: Discounted price including sales tax in the given currency
-      required:
-      - currencyCode
-      - netPrice
-      - grossValue
-      - taxValue
-      - taxRate
-      example:
-        currencyCode: US
-        netPrice: 53
-        grossValue: 57.24
-        taxValue: 4.24
-        taxRate: 8
-    RequestedService:
-      description: This fields describes the service requested.
-      type: object
-      properties:
-        description:
-          type: string
-          description: The textual description of the requested service
-        concern:
-          type: string
-          description: The textual description of the concern that prompted the requested service
-        sourceHref:
-          type: string
-          description: "The hypermedia link to the source service specification.  This will \nlink to a service-packages Specification or LaborOperation resource.\n"
-        overrides:
-          type: object
-          properties:
-            quote:
-              $ref: '#/components/schemas/Price'
-      required:
-      - description
-      example:
-        description: Replace Air Filter
-        sourceHref: api.fortellis.io/service/reference/v4/service-packages/model/CHEV-CAMAC-2001-US/packages/BF018/specifications/8994972
-    BaseCollection:
-      description: This field describes the base collection.
-      type: object
-      properties:
-        totalItems:
-          type: number
-          description: The total number of items contained in the collection
-        totalPages:
-          type: number
-          description: The total number of pages given the requested page size
-        links:
-          $ref: '#/components/schemas/BaseCollectionLinks'
-      required:
-      - totalItems
-      - totalPages
-      - links
-      example:
-        totalItems: 16
-        totalPages: 4
-        links:
-          first:
-            href: https://example.com/first
-            rel: first
-            method: POST
-            title: First page
-          next:
-            href: https://example.com/next
-            rel: next
-            method: POST
-            title: Next page
-          prev:
-            href: https://example.com/prev
-            rel: prev
-            method: POST
-            title: Previous page
     Appointment:
       description: This definition defines the information and format in appointments.
       properties:
@@ -768,27 +572,381 @@ components:
         advisorHref: api.fortellis.io/service/v1/scheduling/lookups/advisors/123
         concerns: My driver side front door rattles when I drive faster than 45
         remarks: Customer reports that driver side front door exhibits a rattle above 45mph
-    PathProductNumber:
-      description: This gives you the unique identifier for the product.
+    VehicleSpecification:
+      description: This field describes the vehicle.
       type: object
       properties:
-        name:
+        makeCode:
           type: string
-        id:
+          description: The make code of the vehicle
+        modelCode:
           type: string
-        number:
-          type: integer
-        location:
+          description: The model code of the vehicle
+        modelYear:
+          type: number
+          description: The model year of the vehicle
+      required:
+      - makeCode
+      - modelCode
+      - modelYear
+      example:
+        makeCode: CHEV
+        modelCode: CAMAC
+        modelYear: 2001
+    BaseCollectionLinks:
+      description: This field describes the base collection links for the particular endpoint.
+      type: object
+      properties:
+        next:
+          $ref: '#/components/schemas/LinkDescriptionObject'
+          description: The next page of query results
+        prev:
+          $ref: '#/components/schemas/LinkDescriptionObject'
+          description: The previous page of query results
+        first:
+          $ref: '#/components/schemas/LinkDescriptionObject'
+          description: The first page of query results
+      required:
+      - first
+      example:
+        next:
+          href: https://example.com/next
+          rel: next
+          method: POST
+          title: Next page
+        prev:
+          href: https://example.com/prev
+          rel: prev
+          method: POST
+          title: Previous page
+        first:
+          href: https://example.com/first
+          rel: first
+          method: POST
+          title: First page
+    ContactPreference:
+      description: This fields shows the customer's contact preferences.
+      type: object
+      required:
+      - startDay
+      - endDay
+      properties:
+        startDay:
           type: string
-        productSize:
+          enum:
+          - MON
+          - TUE
+          - WED
+          - THU
+          - FRI
+          - SAT
+          - SUN
+          description: The starting day of the interval
+        endDay:
+          type: string
+          enum:
+          - MON
+          - TUE
+          - WED
+          - THU
+          - FRI
+          - SAT
+          - SUN
+          description: The ending day of the interval
+        startTime:
+          type: string
+          description: The RFC 3339 encoded starting time of the interval
+        endTime:
+          type: string
+          description: The RFC 3339 encoded ending time of the interval
+        timeZone:
+          type: string
+          description: The IANA Timezone Database encoded timezone code of the interval
+      example:
+        startDay: MON
+        endDay: SAT
+        startTime: '1985-04-12T23:20:50.52Z'
+        endTime: '1985-04-18T23:20:50.52Z'
+        timezone: CST
+    Price:
+      description: This field lists the cost of the appointment.
+      type: object
+      properties:
+        currencyCode:
+          type: string
+          description: The ISO 4217 three letter currency code of the price
+        netPrice:
+          type: number
+          description: Price excluding sales tax / VAT expressed in the given currency
+        grossValue:
+          type: number
+          description: Price including sales tax / VAT expressed in the given currency
+        taxValue:
+          type: number
+          description: Value of tax expressed in the given currency
+        taxRate:
+          type: number
+          description: Tax rate as a percentage
+        netDiscountedPrice:
+          type: number
+          description: Discounted price exluding sales tax in the given currency
+        grossDiscountedPrice:
+          type: number
+          description: Discounted price including sales tax in the given currency
+      required:
+      - currencyCode
+      - netPrice
+      - grossValue
+      - taxValue
+      - taxRate
+      example:
+        currencyCode: US
+        netPrice: 53
+        grossValue: 57.24
+        taxValue: 4.24
+        taxRate: 8
+    AppointmentCollection:
+      description: This field describes a collection of appointments.
+      type: object
+      allOf:
+      - $ref: '#/components/schemas/BaseCollection'
+      - properties:
+          items:
+            type: object
+            items:
+              $ref: '#/components/schemas/Appointment'
+        required:
+        - items
+      required:
+      - items
+      example:
+        items:
+          appointmentId: '123'
+          dateTime: '2019-06-10T16:15:00+08:00'
+          requestedServices:
+          - description: Filler, Tail Lamp Center - Replace (Labor Only)
+            sourceHref: api.fortellis.io/service/reference/v4/service-packages/model/CHEV-CAMAC-2001-US/packages/BF018/specifications/8994972
+          vehicleHref: api.fortellis.io/service/v1/vehicles/123
+          vehicleMileage:
+            value: 75201
+            units: MILES
+          customerHref: api.fortellis.io/service/v1/customers/123
+          contact:
+            label: mobile
+            uri: tel:1-234-567-8900
+            preferences:
+            - startDay: MON
+              endDay: FRI
+              startTime: '1000'
+              endTime: '1600'
+          transportHref: api.fortellis.io/service/v1/scheduling/lookups/transports/123
+          advisorHref: api.fortellis.io/service/v1/scheduling/lookups/advisors/123
+          concerns: My driver side front door rattles when I drive faster than 45
+          remarks: Customer reports that driver side front door exhibits a rattle above 45mph
+          links:
+            self:
+              href: api.fortellis.io/service/v3/appointments/123
+        totalItems: 1
+        totalPages: 1
+        links:
+          first:
+            href: api.fortellis.io/service/v3/appointments?page=1&pageSize=1
+    Measurement:
+      description: This field will let you know about the value and the units of measurement.
+      type: object
+      required:
+      - units
+      - value
+      properties:
+        value:
+          type: number
+        units:
+          type: string
+          enum:
+          - MILES
+          - KM
+          - HOURS
+      example:
+        value: 75201
+        units: MILES
+    ContactMethod:
+      description: This is the method that the customer would like you to use to contact them.
+      type: object
+      properties:
+        label:
+          type: string
+          description: A label used to describe the contact method (e.g. home, work-cell).
+        uri:
+          type: string
+          description: The RFC 3986 encoded URI address of the contact method.
+        preferences:
+          type: object
+          items:
+            $ref: '#/components/schemas/ContactPreference'
+      required:
+      - label
+      - uri
+      example:
+        label: Home Information
+        uri: https://examle.com/person/contact
+        preferences:
+          items:
+            startDay:
+            - MON
+            endDay:
+            - SAT
+            startTime: '1985-04-12T23:20:50.52Z'
+            endTime: '1985-04-18T23:20:50.52Z'
+            timezone: CST
+    LinkDescriptionObject:
+      description: These are the linked objects that you send with the request to comply with HATEOAS.
+      type: object
+      properties:
+        href:
+          type: string
+          description: The target URI
+        rel:
+          type: string
+          description: The link relation type
+        method:
+          type: string
+          description: The HTTP verb that MUST be used to make a request to the target of the link
+        title:
+          type: string
+          description: A human readable title for the link that conveys the purpose of the link
+      required:
+      - href
+      example:
+        href: https://example.com
+        rel: self
+        method: POST
+        title: Reference to self at the Example
+    BaseCollection:
+      description: This field describes the base collection.
+      type: object
+      properties:
+        totalItems:
+          type: number
+          description: The total number of items contained in the collection
+        totalPages:
+          type: number
+          description: The total number of pages given the requested page size
+        links:
+          $ref: '#/components/schemas/BaseCollectionLinks'
+      required:
+      - totalItems
+      - totalPages
+      - links
+      example:
+        totalItems: 16
+        totalPages: 4
+        links:
+          first:
+            href: https://example.com/first
+            rel: first
+            method: POST
+            title: First page
+          next:
+            href: https://example.com/next
+            rel: next
+            method: POST
+            title: Next page
+          prev:
+            href: https://example.com/prev
+            rel: prev
+            method: POST
+            title: Previous page
+    AppointmentResource:
+      description: This field describes the appointment resources.
+      allOf:
+      - $ref: '#/components/schemas/Appointment'
+      - type: object
+        properties:
+          appointmentId:
+            type: string
+            description: The appointment unique identifier
+          links:
+            $ref: '#/components/schemas/AppointmentLinks'
+            description: The hypermedia links of the Appointment resource
+      required:
+      - appointmentId
+      - links
+      example:
+        appointmentId: '123'
+        dateTime: '2019-06-10T16:15:00+08:00'
+        requestedServices:
+        - description: Filler, Tail Lamp Center - Replace (Labor Only)
+          sourceHref: api.fortellis.io/service/reference/v4/service-packages/model/CHEV-CAMAC-2001-US/packages/BF018/specifications/8994972
+        vehicleHref: api.fortellis.io/service/v1/vehicles/123
+        vehicleMileage:
+          value: 34760
+          units: MILES
+        customerHref: api.fortellis.io/service/v1/customers/123
+        contact:
+          label: mobile
+          uri: tel:1-234-567-8900
+          preferences:
+            items:
+              startDay:
+              - MON
+              endDay:
+              - SAT
+            startTime: '1985-04-12T23:20:50.52Z'
+            endTime: '1985-04-18T23:20:50.52Z'
+            timezone: CST
+        transportHref: api.fortellis.io/service/v1/scheduling/lookups/transports/123
+        advisorHref: api.fortellis.io/service/v1/scheduling/lookups/advisors/123
+        concerns: My driver side front door rattles when I drive faster than 45
+        remarks: Customer reports that driver side front door exhibits a rattle above 45mph
+        links:
+          self:
+            href: api.fortellis.io/service/v3/appointments/123
+    RequestedService:
+      description: This fields describes the service requested.
+      type: object
+      properties:
+        description:
+          type: string
+          description: The textual description of the requested service
+        concern:
+          type: string
+          description: The textual description of the concern that prompted the requested service
+        sourceHref:
+          type: string
+          description: "The hypermedia link to the source service specification.  This will \nlink to a service-packages Specification or LaborOperation resource.\n"
+        overrides:
           type: object
           properties:
-            productWidth:
-              type: string
-            productHeight:
-              type: string
-            productWeight:
-              type: string
+            quote:
+              $ref: '#/components/schemas/Price'
+      required:
+      - description
+      example:
+        description: Replace Air Filter
+        sourceHref: api.fortellis.io/service/reference/v4/service-packages/model/CHEV-CAMAC-2001-US/packages/BF018/specifications/8994972
+    ErrorResponse:
+      description: This is a generic error schema.
+      type: object
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string
+      required:
+      - code
+      - message
+      example:
+        code: 24
+        message: Error Message used for debugging
+    Health:
+      description: This is the code that tells you the server is okay.
+      type: object
+      properties:
+        message:
+          type: string
+        code:
+          type: number
         links:
           type: object
           properties:
@@ -806,6 +964,13 @@ components:
                   type: string
                 method:
                   type: string
+            thisProductInfo:
+              type: object
+              properties:
+                href:
+                  type: string
+                method:
+                  type: string
             thisProductSize:
               type: object
               properties:
@@ -813,39 +978,25 @@ components:
                   type: string
                 method:
                   type: string
-            ping:
-              type: object
-              properties:
-                href:
-                  type: string
-                method:
-                  type: string
       required:
-      - id
-      - name
+      - message
+      - code
       - links
       example:
-        name: Radiator
-        id: SomeExampleId
-        number: 5
-        location: 9th & 10th floor, Binarius Building, Deepak Complex National Games Road, Opp Golf Course, Shastrinagar, Yerawada, Pune, Maharashtra 411006, India
-        ProductSize:
-          productWidth: 19-3/4 inches
-          productHeight: 19-1/8 inches
-          productLength: 2-3/16
-          productWeight: 17.8 lbs.
+        message: The server is up
+        code: 200
         links:
           self:
-            href: /all-product-info/{productNumber}
+            href: /ping
             method: GET
           allProductInfo:
             href: /all-product-info
             method: GET
-          thisProductSize:
-            href: /all-product-info/all-product-info/{productNumber}/product-size
+          thisProductInfo:
+            href: /all-product-info/{productNumber}
             method: GET
-          ping:
-            href: /ping
+          thisProductSize:
+            href: /all-product-info/{productNumber}/product-size
             method: GET
     AllProducts:
       description: This endpoint gives the information on all of the products.
@@ -972,20 +1123,6 @@ components:
           ping:
             href: /ping
             method: GET
-    ErrorResponse_2:
-      description: Common error response object.
-      properties:
-        code:
-          type: integer
-          format: int32
-        message:
-          type: string
-      required:
-      - code
-      - message
-      example:
-        code: 400
-        message: Bad Request
     ProductSize:
       description: This describes the dimensions of the product to help determine if you have the space to store the product.
       type: object
@@ -1053,14 +1190,27 @@ components:
           ping:
             href: /ping
             method: GET
-    Health:
-      description: This is the code that tells you the server is okay.
+    PathProductNumber:
+      description: This gives you the unique identifier for the product.
       type: object
       properties:
-        message:
+        name:
           type: string
-        code:
-          type: number
+        id:
+          type: string
+        number:
+          type: integer
+        location:
+          type: string
+        productSize:
+          type: object
+          properties:
+            productWidth:
+              type: string
+            productHeight:
+              type: string
+            productWeight:
+              type: string
         links:
           type: object
           properties:
@@ -1078,13 +1228,6 @@ components:
                   type: string
                 method:
                   type: string
-            thisProductInfo:
-              type: object
-              properties:
-                href:
-                  type: string
-                method:
-                  type: string
             thisProductSize:
               type: object
               properties:
@@ -1092,197 +1235,54 @@ components:
                   type: string
                 method:
                   type: string
+            ping:
+              type: object
+              properties:
+                href:
+                  type: string
+                method:
+                  type: string
       required:
-      - message
-      - code
+      - id
+      - name
       - links
       example:
-        message: The server is up
-        code: 200
+        name: Radiator
+        id: SomeExampleId
+        number: 5
+        location: 9th & 10th floor, Binarius Building, Deepak Complex National Games Road, Opp Golf Course, Shastrinagar, Yerawada, Pune, Maharashtra 411006, India
+        ProductSize:
+          productWidth: 19-3/4 inches
+          productHeight: 19-1/8 inches
+          productLength: 2-3/16
+          productWeight: 17.8 lbs.
         links:
           self:
-            href: /ping
+            href: /all-product-info/{productNumber}
             method: GET
           allProductInfo:
             href: /all-product-info
             method: GET
-          thisProductInfo:
-            href: /all-product-info/{productNumber}
-            method: GET
           thisProductSize:
-            href: /all-product-info/{productNumber}/product-size
+            href: /all-product-info/all-product-info/{productNumber}/product-size
             method: GET
-  responses:
-    Unauthorized:
-      description: 401 - Unauthorized
-      headers:
-        Content-Language:
-          schema:
-            type: string
-        Content-Type:
-          schema:
-            type: string
-        Request-Id:
-          schema:
-            type: string
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    Forbidden:
-      description: 403 - Forbidden
-      headers:
-        Content-Language:
-          schema:
-            type: string
-        Content-Type:
-          schema:
-            type: string
-        Request-Id:
-          schema:
-            type: string
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    NotFound:
-      description: 404 - Not Found
-      headers:
-        Content-Language:
-          schema:
-            type: string
-        Content-Type:
-          schema:
-            type: string
-        Request-Id:
-          schema:
-            type: string
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    Appointment:
-      description: OK
-      headers:
-        Request-Id:
-          schema:
-            type: string
-        Preference-Applied:
-          schema:
-            type: string
-            enum:
-            - return=representation
-            - return=minimal
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/AppointmentResource'
-    BadRequest:
-      description: 400 - Bad Request
-      headers:
-        Content-Language:
-          schema:
-            type: string
-        Content-Type:
-          schema:
-            type: string
-        Request-Id:
-          schema:
-            type: string
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    AppointmentCollection:
-      description: OK
-      headers:
-        Request-Id:
-          schema:
-            type: string
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/AppointmentCollection'
-    Unauthorized_2:
-      description: 401 - Unauthorized
-      headers:
-        Request-Id:
-          schema:
-            type: string
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse_2'
-    Forbidden_2:
-      description: 403 - Forbidden
-      headers:
-        Request-Id:
-          schema:
-            type: string
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse_2'
-    Ping:
-      description: 200 - OK
-      headers:
-        Request-Id:
-          schema:
-            type: string
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Health'
-    ServiceUnavailable:
-      description: 503 - Service Unavailable
-      headers:
-        Request-Id:
-          schema:
-            type: string
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse_2'
-    PathProductNumber:
-      description: This sends the information on a particular product based on the product number.
-      headers:
-        Request-Id:
-          schema:
-            type: string
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/PathProductNumber'
-    AllProducts:
-      description: This sends a response with all the products, their size, and their location.
-      headers:
-        Request-Id:
-          schema:
-            type: string
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/AllProducts'
-    ProductSize:
-      description: This sends the product size for a particular product to help you determine if you have the inventory space for that product.
-      headers:
-        Request-Id:
-          schema:
-            type: string
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ProductSize'
-    BadRequest_2:
-      description: 400 - Bad Request
-      headers:
-        Request-Id:
-          schema:
-            type: string
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse_2'
+          ping:
+            href: /ping
+            method: GET
+    ErrorResponse_2:
+      description: Common error response object.
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string
+      required:
+      - code
+      - message
+      example:
+        code: 400
+        message: Bad Request
   securitySchemes:
     permission-model:
       type: oauth2

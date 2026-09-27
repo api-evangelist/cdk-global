@@ -149,7 +149,7 @@ apis:
   - type: SourceRepo
     url: https://github.com/Fortellis/AsyncAPIHelloWorld
 - aid: cdk-global:cdk-global-adopt-api
-  name: CDK Global adopt API
+  name: CDK Global Adopt API
   description: The adopt API from CDK Global — 2 operation(s) for adopt.
   humanURL: https://fortellis.io
   baseURL: https://api.fortellis.io
@@ -197,7 +197,7 @@ apis:
   - type: SourceRepo
     url: https://github.com/Fortellis/Fortellis-Event-Relay-Webhook
 - aid: cdk-global:cdk-global-cancel-api
-  name: CDK Global cancel API
+  name: CDK Global Cancel API
   description: The cancel API from CDK Global — 1 operation(s) for cancel.
   humanURL: https://fortellis.io
   baseURL: https://api.fortellis.io
@@ -215,7 +215,7 @@ apis:
   - type: SourceRepo
     url: https://github.com/Fortellis/Fortellis-Event-Relay-Webhook
 - aid: cdk-global:cdk-global-create-api
-  name: CDK Global create API
+  name: CDK Global Create API
   description: The create API from CDK Global — 1 operation(s) for create.
   humanURL: https://fortellis.io
   baseURL: https://api.fortellis.io
@@ -232,7 +232,7 @@ apis:
   - type: SourceRepo
     url: https://github.com/Fortellis/Fortellis-Event-Relay-Webhook
 - aid: cdk-global:cdk-global-events-api
-  name: CDK Global events API
+  name: CDK Global Events API
   description: The events API from CDK Global — 1 operation(s) for events.
   humanURL: https://fortellis.io
   baseURL: https://api.fortellis.io
@@ -250,7 +250,7 @@ apis:
   - type: SourceRepo
     url: https://github.com/Fortellis/Fortellis-Event-Relay-Webhook
 - aid: cdk-global:cdk-global-manage-api
-  name: CDK Global manage API
+  name: CDK Global Manage API
   description: The manage API from CDK Global — 1 operation(s) for manage.
   humanURL: https://fortellis.io
   baseURL: https://api.fortellis.io
@@ -268,7 +268,7 @@ apis:
   - type: SourceRepo
     url: https://github.com/Fortellis/Fortellis-Event-Relay-Webhook
 - aid: cdk-global:cdk-global-query-api
-  name: CDK Global query API
+  name: CDK Global Query API
   description: The query API from CDK Global — 6 operation(s) for query.
   humanURL: https://fortellis.io
   baseURL: https://api.fortellis.io
@@ -302,7 +302,7 @@ apis:
   - type: SourceRepo
     url: https://github.com/Fortellis/Fortellis-Event-Relay-Webhook
 - aid: cdk-global:cdk-global-update-api
-  name: CDK Global update API
+  name: CDK Global Update API
   description: The update API from CDK Global — 1 operation(s) for update.
   humanURL: https://fortellis.io
   baseURL: https://api.fortellis.io

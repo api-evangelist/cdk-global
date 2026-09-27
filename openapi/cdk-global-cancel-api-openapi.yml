@@ -49,35 +49,11 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   parameters:
-    header.Accept:
-      description: This header describes the characters that the API will accept.
-      name: Accept
-      in: header
-      schema:
-        type: string
-        enum:
-        - application/json
-    header.Prefer:
-      description: This header describes the preferences of the client calling the API.
-      name: Prefer
-      in: header
-      schema:
-        type: string
-        enum:
-        - return=representation
-        - return=minimal
-    path.appointmentId:
-      name: appointmentId
-      in: path
-      required: true
-      description: The appointment identifier
-      schema:
-        type: string
-    header.Request-Id:
-      name: Request-Id
+    header.Subscription-Id:
+      name: Subscription-Id
       in: header
       required: true
-      description: You must include the Request-Id in every call to track the same call across systems.
+      description: The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.
       schema:
         type: string
         format: guid
@@ -89,14 +65,21 @@ components:
       schema:
         type: string
         format: guid
-    header.Subscription-Id:
-      name: Subscription-Id
+    header.Prefer:
+      description: This header describes the preferences of the client calling the API.
+      name: Prefer
       in: header
-      required: true
-      description: The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.
       schema:
         type: string
-        format: guid
+        enum:
+        - return=representation
+        - return=minimal
+    header.If-Match:
+      name: If-Match
+      in: header
+      description: Specifies a conditional request to only return the resource when it does match one of the included ETag values
+      schema:
+        type: string
     header.Accept-Language:
       description: This header describes the languages that the client accepts.
       name: Accept-Language
@@ -109,12 +92,29 @@ components:
       description: Specifies a conditional request to only return the resource when it doesn't match one of the included ETag values
       schema:
         type: string
-    header.If-Match:
-      name: If-Match
+    header.Request-Id:
+      name: Request-Id
       in: header
-      description: Specifies a conditional request to only return the resource when it does match one of the included ETag values
+      required: true
+      description: You must include the Request-Id in every call to track the same call across systems.
       schema:
         type: string
+        format: guid
+    body.CancelRequest:
+      name: CancelRequest
+      in: body
+      required: true
+      description: An appointment cancellation request
+      schema:
+        $ref: '#/components/schemas/CancelRequest'
+    header.Accept:
+      description: This header describes the characters that the API will accept.
+      name: Accept
+      in: header
+      schema:
+        type: string
+        enum:
+        - application/json
     header.Accept-Charset:
       description: This header describes the characters that the client will accept.
       name: Accept-Charset
@@ -123,44 +123,43 @@ components:
         type: string
         enum:
         - utf-8
-    body.CancelRequest:
-      name: CancelRequest
-      in: body
+    path.appointmentId:
+      name: appointmentId
+      in: path
       required: true
-      description: An appointment cancellation request
+      description: The appointment identifier
       schema:
-        $ref: '#/components/schemas/CancelRequest'
+        type: string
+  schemas:
+    CancelRequest:
+      description: This fields describes why a customer requested to cancel.
+      type: object
+      properties:
+        reason:
+          type: string
+          description: Free-form comments that explain why the appointment was cancelled
+      required:
+      - reason
+      example:
+        reason: Rescheduled for the following week
+    ErrorResponse:
+      description: This is a generic error schema.
+      type: object
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string
+      required:
+      - code
+      - message
+      example:
+        code: 24
+        message: Error Message used for debugging
   responses:
     Unauthorized:
       description: 401 - Unauthorized
-      headers:
-        Content-Language:
-          schema:
-            type: string
-        Content-Type:
-          schema:
-            type: string
-        Request-Id:
-          schema:
-            type: string
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    Success:
-      description: 204 - Non Content
-      headers:
-        Content-Language:
-          schema:
-            type: string
-        Content-Type:
-          schema:
-            type: string
-        Request-Id:
-          schema:
-            type: string
-    BadRequest:
-      description: 400 - Bad Request
       headers:
         Content-Language:
           schema:
@@ -207,33 +206,34 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-  schemas:
-    CancelRequest:
-      description: This fields describes why a customer requested to cancel.
-      type: object
-      properties:
-        reason:
-          type: string
-          description: Free-form comments that explain why the appointment was cancelled
-      required:
-      - reason
-      example:
-        reason: Rescheduled for the following week
-    ErrorResponse:
-      description: This is a generic error schema.
-      type: object
-      properties:
-        code:
-          type: integer
-          format: int32
-        message:
-          type: string
-      required:
-      - code
-      - message
-      example:
-        code: 24
-        message: Error Message used for debugging
+    Success:
+      description: 204 - Non Content
+      headers:
+        Content-Language:
+          schema:
+            type: string
+        Content-Type:
+          schema:
+            type: string
+        Request-Id:
+          schema:
+            type: string
+    BadRequest:
+      description: 400 - Bad Request
+      headers:
+        Content-Language:
+          schema:
+            type: string
+        Content-Type:
+          schema:
+            type: string
+        Request-Id:
+          schema:
+            type: string
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
   securitySchemes:
     permission-model:
       type: oauth2
