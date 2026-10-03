@@ -49,22 +49,6 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   parameters:
-    header.Subscription-Id:
-      name: Subscription-Id
-      in: header
-      required: true
-      description: The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.
-      schema:
-        type: string
-        format: guid
-    header.Authorization:
-      name: Authorization
-      in: header
-      required: true
-      description: Provides authorization to access Fortellis APIs. For calling a Fortellis Provider, this must be an OAuth 2.0 token issued by the Fortellis authorization server, but you may call the simulator platform with Basic Authorization using your API key and secret.
-      schema:
-        type: string
-        format: guid
     header.Prefer:
       description: This header describes the preferences of the client calling the API.
       name: Prefer
@@ -74,29 +58,33 @@ components:
         enum:
         - return=representation
         - return=minimal
-    header.If-Match:
-      name: If-Match
-      in: header
-      description: Specifies a conditional request to only return the resource when it does match one of the included ETag values
-      schema:
-        type: string
-    header.Accept-Language:
-      description: This header describes the languages that the client accepts.
-      name: Accept-Language
-      in: header
-      schema:
-        type: string
     header.If-None-Match:
       name: If-None-Match
       in: header
       description: Specifies a conditional request to only return the resource when it doesn't match one of the included ETag values
       schema:
         type: string
+    header.Accept:
+      description: This header describes the characters that the API will accept.
+      name: Accept
+      in: header
+      schema:
+        type: string
+        enum:
+        - application/json
     header.Request-Id:
       name: Request-Id
       in: header
       required: true
       description: You must include the Request-Id in every call to track the same call across systems.
+      schema:
+        type: string
+        format: guid
+    header.Subscription-Id:
+      name: Subscription-Id
+      in: header
+      required: true
+      description: The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.
       schema:
         type: string
         format: guid
@@ -107,14 +95,20 @@ components:
       description: An appointment cancellation request
       schema:
         $ref: '#/components/schemas/CancelRequest'
-    header.Accept:
-      description: This header describes the characters that the API will accept.
-      name: Accept
+    header.Authorization:
+      name: Authorization
+      in: header
+      required: true
+      description: Provides authorization to access Fortellis APIs. For calling a Fortellis Provider, this must be an OAuth 2.0 token issued by the Fortellis authorization server, but you may call the simulator platform with Basic Authorization using your API key and secret.
+      schema:
+        type: string
+        format: guid
+    header.Accept-Language:
+      description: This header describes the languages that the client accepts.
+      name: Accept-Language
       in: header
       schema:
         type: string
-        enum:
-        - application/json
     header.Accept-Charset:
       description: This header describes the characters that the client will accept.
       name: Accept-Charset
@@ -123,6 +117,12 @@ components:
         type: string
         enum:
         - utf-8
+    header.If-Match:
+      name: If-Match
+      in: header
+      description: Specifies a conditional request to only return the resource when it does match one of the included ETag values
+      schema:
+        type: string
     path.appointmentId:
       name: appointmentId
       in: path
@@ -130,50 +130,7 @@ components:
       description: The appointment identifier
       schema:
         type: string
-  schemas:
-    CancelRequest:
-      description: This fields describes why a customer requested to cancel.
-      type: object
-      properties:
-        reason:
-          type: string
-          description: Free-form comments that explain why the appointment was cancelled
-      required:
-      - reason
-      example:
-        reason: Rescheduled for the following week
-    ErrorResponse:
-      description: This is a generic error schema.
-      type: object
-      properties:
-        code:
-          type: integer
-          format: int32
-        message:
-          type: string
-      required:
-      - code
-      - message
-      example:
-        code: 24
-        message: Error Message used for debugging
   responses:
-    Unauthorized:
-      description: 401 - Unauthorized
-      headers:
-        Content-Language:
-          schema:
-            type: string
-        Content-Type:
-          schema:
-            type: string
-        Request-Id:
-          schema:
-            type: string
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
     NotFound:
       description: 404 - Not Found
       headers:
@@ -190,8 +147,24 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-    Forbidden:
-      description: 403 - Forbidden
+    Unauthorized:
+      description: 401 - Unauthorized
+      headers:
+        Content-Language:
+          schema:
+            type: string
+        Content-Type:
+          schema:
+            type: string
+        Request-Id:
+          schema:
+            type: string
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    BadRequest:
+      description: 400 - Bad Request
       headers:
         Content-Language:
           schema:
@@ -218,8 +191,8 @@ components:
         Request-Id:
           schema:
             type: string
-    BadRequest:
-      description: 400 - Bad Request
+    Forbidden:
+      description: 403 - Forbidden
       headers:
         Content-Language:
           schema:
@@ -234,6 +207,33 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
+  schemas:
+    ErrorResponse:
+      description: This is a generic error schema.
+      type: object
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string
+      required:
+      - code
+      - message
+      example:
+        code: 24
+        message: Error Message used for debugging
+    CancelRequest:
+      description: This fields describes why a customer requested to cancel.
+      type: object
+      properties:
+        reason:
+          type: string
+          description: Free-form comments that explain why the appointment was cancelled
+      required:
+      - reason
+      example:
+        reason: Rescheduled for the following week
   securitySchemes:
     permission-model:
       type: oauth2

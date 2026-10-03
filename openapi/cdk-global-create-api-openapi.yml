@@ -46,14 +46,28 @@ paths:
           $ref: '#/components/responses/Forbidden'
 components:
   parameters:
-    header.Authorization:
-      name: Authorization
+    header.Request-Id:
+      name: Request-Id
       in: header
       required: true
-      description: Provides authorization to access Fortellis APIs. For calling a Fortellis Provider, this must be an OAuth 2.0 token issued by the Fortellis authorization server, but you may call the simulator platform with Basic Authorization using your API key and secret.
+      description: You must include the Request-Id in every call to track the same call across systems.
       schema:
         type: string
         format: guid
+    header.Subscription-Id:
+      name: Subscription-Id
+      in: header
+      required: true
+      description: The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.
+      schema:
+        type: string
+        format: guid
+    header.If-Match:
+      name: If-Match
+      in: header
+      description: Specifies a conditional request to only return the resource when it does match one of the included ETag values
+      schema:
+        type: string
     header.Prefer:
       description: This header describes the preferences of the client calling the API.
       name: Prefer
@@ -63,19 +77,12 @@ components:
         enum:
         - return=representation
         - return=minimal
-    header.If-Match:
-      name: If-Match
+    header.If-None-Match:
+      name: If-None-Match
       in: header
-      description: Specifies a conditional request to only return the resource when it does match one of the included ETag values
+      description: Specifies a conditional request to only return the resource when it doesn't match one of the included ETag values
       schema:
         type: string
-    body.CreateRequest:
-      name: CreateRequest
-      in: body
-      required: true
-      description: The definition of the appointment
-      schema:
-        $ref: '#/components/schemas/Appointment'
     header.Accept:
       description: This header describes the characters that the API will accept.
       name: Accept
@@ -84,14 +91,21 @@ components:
         type: string
         enum:
         - application/json
-    header.Subscription-Id:
-      name: Subscription-Id
+    header.Authorization:
+      name: Authorization
       in: header
       required: true
-      description: The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.
+      description: Provides authorization to access Fortellis APIs. For calling a Fortellis Provider, this must be an OAuth 2.0 token issued by the Fortellis authorization server, but you may call the simulator platform with Basic Authorization using your API key and secret.
       schema:
         type: string
         format: guid
+    body.CreateRequest:
+      name: CreateRequest
+      in: body
+      required: true
+      description: The definition of the appointment
+      schema:
+        $ref: '#/components/schemas/Appointment'
     header.Accept-Language:
       description: This header describes the languages that the client accepts.
       name: Accept-Language
@@ -106,20 +120,6 @@ components:
         type: string
         enum:
         - utf-8
-    header.If-None-Match:
-      name: If-None-Match
-      in: header
-      description: Specifies a conditional request to only return the resource when it doesn't match one of the included ETag values
-      schema:
-        type: string
-    header.Request-Id:
-      name: Request-Id
-      in: header
-      required: true
-      description: You must include the Request-Id in every call to track the same call across systems.
-      schema:
-        type: string
-        format: guid
   responses:
     BadRequest:
       description: 400 - Bad Request
@@ -186,18 +186,159 @@ components:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
   schemas:
-    AppointmentLinks:
-      description: This field describes the appointment links.
+    Measurement:
+      description: This field will let you know about the value and the units of measurement.
+      type: object
+      required:
+      - units
+      - value
+      properties:
+        value:
+          type: number
+        units:
+          type: string
+          enum:
+          - MILES
+          - KM
+          - HOURS
+      example:
+        value: 75201
+        units: MILES
+    AppointmentResource:
+      description: This field describes the appointment resources.
+      allOf:
+      - $ref: '#/components/schemas/Appointment'
+      - type: object
+        properties:
+          appointmentId:
+            type: string
+            description: The appointment unique identifier
+          links:
+            $ref: '#/components/schemas/AppointmentLinks'
+            description: The hypermedia links of the Appointment resource
+      required:
+      - appointmentId
+      - links
+      example:
+        appointmentId: '123'
+        dateTime: '2019-06-10T16:15:00+08:00'
+        requestedServices:
+        - description: Filler, Tail Lamp Center - Replace (Labor Only)
+          sourceHref: api.fortellis.io/service/reference/v4/service-packages/model/CHEV-CAMAC-2001-US/packages/BF018/specifications/8994972
+        vehicleHref: api.fortellis.io/service/v1/vehicles/123
+        vehicleMileage:
+          value: 34760
+          units: MILES
+        customerHref: api.fortellis.io/service/v1/customers/123
+        contact:
+          label: mobile
+          uri: tel:1-234-567-8900
+          preferences:
+            items:
+              startDay:
+              - MON
+              endDay:
+              - SAT
+            startTime: '1985-04-12T23:20:50.52Z'
+            endTime: '1985-04-18T23:20:50.52Z'
+            timezone: CST
+        transportHref: api.fortellis.io/service/v1/scheduling/lookups/transports/123
+        advisorHref: api.fortellis.io/service/v1/scheduling/lookups/advisors/123
+        concerns: My driver side front door rattles when I drive faster than 45
+        remarks: Customer reports that driver side front door exhibits a rattle above 45mph
+        links:
+          self:
+            href: api.fortellis.io/service/v3/appointments/123
+    LinkDescriptionObject:
+      description: These are the linked objects that you send with the request to comply with HATEOAS.
       type: object
       properties:
-        self:
-          $ref: '#/components/schemas/LinkDescriptionObject'
-          description: The canonical link to the appointment resource
+        href:
+          type: string
+          description: The target URI
+        rel:
+          type: string
+          description: The link relation type
+        method:
+          type: string
+          description: The HTTP verb that MUST be used to make a request to the target of the link
+        title:
+          type: string
+          description: A human readable title for the link that conveys the purpose of the link
       required:
-      - self
+      - href
       example:
-        self:
-          href: api.fortellis.io/service/v3/appointments/123
+        href: https://example.com
+        rel: self
+        method: POST
+        title: Reference to self at the Example
+    RequestedService:
+      description: This fields describes the service requested.
+      type: object
+      properties:
+        description:
+          type: string
+          description: The textual description of the requested service
+        concern:
+          type: string
+          description: The textual description of the concern that prompted the requested service
+        sourceHref:
+          type: string
+          description: "The hypermedia link to the source service specification.  This will \nlink to a service-packages Specification or LaborOperation resource.\n"
+        overrides:
+          type: object
+          properties:
+            quote:
+              $ref: '#/components/schemas/Price'
+      required:
+      - description
+      example:
+        description: Replace Air Filter
+        sourceHref: api.fortellis.io/service/reference/v4/service-packages/model/CHEV-CAMAC-2001-US/packages/BF018/specifications/8994972
+    ContactPreference:
+      description: This fields shows the customer's contact preferences.
+      type: object
+      required:
+      - startDay
+      - endDay
+      properties:
+        startDay:
+          type: string
+          enum:
+          - MON
+          - TUE
+          - WED
+          - THU
+          - FRI
+          - SAT
+          - SUN
+          description: The starting day of the interval
+        endDay:
+          type: string
+          enum:
+          - MON
+          - TUE
+          - WED
+          - THU
+          - FRI
+          - SAT
+          - SUN
+          description: The ending day of the interval
+        startTime:
+          type: string
+          description: The RFC 3339 encoded starting time of the interval
+        endTime:
+          type: string
+          description: The RFC 3339 encoded ending time of the interval
+        timeZone:
+          type: string
+          description: The IANA Timezone Database encoded timezone code of the interval
+      example:
+        startDay: MON
+        endDay: SAT
+        startTime: '1985-04-12T23:20:50.52Z'
+        endTime: '1985-04-18T23:20:50.52Z'
+        timezone: CST
     Appointment:
       description: This definition defines the information and format in appointments.
       properties:
@@ -268,6 +409,33 @@ components:
         advisorHref: api.fortellis.io/service/v1/scheduling/lookups/advisors/123
         concerns: My driver side front door rattles when I drive faster than 45
         remarks: Customer reports that driver side front door exhibits a rattle above 45mph
+    AppointmentLinks:
+      description: This field describes the appointment links.
+      type: object
+      properties:
+        self:
+          $ref: '#/components/schemas/LinkDescriptionObject'
+          description: The canonical link to the appointment resource
+      required:
+      - self
+      example:
+        self:
+          href: api.fortellis.io/service/v3/appointments/123
+    ErrorResponse:
+      description: This is a generic error schema.
+      type: object
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string
+      required:
+      - code
+      - message
+      example:
+        code: 24
+        message: Error Message used for debugging
     VehicleSpecification:
       description: This field describes the vehicle.
       type: object
@@ -289,50 +457,6 @@ components:
         makeCode: CHEV
         modelCode: CAMAC
         modelYear: 2001
-    ContactPreference:
-      description: This fields shows the customer's contact preferences.
-      type: object
-      required:
-      - startDay
-      - endDay
-      properties:
-        startDay:
-          type: string
-          enum:
-          - MON
-          - TUE
-          - WED
-          - THU
-          - FRI
-          - SAT
-          - SUN
-          description: The starting day of the interval
-        endDay:
-          type: string
-          enum:
-          - MON
-          - TUE
-          - WED
-          - THU
-          - FRI
-          - SAT
-          - SUN
-          description: The ending day of the interval
-        startTime:
-          type: string
-          description: The RFC 3339 encoded starting time of the interval
-        endTime:
-          type: string
-          description: The RFC 3339 encoded ending time of the interval
-        timeZone:
-          type: string
-          description: The IANA Timezone Database encoded timezone code of the interval
-      example:
-        startDay: MON
-        endDay: SAT
-        startTime: '1985-04-12T23:20:50.52Z'
-        endTime: '1985-04-18T23:20:50.52Z'
-        timezone: CST
     Price:
       description: This field lists the cost of the appointment.
       type: object
@@ -370,24 +494,6 @@ components:
         grossValue: 57.24
         taxValue: 4.24
         taxRate: 8
-    Measurement:
-      description: This field will let you know about the value and the units of measurement.
-      type: object
-      required:
-      - units
-      - value
-      properties:
-        value:
-          type: number
-        units:
-          type: string
-          enum:
-          - MILES
-          - KM
-          - HOURS
-      example:
-        value: 75201
-        units: MILES
     ContactMethod:
       description: This is the method that the customer would like you to use to contact them.
       type: object
@@ -417,112 +523,6 @@ components:
             startTime: '1985-04-12T23:20:50.52Z'
             endTime: '1985-04-18T23:20:50.52Z'
             timezone: CST
-    LinkDescriptionObject:
-      description: These are the linked objects that you send with the request to comply with HATEOAS.
-      type: object
-      properties:
-        href:
-          type: string
-          description: The target URI
-        rel:
-          type: string
-          description: The link relation type
-        method:
-          type: string
-          description: The HTTP verb that MUST be used to make a request to the target of the link
-        title:
-          type: string
-          description: A human readable title for the link that conveys the purpose of the link
-      required:
-      - href
-      example:
-        href: https://example.com
-        rel: self
-        method: POST
-        title: Reference to self at the Example
-    AppointmentResource:
-      description: This field describes the appointment resources.
-      allOf:
-      - $ref: '#/components/schemas/Appointment'
-      - type: object
-        properties:
-          appointmentId:
-            type: string
-            description: The appointment unique identifier
-          links:
-            $ref: '#/components/schemas/AppointmentLinks'
-            description: The hypermedia links of the Appointment resource
-      required:
-      - appointmentId
-      - links
-      example:
-        appointmentId: '123'
-        dateTime: '2019-06-10T16:15:00+08:00'
-        requestedServices:
-        - description: Filler, Tail Lamp Center - Replace (Labor Only)
-          sourceHref: api.fortellis.io/service/reference/v4/service-packages/model/CHEV-CAMAC-2001-US/packages/BF018/specifications/8994972
-        vehicleHref: api.fortellis.io/service/v1/vehicles/123
-        vehicleMileage:
-          value: 34760
-          units: MILES
-        customerHref: api.fortellis.io/service/v1/customers/123
-        contact:
-          label: mobile
-          uri: tel:1-234-567-8900
-          preferences:
-            items:
-              startDay:
-              - MON
-              endDay:
-              - SAT
-            startTime: '1985-04-12T23:20:50.52Z'
-            endTime: '1985-04-18T23:20:50.52Z'
-            timezone: CST
-        transportHref: api.fortellis.io/service/v1/scheduling/lookups/transports/123
-        advisorHref: api.fortellis.io/service/v1/scheduling/lookups/advisors/123
-        concerns: My driver side front door rattles when I drive faster than 45
-        remarks: Customer reports that driver side front door exhibits a rattle above 45mph
-        links:
-          self:
-            href: api.fortellis.io/service/v3/appointments/123
-    RequestedService:
-      description: This fields describes the service requested.
-      type: object
-      properties:
-        description:
-          type: string
-          description: The textual description of the requested service
-        concern:
-          type: string
-          description: The textual description of the concern that prompted the requested service
-        sourceHref:
-          type: string
-          description: "The hypermedia link to the source service specification.  This will \nlink to a service-packages Specification or LaborOperation resource.\n"
-        overrides:
-          type: object
-          properties:
-            quote:
-              $ref: '#/components/schemas/Price'
-      required:
-      - description
-      example:
-        description: Replace Air Filter
-        sourceHref: api.fortellis.io/service/reference/v4/service-packages/model/CHEV-CAMAC-2001-US/packages/BF018/specifications/8994972
-    ErrorResponse:
-      description: This is a generic error schema.
-      type: object
-      properties:
-        code:
-          type: integer
-          format: int32
-        message:
-          type: string
-      required:
-      - code
-      - message
-      example:
-        code: 24
-        message: Error Message used for debugging
   securitySchemes:
     permission-model:
       type: oauth2
