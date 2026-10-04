@@ -53,47 +53,6 @@ paths:
         '503':
           $ref: '#/components/responses/ServiceUnavailable'
 components:
-  parameters:
-    header.X-Request-Id:
-      name: X-Request-Id
-      in: header
-      description: 'A correlation ID that should mirror the value of the X-Request-Id request
-
-        header provided by the client.
-
-        '
-      schema:
-        type: string
-        format: uuid
-    header.Authorization:
-      name: Authorization
-      in: header
-      required: true
-      description: 'Contains credentials that allows the caller to authenticate itself with the
-
-        API. See RFC 7235 and RFC 7617 for more details.
-
-        '
-      schema:
-        type: string
-    header.Fortellis-Event-Id:
-      name: Fortellis-Event-Id
-      in: header
-      required: true
-      description: This is a unique ID for the event assigned by Fortellis at time receipt and provided to the event source.
-      schema:
-        type: string
-        format: uuid
-    header.Data-Owner-Id:
-      name: Data-Owner-Id
-      in: header
-      required: false
-      description: 'A Fortellis Organization Id that identifies the organization represented by the event.
-
-        '
-      schema:
-        type: string
-        format: uuid
   responses:
     InternalServerError:
       description: 500 - Internal Server Error
@@ -117,8 +76,26 @@ components:
         '*/*':
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-    Unauthorized:
-      description: 401 - Unauthorized
+    Forbidden:
+      description: 403 - Forbidden
+      headers:
+        X-Request-Id:
+          description: The matching correlation identifier to the request by the client.
+          schema:
+            type: string
+      content:
+        '*/*':
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    EventReceived:
+      description: Accepted the event for asynchronous processing.
+      headers:
+        X-Request-Id:
+          description: The matching correlation identifier to the request by the client.
+          schema:
+            type: string
+    ServiceUnavailable:
+      description: 503 - Service Unavailable
       headers:
         X-Request-Id:
           description: The matching correlation identifier to the request by the client.
@@ -141,8 +118,8 @@ components:
         '*/*':
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-    Forbidden:
-      description: 403 - Forbidden
+    Unauthorized:
+      description: 401 - Unauthorized
       headers:
         X-Request-Id:
           description: The matching correlation identifier to the request by the client.
@@ -152,24 +129,6 @@ components:
         '*/*':
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-    ServiceUnavailable:
-      description: 503 - Service Unavailable
-      headers:
-        X-Request-Id:
-          description: The matching correlation identifier to the request by the client.
-          schema:
-            type: string
-      content:
-        '*/*':
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    EventReceived:
-      description: Accepted the event for asynchronous processing.
-      headers:
-        X-Request-Id:
-          description: The matching correlation identifier to the request by the client.
-          schema:
-            type: string
   schemas:
     ErrorResponse:
       description: Common error response object.
@@ -198,3 +157,44 @@ components:
         key4:
           sub-key1: sub-value1
           sub-key2: sub-value2
+  parameters:
+    header.Data-Owner-Id:
+      name: Data-Owner-Id
+      in: header
+      required: false
+      description: 'A Fortellis Organization Id that identifies the organization represented by the event.
+
+        '
+      schema:
+        type: string
+        format: uuid
+    header.X-Request-Id:
+      name: X-Request-Id
+      in: header
+      description: 'A correlation ID that should mirror the value of the X-Request-Id request
+
+        header provided by the client.
+
+        '
+      schema:
+        type: string
+        format: uuid
+    header.Fortellis-Event-Id:
+      name: Fortellis-Event-Id
+      in: header
+      required: true
+      description: This is a unique ID for the event assigned by Fortellis at time receipt and provided to the event source.
+      schema:
+        type: string
+        format: uuid
+    header.Authorization:
+      name: Authorization
+      in: header
+      required: true
+      description: 'Contains credentials that allows the caller to authenticate itself with the
+
+        API. See RFC 7235 and RFC 7617 for more details.
+
+        '
+      schema:
+        type: string

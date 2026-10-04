@@ -48,123 +48,9 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
-  parameters:
-    header.Prefer:
-      description: This header describes the preferences of the client calling the API.
-      name: Prefer
-      in: header
-      schema:
-        type: string
-        enum:
-        - return=representation
-        - return=minimal
-    header.If-None-Match:
-      name: If-None-Match
-      in: header
-      description: Specifies a conditional request to only return the resource when it doesn't match one of the included ETag values
-      schema:
-        type: string
-    header.Accept:
-      description: This header describes the characters that the API will accept.
-      name: Accept
-      in: header
-      schema:
-        type: string
-        enum:
-        - application/json
-    header.Request-Id:
-      name: Request-Id
-      in: header
-      required: true
-      description: You must include the Request-Id in every call to track the same call across systems.
-      schema:
-        type: string
-        format: guid
-    header.Subscription-Id:
-      name: Subscription-Id
-      in: header
-      required: true
-      description: The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.
-      schema:
-        type: string
-        format: guid
-    body.CancelRequest:
-      name: CancelRequest
-      in: body
-      required: true
-      description: An appointment cancellation request
-      schema:
-        $ref: '#/components/schemas/CancelRequest'
-    header.Authorization:
-      name: Authorization
-      in: header
-      required: true
-      description: Provides authorization to access Fortellis APIs. For calling a Fortellis Provider, this must be an OAuth 2.0 token issued by the Fortellis authorization server, but you may call the simulator platform with Basic Authorization using your API key and secret.
-      schema:
-        type: string
-        format: guid
-    header.Accept-Language:
-      description: This header describes the languages that the client accepts.
-      name: Accept-Language
-      in: header
-      schema:
-        type: string
-    header.Accept-Charset:
-      description: This header describes the characters that the client will accept.
-      name: Accept-Charset
-      in: header
-      schema:
-        type: string
-        enum:
-        - utf-8
-    header.If-Match:
-      name: If-Match
-      in: header
-      description: Specifies a conditional request to only return the resource when it does match one of the included ETag values
-      schema:
-        type: string
-    path.appointmentId:
-      name: appointmentId
-      in: path
-      required: true
-      description: The appointment identifier
-      schema:
-        type: string
   responses:
     NotFound:
       description: 404 - Not Found
-      headers:
-        Content-Language:
-          schema:
-            type: string
-        Content-Type:
-          schema:
-            type: string
-        Request-Id:
-          schema:
-            type: string
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    Unauthorized:
-      description: 401 - Unauthorized
-      headers:
-        Content-Language:
-          schema:
-            type: string
-        Content-Type:
-          schema:
-            type: string
-        Request-Id:
-          schema:
-            type: string
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    BadRequest:
-      description: 400 - Bad Request
       headers:
         Content-Language:
           schema:
@@ -207,6 +93,120 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
+    BadRequest:
+      description: 400 - Bad Request
+      headers:
+        Content-Language:
+          schema:
+            type: string
+        Content-Type:
+          schema:
+            type: string
+        Request-Id:
+          schema:
+            type: string
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    Unauthorized:
+      description: 401 - Unauthorized
+      headers:
+        Content-Language:
+          schema:
+            type: string
+        Content-Type:
+          schema:
+            type: string
+        Request-Id:
+          schema:
+            type: string
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+  parameters:
+    header.If-None-Match:
+      name: If-None-Match
+      in: header
+      description: Specifies a conditional request to only return the resource when it doesn't match one of the included ETag values
+      schema:
+        type: string
+    path.appointmentId:
+      name: appointmentId
+      in: path
+      required: true
+      description: The appointment identifier
+      schema:
+        type: string
+    header.Accept-Language:
+      description: This header describes the languages that the client accepts.
+      name: Accept-Language
+      in: header
+      schema:
+        type: string
+    header.Accept:
+      description: This header describes the characters that the API will accept.
+      name: Accept
+      in: header
+      schema:
+        type: string
+        enum:
+        - application/json
+    header.Request-Id:
+      name: Request-Id
+      in: header
+      required: true
+      description: You must include the Request-Id in every call to track the same call across systems.
+      schema:
+        type: string
+        format: guid
+    header.Prefer:
+      description: This header describes the preferences of the client calling the API.
+      name: Prefer
+      in: header
+      schema:
+        type: string
+        enum:
+        - return=representation
+        - return=minimal
+    header.Accept-Charset:
+      description: This header describes the characters that the client will accept.
+      name: Accept-Charset
+      in: header
+      schema:
+        type: string
+        enum:
+        - utf-8
+    header.Subscription-Id:
+      name: Subscription-Id
+      in: header
+      required: true
+      description: The Fortellis Marketplace subscription identifier between a user entity and the solution. For sample responses use the Subscription-Id 'test'.
+      schema:
+        type: string
+        format: guid
+    header.Authorization:
+      name: Authorization
+      in: header
+      required: true
+      description: Provides authorization to access Fortellis APIs. For calling a Fortellis Provider, this must be an OAuth 2.0 token issued by the Fortellis authorization server, but you may call the simulator platform with Basic Authorization using your API key and secret.
+      schema:
+        type: string
+        format: guid
+    body.CancelRequest:
+      name: CancelRequest
+      in: body
+      required: true
+      description: An appointment cancellation request
+      schema:
+        $ref: '#/components/schemas/CancelRequest'
+    header.If-Match:
+      name: If-Match
+      in: header
+      description: Specifies a conditional request to only return the resource when it does match one of the included ETag values
+      schema:
+        type: string
   schemas:
     ErrorResponse:
       description: This is a generic error schema.
