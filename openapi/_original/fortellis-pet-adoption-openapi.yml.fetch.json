@@ -1,0 +1,12 @@
+{
+ "url": "https://raw.githubusercontent.com/fortellis/example-spec/HEAD/Rest-API-Specs/pet-adoption-v1.0.0.yaml",
+ "requested_url": "https://raw.githubusercontent.com/fortellis/example-spec/HEAD/Rest-API-Specs/pet-adoption-v1.0.0.yaml",
+ "status": 200,
+ "content_type": "text/plain; charset=utf-8",
+ "bytes": 12260,
+ "sha256": "054da60353ca821eb772c4d445b382c2a9353cd2b44908f057ffc5c96e28ba40",
+ "fetched_at": "2026-10-04",
+ "fetched_by": "APIEvangelist-Harvest/1.0 (+https://apievangelist.com)",
+ "match": "byte-identical",
+ "note": "Re-fetched from the provider by verify-openapi-sources.py; the archived file is byte-identical to what the provider serves."
+}

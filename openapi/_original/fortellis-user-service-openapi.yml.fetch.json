@@ -1,0 +1,12 @@
+{
+ "url": "https://raw.githubusercontent.com/fortellis/example-spec/HEAD/Rest-API-Specs/example-user-service-v45.0.0.yaml",
+ "requested_url": "https://raw.githubusercontent.com/fortellis/example-spec/HEAD/Rest-API-Specs/example-user-service-v45.0.0.yaml",
+ "status": 200,
+ "content_type": "text/plain; charset=utf-8",
+ "bytes": 42080,
+ "sha256": "e20d0c889b41fdc40d4972647b82bb3ed4a0b1246245e1230d0bb7c01100ca8f",
+ "fetched_at": "2026-10-04",
+ "fetched_by": "APIEvangelist-Harvest/1.0 (+https://apievangelist.com)",
+ "match": "byte-identical",
+ "note": "Re-fetched from the provider by verify-openapi-sources.py; the archived file is byte-identical to what the provider serves."
+}

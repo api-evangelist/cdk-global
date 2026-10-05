@@ -1,0 +1,12 @@
+{
+ "url": "https://raw.githubusercontent.com/fortellis/example-spec/HEAD/Rest-API-Specs/appointments-v3.0.0.yaml",
+ "requested_url": "https://raw.githubusercontent.com/fortellis/example-spec/HEAD/Rest-API-Specs/appointments-v3.0.0.yaml",
+ "status": 200,
+ "content_type": "text/plain; charset=utf-8",
+ "bytes": 28104,
+ "sha256": "aa7065d79fe69048bd70c804579ea42d43f5e62bdcfaa4c21075627673f78c2f",
+ "fetched_at": "2026-10-04",
+ "fetched_by": "APIEvangelist-Harvest/1.0 (+https://apievangelist.com)",
+ "match": "byte-identical",
+ "note": "Re-fetched from the provider by verify-openapi-sources.py; the archived file is byte-identical to what the provider serves."
+}
