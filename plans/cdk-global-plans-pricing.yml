@@ -119,3 +119,62 @@ plans:
         metric: agreement
         limit: -1
         timeFrame: year
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - hybrid
+  - negotiated
+  units:
+  - request
+  plans:
+  - name: DMS Foundations Suite
+    access: negotiated
+    model: negotiated
+    model_how: stated
+    units:
+    - other
+    periods:
+    - month
+  - name: DMS Modern Retail Suite
+    access: negotiated
+    model: negotiated
+    model_how: stated
+    units:
+    - other
+    periods:
+    - month
+  - name: DMS Intelligence Suite
+    access: negotiated
+    model: negotiated
+    model_how: stated
+    units:
+    - other
+    periods:
+    - month
+  - name: Fortellis ISV (Developer / App Publisher)
+    access: other
+    model: hybrid
+    model_how: stated
+    units:
+    - other
+    - request
+    periods:
+    - per-use
+    - year
+  - name: Fortellis Dealer (App Consumer)
+    access: negotiated
+    model: negotiated
+    model_how: stated
+    units:
+    - other
+    periods:
+    - month
+  - name: Fortellis OEM Program
+    access: enterprise
+    model: negotiated
+    model_how: derived
+    units:
+    - other
+    periods:
+    - year
