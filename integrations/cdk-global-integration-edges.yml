@@ -1,0 +1,22 @@
+generated: '2026-10-12'
+method: searched
+source:
+- https://zapier.com/apps/cdk-global/integrations
+checked:
+- https://composio.dev/toolkits/cdk-global
+- https://monid.ai/tools/cdk-global
+- https://n8n.io/integrations/cdk-global/
+- https://zapier.com/apps/cdk-global/integrations
+summary: null
+marketplace_apps:
+- marketplace: zapier
+  channel: ipaas-listing
+  app: cdk-global
+  url: https://zapier.com/apps/cdk-global/integrations
+  external_url: http://cdkglobal.com/
+  partner_tier: null
+  triggers: []
+  actions: []
+  searches: []
+edges: []
+templates: []
