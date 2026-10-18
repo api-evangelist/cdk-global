@@ -1,0 +1,26 @@
+slug: cdk-global
+provider: CDK Global
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Automotive & Mobility
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 1
+edges:
+- tag: Service Booking
+  spec_file: cdk-global-service-booking-api-openapi.yml
+  capability_id: BC-3450
+  capability_id_l1: BC-3450
+  capability_name: Vehicle Aftersales & Warranty Management
+  confidence: 0.74
+  evidence: '"allows a solution to book service sessions to a car dealership"; bookAppointmentSlot  Books
+    an appointment slot; addBookingSessionItem  Adds a requested service item'
+  reason: End-to-end dealership service booking — requested service items, store availability, appointment
+    slots — which is vehicle aftersales service operations. No candidate L2 covers service scheduling,
+    so L1 only; the frame's L1 is framed OEM-side while this is dealer-side.
