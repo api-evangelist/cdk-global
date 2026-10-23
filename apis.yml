@@ -319,6 +319,9 @@ apis:
   - type: SourceRepo
     url: https://github.com/Fortellis/Fortellis-Event-Relay-Webhook
 common:
+  - type: CapabilityMap
+    url: capabilities/cdk-global-capability-edges.yml
+    name: CDK Global Business Capability Map
   - type: AgenticAccess
     url: agentic-access/cdk-global-agentic-access.yml
   - type: DomainSecurity
