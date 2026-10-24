@@ -531,3 +531,9 @@ components:
           scopes:
             anonymous: Create, Query, Update, and Delete appointments
           authorizationUrl: https://identity.fortellis.io/oauth2/
+x-provenance:
+  method: harvested
+  publisher: CDK Global
+  source: https://raw.githubusercontent.com/fortellis/example-spec/HEAD/Rest-API-Specs/appointments-v3.0.0.yaml
+  note: split by refine-openapis from the provider's own published document, verified by fetch (openapi/_original/*.fetch.json);
+    stamped by stamp-openapi-provenance.py (roadmap#793)

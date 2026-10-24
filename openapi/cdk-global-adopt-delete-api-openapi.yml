@@ -163,3 +163,9 @@ components:
             pets.adopt: permission to query, read, and adopt pets
             pets.manage: permission to add, modify, and remove pets
           authorizationUrl: https://identity.fortellis.io/oauth2/
+x-provenance:
+  method: harvested
+  publisher: CDK Global
+  source: https://raw.githubusercontent.com/fortellis/example-spec/HEAD/Rest-API-Specs/pet-adoption-v1.0.0.yaml
+  note: split by refine-openapis from the provider's own published document, verified by fetch (openapi/_original/*.fetch.json);
+    stamped by stamp-openapi-provenance.py (roadmap#793)

@@ -7,44 +7,44 @@ artifacts:
     method: generated
     evidence: declared in the artifact
   arazzo/cdk-global-add-service-session-item-workflow.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: Arazzo whose sourceDescriptions are our split specs (../openapi/)
   arazzo/cdk-global-book-service-session-workflow.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: Arazzo whose sourceDescriptions are our split specs (../openapi/)
   arazzo/cdk-global-cancel-appointment-workflow.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: Arazzo whose sourceDescriptions are our split specs (../openapi/)
   arazzo/cdk-global-create-data-record-workflow.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: Arazzo whose sourceDescriptions are our split specs (../openapi/)
   arazzo/cdk-global-inspect-available-slot-workflow.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: Arazzo whose sourceDescriptions are our split specs (../openapi/)
   arazzo/cdk-global-parts-availability-check-workflow.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: Arazzo whose sourceDescriptions are our split specs (../openapi/)
   arazzo/cdk-global-parts-inventory-lookup-workflow.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: Arazzo whose sourceDescriptions are our split specs (../openapi/)
   arazzo/cdk-global-relay-appointment-event-workflow.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: Arazzo whose sourceDescriptions are our split specs (../openapi/)
   arazzo/cdk-global-remove-service-session-item-workflow.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: Arazzo whose sourceDescriptions are our split specs (../openapi/)
   arazzo/cdk-global-reschedule-appointment-workflow.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: Arazzo whose sourceDescriptions are our split specs (../openapi/)
   arazzo/cdk-global-schedule-service-appointment-workflow.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: Arazzo whose sourceDescriptions are our split specs (../openapi/)
   arazzo/cdk-global-update-data-record-workflow.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: Arazzo whose sourceDescriptions are our split specs (../openapi/)
   arazzo/cdk-global-update-service-session-item-workflow.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: Arazzo whose sourceDescriptions are our split specs (../openapi/)
   asyncapi/fortellis-event-relay-data-plane-proxy-asyncapi.yml:
     method: unknown
     evidence: no authorship recorded
@@ -54,6 +54,9 @@ artifacts:
   authentication/cdk-global-authentication.yml:
     method: derived
     evidence: declared in the artifact
+  capabilities/cdk-global-capability-edges.yml:
+    method: unknown
+    evidence: no authorship recorded
   collections/cdk-global-adopt-api.opencollection.json:
     method: derived
     evidence: openapi/cdk-global-adopt-api
@@ -160,11 +163,17 @@ artifacts:
     method: unknown
     evidence: no authorship recorded
   finops/cdk-global-finops.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: generated
+    evidence: declared in the artifact
   front-door-ai/2026-09-17.yml:
     method: unknown
     evidence: no authorship recorded
+  integrations/_index.yml:
+    method: generated
+    evidence: carries an API Evangelist house phrase
+  integrations/cdk-global-integration-edges.yml:
+    method: searched
+    evidence: declared in the artifact
   json-ld/cdk-global-context.jsonld:
     method: unknown
     evidence: no authorship recorded
@@ -189,127 +198,7 @@ artifacts:
   json-structure/fortellis-service-appointment-structure.json:
     method: unknown
     evidence: no authorship recorded
-  kin/checks-2026-09-24T161608.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-25T125852.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-25T133943.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-25T143147.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-25T154045.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-26T215308.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-27T094438.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-27T103455.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-27T123021.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-27T132314.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-27T140727.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-28T221322.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-29T213958.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-29T230545.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-30T203505.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-30T220315.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-31T223420.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-01T063623.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-01T210448.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-01T222808.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-02T211804.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-02T224043.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-03T161828.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-03T174231.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-04T062714.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-04T212454.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-04T224856.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-05T055819.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-05T072335.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-05T144739.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-05T195450.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-05T211839.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-06T011047.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-06T211804.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-06T224210.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-07T200636.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-07T213054.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-08T214843.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-08T232836.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-10T204815.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-10T222408.yml:
+  kin/checks-2026-10-11T110117.yml:
     method: generated
     evidence: Kin Score snapshot written by score.rb
   kin/score-2026-09-12T062655.yml:
@@ -393,26 +282,41 @@ artifacts:
   kin/score-2026-09-24T161608.yml:
     method: generated
     evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-25T210408.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-25T232841.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-10-03T000835.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-10-03T024842.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-10-11T110117.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
   openapi/_original/fortellis-appointments-openapi.yml:
     method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
+    evidence: byte-identical to https://raw.githubusercontent.com/fortellis/example-spec/HEAD/Rest-API-Specs/appointments-v3.0.0.yaml
+      (sha256 aa7065d79fe6, fetched 2026-10-04)
   openapi/_original/fortellis-event-relay-webhook-openapi.yml:
     method: harvested
     evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
       to the provider's source is unverified
   openapi/_original/fortellis-parts-store-openapi.yml:
     method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
+    evidence: byte-identical to https://raw.githubusercontent.com/fortellis/example-spec/HEAD/Rest-API-Specs/fortellis-sample-spec-v47.0.0.yaml
+      (sha256 a63fea1a924d, fetched 2026-10-04)
   openapi/_original/fortellis-pet-adoption-openapi.yml:
     method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
+    evidence: byte-identical to https://raw.githubusercontent.com/fortellis/example-spec/HEAD/Rest-API-Specs/pet-adoption-v1.0.0.yaml
+      (sha256 054da60353ca, fetched 2026-10-04)
   openapi/_original/fortellis-user-service-openapi.yml:
     method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
+    evidence: byte-identical to https://raw.githubusercontent.com/fortellis/example-spec/HEAD/Rest-API-Specs/example-user-service-v45.0.0.yaml
+      (sha256 e20d0c889b41, fetched 2026-10-04)
   openapi/cdk-global-adopt-api-openapi.yml:
     method: derived
     evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
@@ -444,8 +348,8 @@ artifacts:
     method: derived
     evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   plans/cdk-global-plans-pricing.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: generated
+    evidence: declared in the artifact
   postman/fortellis-appointments.postman_collection.json:
     method: unknown
     evidence: no authorship recorded
@@ -462,8 +366,8 @@ artifacts:
     method: unknown
     evidence: no authorship recorded
   rate-limits/cdk-global-rate-limits.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: generated
+    evidence: declared in the artifact
   rules/cdk-global-asyncapi-spectral-rules.yml:
     method: generated
     evidence: declared in the artifact
