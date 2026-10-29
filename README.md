@@ -1,4 +1,4 @@
-# CDK Global (cdk-global)
+# CDK Global
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,263 +66,231 @@
 
 CDK Global is the dominant U.S. dealer management system (DMS) provider, serving roughly 15,000 automotive dealerships with software covering sales, F&I, fixed operations, parts, CRM, and digital retail. CDK was spun out of ADP in 2014 and acquired by Brookfield Business Partners in July 2022 for $8.3B (taken private). The company operates the Fortellis platform — a developer marketplace and integration hub with 135+ published APIs, 425+ marketplace apps, 82,000+ dealer integrations, and 6.7B+ API transactions per year — exposing CDK DMS data to ISVs, OEMs, and third-party automotive systems. CDK suffered a major BlackSuit ransomware attack on June 19, 2024, paying ~$25M in bitcoin to restore service over roughly two weeks; the outage caused an estimated $605M in dealer losses and triggered numerous lawsuits.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/cdk-global/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/cdk-global/main/apis.yml)
+**Areas:** Automotive · Dealer Management · DMS · Auto Retail · F&I · Fixed Operations · Parts · CRM · Digital Retail · Marketplace · Developer Platform · Event
 
-## Tags
+## CDK Global on APIs.io
 
-- Automotive
-- Dealer Management
-- DMS
-- Auto Retail
-- F&I
-- Fixed Operations
-- Parts
-- CRM
-- Digital Retail
-- Marketplace
-- Developer Platform
-- Events
-- Webhooks
-- AsyncAPI
+Everything profiled for CDK Global is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/cdk-global/](https://apis.io/providers/cdk-global/)** — or go straight to one of the APIs or properties below.
 
-## Timestamps
+### APIs (13)
 
-- **Created:** 2026-05-22
-- **Modified:** 2026-05-23
+- [Fortellis Platform](https://apis.io/apis/cdk-global/fortellis-platform/) — Fortellis is CDK Global's open automotive commerce platform — an API gateway, app marketplace, and developer community that brokers data flow between…
+- [Fortellis Event Relay Data Plane Proxy (AsyncAPI)](https://apis.io/apis/cdk-global/fortellis-event-relay-data-plane/) — AsyncAPI specification for the Fortellis Event Relay data-plane proxy used by event sources to publish events into Fortellis for fan-out to subscribers.
+- [Fortellis AsyncAPI Hello World Reference](https://apis.io/apis/cdk-global/fortellis-async-hello-world/) — Hello World AsyncAPI reference distributed by Fortellis to teach the asynchronous API pattern, channel topology, and message envelope conventions used…
+- [CDK Global Adopt API](https://apis.io/apis/cdk-global/cdk-global-adopt-api/) — The adopt API from CDK Global — 2 operation(s) for adopt.
+- [CDK Global adopt delete API](https://apis.io/apis/cdk-global/cdk-global-adopt-delete-api/) — The adopt delete API from CDK Global — 1 operation(s) for adopt delete.
+- [CDK Global adopt update API](https://apis.io/apis/cdk-global/cdk-global-adopt-update-api/) — The adopt update API from CDK Global — 1 operation(s) for adopt update.
+- [CDK Global Cancel API](https://apis.io/apis/cdk-global/cdk-global-cancel-api/) — The cancel API from CDK Global — 1 operation(s) for cancel.
+- [CDK Global Create API](https://apis.io/apis/cdk-global/cdk-global-create-api/) — The create API from CDK Global — 1 operation(s) for create.
+- [CDK Global Events API](https://apis.io/apis/cdk-global/cdk-global-events-api/) — The events API from CDK Global — 1 operation(s) for events.
+- [CDK Global Manage API](https://apis.io/apis/cdk-global/cdk-global-manage-api/) — The manage API from CDK Global — 1 operation(s) for manage.
+- [CDK Global Query API](https://apis.io/apis/cdk-global/cdk-global-query-api/) — The query API from CDK Global — 6 operation(s) for query.
+- [CDK Global Service Booking API](https://apis.io/apis/cdk-global/cdk-global-service-booking-api/) — The Service Booking API from CDK Global — 6 operation(s) for service booking.
+- [CDK Global Update API](https://apis.io/apis/cdk-global/cdk-global-update-api/) — The update API from CDK Global — 1 operation(s) for update.
 
-## APIs
+### Published properties
 
-### Fortellis Platform
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-Fortellis is CDK Global's open automotive commerce platform — an API gateway, app marketplace, and developer community that brokers data flow between dealerships, ISVs, OEMs, heavy-truck, and powersports systems. Fortellis publishes 135+ APIs, lists 425+ marketplace apps, and processes 6.7B+ API transactions per year across 82K+ dealer integrations.
+#### Arazzo workflows (13)
 
-- **Human URL:** [https://fortellis.io](https://fortellis.io)
-- **Base URL:** `https://api.fortellis.io`
+Multi-step workflows that chain operations into a business task.
 
-#### Tags
+- [CDK Global Add Service Session Item](https://apis.io/arazzos/cdk-global/cdk-global-add-service-session-item-workflow/)
+- [CDK Global Book Service Session](https://apis.io/arazzos/cdk-global/cdk-global-book-service-session-workflow/)
+- [CDK Global Cancel Service Appointment](https://apis.io/arazzos/cdk-global/cdk-global-cancel-appointment-workflow/)
+- [CDK Global Create Data Record](https://apis.io/arazzos/cdk-global/cdk-global-create-data-record-workflow/)
+- [CDK Global Inspect Available Slot](https://apis.io/arazzos/cdk-global/cdk-global-inspect-available-slot-workflow/)
+- [CDK Global Parts Availability Check](https://apis.io/arazzos/cdk-global/cdk-global-parts-availability-check-workflow/)
+- [CDK Global Parts Inventory Lookup](https://apis.io/arazzos/cdk-global/cdk-global-parts-inventory-lookup-workflow/)
+- [CDK Global Relay Appointment Event](https://apis.io/arazzos/cdk-global/cdk-global-relay-appointment-event-workflow/)
+- [CDK Global Remove Service Session Item](https://apis.io/arazzos/cdk-global/cdk-global-remove-service-session-item-workflow/)
+- [CDK Global Reschedule Service Appointment](https://apis.io/arazzos/cdk-global/cdk-global-reschedule-appointment-workflow/)
+- [CDK Global Schedule Service Appointment](https://apis.io/arazzos/cdk-global/cdk-global-schedule-service-appointment-workflow/)
+- [CDK Global Update Data Record](https://apis.io/arazzos/cdk-global/cdk-global-update-data-record-workflow/)
+- [CDK Global Update Service Session Item](https://apis.io/arazzos/cdk-global/cdk-global-update-service-session-item-workflow/)
 
-- Fortellis
-- Marketplace
-- Developer Platform
-- APIs
-- Automotive
+#### AsyncAPI (2)
 
-#### Properties
+Event-driven and webhook contracts.
 
-- [Documentation](https://docs.fortellis.io)
-- [API Reference](https://apidocs.fortellis.io)
-- [Sign Up](https://sso.fortellis.io)
-- [Portal](https://fortellis.io)
-- [Community](https://fortellis.io/community)
-- [Marketplace](https://fortellis.io/marketplace)
-- [GitHub Organization](https://github.com/Fortellis)
-- [Postman Collection](collections/fortellis-appointments.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/fortellis-appointments.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/fortellis-event-relay-webhook.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/fortellis-event-relay-webhook.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/fortellis-parts-store.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/fortellis-parts-store.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/fortellis-pet-adoption.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/fortellis-pet-adoption.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/fortellis-user-service.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/fortellis-user-service.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Fortellis Event Relay Data API](https://apis.io/asyncapis/cdk-global/fortellis-event-relay-data-plane-proxy-asyncapi/)
+- [Hello World](https://apis.io/asyncapis/cdk-global/fortellis-hello-world-asyncapi/)
 
-### Fortellis Service Appointments API
+#### Event channels (1)
 
-Service-appointments API for booking, querying, updating, and cancelling vehicle service appointments at a dealership service department. Used by scheduling systems integrating with CDK and other DMS providers via Fortellis.
+Individual events and webhooks the provider emits.
 
-- **Human URL:** [https://apidocs.fortellis.io](https://apidocs.fortellis.io)
-- **Base URL:** `https://api.fortellis.io/sales/notification/v3`
+- [hello/world](https://apis.io/channels/cdk-global/hello-world/)
 
-#### Tags
+#### Agentic access (1)
 
-- Appointments
-- Service
-- Fixed Operations
-- Scheduling
+Which operations an agent can call, which act, and which need a human in the loop.
 
-#### Properties
+- [Cdk Global Agentic Access](https://apis.io/agentic-access/cdk-global/cdk-global-agentic-access/)
 
-- [OpenAPI](openapi/fortellis-appointments-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/fortellis-appointments.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/fortellis-appointments.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [API Reference](https://apidocs.fortellis.io)
-- [Source Repo](https://github.com/Fortellis/example-spec)
+#### JSON Schema (5)
 
-### Fortellis User / Booking Sessions API
+The data models the API reads and writes.
 
-Booking-sessions API illustrating Fortellis's REST conventions: session creation, item management, store availability, and slot reservation for service scheduling workflows.
+- [Fortellis Booking Session](https://apis.io/schemas/cdk-global/fortellis-booking-session/)
+- [Fortellis Event](https://apis.io/schemas/cdk-global/fortellis-event/)
+- [Fortellis Marketplace App](https://apis.io/schemas/cdk-global/fortellis-marketplace-app/)
+- [Fortellis Part](https://apis.io/schemas/cdk-global/fortellis-part/)
+- [Fortellis Service Appointment](https://apis.io/schemas/cdk-global/fortellis-service-appointment/)
 
-- **Human URL:** [https://apidocs.fortellis.io](https://apidocs.fortellis.io)
-- **Base URL:** `https://api.fortellis.io/service/sessions/v4`
+#### JSON Structure (2)
 
-#### Tags
+Data models expressed in JSON Structure.
 
-- Booking Sessions
-- Service
-- Scheduling
+- [Fortellis Event Structure](https://apis.io/json-structure/cdk-global/fortellis-event-structure/)
+- [Fortellis Service Appointment Structure](https://apis.io/json-structure/cdk-global/fortellis-service-appointment-structure/)
 
-#### Properties
+#### JSON-LD (1)
 
-- [OpenAPI](openapi/fortellis-user-service-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/fortellis-user-service.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/fortellis-user-service.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [API Reference](https://apidocs.fortellis.io)
-- [Source Repo](https://github.com/Fortellis/example-spec)
+Linked-data contexts for the provider's vocabulary.
 
-### Fortellis Parts Store API
+- [Cdk Global Context](https://apis.io/jsonld/cdk-global/cdk-global-context/)
 
-Parts-store reference API exposing product info, sizing, and ping/health for dealership parts inventory and procurement integrations.
+#### Vocabulary (1)
 
-- **Human URL:** [https://apidocs.fortellis.io](https://apidocs.fortellis.io)
-- **Base URL:** `https://api.fortellis.io/sales/parts-store/v47`
+The provider's domain terms, defined.
 
-#### Tags
+- [CDK Global / Fortellis Vocabulary](https://apis.io/vocabularies/cdk-global/cdk-global-vocabulary/)
 
-- Parts
-- Inventory
-- Fixed Operations
+#### Examples (5)
 
-#### Properties
+Example requests and responses.
 
-- [OpenAPI](openapi/fortellis-parts-store-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/fortellis-parts-store.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/fortellis-parts-store.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [API Reference](https://apidocs.fortellis.io)
-- [Source Repo](https://github.com/Fortellis/example-spec)
+- [Fortellis Create Appointment Example](https://apis.io/examples/cdk-global/fortellis-create-appointment-example/)
+- [Fortellis Create Booking Session Example](https://apis.io/examples/cdk-global/fortellis-create-booking-session-example/)
+- [Fortellis Event Relay Webhook Delivery Example](https://apis.io/examples/cdk-global/fortellis-event-relay-webhook-delivery-example/)
+- [Fortellis Get Part Info Example](https://apis.io/examples/cdk-global/fortellis-get-part-info-example/)
+- [Fortellis Query Appointments Example](https://apis.io/examples/cdk-global/fortellis-query-appointments-example/)
 
-### Fortellis Reference Pet Adoption API
+#### Collections (20)
 
-Reference / tutorial API distributed by Fortellis for developers learning the platform's OpenAPI conventions, OAuth flows, and admin-API patterns.
+Postman and Open Collection request collections.
 
-- **Human URL:** [https://apidocs.fortellis.io](https://apidocs.fortellis.io)
-- **Base URL:** `https://api.fortellis.io/data/v1/example/pet-adoption`
+- [appointments adopt API](https://apis.io/collections/cdk-global/open-cdk-global-adopt-api/)
+- [appointments adopt adopt delete API](https://apis.io/collections/cdk-global/open-cdk-global-adopt-delete-api/)
+- [appointments adopt adopt update API](https://apis.io/collections/cdk-global/open-cdk-global-adopt-update-api/)
+- [appointments adopt cancel API](https://apis.io/collections/cdk-global/open-cdk-global-cancel-api/)
+- [appointments adopt create API](https://apis.io/collections/cdk-global/open-cdk-global-create-api/)
+- [appointments adopt events API](https://apis.io/collections/cdk-global/open-cdk-global-events-api/)
+- [appointments adopt manage API](https://apis.io/collections/cdk-global/open-cdk-global-manage-api/)
+- [appointments adopt query API](https://apis.io/collections/cdk-global/open-cdk-global-query-api/)
+- [appointments adopt Service Booking API](https://apis.io/collections/cdk-global/open-cdk-global-service-booking-api/)
+- [appointments adopt update API](https://apis.io/collections/cdk-global/open-cdk-global-update-api/)
+- [appointments](https://apis.io/collections/cdk-global/open-fortellis-appointments/)
+- [Fortellis Event Relay Webhook](https://apis.io/collections/cdk-global/open-fortellis-event-relay-webhook/)
+- [Fortellis Sample Application](https://apis.io/collections/cdk-global/open-fortellis-parts-store/)
+- [Pet Adoption](https://apis.io/collections/cdk-global/open-fortellis-pet-adoption/)
+- [Booking Sessions](https://apis.io/collections/cdk-global/open-fortellis-user-service/)
+- [appointments](https://apis.io/collections/cdk-global/postman-fortellis-appointments/)
+- [Fortellis Event Relay Webhook](https://apis.io/collections/cdk-global/postman-fortellis-event-relay-webhook/)
+- [Fortellis Sample Application](https://apis.io/collections/cdk-global/postman-fortellis-parts-store/)
+- [Pet Adoption](https://apis.io/collections/cdk-global/postman-fortellis-pet-adoption/)
+- [Booking Sessions](https://apis.io/collections/cdk-global/postman-fortellis-user-service/)
 
-#### Tags
+#### Governance rules (3)
 
-- Reference
-- Tutorial
-- Developer Education
+Spectral rulesets for the provider's contracts.
 
-#### Properties
+- [CDK Global — asyncapi rules](https://apis.io/rules/cdk-global/cdk-global-asyncapi-spectral-rules/)
+- [CDK Global — jsonschema rules](https://apis.io/rules/cdk-global/cdk-global-jsonschema-spectral-rules/)
+- [CDK Global — fortellis rules](https://apis.io/rules/cdk-global/fortellis-rules/)
 
-- [OpenAPI](openapi/fortellis-pet-adoption-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/fortellis-pet-adoption.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/fortellis-pet-adoption.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Source Repo](https://github.com/Fortellis/example-spec)
+#### Security (2)
 
-### Fortellis Event Relay Webhook
+Authentication, trust centre, and vulnerability disclosure.
 
-Webhook contract that event-sink applications implement to receive asynchronous events from Fortellis Event Relay. Defines payload envelope, required headers (X-Request-Id, Fortellis-Event-Id, Authorization, Data-Owner-Id), and retry semantics for guaranteed delivery.
+- [Cdk Global Authentication](https://apis.io/security/cdk-global/cdk-global-authentication/)
+- [Cdk Global Domain Security](https://apis.io/security/cdk-global/cdk-global-domain-security/)
 
-- **Human URL:** [https://github.com/Fortellis/Fortellis-Event-Relay-Webhook](https://github.com/Fortellis/Fortellis-Event-Relay-Webhook)
-- **Base URL:** `https://api.fortellis.io/v1/webhook`
+#### OAuth scopes (1)
 
-#### Tags
+The permissions the API asks for.
 
-- Events
-- Webhooks
-- Event Relay
-- Asynchronous
+- [Cdk Global Scopes](https://apis.io/scopes/cdk-global/cdk-global-scopes/)
 
-#### Properties
+#### Plans and pricing (1)
 
-- [OpenAPI](openapi/fortellis-event-relay-webhook-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/fortellis-event-relay-webhook.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/fortellis-event-relay-webhook.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Source Repo](https://github.com/Fortellis/Fortellis-Event-Relay-Webhook)
+Published plans, tiers and prices.
 
-### Fortellis Event Relay Data Plane Proxy (AsyncAPI)
+- [Cdk Global Plans Pricing](https://apis.io/plans/cdk-global/cdk-global-plans-pricing/)
 
-AsyncAPI specification for the Fortellis Event Relay data-plane proxy used by event sources to publish events into Fortellis for fan-out to subscribers.
+#### Rate limits (1)
 
-- **Human URL:** [https://github.com/Fortellis/Event-Relay-Specs](https://github.com/Fortellis/Event-Relay-Specs)
+Published request limits.
 
-#### Tags
+- [Cdk Global Rate Limits](https://apis.io/rate-limits/cdk-global/cdk-global-rate-limits/)
 
-- Events
-- AsyncAPI
-- Event Relay
-- Publish-Subscribe
+#### FinOps (1)
 
-#### Properties
+What the API costs to run, by operation.
 
-- [AsyncAPI](asyncapi/fortellis-event-relay-data-plane-proxy-asyncapi.yml) — [AsyncAPI Specification](https://www.asyncapi.com/docs/reference/specification/latest)
-- [Source Repo](https://github.com/Fortellis/Event-Relay-Specs)
-- [Postman Collection](collections/fortellis-appointments.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/fortellis-appointments.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/fortellis-event-relay-webhook.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/fortellis-event-relay-webhook.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/fortellis-parts-store.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/fortellis-parts-store.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/fortellis-pet-adoption.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/fortellis-pet-adoption.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/fortellis-user-service.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/fortellis-user-service.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Cdk Global Finops](https://apis.io/finops/cdk-global/cdk-global-finops/)
 
-### Fortellis AsyncAPI Hello World Reference
+## Where to find this API
 
-Hello World AsyncAPI reference distributed by Fortellis to teach the asynchronous API pattern, channel topology, and message envelope conventions used across Fortellis event APIs.
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
-- **Human URL:** [https://github.com/Fortellis/AsyncAPIHelloWorld](https://github.com/Fortellis/AsyncAPIHelloWorld)
-
-#### Tags
-
-- AsyncAPI
-- Reference
-- Events
-- Developer Education
-
-#### Properties
-
-- [AsyncAPI](asyncapi/fortellis-hello-world-asyncapi.yml) — [AsyncAPI Specification](https://www.asyncapi.com/docs/reference/specification/latest)
-- [Source Repo](https://github.com/Fortellis/AsyncAPIHelloWorld)
-- [Postman Collection](collections/fortellis-appointments.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/fortellis-appointments.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/fortellis-event-relay-webhook.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/fortellis-event-relay-webhook.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/fortellis-parts-store.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/fortellis-parts-store.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/fortellis-pet-adoption.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/fortellis-pet-adoption.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/fortellis-user-service.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/fortellis-user-service.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-## Common Properties
-
-- [Arazzo Workflows](arazzo/) — [Arazzo Specification](https://spec.openapis.org/arazzo/latest.html)
 - [Website](https://www.cdkglobal.com)
-- [Portal](https://fortellis.io)
 - [Documentation](https://docs.fortellis.io)
-- [API Reference](https://apidocs.fortellis.io)
-- [Sign Up](https://sso.fortellis.io)
-- [Marketplace](https://fortellis.io/marketplace)
-- [Community](https://fortellis.io/community)
-- [Authentication](https://identity.fortellis.io/oauth2/)
-- [GitHub Organization](https://github.com/Fortellis)
-- [SDK](https://github.com/Fortellis/fortellis-cli)
-- [C L I](https://www.npmjs.com/package/@fortellis/fortellis-cli)
-- [V S Code Extension](https://github.com/Fortellis/vscode-fortellis-spec-tools)
-- [Git Hub Action](https://github.com/Fortellis/api-spec-lint-action)
-- [Git Hub Action](https://github.com/Fortellis/api-spec-push-action)
-- [Spec Linter](https://github.com/Fortellis/fortellis-spec-linter)
-- [SDK](https://github.com/Fortellis/python-admin-api)
-- [SDK](https://github.com/Fortellis/Admin-API-Implementation-Java)
-- [SDK](https://github.com/Fortellis/admin-api-implementation)
-- [Sample](https://github.com/Fortellis/Java-Public-Webhook-Example)
-- [Sample](https://github.com/Fortellis/AuthorizationCodeFlowInDotNet)
-- [Sample](https://github.com/Fortellis/ImplicitFlowInDotNet)
-- [Sample](https://github.com/Fortellis/ClientCredentialsFlowIn.Net)
-- [LinkedIn](https://www.linkedin.com/company/cdk-global)
-- [Twitter](https://twitter.com/cdkglobal)
-- [Plans](plans/cdk-global-plans-pricing.yml)
-- [Rate Limits](rate-limits/cdk-global-rate-limits.yml)
-- [Fin Ops](finops/cdk-global-finops.yml)
-- [Vocabulary](vocabulary/cdk-global-vocabulary.yml)
-- [J S O N L D Context](json-ld/cdk-global-context.jsonld)
-- [Spectral Rules](rules/fortellis-rules.yml)
+- [API reference](https://apidocs.fortellis.io)
+- [Blog](https://fortellis.io/insights)
+- [GitHub](https://github.com/Fortellis)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** info@apievangelist.com
+**Kin Score 39.1** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 62.5 |
+| Contract quality | 60.5 |
+| Contract governance | 27.3 |
+| Operational transparency | 10.5 |
+| Developer ergonomics | 39.3 |
+| Access clarity | 21.1 |
+
+**Agent readiness 20.7** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | documented (partial credit) |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | derived (partial credit) |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 26.5** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/cdk-global/](https://apis.io/providers/cdk-global/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for CDK Global: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/cdk-global/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
